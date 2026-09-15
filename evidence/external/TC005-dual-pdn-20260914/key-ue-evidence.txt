@@ -1,0 +1,3 @@
+714:2026-09-14T10:47:30.348140 [NAS    ] [I] Registered default EPS bearer EBI=6 for APN=ims.
+803:2026-09-14T10:47:30.552369 [NAS    ] [I] Received Activate Dedicated EPS bearer context request (eps_bearer_id=7, linked_bearer_id=6, proc_id=0)
+808:2026-09-14T10:47:30.552376 [NAS    ] [I] Sending Activate Dedicated EPS Bearer context accept (eps_bearer_id=7, proc_id=0)

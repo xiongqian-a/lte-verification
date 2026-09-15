@@ -1,0 +1,294 @@
+=== INJECTOR EVIDENCE ===
+=== TC-018 local malformed SIP injection to pjsua on 127.0.0.1:7078 ===
+MALFORMED REGISTER observed=true
+PARSING_ERROR malformed Authorization header
+--- Step1 malformed REGISTER to UE ---
+SENT[378]: REGISTER sip:ims.local SIP/2.0
+RCVD: (no response)
+--- Step2 garbage payload to UE ---
+SENT[36]: NOTSIP this is not a sip message
+RCVD: (no response)
+--- Step3 broken REGISTER to UE ---
+SENT[150]: REGISTER sip:ims.local SIP/2.0
+RCVD: (no response)
+--- Step4 OPTIONS liveness to UE ---
+SENT[273]: OPTIONS sip:tc018@127.0.0.1:7078 SIP/2.0
+RCVD: SIP/2.0 200 OK | Via: SIP/2.0/UDP 127.0.0.1:9997;rport=56818;received=127.0.0.1;branch=z9hG4bKTC018OPT | Call-ID: tc018-options-001 | From: <sip:probe@127.0.0.1>;tag=probe1 | To: <sip:tc018@127.0.0.1>;tag=z9hG4bKTC018OPT | CSeq: 1 OPTIONS | Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS | Accept: application/sdp, application/pidf+xml, application/xpidf+xml, application/dialog-info+xml, application/simple-message-summary, message/sipfrag;version=2.0, application/im-iscomposing+xml, text/plain | Supported: replaces, 100rel, timer, siprec, norefersub, trickle-ice | Allow-Events: presence, dialog, message-summary, refer | User-Agent: PJSUA/v2.15-dev Linux-5.15.0.139 x86_64 glibc-2.31 | Content-Length:  0 |  | 
+--- Step5 valid REGISTER liveness to UE ---
+SENT[297]: REGISTER sip:127.0.0.1:7078 SIP/2.0
+RCVD: SIP/2.0 200 OK | Via: SIP/2.0/UDP 127.0.0.1:9996;rport=52840;received=127.0.0.1;branch=z9hG4bKTC018VALID | Call-ID: tc018-valid-001 | From: <sip:goodtester@127.0.0.1>;tag=good1 | To: <sip:goodtester@127.0.0.1>;tag=z9hG4bKTC018VALID | CSeq: 1 REGISTER | Contact: <sip:goodtester@127.0.0.1:9996> | Server: pjsua simple registrar | Content-Length:  0 |  | 
+
+malformed_seen=True
+graceful_or_ignored=True
+responsive_after=True
+no_fatal=True
+IGNORED=true
+RESULT: PASS
+
+=== PJSONA PTY LOG ===
+11:24:51.844         sip_endpoint.c !.Module "mod-pjsua-log" registered
+11:24:51.844         sip_endpoint.c  .Module "mod-tsx-layer" registered
+11:24:51.844         sip_endpoint.c  .Module "mod-stateful-util" registered
+11:24:51.844         sip_endpoint.c  .Module "mod-ua" registered
+11:24:51.844         sip_endpoint.c  .Module "mod-100rel" registered
+11:24:51.844         sip_endpoint.c  .Module "mod-pjsua" registered
+11:24:51.844         sip_endpoint.c  .Module "mod-invite" registered
+11:24:51.844                  pjlib  ..select() I/O Queue created (0x556444bd7ea0)
+11:24:51.846         sip_endpoint.c  .Module "mod-evsub" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-presence" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-dlg_even" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-mwi" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-refer" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-pjsua-im" registered
+11:24:51.846         sip_endpoint.c  .Module "mod-pjsua-options" registered
+11:24:51.846           pjsua_core.c  .1 SIP worker threads created
+11:24:51.846           pjsua_core.c  .pjsua version 2.15-dev for Linux-5.15.0.139/x86_64/glibc-2.31 initialized
+11:24:51.846           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+11:24:51.846         sip_endpoint.c  Module "mod-default-handler" registered
+11:24:51.846           conference.c  .Add port 1 (ringback) queued
+11:24:51.846           conference.c  .Add port 2 (ring) queued
+11:24:51.846           pjsua_core.c  SIP UDP socket reachable at 127.0.0.1:7078
+11:24:51.846      udp0x556444bef520  SIP UDP transport started, published address is 127.0.0.1:7078
+11:24:51.846            pjsua_acc.c  Adding account: id=<sip:127.0.0.1:7078>
+11:24:51.846            pjsua_acc.c  .Account <sip:127.0.0.1:7078> added with id 0
+11:24:51.846            pjsua_acc.c  Modifying account 0
+11:24:51.846            pjsua_acc.c  Acc 0: setting online status to 1..
+11:24:51.846            pjsua_acc.c  Adding account: id=sip:tc018@127.0.0.1
+11:24:51.846            pjsua_acc.c  .Account sip:tc018@127.0.0.1 added with id 1
+11:24:51.846            pjsua_acc.c  Acc 1: setting online status to 1..
+11:24:51.846            pjsua_aud.c  Setting null sound device..
+11:24:51.846            pjsua_app.c  .Turning sound device -99 -99 ON
+11:24:51.846            pjsua_aud.c  .Opening null sound device..
+11:24:51.846           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+11:24:51.846         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+11:24:51.846           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+11:24:51.846                 main.c  Ready: Success
+>>>>
+Account list:
+  [ 0] <sip:127.0.0.1:7078>: does not register
+       Online status: Online
+ *[ 1] sip:tc018@127.0.0.1: does not register
+       Online status: Online
+Buddy list:
+ -none-
+
++=============================================================================+
+|       Call Commands:         |   Buddy, IM & Presence:  |     Account:      |
+|                              |                          |                   |
+|  m  Make new call            | +b  Add new buddy        | +a  Add new accnt.|
+|  M  Make multiple calls      | -b  Delete buddy         | -a  Delete accnt. |
+|  a  Answer call              |  i  Send IM              | !a  Modify accnt. |
+|  h  Hangup call  (ha=all)    |  s  Subscribe presence   | rr  (Re-)register |
+|  H  Hold call                |  u  Unsubscribe presence | ru  Unregister    |
+|  o Toggle call SDP offer     |  D  Subscribe dlg event  |                   |
+|                              |  Du Unsub dlg event      |                   |
+|  v  re-inVite (release hold) |  t  Toggle online status |  >  Cycle next ac.|
+|  U  send UPDATE              |  T  Set online status    |  <  Cycle prev ac.|
+| ],[ Select next/prev call    +--------------------------+-------------------+
+|  x  Xfer call                |      Media Commands:     |  Status & Config: |
+|  X  Xfer with Replaces       |                          |                   |
+|  #  Send RFC 2833 DTMF       | cl  List ports           |  d  Dump status   |
+|  *  Send DTMF with INFO      | cc  Connect port         | dd  Dump detailed |
+| dq  Dump curr. call quality  | cd  Disconnect port      | dc  Dump config   |
+|                              |  V  Adjust audio Volume  |  f  Save config   |
+|  S  Send arbitrary REQUEST   | Cp  Codec priorities     |                   |
++-----------------------------------------------------------------------------+
+|  q  QUIT      L  ReLoad       I  IP change     n  detect NAT type           |
+|  sleep MS     echo [0|1|txt]                                                |
++=============================================================================+
+You have 0 active call
+>>> 11:24:51.865           conference.c !.Added port 1 (ringback), port count=2
+11:24:51.865           conference.c  .Added port 2 (ring), port count=3
+11:24:52.846            pjsua_aud.c !Closing sound device after idle for 1 second(s)
+11:24:52.846            pjsua_app.c  .Turning sound device -99 -99 OFF
+11:24:52.846            pjsua_aud.c  .Closing null sound device..
+11:24:54.846         sip_endpoint.c  Error processing packet from 127.0.0.1:44942: Missing required header(s) (PJSIP_EMISSINGHDR)  To [code 171050]:
+REGISTER sip:ims.local SIP/2.0
+
+Via: SIP/2.0/UDP 127.0.0.1:9999;rport;branch=z9hG4bKTC018MAL
+
+Max-Forwards: 70
+
+From: <sip:badtester@ims.local>;tag=bad1
+
+Call-ID: tc018-malformed-001
+
+CSeq: 99999 REGISTER
+
+Expires: 600
+
+Contact: <sip:badtester@127.0.0.1:9999>
+
+Authorization:Digest username="bad",realm="ims.local",nonce="garbage",response="00000000000000000000000000000000"
+
+
+
+
+-- end of packet.
+11:24:58.147        sip_transport.c  Dropping 36 bytes packet from UDP 127.0.0.1:34542 : PJSIP syntax error exception when parsing 'Request Line' header on line 1 col 8
+
+11:24:58.147        sip_transport.c  Dropped packet:NOTSIP this is not a sip message
+
+
+
+
+-- end of packet.
+11:25:01.450        sip_transport.c  Dropping 150 bytes packet from UDP 127.0.0.1:60548 : PJSIP syntax error exception when parsing 'CSeq' header on line 5 col 7
+
+11:25:01.450        sip_transport.c  Dropped packet:REGISTER sip:ims.local SIP/2.0
+
+Via: SIP/2.0/UDP 127.0.0.1:9998
+
+From: <sip:badtester@ims.local>
+
+Call-ID: tc018-malformed-002
+
+CSeq: abc REGISTER
+
+
+
+
+-- end of packet.
+11:25:04.752           pjsua_core.c  .RX 273 bytes Request msg OPTIONS/cseq=1 (rdata0x7f9028000b88) from UDP 127.0.0.1:56818:
+OPTIONS sip:tc018@127.0.0.1:7078 SIP/2.0
+
+Via: SIP/2.0/UDP 127.0.0.1:9997;branch=z9hG4bKTC018OPT;rport
+
+Max-Forwards: 70
+
+From: <sip:probe@127.0.0.1>;tag=probe1
+
+To: <sip:tc018@127.0.0.1:7078>
+
+Call-ID: tc018-options-001
+
+CSeq: 1 OPTIONS
+
+Contact: <sip:probe@127.0.0.1>
+
+
+
+
+--end msg--
+11:25:04.752           pjsua_core.c  .TX 752 bytes Response msg 200/OPTIONS/cseq=1 (tdta0x7f9028002b60) to UDP 127.0.0.1:56818:
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 127.0.0.1:9997;rport=56818;received=127.0.0.1;branch=z9hG4bKTC018OPT
+
+Call-ID: tc018-options-001
+
+From: <sip:probe@127.0.0.1>;tag=probe1
+
+To: <sip:tc018@127.0.0.1>;tag=z9hG4bKTC018OPT
+
+CSeq: 1 OPTIONS
+
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+
+Accept: application/sdp, application/pidf+xml, application/xpidf+xml, application/dialog-info+xml, application/simple-message-summary, message/sipfrag;version=2.0, application/im-iscomposing+xml, text/plain
+
+Supported: replaces, 100rel, timer, siprec, norefersub, trickle-ice
+
+Allow-Events: presence, dialog, message-summary, refer
+
+User-Agent: PJSUA/v2.15-dev Linux-5.15.0.139 x86_64 glibc-2.31
+
+Content-Length:  0
+
+
+
+
+--end msg--
+11:25:08.054           pjsua_core.c  .RX 297 bytes Request msg REGISTER/cseq=1 (rdata0x7f9028000b88) from UDP 127.0.0.1:52840:
+REGISTER sip:127.0.0.1:7078 SIP/2.0
+
+Via: SIP/2.0/UDP 127.0.0.1:9996;branch=z9hG4bKTC018VALID;rport
+
+Max-Forwards: 70
+
+From: <sip:goodtester@127.0.0.1>;tag=good1
+
+To: <sip:goodtester@127.0.0.1>
+
+Call-ID: tc018-valid-001
+
+CSeq: 1 REGISTER
+
+Contact: <sip:goodtester@127.0.0.1:9996>
+
+Expires: 600
+
+
+
+
+--end msg--
+11:25:08.054           pjsua_core.c  .TX 343 bytes Response msg 200/REGISTER/cseq=1 (tdta0x7f9028002b60) to UDP 127.0.0.1:52840:
+SIP/2.0 200 OK
+
+Via: SIP/2.0/UDP 127.0.0.1:9996;rport=52840;received=127.0.0.1;branch=z9hG4bKTC018VALID
+
+Call-ID: tc018-valid-001
+
+From: <sip:goodtester@127.0.0.1>;tag=good1
+
+To: <sip:goodtester@127.0.0.1>;tag=z9hG4bKTC018VALID
+
+CSeq: 1 REGISTER
+
+Contact: <sip:goodtester@127.0.0.1:9996>
+
+Server: pjsua simple registrar
+
+Content-Length:  0
+
+
+
+
+--end msg--
+q
+11:25:15.058           conference.c !.Remove port 1 queued
+11:25:15.058           conference.c  .Remove port 2 queued
+11:25:15.058           pjsua_core.c  Shutting down, flags=0...
+11:25:15.058           pjsua_core.c  PJSUA state changed: RUNNING --> CLOSING
+11:25:15.062           pjsua_call.c  .Hangup all calls..
+11:25:15.062           pjsua_pres.c  .Shutting down presence..
+11:25:16.068           pjsua_core.c  .Destroying...
+11:25:16.068        sip_transport.c  .Transport udp0x556444bef520 shutting down, force=0
+11:25:16.068          pjsua_media.c  .Shutting down media..
+11:25:16.077           conference.c  ...Stop any transmission to port 1 (ringback)
+11:25:16.077           conference.c  ...Stop any transmission from port 1 (ringback)
+11:25:16.077           conference.c  ...Removed port 1 (ringback), port count=2
+11:25:16.077           conference.c  ...Stop any transmission to port 2 (ring)
+11:25:16.077           conference.c  ...Stop any transmission from port 2 (ring)
+11:25:16.077           conference.c  ...Removed port 2 (ring), port count=1
+11:25:16.077           conference.c  ...Stop any transmission to port 0 (Master/sound)
+11:25:16.077           conference.c  ...Stop any transmission from port 0 (Master/sound)
+11:25:16.077           conference.c  ...Removed port 0 (Master/sound), port count=0
+11:25:16.077      sip_transaction.c  .Stopping transaction layer module
+11:25:16.077      sip_transaction.c  .Stopped transaction layer module
+11:25:16.077         sip_endpoint.c  .Module "mod-default-handler" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-unsolicited-mwi" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-pjsua-options" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-pjsua-im" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-pjsua-pres" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-pjsua" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-stateful-util" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-refer" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-mwi" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-dlg_even" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-presence" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-evsub" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-invite" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-100rel" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-ua" unregistered
+11:25:16.077      sip_transaction.c  .Transaction layer module destroyed
+11:25:16.077         sip_endpoint.c  .Module "mod-tsx-layer" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-msg-print" unregistered
+11:25:16.077         sip_endpoint.c  .Module "mod-pjsua-log" unregistered
+11:25:16.078      udp0x556444bef520  .SIP UDP transport destroyed
+11:25:16.078                timer.c  .Dumping timer heap:
+11:25:16.078                timer.c  .  Cur size: 0 entries, max: 3070
+11:25:16.078         sip_endpoint.c  .Endpoint 0x556444bbc1e0 destroyed
+11:25:16.078           pjsua_core.c  .PJSUA state changed: CLOSING --> NULL
+11:25:16.078           pjsua_core.c  .PJSUA destroyed...

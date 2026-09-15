@@ -1,0 +1,40 @@
+Active RF plugins: libsrsran_rf_zmq.so
+Inactive RF plugins: 
+Reading configuration file /home/co1750/tc005-o5g/ue-tc005.conf...
+Failed to `mlockall`: 12
+Built in Release mode using commit ce8a3ca on branch HEAD.
+
+Opening 1 channels in RF device=zmq with args=tx_port=tcp://*:2101,rx_port=tcp://localhost:2100,id=ue,base_srate=23.04e6
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Invalid argument
+Supported RF device list: zmq file
+CHx base_srate=23.04e6
+CHx id=ue
+Current sample rate is 1.92 MHz with a base rate of 23.04 MHz (x12 decimation)
+CH0 rx_port=tcp://localhost:2100
+CH0 tx_port=tcp://*:2101
+Waiting PHY to initialize ... Warning: Failed to create thread with real-time priority. Creating it with normal priority: Success
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Success
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Success
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Success
+done!
+Attaching UE...
+Closing stdin thread.
+Current sample rate is 1.92 MHz with a base rate of 23.04 MHz (x12 decimation)
+Current sample rate is 1.92 MHz with a base rate of 23.04 MHz (x12 decimation)
+.
+Found Cell:  Mode=FDD, PCI=1, PRB=50, Ports=1, CP=Normal, CFO=-0.2 KHz
+Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
+Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
+Found PLMN:  Id=00101, TAC=1
+Random Access Transmission: seq=5, tti=341, ra-rnti=0x2
+RRC Connected
+Random Access Complete.     c-rnti=0x46, ta=0
+Network attach successful. IP: 10.45.0.2
+(0TP'np d ((0T) 14/9/2026 10:47:30 TZ:35
+IMS PDN activated. IP: 10.46.0.2
+Received RRC Connection Release (releaseCause: other)
+RRC IDLE
+Stopping ..
+Saving MAC PCAP (DLT=149) to /home/co1750/tc005-o5g/pcaps/ue_mac.pcap
+Couldn't stop after 5s. Forcing exit.
+Saving NAS PCAP file (DLT=148) to /home/co1750/tc005-o5g/pcaps/ue_nas.pcap 

@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "generated_at_epoch": 1789442999,
+  "manifest_path": "C:\\标准例程-github\\suites\\official_tp_suites\\_evidence\\TC-026-031-evidence-manifest.json",
+  "manifest_found": false,
+  "source_spec": "ETSI TS 136 523-1 V14.3.0",
+  "source_extraction_sha256": "32D46DD6932645855C63206684364CB7F782A872EDA7B40A7590643C01E079E4",
+  "policy": "An official PASS/FAIL is emitted only for a qualified L2 source with an actual verdict for every TP Verdict row. Otherwise the result is NOT_EXECUTED, INCONCLUSIVE or LOCAL_ONLY.",
+  "summary": {
+    "sections": 11,
+    "by_status": {
+      "OFFICIAL_PASS": 0,
+      "OFFICIAL_FAIL": 0,
+      "INCONCLUSIVE": 0,
+      "LOCAL_ONLY": 0,
+      "NOT_EXECUTED": 11
+    },
+    "official_verdict_count": 0,
+    "local_only": 0,
+    "not_executed": 11
+  },
+  "results": [
+    {
+      "tc_id": "TC-026",
+      "title": "SRVCC",
+      "section": "13.4.3.1",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 13,
+        "observed": 0,
+        "negative": 0,
+        "missing": 13
+      },
+      "tp_verdicts": {
+        "total": 1,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 1
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-026",
+      "title": "SRVCC",
+      "section": "13.4.3.2",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 13,
+        "observed": 0,
+        "negative": 0,
+        "missing": 13
+      },
+      "tp_verdicts": {
+        "total": 1,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 1
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-026",
+      "title": "SRVCC",
+      "section": "13.4.3.3",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 8,
+        "observed": 0,
+        "negative": 0,
+        "missing": 8
+      },
+      "tp_verdicts": {
+        "total": 1,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 1
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-027",
+      "title": "aSRVCC",
+      "section": "13.4.3.7",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 17,
+        "observed": 0,
+        "negative": 0,
+        "missing": 17
+      },
+      "tp_verdicts": {
+        "total": 2,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 2
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-027",
+      "title": "aSRVCC",
+      "section": "13.4.3.10",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 15,
+        "observed": 0,
+        "negative": 0,
+        "missing": 15
+      },
+      "tp_verdicts": {
+        "total": 2,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 2
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-028",
+      "title": "SSAC 接入控制",
+      "section": "13.5.1",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 3,
+        "observed": 0,
+        "negative": 0,
+        "missing": 3
+      },
+      "tp_verdicts": {
+        "total": 2,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 2
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-028",
+      "title": "SSAC 接入控制",
+      "section": "13.5.1a",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 3,
+        "observed": 0,
+        "negative": 0,
+        "missing": 3
+      },
+      "tp_verdicts": {
+        "total": 2,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 2
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-029",
+      "title": "SCM 接入控制",
+      "section": "13.5.4",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 2,
+        "observed": 0,
+        "negative": 0,
+        "missing": 2
+      },
+      "tp_verdicts": {
+        "total": 1,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 1
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-030",
+      "title": "IMS 紧急呼叫",
+      "section": "11.2.1",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 6,
+        "observed": 0,
+        "negative": 0,
+        "missing": 6
+      },
+      "tp_verdicts": {
+        "total": 3,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 3
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-031",
+      "title": "eCall over IMS",
+      "section": "11.3.5",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 26,
+        "observed": 0,
+        "negative": 0,
+        "missing": 26
+      },
+      "tp_verdicts": {
+        "total": 6,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 6
+      },
+      "details": [],
+      "artifacts": []
+    },
+    {
+      "tc_id": "TC-031",
+      "title": "eCall over IMS",
+      "section": "11.3.8",
+      "status": "NOT_EXECUTED",
+      "reason": "EVIDENCE_MISSING",
+      "official_verdict": null,
+      "source_qualification": null,
+      "message_checkpoints": {
+        "total": 8,
+        "observed": 0,
+        "negative": 0,
+        "missing": 8
+      },
+      "tp_verdicts": {
+        "total": 1,
+        "matched": 0,
+        "mismatched": 0,
+        "missing": 1
+      },
+      "details": [],
+      "artifacts": []
+    }
+  ]
+}

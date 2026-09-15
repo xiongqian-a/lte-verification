@@ -1,0 +1,231 @@
+Found PLMN:  Id=00101, TAC=65535
+2026-09-14T10:44:08.186360 [USIM   ] [I] Read Home PLMN Id=00101
+2026-09-14T10:44:08.186370 [NAS    ] [I] Skip reading context from file.
+2026-09-14T10:44:08.186415 [NAS    ] [I] Switching on
+2026-09-14T10:44:08.186450 [NAS    ] [D] Changed to EMM state: DEREGISTERED, with substate PLMN-SEARCH
+2026-09-14T10:44:08.186451 [NAS    ] [D] Attempting to select PLMN
+2026-09-14T10:44:08.186451 [NAS    ] [I] No PLMN selected. Starting PLMN Selection...
+2026-09-14T10:44:08.186453 [NAS    ] [I] Proc "NAS PLMN Search" - Found PLMN:  Id=00101, TAC=65535
+2026-09-14T10:44:08.186480 [NAS    ] [D] Selecting PLMN from list of known PLMNs.
+2026-09-14T10:44:08.186482 [NAS    ] [I] Selecting Home PLMN Id=00101
+2026-09-14T10:44:08.186482 [NAS    ] [D] Changed to EMM state: DEREGISTERED, with substate NORMAL-SERVICE
+2026-09-14T10:44:08.186483 [NAS    ] [I] Proc "NAS PLMN Search" - Completed with success
+2026-09-14T10:44:08.186484 [NAS    ] [I] Proc "NAS PLMN Search" - Starting...
+2026-09-14T10:44:08.186486 [NAS    ] [I] Attach Request with cause mo-Data.
+2026-09-14T10:44:08.186486 [NAS    ] [D] Starting T3410
+NAS generated SDU (len=21):
+[07 41 71 08 09 10 10 10 32 54 76 98 02 f0 70 00 04 02 01 d0 11 ];
+Network attach successful. IP: 192.168.5.2
+2026-09-14T10:44:08.201598 [NAS    ] [I] Generating attach request
+2026-09-14T10:44:08.201606 [NAS    ] [I] Generating PDN Connectivity Request
+2026-09-14T10:44:08.201607 [NAS    ] [D] Requesting IPv4 PDN protocol
+2026-09-14T10:44:08.201609 [NAS    ] [I] Requesting IMSI attach (IMSI=001010123456789)
+2026-09-14T10:44:08.201616 [NAS    ] [D] Starting T3410. Timeout in 15000 ms.
+2026-09-14T10:44:08.201617 [NAS    ] [D] Initiating RRC Connection
+2026-09-14T10:44:08.201627 [NAS    ] [D] RRC connection request completed. NAS State DEREGISTERED, with substate NORMAL-SERVICE.
+2026-09-14T10:44:08.201628 [NAS    ] [D] Changed to EMM state: REGISTERED-INITIATED
+2026-09-14T10:44:08.201671 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 07 42 01 3e 06 00 00 f1 10 00
+    0010: 01 00 2a 52 01 c1 01 04 1b 07 74 65 73 74 31 32
+    0020: 33 06 6d 6e 63 30 30 31 06 6d 63 63 30 30 31 04
+    0030: 67 70 72 73 05 01 c0 a8 05 02 27 01 80 50 0b f6
+    0040: 00 f1 10 80 01 01 35 16 6d bc 64 01 00
+2026-09-14T10:44:08.201672 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.201679 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 07 42 01 3e 06 00 00 f1 10 00
+    0010: 01 00 2a 52 01 c1 01 04 1b 07 74 65 73 74 31 32
+    0020: 33 06 6d 6e 63 30 30 31 06 6d 63 63 30 30 31 04
+    0030: 67 70 72 73 05 01 c0 a8 05 02 27 01 80 50 0b f6
+    0040: 00 f1 10 80 01 01 35 16 6d bc 64 01 00
+2026-09-14T10:44:08.201684 [NAS    ] [I] Received Attach Accept
+2026-09-14T10:44:08.201684 [NAS    ] [D] Stopping T3410
+2026-09-14T10:44:08.201686 [NAS    ] [I] PCO present but no P-CSCF IPv4 container found
+2026-09-14T10:44:08.201687 [NAS    ] [I] Network attach successful. APN: test123.mnc001.mcc001.gprs, IP: 192.168.5.2
+Failed to setup/configure GW interface
+2026-09-14T10:44:08.201695 [NAS    ] [I] IMS event: Pdn_Event ESTABLISHED (pdn=5 apn=test123.mnc001.mcc001.gprs ip=192.168.5.2 qci=5)
+2026-09-14T10:44:08.201696 [NAS    ] [I] IMS event: Access_Event RRC_CONNECTED registered=true
+2026-09-14T10:44:08.201714 [GW     ] [I] TUN file descriptor = 4
+2026-09-14T10:44:08.201720 [GW     ] [E] Failed to set TUN device name: Operation not permitted
+2026-09-14T10:44:08.201727 [GW     ] [E] init_if failed
+2026-09-14T10:44:08.201728 [NAS    ] [E] Failed to setup/configure GW interface - 
+2026-09-14T10:44:08.201731 [NAS    ] [D] Changed to EMM state: REGISTERED, with substate NORMAL-SERVICE
+2026-09-14T10:44:08.201741 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.201742 [NAS    ] [I] Sending Attach Complete
+2026-09-14T10:44:08.201742 [NAS    ] [I] Generating PDN Connectivity Request
+2026-09-14T10:44:08.201743 [NAS    ] [D] PDN Connectivity Request with APN ims
+2026-09-14T10:44:08.201743 [NAS    ] [D] Requesting IPv4 PDN protocol
+2026-09-14T10:44:08.201743 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.201743 [NAS    ] [I] Sending ESM PDN Connectivity Request
+    0000: 02 00 00 00 00 01 02 02 d0 11 d1 28 04 03 69 6d
+    0010: 73
+2026-09-14T10:44:08.201744 [NAS    ] [I] Sending IMS PDN connectivity request (APN=ims)
+2026-09-14T10:44:08.201744 [NAS    ] [I] IMS event: Pdn_Event IMS-PDN-REQUESTED (apn=ims qci=5)
+2026-09-14T10:44:08.201942 [USIM   ] [I] Read Home PLMN Id=00101
+2026-09-14T10:44:08.201963 [NAS    ] [I] DL lcid PDU
+    0000: 07 52 01 0c 63 a8 54 13 e6 a4 ce d9 86 fb e5 ce
+    0010: 9b 62 5e 10 67 57 b3 c2 b9 70 90 01 0c 72 8a 67
+    0020: 57 92 52 b8
+2026-09-14T10:44:08.201964 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 07 52 01 0c 63 a8 54 13 e6 a4 ce d9 86 fb e5 ce
+    0010: 9b 62 5e 10 67 57 b3 c2 b9 70 90 01 0c 72 8a 67
+    0020: 57 92 52 b8
+2026-09-14T10:44:08.201964 [NAS    ] [I] Received Authentication Request
+2026-09-14T10:44:08.201964 [NAS    ] [I] MCC=61441, MNC=65281
+2026-09-14T10:44:08.201964 [NAS    ] [D] Authentication request RAND
+    0000: 0c 63 a8 54 13 e6 a4 ce d9 86 fb e5 ce 9b 62 5e
+2026-09-14T10:44:08.201965 [NAS    ] [D] Authentication request AUTN
+    0000: 67 57 b3 c2 b9 70 90 01 0c 72 8a 67 57 92 52 b8
+2026-09-14T10:44:08.201965 [USIM   ] [D] K:
+    0000: 00 11 22 33 44 55 66 77 88 99 aa bb cc dd ee ff
+2026-09-14T10:44:08.201966 [USIM   ] [D] CK:
+    0000: 72 8a 67 57 b3 c2 b9 51 1f 51 5e 02 46 8c a1 0c
+2026-09-14T10:44:08.201979 [USIM   ] [D] IK:
+    0000: 8a 67 57 b3 c2 b9 51 1f 51 5e 02 46 8c a1 0c 72
+2026-09-14T10:44:08.201979 [USIM   ] [D] AK:
+    0000: 67 57 b3 c2 b9 51
+2026-09-14T10:44:08.201980 [USIM   ] [D] sqn:
+    0000: 00 00 00 00 00 21
+2026-09-14T10:44:08.201980 [USIM   ] [D] amf:
+    0000: 90 01
+2026-09-14T10:44:08.201980 [USIM   ] [D] mac:
+    0000: 0c 72 8a 67 57 92 52 b8
+2026-09-14T10:44:08.201996 [NAS    ] [D] Authentication request RES
+    0000: 0c 72 8a 67 57 b3 c2 b9
+2026-09-14T10:44:08.201996 [NAS    ] [I] Network authentication successful
+2026-09-14T10:44:08.201996 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.201996 [NAS    ] [I] Sending Authentication Response
+2026-09-14T10:44:08.201996 [NAS    ] [I] Generated k_asme:
+    0000: 8d 42 d1 bb 80 4b b4 53 cc 00 6d ed 4b 82 dd 55
+    0010: de 66 8b 2b 61 99 73 5d 2d ae 72 fa 24 70 97 ed
+2026-09-14T10:44:08.201997 [NAS    ] [I] DL lcid PDU
+    0000: 37 4e fd 57 11 00 07 5d 02 01 02 f0 70 c1
+2026-09-14T10:44:08.201997 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 37 4e fd 57 11 00 07 5d 02 01 02 f0 70 c1
+2026-09-14T10:44:08.201998 [NAS    ] [I] Received Security Mode Command ksi: 1, eea: EEA0, eia: 128-EIA2
+2026-09-14T10:44:08.202000 [NAS    ] [I] NAS encryption key - k_nas_enc
+    0000: 38 61 66 94 5c 30 0e 92 49 7e fb ce 3b 2c ad 96
+    0010: ef 3c 83 4b f8 a5 eb 4c e3 85 db 60 e9 92 85 9e
+2026-09-14T10:44:08.202000 [NAS    ] [I] NAS integrity key - k_nas_int
+    0000: ff 79 be dd c2 b9 39 eb 0b 2f cc 30 ef 6d 00 37
+    0010: 5b ae 51 b3 c0 26 2a 09 2e 2f b3 e5 d3 bc 0f 44
+2026-09-14T10:44:08.202000 [NAS    ] [D] Generating integrity check. integ_algo:2, count_dl:0, lcid:1
+2026-09-14T10:44:08.202008 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [4e fd 57 11]
+2026-09-14T10:44:08.202009 [NAS    ] [I] Sending Security Mode Complete ctxt_base.tx_count=0, RB=lcid
+2026-09-14T10:44:08.202064 [USIM   ] [I] Read Home PLMN Id=00101
+2026-09-14T10:44:08.202069 [NAS-5G ] [I] [    0] Skip reading context from file.
+2026-09-14T10:44:08.202070 [NAS-5G ] [I] [    0] DL lcid PDU
+2026-09-14T10:44:08.202070 [NAS-5G ] [I] [    0] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202071 [NAS-5G ] [I] [    0] DL lcid Decrypted PDU
+2026-09-14T10:44:08.202071 [NAS-5G ] [I] [    0] ESM information request received for beaser=0, transaction_id=90
+2026-09-14T10:44:08.202073 [NAS-5G ] [D] [    0] Including APN srsran in ESM info response
+2026-09-14T10:44:08.202073 [NAS-5G ] [D] [    0] Including CHAP authentication for user srsuser in ESM info response
+2026-09-14T10:44:08.202076 [NAS-5G ] [D] [    0] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202076 [NAS-5G ] [I] [    0] Sending ESM information response
+Network attach successful. IP: 192.168.5.2
+[CB] Bearer event: type=0 bearer=6 pdn=5 qci=1
+[CB] Bearer event: type=2 bearer=6 pdn=0 qci=0
+PDN connectivity reject: pti=1 cause=0x20 state=INACTIVE t3482_stopped=true backoff_ms=720000
+IMS PDN activated. IP: 10.46.0.2
+IMS PDN activated. IP: 10.46.0.2
+2026-09-14T10:44:08.202117 [USIM   ] [I] Read Home PLMN Id=00101
+2026-09-14T10:44:08.202119 [NAS    ] [I] Skip reading context from file.
+2026-09-14T10:44:08.202119 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 62 00 c5 05 01 01 07 21 31 00
+    0010: 03 40 08 ae 5d 02 00 c2 81 34 01 4d
+2026-09-14T10:44:08.202119 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202120 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 62 00 c5 05 01 01 07 21 31 00
+    0010: 03 40 08 ae 5d 02 00 c2 81 34 01 4d
+2026-09-14T10:44:08.202120 [NAS    ] [I] Received Activate Dedicated EPS bearer context request (eps_bearer_id=6, linked_bearer_id=5, proc_id=0)
+2026-09-14T10:44:08.202120 [NAS    ] [I] Traffic Flow Template: TFT OP code 0x1, Filter list size 1, Parameter list size 0
+2026-09-14T10:44:08.202120 [NAS    ] [E] No linked default EPS bearer found (5).
+2026-09-14T10:44:08.202121 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 07 42 01 3e 06 00 00 f1 10 00
+    0010: 01 00 2a 52 01 c1 01 04 1b 07 74 65 73 74 31 32
+    0020: 33 06 6d 6e 63 30 30 31 06 6d 63 63 30 30 31 04
+    0030: 67 70 72 73 05 01 c0 a8 05 02 27 01 80 50 0b f6
+    0040: 00 f1 10 80 01 01 35 16 6d bc 64 01 00
+2026-09-14T10:44:08.202121 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202121 [NAS    ] [I] Update local count to estimated count 0
+2026-09-14T10:44:08.202121 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 07 42 01 3e 06 00 00 f1 10 00
+    0010: 01 00 2a 52 01 c1 01 04 1b 07 74 65 73 74 31 32
+    0020: 33 06 6d 6e 63 30 30 31 06 6d 63 63 30 30 31 04
+    0030: 67 70 72 73 05 01 c0 a8 05 02 27 01 80 50 0b f6
+    0040: 00 f1 10 80 01 01 35 16 6d bc 64 01 00
+2026-09-14T10:44:08.202122 [NAS    ] [I] Received Attach Accept
+2026-09-14T10:44:08.202123 [NAS    ] [I] PCO present but no P-CSCF IPv4 container found
+2026-09-14T10:44:08.202123 [NAS    ] [I] Network attach successful. APN: test123.mnc001.mcc001.gprs, IP: 192.168.5.2
+2026-09-14T10:44:08.202126 [NAS    ] [I] IMS event: Pdn_Event ESTABLISHED (pdn=5 apn=test123.mnc001.mcc001.gprs ip=192.168.5.2 qci=5)
+2026-09-14T10:44:08.202126 [NAS    ] [I] IMS event: Access_Event RRC_CONNECTED registered=true
+2026-09-14T10:44:08.202127 [NAS    ] [D] Changed to EMM state: REGISTERED, with substate NORMAL-SERVICE
+2026-09-14T10:44:08.202128 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202128 [NAS    ] [I] Sending Attach Complete
+2026-09-14T10:44:08.202129 [NAS    ] [I] Generating PDN Connectivity Request
+2026-09-14T10:44:08.202129 [NAS    ] [D] PDN Connectivity Request with APN ims
+2026-09-14T10:44:08.202129 [NAS    ] [D] Requesting IPv4 PDN protocol
+2026-09-14T10:44:08.202130 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202130 [NAS    ] [I] Sending ESM PDN Connectivity Request
+    0000: 02 00 00 00 00 01 02 02 d0 11 d1 28 04 03 69 6d
+    0010: 73
+2026-09-14T10:44:08.202130 [NAS    ] [I] Sending IMS PDN connectivity request (APN=ims)
+2026-09-14T10:44:08.202130 [NAS    ] [I] IMS event: Pdn_Event IMS-PDN-REQUESTED (apn=ims qci=5)
+2026-09-14T10:44:08.202130 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 62 00 c5 05 01 01 07 21 31 00
+    0010: 03 40 08 ae 5d 02 00 c2 81 34 01 4d
+2026-09-14T10:44:08.202131 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202131 [NAS    ] [I] Update local count to estimated count 0
+2026-09-14T10:44:08.202131 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 62 00 c5 05 01 01 07 21 31 00
+    0010: 03 40 08 ae 5d 02 00 c2 81 34 01 4d
+2026-09-14T10:44:08.202131 [NAS    ] [I] Received Activate Dedicated EPS bearer context request (eps_bearer_id=6, linked_bearer_id=5, proc_id=0)
+2026-09-14T10:44:08.202131 [NAS    ] [I] Traffic Flow Template: TFT OP code 0x1, Filter list size 1, Parameter list size 0
+2026-09-14T10:44:08.202131 [NAS    ] [I] IMS event: Bearer_Event ESTABLISHED (bearer=6 pdn=5 qci=1 tft_op=0x1)
+2026-09-14T10:44:08.202133 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202133 [NAS    ] [I] Sending Activate Dedicated EPS Bearer context accept (eps_bearer_id=6, proc_id=0)
+    0000: 62 00 c6
+2026-09-14T10:44:08.202133 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 62 00 cd 24
+2026-09-14T10:44:08.202133 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202133 [NAS    ] [I] Update local count to estimated count 0
+2026-09-14T10:44:08.202133 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 62 00 cd 24
+2026-09-14T10:44:08.202134 [NAS    ] [I] Received Deactivate EPS bearer context request (eps_bearer_id=6, proc_id=0, cause=0x24)
+2026-09-14T10:44:08.202134 [NAS    ] [I] IMS event: Bearer_Event RELEASED (bearer=6)
+2026-09-14T10:44:08.202134 [NAS    ] [I] Removed EPS bearer context (eps_bearer_id=6)
+2026-09-14T10:44:08.202134 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202135 [NAS    ] [I] Sending Deactivate EPS Bearer context accept (eps_bearer_id=6, proc_id=0)
+    0000: 62 00 ce
+2026-09-14T10:44:08.202135 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 62 00 cd 24
+2026-09-14T10:44:08.202135 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202135 [NAS    ] [I] Update local count to estimated count 0
+2026-09-14T10:44:08.202135 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 62 00 cd 24
+2026-09-14T10:44:08.202135 [NAS    ] [I] Received Deactivate EPS bearer context request (eps_bearer_id=6, proc_id=0, cause=0x24)
+2026-09-14T10:44:08.202135 [NAS    ] [E] EPS bearer doesn't exist (eps_bearer_id=6)
+2026-09-14T10:44:08.202167 [USIM   ] [I] Read Home PLMN Id=00101
+2026-09-14T10:44:08.202168 [NAS    ] [I] Skip reading context from file.
+2026-09-14T10:44:08.202168 [NAS    ] [I] TC-004 test hook: PDN connectivity PROCEDURE TRANSACTION PENDING (pti=1), T3482 running
+2026-09-14T10:44:08.202168 [NAS    ] [I] DL lcid PDU
+    0000: 27 00 00 00 00 00 02 01 d1 20
+2026-09-14T10:44:08.202169 [NAS    ] [I] Integrity check ok. Local: count=0, Received: count=0  [00 00 00 00]
+2026-09-14T10:44:08.202169 [NAS    ] [I] DL lcid Decrypted PDU
+    0000: 27 00 00 00 00 00 02 01 d1 20
+2026-09-14T10:44:08.202170 [NAS    ] [W] PDN connectivity reject: pti=1 cause=0x20 state=INACTIVE t3482_stopped=true backoff_ms=720000
+2026-09-14T10:44:08.202202 [USIM   ] [I] Read Home PLMN Id=00101
+2026-09-14T10:44:08.202203 [NAS    ] [I] Skip reading context from file.
+2026-09-14T10:44:08.202204 [NAS    ] [I] TC-004 test hook: PDN connectivity PROCEDURE TRANSACTION PENDING (pti=2), T3482 running
+2026-09-14T10:44:08.202204 [NAS    ] [I] Received Activate Default EPS Bearer Context Request (second PDN). APN=ims, bearer_id=6
+2026-09-14T10:44:08.202205 [NAS    ] [I] Registered default EPS bearer EBI=6 for APN=ims.
+2026-09-14T10:44:08.202206 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202206 [NAS    ] [I] Sending Activate Default EPS Bearer context accept (eps_bearer_id=6, proc_id=2)
+    0000: 02 62 02 c2
+2026-09-14T10:44:08.202206 [NAS    ] [I] IMS PDN activated. IP: 10.46.0.2
+2026-09-14T10:44:08.202207 [NAS    ] [I] TC-004 test hook: PDN connectivity PROCEDURE TRANSACTION PENDING (pti=2), T3482 running
+2026-09-14T10:44:08.202208 [NAS    ] [I] Received Activate Default EPS Bearer Context Request (second PDN). APN=ims, bearer_id=6
+2026-09-14T10:44:08.202208 [NAS    ] [I] Default EPS bearer EBI=6 already registered.
+2026-09-14T10:44:08.202209 [NAS    ] [D] Not applying security for PDU. No context configured.
+2026-09-14T10:44:08.202209 [NAS    ] [I] Sending Activate Default EPS Bearer context accept (eps_bearer_id=6, proc_id=2)
+    0000: 22 00 00 00 00 01 62 02 c2
+2026-09-14T10:44:08.202209 [NAS    ] [I] IMS PDN activated. IP: 10.46.0.2

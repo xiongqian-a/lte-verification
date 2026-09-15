@@ -1,0 +1,325 @@
+13:26:41.064         os_core_unix.c !pjlib 2.15-dev for POSIX initialized
+13:26:41.065         sip_endpoint.c  .Creating endpoint instance...
+13:26:41.065                  pjlib  .select() I/O Queue created (0x555fc7bb0578)
+13:26:41.065         sip_endpoint.c  .Module "mod-msg-print" registered
+13:26:41.065        sip_transport.c  .Transport manager created.
+13:26:41.065           pjsua_core.c  .PJSUA state changed: NULL --> CREATED
+13:26:41.065         sip_endpoint.c  .Module "mod-pjsua-log" registered
+13:26:41.065         sip_endpoint.c  .Module "mod-tsx-layer" registered
+13:26:41.065         sip_endpoint.c  .Module "mod-stateful-util" registered
+13:26:41.065         sip_endpoint.c  .Module "mod-ua" registered
+13:26:41.065         sip_endpoint.c  .Module "mod-100rel" registered
+13:26:41.065         sip_endpoint.c  .Module "mod-pjsua" registered
+13:26:41.065         sip_endpoint.c  .Module "mod-invite" registered
+13:26:41.065                  pjlib  ..select() I/O Queue created (0x555fc7bc0330)
+13:26:41.069         sip_endpoint.c  .Module "mod-evsub" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-presence" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-dlg_even" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-mwi" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-refer" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-pjsua-im" registered
+13:26:41.069         sip_endpoint.c  .Module "mod-pjsua-options" registered
+13:26:41.069           pjsua_core.c  .No SIP worker threads created
+13:26:41.069           pjsua_core.c  .pjsua version 2.15-dev for Linux-5.15.0.139/x86_64/glibc-2.31 initialized
+13:26:41.069           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+13:26:41.069            pjsua_aud.c  Setting null sound device..
+13:26:41.069            pjsua_aud.c  .Opening null sound device..
+13:26:41.069           pjsua_core.c  SIP UDP socket reachable at 10.45.0.1:5077
+13:26:41.069      udp0x555fc7bd53d0  SIP UDP transport started, published address is 10.45.0.1:5077
+13:26:41.069           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+13:26:41.069         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+13:26:41.069           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+13:26:41.069            pjsua_acc.c  Adding account: id=sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org
+13:26:41.069            pjsua_acc.c  .Account sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org added with id 0
+13:26:41.069            pjsua_acc.c  .Acc 0: setting registration..
+13:26:41.069            pjsua_acc.c  ..Contact for acc 0 updated: <sip:001010123456780@10.45.0.1:5077;ob>
+13:26:41.069           pjsua_core.c  ...TX 600 bytes Request msg REGISTER/cseq=51261 (tdta0x555fc7bdaee0) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPj43i46eEyBwl4uPOenAkk0-Nynn9Dum6.
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oTznOpeCLL5VF81L3u3ZUTAAHFzbGd.J
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51261 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:26:41.069            pjsua_acc.c  ..Acc 0: Registration sent
+13:26:41.278           pjsua_core.c  .RX 761 bytes Response msg 401/REGISTER/cseq=51261 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 401 Unauthorized - Challenging the UE
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPj43i46eEyBwl4uPOenAkk0-Nynn9Dum6.
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oTznOpeCLL5VF81L3u3ZUTAAHFzbGd.J
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51261 REGISTER
+WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="YVCx8Ji8Nzle70CcYVCVM1zAVDbV/4AATvxnSFytn7U=", algorithm=AKAv1-MD5, ck="ab5a6a64f984ce178e0f414674eb4358", ik="c5e2a84243f4d22f59550996121b010e", qop="auth,auth-int"
+Path: <sip:10.45.0.1;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:41.278             ims_client  ...AKA ???????? realm=ims.mnc001.mcc001.3gppnetwork.org algorithm=AKAv1-MD5 nonce=YVCx8Ji8Nzle70CcYVCVM1zAVDbV/4AATvxnSFytn7U=
+13:26:41.278             ims_client  ...RAND=aP��79^�@�aP�3 RES=12eec0569a2129c1
+13:26:41.278             ims_client  ...username=001010123456780 HA1=a05192811f60c80830d5224d36793030 HA2=df94ff42c4e05afeddd46c372e8208b4 response=ece7717eeb3c7f10f92cb499b350fcdc qop=auth nc=00000001 cnonce=W0csST9bu0.55WGJ487Zm8qnrI10vdjK
+13:26:41.278           pjsua_core.c  ....TX 924 bytes Request msg REGISTER/cseq=51262 (tdta0x555fc7bdaee0) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPjbJNvcP2aQFZGcNfTlsmWe0U1Mxzo6KKI
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oTznOpeCLL5VF81L3u3ZUTAAHFzbGd.J
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51262 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="YVCx8Ji8Nzle70CcYVCVM1zAVDbV/4AATvxnSFytn7U=", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="ece7717eeb3c7f10f92cb499b350fcdc", algorithm=AKAv1-MD5, cnonce="W0csST9bu0.55WGJ487Zm8qnrI10vdjK", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+13:26:41.450           pjsua_core.c  .RX 662 bytes Response msg 200/REGISTER/cseq=51262 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPjbJNvcP2aQFZGcNfTlsmWe0U1Mxzo6KKI
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oTznOpeCLL5VF81L3u3ZUTAAHFzbGd.J
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51262 REGISTER
+P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>, <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Service-Route: <sip:orig@10.45.0.1:6060;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:41.450            pjsua_acc.c  ....SIP outbound status for acc 0 is not active
+13:26:41.450            pjsua_acc.c  ....Service-Route updated for acc 0 with 1 URI(s)
+13:26:41.450            pjsua_acc.c  ....sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org: registration success, status=200 (OK), will re-register in 1800 seconds
+13:26:41.450            pjsua_acc.c  ....Keep-alive timer started for acc 0, destination:10.45.0.1:5060, interval:13s
+13:26:41.450             ims_client  ....reg state: status=200 (OK)
+13:26:42.079            pjsua_aud.c  Closing sound device after idle for 1 second(s)
+13:26:42.079            pjsua_aud.c  .Closing null sound device..
+13:26:44.462             ims_client  manual RE-REGISTER #1
+13:26:44.462            pjsua_acc.c  Acc 0: setting registration..
+13:26:44.462           pjsua_core.c  ..TX 600 bytes Request msg REGISTER/cseq=51263 (tdta0x555fc7bd4470) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPjLmqtsxDZKiCmLldQeJIceZgmhLkH1cnI
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=4H2jIOlZZIacWAcOvzJ9fr9rzcPQYcT4
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51263 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:26:44.462            pjsua_acc.c  .Acc 0: Registration sent
+13:26:44.753           pjsua_core.c  .RX 761 bytes Response msg 401/REGISTER/cseq=51263 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 401 Unauthorized - Challenging the UE
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPjLmqtsxDZKiCmLldQeJIceZgmhLkH1cnI
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=4H2jIOlZZIacWAcOvzJ9fr9rzcPQYcT4
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51263 REGISTER
+WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="HVqsDgrSor/RUwsPyK6yyc/Gpms8dIAAiBsmCNjIveU=", algorithm=AKAv1-MD5, ck="18e2fae26fc91bc36eed721dd2ca6f74", ik="9a37d4735a993189b48ba3377bcb312e", qop="auth,auth-int"
+Path: <sip:10.45.0.1;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:44.753             ims_client  ...AKA ???????? realm=ims.mnc001.mcc001.3gppnetwork.org algorithm=AKAv1-MD5 nonce=HVqsDgrSor/RUwsPyK6yyc/Gpms8dIAAiBsmCNjIveU=
+13:26:44.753             ims_client  ...RAND=Z�
+Ң��SȮ�� RES=f49fc049daba4d95
+13:26:44.753             ims_client  ...username=001010123456780 HA1=5894033484602747e29896ae6394912c HA2=df94ff42c4e05afeddd46c372e8208b4 response=505cfd382743fb9cb6e2cfb3c3dcd956 qop=auth nc=00000001 cnonce=W0csST9bu0.55WGJ487Zm8qnrI10vdjK
+13:26:44.753           pjsua_core.c  ....TX 924 bytes Request msg REGISTER/cseq=51264 (tdta0x555fc7bd4470) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPj4ZFOkhwW6grho50bavWWyO8xuMo1hJy2
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=4H2jIOlZZIacWAcOvzJ9fr9rzcPQYcT4
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51264 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="HVqsDgrSor/RUwsPyK6yyc/Gpms8dIAAiBsmCNjIveU=", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="505cfd382743fb9cb6e2cfb3c3dcd956", algorithm=AKAv1-MD5, cnonce="W0csST9bu0.55WGJ487Zm8qnrI10vdjK", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+13:26:44.964           pjsua_core.c  .RX 662 bytes Response msg 200/REGISTER/cseq=51264 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPj4ZFOkhwW6grho50bavWWyO8xuMo1hJy2
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=4H2jIOlZZIacWAcOvzJ9fr9rzcPQYcT4
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51264 REGISTER
+P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>, <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Service-Route: <sip:orig@10.45.0.1:6060;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:44.964            pjsua_acc.c  ....SIP outbound status for acc 0 is not active
+13:26:44.964            pjsua_acc.c  ....Service-Route updated for acc 0 with 1 URI(s)
+13:26:44.964            pjsua_acc.c  ....sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org: registration success, status=200 (OK), will re-register in 1800 seconds
+13:26:44.964            pjsua_acc.c  ....Keep-alive timer started for acc 0, destination:10.45.0.1:5060, interval:14s
+13:26:44.964             ims_client  ....reg state: status=200 (OK)
+13:26:47.969             ims_client  manual RE-REGISTER #2
+13:26:47.969            pjsua_acc.c  Acc 0: setting registration..
+13:26:47.969           pjsua_core.c  ..TX 600 bytes Request msg REGISTER/cseq=51265 (tdta0x555fc7bdaee0) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPjs1aTlN9jCCXj2RfkjUu7aJqlMd.car45
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=18yuxAjXxZXDn0WH.QYfTo0MpHyVieje
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51265 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:26:47.969            pjsua_acc.c  .Acc 0: Registration sent
+13:26:48.210           pjsua_core.c  .RX 761 bytes Response msg 401/REGISTER/cseq=51265 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 401 Unauthorized - Challenging the UE
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPjs1aTlN9jCCXj2RfkjUu7aJqlMd.car45
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=18yuxAjXxZXDn0WH.QYfTo0MpHyVieje
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51265 REGISTER
+WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="3qxuOI20zUbK8F3eSRGcDCi6zvj34YAAngUoPrZE+cQ=", algorithm=AKAv1-MD5, ck="f197ace2e76a71f4567c2d14235bda56", ik="b6c1ee60e111be399e0246d92ccacf64", qop="auth,auth-int"
+Path: <sip:10.45.0.1;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:48.210             ims_client  ...AKA ???????? realm=ims.mnc001.mcc001.3gppnetwork.org algorithm=AKAv1-MD5 nonce=3qxuOI20zUbK8F3eSRGcDCi6zvj34YAAngUoPrZE+cQ=
+13:26:48.210             ims_client  ...RAND=ެn8���F��]�I� RES=4ce8b72fd3a18da8
+13:26:48.210             ims_client  ...username=001010123456780 HA1=cfc339fa8fce63f6c07e5f3c9ac370d7 HA2=df94ff42c4e05afeddd46c372e8208b4 response=5f6aaa580d07903933a5074cfd49c4c2 qop=auth nc=00000001 cnonce=W0csST9bu0.55WGJ487Zm8qnrI10vdjK
+13:26:48.210           pjsua_core.c  ....TX 924 bytes Request msg REGISTER/cseq=51266 (tdta0x555fc7bdaee0) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPjPWy25TCyJ9KfYvdNJesfkG3S0uobYqnA
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=18yuxAjXxZXDn0WH.QYfTo0MpHyVieje
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51266 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="3qxuOI20zUbK8F3eSRGcDCi6zvj34YAAngUoPrZE+cQ=", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="5f6aaa580d07903933a5074cfd49c4c2", algorithm=AKAv1-MD5, cnonce="W0csST9bu0.55WGJ487Zm8qnrI10vdjK", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+13:26:48.401           pjsua_core.c  .RX 662 bytes Response msg 200/REGISTER/cseq=51266 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPjPWy25TCyJ9KfYvdNJesfkG3S0uobYqnA
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=18yuxAjXxZXDn0WH.QYfTo0MpHyVieje
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51266 REGISTER
+P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>, <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Service-Route: <sip:orig@10.45.0.1:6060;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:48.401            pjsua_acc.c  ....SIP outbound status for acc 0 is not active
+13:26:48.401            pjsua_acc.c  ....Service-Route updated for acc 0 with 1 URI(s)
+13:26:48.401            pjsua_acc.c  ....sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org: registration success, status=200 (OK), will re-register in 1800 seconds
+13:26:48.401            pjsua_acc.c  ....Keep-alive timer started for acc 0, destination:10.45.0.1:5060, interval:13s
+13:26:48.401             ims_client  ....reg state: status=200 (OK)
+13:26:51.402             ims_client  manual RE-REGISTER #3
+13:26:51.402            pjsua_acc.c  Acc 0: setting registration..
+13:26:51.402           pjsua_core.c  ..TX 600 bytes Request msg REGISTER/cseq=51267 (tdta0x555fc7bd4470) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPjZDxm-M.oFvsEsWx5oZyjt6AoJX3W6M3X
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oWOH5KI3Kgx0HiBikZF55E-diM8Bg9u-
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51267 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:26:51.403            pjsua_acc.c  .Acc 0: Registration sent
+13:26:51.607           pjsua_core.c  .RX 761 bytes Response msg 401/REGISTER/cseq=51267 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 401 Unauthorized - Challenging the UE
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPjZDxm-M.oFvsEsWx5oZyjt6AoJX3W6M3X
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oWOH5KI3Kgx0HiBikZF55E-diM8Bg9u-
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51267 REGISTER
+WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="EtDcHBKYVlqhtozRuqUG3NbymW9LJYAAZA83snrotMA=", algorithm=AKAv1-MD5, ck="c02b41657f4a68c86f60bcbc6bab2045", ik="8706b03ebd9a317640f800ee4b213d15", qop="auth,auth-int"
+Path: <sip:10.45.0.1;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:51.607             ims_client  ...AKA ???????? realm=ims.mnc001.mcc001.3gppnetwork.org algorithm=AKAv1-MD5 nonce=EtDcHBKYVlqhtozRuqUG3NbymW9LJYAAZA83snrotMA=
+13:26:51.607             ims_client  ...RAND=���VZ���Ѻ�� RES=d81dcedd41b25207
+13:26:51.607             ims_client  ...username=001010123456780 HA1=0aa078c0bc2d9fec71612206a0756f81 HA2=df94ff42c4e05afeddd46c372e8208b4 response=8c1b547fc67162c9f806bda877c28cc0 qop=auth nc=00000001 cnonce=W0csST9bu0.55WGJ487Zm8qnrI10vdjK
+13:26:51.607           pjsua_core.c  ....TX 924 bytes Request msg REGISTER/cseq=51268 (tdta0x555fc7bd4470) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5077;rport;branch=z9hG4bKPj.F52KOhFmgw19USm3WGnR2Y6uQqN8pok
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oWOH5KI3Kgx0HiBikZF55E-diM8Bg9u-
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51268 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5077;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="EtDcHBKYVlqhtozRuqUG3NbymW9LJYAAZA83snrotMA=", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="8c1b547fc67162c9f806bda877c28cc0", algorithm=AKAv1-MD5, cnonce="W0csST9bu0.55WGJ487Zm8qnrI10vdjK", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+13:26:51.798           pjsua_core.c  .RX 662 bytes Response msg 200/REGISTER/cseq=51268 (rdata0x555fc7bd6e58) from UDP 10.45.0.1:5060:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5077;received=10.45.0.1;rport=5077;branch=z9hG4bKPj.F52KOhFmgw19USm3WGnR2Y6uQqN8pok
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=oWOH5KI3Kgx0HiBikZF55E-diM8Bg9u-
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: onqmt8fLqFyCmB1aW4LW27SzD4KroqVq
+CSeq: 51268 REGISTER
+P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>, <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Service-Route: <sip:orig@10.45.0.1:6060;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+13:26:51.798            pjsua_acc.c  ....SIP outbound status for acc 0 is not active
+13:26:51.798            pjsua_acc.c  ....Service-Route updated for acc 0 with 1 URI(s)
+13:26:51.798            pjsua_acc.c  ....sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org: registration success, status=200 (OK), will re-register in 1800 seconds
+13:26:51.798            pjsua_acc.c  ....Keep-alive timer started for acc 0, destination:10.45.0.1:5060, interval:14s
+13:26:51.798             ims_client  ....reg state: status=200 (OK)

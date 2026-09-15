@@ -1,0 +1,4 @@
+call state: CONFIRMED
+INVITE sip:888@ims.mnc001.mcc001.3gppnetwork.org
+BYE
+200/BYE

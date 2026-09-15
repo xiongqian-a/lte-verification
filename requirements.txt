@@ -1,0 +1,2 @@
+# The repository runner and local evidence replay use only the Python standard
+# library. Optional packet/audio tooling can be installed separately.

@@ -1,0 +1,287 @@
+13:23:18.371         os_core_unix.c !pjlib 2.15-dev for POSIX initialized
+13:23:18.374         sip_endpoint.c  .Creating endpoint instance...
+13:23:18.374                  pjlib  .select() I/O Queue created (0x55970ddfe358)
+13:23:18.374         sip_endpoint.c  .Module "mod-msg-print" registered
+13:23:18.374        sip_transport.c  .Transport manager created.
+13:23:18.374           pjsua_core.c  .PJSUA state changed: NULL --> CREATED
+13:23:18.374         sip_endpoint.c  .Module "mod-pjsua-log" registered
+13:23:18.374         sip_endpoint.c  .Module "mod-tsx-layer" registered
+13:23:18.374         sip_endpoint.c  .Module "mod-stateful-util" registered
+13:23:18.374         sip_endpoint.c  .Module "mod-ua" registered
+13:23:18.374         sip_endpoint.c  .Module "mod-100rel" registered
+13:23:18.374         sip_endpoint.c  .Module "mod-pjsua" registered
+13:23:18.374         sip_endpoint.c  .Module "mod-invite" registered
+13:23:18.375                  pjlib  ..select() I/O Queue created (0x55970de0e740)
+13:23:18.377         sip_endpoint.c  .Module "mod-evsub" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-presence" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-dlg_even" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-mwi" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-refer" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-pjsua-im" registered
+13:23:18.377         sip_endpoint.c  .Module "mod-pjsua-options" registered
+13:23:18.377           pjsua_core.c  .No SIP worker threads created
+13:23:18.377           pjsua_core.c  .pjsua version 2.15-dev for Linux-5.15.0.139/x86_64/glibc-2.31 initialized
+13:23:18.377           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+13:23:18.377            pjsua_aud.c  Setting null sound device..
+13:23:18.377            pjsua_aud.c  .Opening null sound device..
+13:23:18.379           pjsua_core.c  SIP UDP socket reachable at 10.10.46.104:5091
+13:23:18.379      udp0x55970de23810  SIP UDP transport started, published address is 10.10.46.104:5091
+13:23:18.379           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+13:23:18.379         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+13:23:18.379           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+13:23:18.379            pjsua_acc.c  Adding account: id=sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org
+13:23:18.379            pjsua_acc.c  .Account sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org added with id 0
+13:23:18.379            pjsua_acc.c  .Acc 0: setting registration..
+13:23:18.379            pjsua_acc.c  ..Contact for acc 0 updated: <sip:001010123456780@10.10.46.104:5091;ob>
+13:23:18.379           pjsua_core.c  ...TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:18.379            pjsua_acc.c  ..Acc 0: Registration sent
+13:23:18.881           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:19.384            pjsua_aud.c  Closing sound device after idle for 1 second(s)
+13:23:19.384            pjsua_aud.c  .Closing null sound device..
+13:23:19.891           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:21.901           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:25.904           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:29.908           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:33.910           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:37.913           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:41.915           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:45.918           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:49.920           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=56861 (tdta0x55970de29320) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjvCYYDLcuGGZ5jBOqgwNaPFPSDdQFcCiR
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=GGkx53YgFjdNMyIWLvm0gx.aJCT2CaHc
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: lB16knf0kMnHobXQH6W7YCm4tQT71xyu
+CSeq: 56861 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:50.382            pjsua_acc.c  ...SIP registration failed, status=408 (Request Timeout)
+13:23:50.382            pjsua_acc.c  ...Service-Route updated for acc 0 with 0 URI(s)
+13:23:50.382            pjsua_acc.c  ...Scheduling re-registration retry for acc 0 in 4 seconds..
+13:23:50.382             ims_client  ...reg state: status=408 (Request Timeout)
+13:23:54.526            pjsua_acc.c  Contact for acc 0 updated: <sip:001010123456780@10.10.46.104:5091;ob>
+13:23:54.526            pjsua_acc.c  Acc 0: setting registration..
+13:23:54.526            pjsua_acc.c  .Contact for acc 0 updated: <sip:001010123456780@10.10.46.104:5091;ob>
+13:23:54.526           pjsua_core.c  ..TX 606 bytes Request msg REGISTER/cseq=49337 (tdta0x55970de22790) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjMxQ-bcVqZbRg08J0IhCxTIpeDPQUUSB-
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=MJJlbT6cpNTcNFhEDWJO0Zd6qHEqOERb
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: 8pGfKVwhuK5FrTehU-.ter7IagoHDmna
+CSeq: 49337 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:54.526            pjsua_acc.c  .Acc 0: Registration sent
+13:23:55.028           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=49337 (tdta0x55970de22790) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjMxQ-bcVqZbRg08J0IhCxTIpeDPQUUSB-
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=MJJlbT6cpNTcNFhEDWJO0Zd6qHEqOERb
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: 8pGfKVwhuK5FrTehU-.ter7IagoHDmna
+CSeq: 49337 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:56.034           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=49337 (tdta0x55970de22790) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjMxQ-bcVqZbRg08J0IhCxTIpeDPQUUSB-
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=MJJlbT6cpNTcNFhEDWJO0Zd6qHEqOERb
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: 8pGfKVwhuK5FrTehU-.ter7IagoHDmna
+CSeq: 49337 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+13:23:58.044           pjsua_core.c  .TX 606 bytes Request msg REGISTER/cseq=49337 (tdta0x55970de22790) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.10.46.104:5091;rport;branch=z9hG4bKPjMxQ-bcVqZbRg08J0IhCxTIpeDPQUUSB-
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=MJJlbT6cpNTcNFhEDWJO0Zd6qHEqOERb
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: 8pGfKVwhuK5FrTehU-.ter7IagoHDmna
+CSeq: 49337 REGISTER
+Contact: <sip:001010123456780@10.10.46.104:5091;ob>
+Expires: 1800
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--

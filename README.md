@@ -1,0 +1,163 @@
+# LTE/IMS Official-TP-Aligned Verification Suite
+
+This repository is the reproducible baseline for the project's LTE/EPC and
+IMS verification cases. It combines:
+
+- a machine-readable registry that maps the internal `TC-001` to `TC-034`
+  identifiers to named 3GPP/ETSI specifications and clauses;
+- 34 standard-suite documents containing purpose, preconditions, procedure,
+  TP-style verdict criteria, evidence status, and known blockers;
+- executable local checkers and evidence replay;
+- an L2 evidence adapter for qualified System Simulator or laboratory results;
+- generated progress, audit, and official-style reports.
+
+## Important Scope Statement
+
+This repository is an **official-TP-aligned executable baseline**. It is not a
+36.523-1 or 34.229-1 conformance execution record and does not prove any of the
+following:
+
+- official 3GPP conformance;
+- pjsua or any new protocol-stack compliance;
+- commercial-network acceptance;
+- third-party lab approval.
+
+An official verdict can only be produced by a qualified System Simulator or an
+accredited conformance laboratory using the applicable official test procedure.
+Local checker results remain implementation evidence and must not be relabeled
+as `OFFICIAL_PASS`.
+
+## Quick Start
+
+Requirements:
+
+- Python 3.10 or later;
+- Git;
+- no third-party Python packages are required.
+
+Windows PowerShell:
+
+```powershell
+git clone <repository-url>
+cd <repository-directory>
+.\run.ps1
+```
+
+Windows, macOS, or Linux:
+
+```text
+python -X utf8 run_official_suite.py
+```
+
+Optional: skip replay of the included evidence logs.
+
+```text
+python -X utf8 run_official_suite.py --skip-evidence
+```
+
+Successful completion ends with:
+
+```text
+UNIFIED RUNNER RESULT: OK
+```
+
+The unified runner rebuilds derived data, checks all 34 suite documents,
+executes the checker self-checks, replays included evidence, evaluates the
+optional TC-026..031 L2 manifest, and writes reports under `generated/`.
+
+## Repository Layout
+
+| Path | Purpose |
+|---|---|
+| `run_official_suite.py` | Cross-platform one-command entry point |
+| `run.ps1` | Windows PowerShell wrapper for the same runner |
+| `registry/` | Machine-readable TC-to-official-TP registry and library |
+| `suites/official_tp_suites/` | One Markdown suite document per internal TC |
+| `suites/official_tp_suites/_substeps/` | Official procedure, Annex A, message, and verdict extracts |
+| `suites/official_tp_suites/_evidence/` | L2 evidence schema and manifest template |
+| `runners/` | Local checkers, evidence replay, report generation, and adapters |
+| `evidence/local/` | Selected local reproduction evidence |
+| `evidence/external/` | Selected testbed, pjsua, core-network, and packet-capture evidence |
+| `generated/` | Reports produced by the unified runner |
+| `docs/` | Progress, mapping, audit, freeze, and reporting documents |
+| `config/` | Optional local configuration; no secrets may be committed |
+| `tools/` | Optional extraction or instrument integration helpers |
+| `.github/workflows/verify.yml` | CI entry point that runs the unified verification |
+
+## Result Vocabulary
+
+The repository deliberately separates implementation evidence from conformance
+verdicts.
+
+| Result | Meaning |
+|---|---|
+| `LOCAL_PASS` | A local log, packet, or behavior matched the implemented checker criteria. This is development evidence only. |
+| `LIMITED_PASS` | Core local behavior passed, but a required variant, environment, or official field was not covered. |
+| `SELFCHECK_PASS` | The checker itself executed and its positive/negative fixture behaved as expected. It is not a product verdict. |
+| `STANDARD_ALIGNED` | The official procedure and criteria have been mapped, but the complete official flow was not executed locally. |
+| `RESTRICTED` | Required standards, network functions, instrumentation, operator data, or test access is missing. It is neither PASS nor FAIL. |
+| `NOT_EXECUTED` | No qualified evidence has been supplied for that official section. |
+| `OFFICIAL_PASS` / `OFFICIAL_FAIL` | Reserved for a qualified SS or accredited laboratory verdict. Local runners do not create these results. |
+
+## What the One-Command Run Verifies
+
+The default run validates:
+
+- registry and suite metadata consistency;
+- completeness of all 34 suite documents;
+- 23 verdict-checker self-checks;
+- replay of the included local evidence matrix;
+- the TC-026..031 evidence schema and L2 adapter semantics;
+- generation of the detailed progress and official-style reports.
+
+The run does not turn missing infrastructure into PASS. When no qualified L2
+manifest is present, TC-026..031 remain `NOT_EXECUTED`.
+
+## Official and External Dependencies
+
+The following are intentionally outside this repository:
+
+- 3GPP/ETSI source PDF, DOC, or DOCX files;
+- extracted standard text and temporary extraction directories;
+- production credentials, tokens, keys, `.env` files, and SSH material;
+- a qualified LTE/EPC System Simulator;
+- an IMS System Simulator or accredited test laboratory;
+- YD/T and operator acceptance specifications where not supplied.
+
+Historical documents may contain absolute paths from the machine on which they
+were generated. Those paths are provenance records; the executable runners use
+repository-relative paths.
+
+## Evidence and Publication Policy
+
+- Prefer a **private/internal repository** for the first push.
+- Never commit passwords, private keys, access tokens, `.env` files, or server
+  credentials.
+- Review raw packet captures and logs before public publication because they
+  may contain internal addresses, subscriber identifiers, or operator data.
+- Redact or exclude restricted evidence rather than fabricating replacement
+  results.
+- The standard documents are not redistributed here. Verify redistribution
+  rights before publishing specification excerpts outside the organization.
+
+## Key Reports
+
+| Report | Purpose |
+|---|---|
+| `generated/84-本地证据复跑矩阵-20260914.md` | Replayed evidence matrix |
+| `generated/85-验证例程全量自检状态-20260914.md` | Checker self-check result |
+| `generated/86-TC026-031-证据Schema与L1适配器-20260914.md` | Official-section schema and L2 adapter status |
+| `generated/92-验证例程详细进度总表-20260915.md` | Detailed TC-by-TC progress |
+| `generated/official_report.md` | Official-style status report, not an official verdict |
+| `docs/89-最终交付与汇报口径-20260915.md` | Delivery scope, limitations, and reporting language |
+| `docs/91-最终冻结清单与复核日志-20260915.md` | Freeze record and verification log |
+| `docs/THREE_LAYER_STATUS.md` | L0/L1/L2 implementation status by TC |
+
+## Adding or Changing a Case
+
+1. Keep the internal `TC-xxx` identifier stable.
+2. Add or update the official specification, clause, and line-level anchor.
+3. Update the suite document and machine-readable registry.
+4. Add or update an executable checker only when it has a real evidence source.
+5. Preserve `RESTRICTED` or `NOT_EXECUTED` when qualified evidence is absent.
+6. Run `python -X utf8 run_official_suite.py` before committing.

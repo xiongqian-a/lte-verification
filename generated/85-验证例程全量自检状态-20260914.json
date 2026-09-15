@@ -1,0 +1,215 @@
+{
+  "generated_at": "2026-09-15T11:29:53+08:00",
+  "total": 23,
+  "pass": 23,
+  "fail": 0,
+  "results": [
+    {
+      "name": "tc001_ims_pdn_evidence.py",
+      "path": "C:\\标准例程-github\\runners\\tc001_ims_pdn_evidence.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: TC-001 verdict script is importable and arg-validating",
+      "output": "SELFCHECK PASS: TC-001 verdict script is importable and arg-validating"
+    },
+    {
+      "name": "tc004_pdn_reject_evidence.py",
+      "path": "C:\\标准例程-github\\runners\\tc004_pdn_reject_evidence.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: TC-004 verdict script is importable and arg-validating",
+      "output": "SELFCHECK PASS: TC-004 verdict script is importable and arg-validating"
+    },
+    {
+      "name": "tc004_state_patch.py",
+      "path": "C:\\标准例程-github\\runners\\tc004_state_patch.py",
+      "category": "srsUE source patch helper; selfcheck is dry-run readiness only",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: source tree not present locally; no patch applied (helper dry-run only)",
+      "output": "SELFCHECK PASS: source tree not present locally; no patch applied (helper dry-run only)"
+    },
+    {
+      "name": "tc005_dual_pdn.py",
+      "path": "C:\\标准例程-github\\runners\\tc005_dual_pdn.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: TC-005 dual-PDN checker accepts conformant fixture and rejects missing EBI=6 registration",
+      "output": "SELFCHECK PASS: TC-005 dual-PDN checker accepts conformant fixture and rejects missing EBI=6 registration"
+    },
+    {
+      "name": "tc011_register_flow.py",
+      "path": "C:\\标准例程-github\\runners\\tc011_register_flow.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: harness matches expected pass/fail behavior",
+      "output": "==============================================================================\nSCENARIO: TC-011 conformant registration expected=PASS actual=PASS\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 challenge present :: n_401=1\n  [OK ] second REGISTER present :: n_registers=2\n  [OK ] second REGISTER after 401 present :: idx=2\n  [OK ] initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] initial REGISTER has Expires :: 300\n  [OK ] 401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] 401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] 401 challenge carries nonce :: nonce_present=True\n  [OK ] second REGISTER has Authorization :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", no\n  [OK ] second REGISTER response non-empty :: response_len=7\n  [OK ] same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] 200 OK after second REGISTER :: 200_messages=1\n  [OK ] 200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [OK ] 200 OK has Service-Route :: <sip:orig@10.45.0.1:6060;lr>\n==============================================================================\nSCENARIO: TC-011 fail missing Service-Route expected=FAIL actual=FAIL\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 challenge present :: n_401=1\n  [OK ] second REGISTER present :: n_registers=2\n  [OK ] second REGISTER after 401 present :: idx=2\n  [OK ] initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] initial REGISTER has Expires :: 300\n  [OK ] 401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] 401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] 401 challenge carries nonce :: nonce_present=True\n  [OK ] second REGISTER has Authorization :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", no\n  [OK ] second REGISTER response non-empty :: response_len=7\n  [OK ] same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] 200 OK after second REGISTER :: 200_messages=1\n  [OK ] 200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [BAD] 200 OK has Service-Route :: \n==============================================================================\nSCENARIO: TC-011 fail missing Authorization expected=FAIL actual=FAIL\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 challenge present :: n_401=1\n  [OK ] second REGISTER present :: n_registers=2\n  [OK ] second REGISTER after 401 present :: idx=2\n  [OK ] initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] initial REGISTER has Expires :: 300\n  [OK ] 401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] 401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] 401 challenge carries nonce :: nonce_present=True\n  [BAD] second REGISTER has Authorization :: \n  [BAD] second REGISTER response non-empty :: response_len=0\n  [OK ] same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] 200 OK after second REGISTER :: 200_messages=1\n  [OK ] 200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [OK ] 200 OK has Service-Route :: <sip:orig@10.45.0.1:6060;lr>\n==============================================================================\nSELFCHECK PASS: harness matches expected pass/fail behavior"
+    },
+    {
+      "name": "tc012_mo_call.py",
+      "path": "C:\\标准例程-github\\runners\\tc012_mo_call.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: harness matches expected pass/fail behavior",
+      "output": "==============================================================================\nSCENARIO: TC-012 conformant MO call expected=PASS actual=PASS\n  [OK ] MO INVITE present :: invites=1\n  [OK ] INVITE carries SDP :: sdp_invite=True\n  [OK ] 200 OK present :: 200=True\n  [OK ] 200 OK carries SDP :: sdp_response=True\n  [OK ] ACK present :: ack=True\n  [OK ] call established marker :: established=True\n  [OK ] no 4xx/5xx call failure :: fail_status=False\n  [OK ] BYE present :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n==============================================================================\nSCENARIO: TC-012 fail missing ACK expected=FAIL actual=FAIL\n  [OK ] MO INVITE present :: invites=1\n  [OK ] INVITE carries SDP :: sdp_invite=True\n  [OK ] 200 OK present :: 200=True\n  [OK ] 200 OK carries SDP :: sdp_response=True\n  [BAD ] ACK present :: ack=False\n  [OK ] call established marker :: established=True\n  [OK ] no 4xx/5xx call failure :: fail_status=False\n  [OK ] BYE present :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n==============================================================================\nSCENARIO: TC-012 fail BYE not 200 expected=FAIL actual=FAIL\n  [OK ] MO INVITE present :: invites=1\n  [OK ] INVITE carries SDP :: sdp_invite=True\n  [OK ] 200 OK present :: 200=True\n  [OK ] 200 OK carries SDP :: sdp_response=True\n  [OK ] ACK present :: ack=True\n  [OK ] call established marker :: established=True\n  [OK ] no 4xx/5xx call failure :: fail_status=False\n  [OK ] BYE present :: bye=True\n  [BAD ] 200 OK after BYE :: bye_200=False\n==============================================================================\nSELFCHECK PASS: harness matches expected pass/fail behavior"
+    },
+    {
+      "name": "tc013_invalid_auth.py",
+      "path": "C:\\标准例程-github\\runners\\tc013_invalid_auth.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: harness matches expected pass/fail behavior",
+      "output": "==============================================================================\nSCENARIO: TC-013 MAC invalid - conformant fixture expected=PASS actual=PASS\nmessages=3\n  [OK ] overall :: expected=PASS actual=PASS\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 response present :: n_401=1\n  [OK ] second REGISTER after first 401 present :: idx=2\n  [OK ] second REGISTER has Authorization :: Digest username=\"alice@ims.example.com\", realm=\"ims.example.com\", nonce=\"invalid-mac-nonce-1\", uri=\"sip:ims.example.com\", response=\"\", algorithm=AKAv1-MD5, opaque=\"op-1\"\n  [OK ] second REGISTER has Security-Client :: ipsec-3gpp; alg=hmac-md5-96; spi-c=1002; spi-s=1003; port-c=5003; port-s=5004\n  [OK ] Security-Client updated :: first='ipsec-3gpp; alg=hmac-md5-96; spi-c=1000; spi-s=1001; port-c=5001; port-s=5002' second='ipsec-3gpp; alg=hmac-md5-96; spi-c=1002; spi-s=1003; port-c=5003; port-s=5004'\n  [OK ] no auts in second REGISTER :: {'username': 'alice@ims.example.com', 'realm': 'ims.example.com', 'nonce': 'invalid-mac-nonce-1', 'uri': 'sip:ims.example.com', 'response': '', 'algorithm': 'AKAv1-MD5', 'opaque': 'op-1'}\n  [OK ] empty response in second REGISTER :: response=''\n  [OK ] no temporary SA before invalid-challenge REGISTER :: marker absent\n==============================================================================\nSCENARIO: TC-013 SQN out of range - conformant fixture expected=PASS actual=PASS\nmessages=6\n  [OK ] overall :: expected=PASS actual=PASS\n  [OK ] initial REGISTER present :: n_registers=3\n  [OK ] 401 response present :: n_401=2\n  [OK ] second REGISTER after first 401 present :: idx=2\n  [OK ] second REGISTER has Authorization :: Digest username=\"alice@ims.example.com\", realm=\"ims.example.com\", nonce=\"sqn-out-of-range-nonce\", uri=\"sip:ims.example.com\", response=\"\", algorithm=AKAv1-MD5, auts=\"YXV0cy12YWx1ZQ==\", opaque=\"op-2\"\n  [OK ] second REGISTER has Security-Client :: ipsec-3gpp; alg=hmac-md5-96; spi-c=1102; spi-s=1103; port-c=5103; port-s=5104\n  [OK ] Security-Client updated :: first='ipsec-3gpp; alg=hmac-md5-96; spi-c=1100; spi-s=1101; port-c=5101; port-s=5102' second='ipsec-3gpp; alg=hmac-md5-96; spi-c=1102; spi-s=1103; port-c=5103; port-s=5104'\n  [OK ] auts present in second REGISTER :: {'username': 'alice@ims.example.com', 'realm': 'ims.example.com', 'nonce': 'sqn-out-of-range-nonce', 'uri': 'sip:ims.example.com', 'response': '', 'algorithm': 'AKAv1-MD5', 'auts': 'YXV0cy12YWx1ZQ==', 'opaque': 'op-2'}\n  [OK ] no temporary SA before invalid-challenge REGISTER :: marker absent\n  [OK ] recovery REGISTER sent over temporary SA :: TEMP_SA_ESTABLISHED\n==============================================================================\nSCENARIO: TC-013 MAC invalid - reject wrong behavior expected=FAIL actual=FAIL\nmessages=3\n  [OK ] overall :: expected=FAIL actual=FAIL\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 response present :: n_401=1\n  [OK ] second REGISTER after first 401 present :: idx=2\n  [OK ] second REGISTER has Authorization :: Digest username=\"alice@ims.example.com\", realm=\"ims.example.com\", nonce=\"invalid-mac-nonce-1\", uri=\"sip:ims.example.com\", response=\"res-only-for-valid-challenge\", algorithm=AKAv1-MD5, opaque=\"op-1\"\n  [OK ] second REGISTER has Security-Client :: ipsec-3gpp; alg=hmac-md5-96; spi-c=1000; spi-s=1001; port-c=5001; port-s=5002\n  [BAD] Security-Client updated :: first='ipsec-3gpp; alg=hmac-md5-96; spi-c=1000; spi-s=1001; port-c=5001; port-s=5002' second='ipsec-3gpp; alg=hmac-md5-96; spi-c=1000; spi-s=1001; port-c=5001; port-s=5002'\n  [OK ] no auts in second REGISTER :: {'username': 'alice@ims.example.com', 'realm': 'ims.example.com', 'nonce': 'invalid-mac-nonce-1', 'uri': 'sip:ims.example.com', 'response': 'res-only-for-valid-challenge', 'algorithm': 'AKAv1-MD5', 'opaque': 'op-1'}\n  [BAD] empty response in second REGISTER :: response='res-only-for-valid-challenge'\n  [OK ] no temporary SA before invalid-challenge REGISTER :: marker absent\n==============================================================================\nSCENARIO: TC-013 SQN out of range - reject missing auts expected=FAIL actual=FAIL\nmessages=6\n  [OK ] overall :: expected=FAIL actual=FAIL\n  [OK ] initial REGISTER present :: n_registers=3\n  [OK ] 401 response present :: n_401=2\n  [OK ] second REGISTER after first 401 present :: idx=2\n  [OK ] second REGISTER has Authorization :: Digest username=\"alice@ims.example.com\", realm=\"ims.example.com\", nonce=\"sqn-out-of-range-nonce\", uri=\"sip:ims.example.com\", response=\"\", algorithm=AKAv1-MD5, opaque=\"op-2\"\n  [OK ] second REGISTER has Security-Client :: ipsec-3gpp; alg=hmac-md5-96; spi-c=1102; spi-s=1103; port-c=5103; port-s=5104\n  [OK ] Security-Client updated :: first='ipsec-3gpp; alg=hmac-md5-96; spi-c=1100; spi-s=1101; port-c=5101; port-s=5102' second='ipsec-3gpp; alg=hmac-md5-96; spi-c=1102; spi-s=1103; port-c=5103; port-s=5104'\n  [BAD] auts present in second REGISTER :: {'username': 'alice@ims.example.com', 'realm': 'ims.example.com', 'nonce': 'sqn-out-of-range-nonce', 'uri': 'sip:ims.example.com', 'response': '', 'algorithm': 'AKAv1-MD5', 'opaque': 'op-2'}\n  [OK ] no temporary SA before invalid-challenge REGISTER :: marker absent\n  [OK ] recovery REGISTER sent over temporary SA :: TEMP_SA_ESTABLISHED\n==============================================================================\nSELFCHECK PASS: harness matches expected pass/fail behavior"
+    },
+    {
+      "name": "tc014_rereg.py",
+      "path": "C:\\标准例程-github\\runners\\tc014_rereg.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-014 fail_headers expected=FAIL actual=FAIL\n  [OK ] REGISTER count >= 4 :: n_registers=4\n  [BAD ] subsequent REGISTER required headers present :: missing=['Supported']\n  [OK ] re-register before half for initial 120s expiry :: marker=REREG_BEFORE_HALF\n  [OK ] re-register at least 600s before 1200/1800 expiry :: marker=REREG_BEFORE_EXPIRY\n  [OK ] P-Associated-URI stored for next re-register :: marker=P_ASSOCIATED_URI_UPDATED\n  [OK ] Security-Client new SPI/client port :: marker=SECURITY_CLIENT_UPDATED\n  [OK ] expiry sequence observed (120 then 1200/1800) :: expires=[120, 120, 120, 1200, 1200, 1800, 1800]\nSCENARIO: TC-014 fail_seq expected=FAIL actual=FAIL\n  [BAD ] REGISTER count >= 4 :: n_registers=1\n  [OK ] re-register before half for initial 120s expiry :: marker=REREG_BEFORE_HALF\n  [BAD ] re-register at least 600s before 1200/1800 expiry :: marker=REREG_BEFORE_EXPIRY\n  [OK ] P-Associated-URI stored for next re-register :: marker=P_ASSOCIATED_URI_UPDATED\n  [OK ] Security-Client new SPI/client port :: marker=SECURITY_CLIENT_UPDATED\n  [BAD ] expiry sequence observed (120 then 1200/1800) :: expires=[120, 120]\nSCENARIO: TC-014 fail_timer expected=FAIL actual=FAIL\n  [OK ] REGISTER count >= 4 :: n_registers=4\n  [OK ] subsequent REGISTER required headers present :: missing=[]\n  [BAD ] re-register before half for initial 120s expiry :: marker=REREG_BEFORE_HALF\n  [OK ] re-register at least 600s before 1200/1800 expiry :: marker=REREG_BEFORE_EXPIRY\n  [OK ] P-Associated-URI stored for next re-register :: marker=P_ASSOCIATED_URI_UPDATED\n  [OK ] Security-Client new SPI/client port :: marker=SECURITY_CLIENT_UPDATED\n  [OK ] expiry sequence observed (120 then 1200/1800) :: expires=[120, 120, 120, 1200, 1200, 1800, 1800]\nSCENARIO: TC-014 pass expected=PASS actual=PASS\n  [OK ] REGISTER count >= 4 :: n_registers=4\n  [OK ] subsequent REGISTER required headers present :: missing=[]\n  [OK ] re-register before half for initial 120s expiry :: marker=REREG_BEFORE_HALF\n  [OK ] re-register at least 600s before 1200/1800 expiry :: marker=REREG_BEFORE_EXPIRY\n  [OK ] P-Associated-URI stored for next re-register :: marker=P_ASSOCIATED_URI_UPDATED\n  [OK ] Security-Client new SPI/client port :: marker=SECURITY_CLIENT_UPDATED\n  [OK ] expiry sequence observed (120 then 1200/1800) :: expires=[120, 120, 120, 1200, 1200, 1800, 1800]\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc015_restoration.py",
+      "path": "C:\\标准例程-github\\runners\\tc015_restoration.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-015 pass expected=PASS actual=PASS\n  [OK ] INVITE present before restoration :: invite=True\n  [OK ] 504 response present :: has_504=True\n  [OK ] P-Asserted-Identity in 504 :: p_asserted=True\n  [OK ] Content-Type 3gpp-ims+xml :: ims_xml=True\n  [OK ] alternative-service type=restoration :: restoration=True\n  [OK ] action=initial-registration :: action=True\n  [OK ] initial REGISTER after 504 :: register_after=True\n  [OK ] stack still has REGISTER traffic :: any_register=True\nSCENARIO: TC-015 fail_missing_trigger expected=FAIL actual=FAIL\n  [OK ] INVITE present before restoration :: invite=True\n  [OK ] 504 response present :: has_504=True\n  [OK ] P-Asserted-Identity in 504 :: p_asserted=True\n  [BAD ] Content-Type 3gpp-ims+xml :: ims_xml=False\n  [OK ] alternative-service type=restoration :: restoration=True\n  [OK ] action=initial-registration :: action=True\n  [OK ] initial REGISTER after 504 :: register_after=True\n  [OK ] stack still has REGISTER traffic :: any_register=True\nSCENARIO: TC-015 fail_no_rereg expected=FAIL actual=FAIL\n  [OK ] INVITE present before restoration :: invite=True\n  [OK ] 504 response present :: has_504=True\n  [OK ] P-Asserted-Identity in 504 :: p_asserted=True\n  [OK ] Content-Type 3gpp-ims+xml :: ims_xml=True\n  [OK ] alternative-service type=restoration :: restoration=True\n  [OK ] action=initial-registration :: action=True\n  [BAD ] initial REGISTER after 504 :: register_after=False\n  [BAD ] stack still has REGISTER traffic :: any_register=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc016_duplicate_register.py",
+      "path": "C:\\标准例程-github\\runners\\tc016_duplicate_register.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-016 pass expected=PASS actual=PASS\n  [OK ] duplicate REGISTER with same Call-ID :: registers=2 call_ids=['dup-reg-1', 'dup-reg-1']\n  [OK ] 200 OK observed for registration :: ok200=True\n  [OK ] no Expires: 0 reset after active registration :: reset=False\n  [OK ] registration state unchanged marker :: state=True\n  [OK ] no fatal/abort in log :: fatal=False\nSCENARIO: TC-016 fail_different_callid expected=FAIL actual=FAIL\n  [BAD ] duplicate REGISTER with same Call-ID :: registers=2 call_ids=['dup-reg-1', 'dup-reg-2']\n  [OK ] 200 OK observed for registration :: ok200=True\n  [OK ] no Expires: 0 reset after active registration :: reset=False\n  [OK ] registration state unchanged marker :: state=True\n  [OK ] no fatal/abort in log :: fatal=False\nSCENARIO: TC-016 fail_reset expected=FAIL actual=FAIL\n  [OK ] duplicate REGISTER with same Call-ID :: registers=3 call_ids=['dup-reg-1', 'dup-reg-1', 'dup-reg-1']\n  [OK ] 200 OK observed for registration :: ok200=True\n  [BAD ] no Expires: 0 reset after active registration :: reset=True\n  [OK ] registration state unchanged marker :: state=True\n  [OK ] no fatal/abort in log :: fatal=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc017_two_calls.py",
+      "path": "C:\\标准例程-github\\runners\\tc017_two_calls.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-017 pass expected=PASS actual=PASS\n  [OK ] at least two INVITE call attempts :: invites=2\n  [OK ] every call reached CONFIRMED :: details=['call 1 CONFIRMED->BYE->200afterBYE', 'call 2 CONFIRMED->BYE->200afterBYE']\n  [OK ] every call has BYE :: byes=2\n  [OK ] every call has 200 after BYE :: oks=4\nSCENARIO: TC-017 fail_missing_bye expected=FAIL actual=FAIL\n  [OK ] at least two INVITE call attempts :: invites=2\n  [BAD ] every call reached CONFIRMED :: details=['call 1 CONFIRMED->BYE->200afterBYE', 'call 2 CONFIRMED->-->-']\n  [BAD ] every call has BYE :: byes=1\n  [BAD ] every call has 200 after BYE :: oks=4\nSCENARIO: TC-017 fail_one_call expected=FAIL actual=FAIL\n  [BAD ] at least two INVITE call attempts :: invites=1\n  [BAD ] every call reached CONFIRMED :: details=['call 1 CONFIRMED->BYE->200afterBYE']\n  [BAD ] every call has BYE :: byes=1\n  [BAD ] every call has 200 after BYE :: oks=2\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc018_malformed_register.py",
+      "path": "C:\\标准例程-github\\runners\\tc018_malformed_register.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-018 pass expected=PASS actual=PASS\n  [OK ] malformed REGISTER observed :: malformed_lines=1\n  [OK ] graceful 4xx/5xx or explicit ignore :: graceful=True\n  [OK ] no fatal/crash :: fatal=False\n  [OK ] stack responsive after malformed :: responsive=True\nSCENARIO: TC-018 fail_crash expected=FAIL actual=FAIL\n  [OK ] malformed REGISTER observed :: malformed_lines=1\n  [OK ] graceful 4xx/5xx or explicit ignore :: graceful=True\n  [BAD ] no fatal/crash :: fatal=True\n  [OK ] stack responsive after malformed :: responsive=True\nSCENARIO: TC-018 fail_no_recovery expected=FAIL actual=FAIL\n  [OK ] malformed REGISTER observed :: malformed_lines=1\n  [OK ] graceful 4xx/5xx or explicit ignore :: graceful=True\n  [OK ] no fatal/crash :: fatal=False\n  [BAD ] stack responsive after malformed :: responsive=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc019_mt_call.py",
+      "path": "C:\\标准例程-github\\runners\\tc019_mt_call.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-019 pass_mt_call expected=PASS actual=PASS\n  [OK ] MT INVITE present :: invite=True\n  [OK ] ringing or session progress :: 180=True 183=False\n  [OK ] 200 OK present :: 200=True\n  [OK ] ACK present :: ack=True\n  [OK ] BYE present :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n  [OK ] SDP content exchanged :: sdp=True\nSCENARIO: TC-019 fail_no_bye expected=FAIL actual=FAIL\n  [OK ] MT INVITE present :: invite=True\n  [OK ] ringing or session progress :: 180=True 183=False\n  [OK ] 200 OK present :: 200=True\n  [OK ] ACK present :: ack=True\n  [BAD ] BYE present :: bye=False\n  [BAD ] 200 OK after BYE :: bye_200=False\n  [OK ] SDP content exchanged :: sdp=True\nSCENARIO: TC-019 fail_no_progress expected=FAIL actual=FAIL\n  [OK ] MT INVITE present :: invite=True\n  [BAD ] ringing or session progress :: 180=False 183=False\n  [OK ] 200 OK present :: 200=True\n  [OK ] ACK present :: ack=True\n  [OK ] BYE present :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n  [OK ] SDP content exchanged :: sdp=True\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc020_hold_retrieve.py",
+      "path": "C:\\标准例程-github\\runners\\tc020_hold_retrieve.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-020 pass_hold_resume expected=PASS actual=PASS\n  [OK ] MO/MT call setup INVITE present :: setup=True\n  [OK ] hold signal present :: hold_sig=True\n  [OK ] hold SDP direction sendonly/inactive :: hold_dir_idx=14\n  [OK ] resume signal present :: resume_sig=True\n  [OK ] resume SDP direction sendrecv :: resume_dir_idx=24\n  [OK ] 200 OK present for dialog traffic :: 200=True\n  [OK ] BYE present :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\nSCENARIO: TC-020 fail_no_resume_direction expected=FAIL actual=FAIL\n  [OK ] MO/MT call setup INVITE present :: setup=True\n  [OK ] hold signal present :: hold_sig=True\n  [OK ] hold SDP direction sendonly/inactive :: hold_dir_idx=14\n  [BAD ] resume signal present :: resume_sig=False\n  [BAD ] resume SDP direction sendrecv :: resume_dir_idx=None\n  [OK ] 200 OK present for dialog traffic :: 200=True\n  [OK ] BYE present :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\nSCENARIO: TC-020 fail_bye_not_200 expected=FAIL actual=FAIL\n  [OK ] MO/MT call setup INVITE present :: setup=True\n  [OK ] hold signal present :: hold_sig=True\n  [OK ] hold SDP direction sendonly/inactive :: hold_dir_idx=14\n  [OK ] resume signal present :: resume_sig=True\n  [OK ] resume SDP direction sendrecv :: resume_dir_idx=24\n  [OK ] 200 OK present for dialog traffic :: 200=True\n  [OK ] BYE present :: bye=True\n  [BAD ] 200 OK after BYE :: bye_200=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc021_conference_join_remote.py",
+      "path": "C:\\标准例程-github\\runners\\tc021_conference_join_remote.py",
+      "category": "remote log checker; selfcheck uses a synthetic PASS fixture",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: conference log checker exercised with synthetic PASS fixture",
+      "output": "[OK ] FreeSWITCH list shows Conference 888 with 2 members\n  [OK ] UA1 CONFIRMED and INVITE to 888\n  [OK ] UA1 BYE + 200/BYE\n  [OK ] UA2 CONFIRMED and INVITE to 888\n  [OK ] UA2 BYE + 200/BYE\n  [OK ] FreeSWITCH executes conference(888@default) twice\n  [OK ] FreeSWITCH shows NORMAL_CLEARING\nRESULT: PASS\nSELFCHECK PASS: conference log checker exercised with synthetic PASS fixture"
+    },
+    {
+      "name": "tc021_conference_refer.py",
+      "path": "C:\\标准例程-github\\runners\\tc021_conference_refer.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-021 pass_conference_refer expected=PASS actual=PASS\n  [OK ] conference INVITE or call present :: invite=True\n  [OK ] REFER present :: refer=True\n  [OK ] Refer-To header present :: refer_to=True\n  [OK ] 202 Accepted present :: 202=True\n  [OK ] NOTIFY with event refer present :: notify_refer=True\n  [OK ] 200 OK after NOTIFY :: notify_200=True\n  [OK ] focus marker isfocus present where expected :: isfocus=True required=True\nSCENARIO: TC-021 pass_refer_transfer_without_focus expected=PASS actual=PASS\n  [OK ] conference INVITE or call present :: invite=True\n  [OK ] REFER present :: refer=True\n  [OK ] Refer-To header present :: refer_to=True\n  [OK ] 202 Accepted present :: 202=True\n  [OK ] NOTIFY with event refer present :: notify_refer=True\n  [OK ] 200 OK after NOTIFY :: notify_200=True\n  [OK ] focus marker isfocus present where expected :: isfocus=False required=False\nSCENARIO: TC-021 fail_missing_refer expected=FAIL actual=FAIL\n  [OK ] conference INVITE or call present :: invite=True\n  [BAD ] REFER present :: refer=False\n  [OK ] Refer-To header present :: refer_to=True\n  [OK ] 202 Accepted present :: 202=True\n  [OK ] NOTIFY with event refer present :: notify_refer=True\n  [OK ] 200 OK after NOTIFY :: notify_200=True\n  [OK ] focus marker isfocus present where expected :: isfocus=True required=True\nSCENARIO: TC-021 fail_notify_not_refer_event expected=FAIL actual=FAIL\n  [OK ] conference INVITE or call present :: invite=True\n  [OK ] REFER present :: refer=True\n  [OK ] Refer-To header present :: refer_to=True\n  [OK ] 202 Accepted present :: 202=True\n  [BAD ] NOTIFY with event refer present :: notify_refer=False\n  [BAD ] 200 OK after NOTIFY :: notify_200=False\n  [OK ] focus marker isfocus present where expected :: isfocus=True required=True\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc022_audio_media.py",
+      "path": "C:\\标准例程-github\\runners\\tc022_audio_media.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-022 pass_audio expected=PASS actual=PASS\n  [OK ] SDP m=audio media line present :: media_line=True\n  [OK ] audio stream negotiated sendrecv :: streams=[('PCMU', 'sendrecv')]\n  [OK ] negotiated codec reported at 8 kHz :: codecs=[('0', 'PCMU', '8')]\n  [OK ] SDP negotiation done: Success :: negotiation_ok=True\n  [OK ] call state CONFIRMED :: confirmed=True\n  [OK ] RTP tx parameters observed (pt/ptime) :: tx=[('0', '20')]\n  [OK ] no media failure marker :: media_failure=False\n  [OK ] call released with BYE :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\nSCENARIO: TC-022 fail_inactive_media expected=FAIL actual=FAIL\n  [OK ] SDP m=audio media line present :: media_line=True\n  [BAD ] audio stream negotiated sendrecv :: streams=none\n  [OK ] negotiated codec reported at 8 kHz :: codecs=[('0', 'PCMU', '8')]\n  [OK ] SDP negotiation done: Success :: negotiation_ok=True\n  [OK ] call state CONFIRMED :: confirmed=True\n  [OK ] RTP tx parameters observed (pt/ptime) :: tx=[('0', '20')]\n  [OK ] no media failure marker :: media_failure=False\n  [OK ] call released with BYE :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\nSCENARIO: TC-022 fail_release_not_200 expected=FAIL actual=FAIL\n  [OK ] SDP m=audio media line present :: media_line=True\n  [OK ] audio stream negotiated sendrecv :: streams=[('PCMU', 'sendrecv')]\n  [OK ] negotiated codec reported at 8 kHz :: codecs=[('0', 'PCMU', '8')]\n  [OK ] SDP negotiation done: Success :: negotiation_ok=True\n  [OK ] call state CONFIRMED :: confirmed=True\n  [OK ] RTP tx parameters observed (pt/ptime) :: tx=[('0', '20')]\n  [OK ] no media failure marker :: media_failure=False\n  [OK ] call released with BYE :: bye=True\n  [BAD ] 200 OK after BYE :: bye_200=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc023_sdp_negotiation.py",
+      "path": "C:\\标准例程-github\\runners\\tc023_sdp_negotiation.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-023 pass_sdp expected=PASS actual=PASS\n  [OK ] m=audio media description present :: audio_blocks=2\n  [OK ] offer and answer SDP both present :: blocks=2\n  [OK ] a=rtpmap G.711 (PCMU/PCMA) @8000 :: g711_8k=True\n  [OK ] a=rtpmap telephone-event present :: telephone_event=True\n  [OK ] a=ptime:20 present :: ptime20=True\n  [OK ] a=sendrecv direction present :: sendrecv=True\n  [OK ] a=rtcp attribute present :: rtcp=True\n  [OK ] bandwidth attribute (b=AS/TIAS/RS/RR) present :: bandwidth=True\n  [OK ] SDP negotiation done: Success :: negotiation_ok=True\nSCENARIO: TC-023 fail_no_telephone_event expected=FAIL actual=FAIL\n  [OK ] m=audio media description present :: audio_blocks=2\n  [OK ] offer and answer SDP both present :: blocks=2\n  [OK ] a=rtpmap G.711 (PCMU/PCMA) @8000 :: g711_8k=True\n  [BAD ] a=rtpmap telephone-event present :: telephone_event=False\n  [OK ] a=ptime:20 present :: ptime20=True\n  [OK ] a=sendrecv direction present :: sendrecv=True\n  [OK ] a=rtcp attribute present :: rtcp=True\n  [OK ] bandwidth attribute (b=AS/TIAS/RS/RR) present :: bandwidth=True\n  [OK ] SDP negotiation done: Success :: negotiation_ok=True\nSCENARIO: TC-023 fail_negotiation expected=FAIL actual=FAIL\n  [OK ] m=audio media description present :: audio_blocks=2\n  [OK ] offer and answer SDP both present :: blocks=2\n  [OK ] a=rtpmap G.711 (PCMU/PCMA) @8000 :: g711_8k=True\n  [OK ] a=rtpmap telephone-event present :: telephone_event=True\n  [OK ] a=ptime:20 present :: ptime20=True\n  [OK ] a=sendrecv direction present :: sendrecv=True\n  [OK ] a=rtcp attribute present :: rtcp=True\n  [OK ] bandwidth attribute (b=AS/TIAS/RS/RR) present :: bandwidth=True\n  [BAD ] SDP negotiation done: Success :: negotiation_ok=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc024_long_stability.py",
+      "path": "C:\\标准例程-github\\runners\\tc024_long_stability.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-024 pass_long expected=PASS actual=PASS\n  [OK ] call state CONFIRMED :: confirmed=True\n  [OK ] media observed during call :: media_events_before_bye=2\n  [OK ] dialog held >= 120s :: duration=125.000s\n  [OK ] no media failure marker :: media_failure=False\n  [OK ] no SIP transaction timeout :: timeout=False\n  [OK ] call released with BYE :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n  [OK ] no unexpected DISCONNECTED before BYE :: disconnected=False\nSCENARIO: TC-024 fail_too_short expected=FAIL actual=FAIL\n  [OK ] call state CONFIRMED :: confirmed=True\n  [OK ] media observed during call :: media_events_before_bye=2\n  [BAD ] dialog held >= 120s :: duration=30.000s\n  [OK ] no media failure marker :: media_failure=False\n  [OK ] no SIP transaction timeout :: timeout=False\n  [OK ] call released with BYE :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n  [OK ] no unexpected DISCONNECTED before BYE :: disconnected=False\nSCENARIO: TC-024 fail_media_error expected=FAIL actual=FAIL\n  [OK ] call state CONFIRMED :: confirmed=True\n  [OK ] media observed during call :: media_events_before_bye=2\n  [BAD ] dialog held >= 120s :: duration=60.000s\n  [BAD ] no media failure marker :: media_failure=True\n  [OK ] no SIP transaction timeout :: timeout=False\n  [OK ] call released with BYE :: bye=True\n  [OK ] 200 OK after BYE :: bye_200=True\n  [OK ] no unexpected DISCONNECTED before BYE :: disconnected=False\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc025_rtp_capture.py",
+      "path": "C:\\标准例程-github\\runners\\tc025_rtp_capture.py",
+      "category": "AF_PACKET capture helper; selfcheck exercises the parser with a synthetic RTP frame",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS: RTP capture parser has no raw-socket dependency",
+      "output": "[OK ] Ethernet/IPv4/UDP/RTP frame parsed\n  [OK ] RTP payload type parsed\n  [OK ] RTP sequence parsed\n  [OK ] RTP timestamp parsed\n  [OK ] payload bytes preserved\nSELFCHECK PASS: RTP capture parser has no raw-socket dependency"
+    },
+    {
+      "name": "tc025_vad_dtx.py",
+      "path": "C:\\标准例程-github\\runners\\tc025_vad_dtx.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-025 compliant positive-control fixture expected=LIMITED_PASS/STANDARD_ASSERTION=PASS actual=LIMITED_PASS\n  [OK ] RTP AMR/8000 media packets observed :: rtp_pkts=42\n  [OK ] speech frames observed :: speech_ft0_7=10\n  [OK ] NO_DATA frame count :: amr_ft15_nodata=0; non-zero means NO_DATA was present in the sample\n  [OK ] SID/CN frames observed :: amr_ft8_sid=2\n  [OK ] 26.093 NO_DATA transmission constraint :: no_data_transmitted=0 expected=0 (NO_DATA should not be transmitted over AN)\n  [OK ] AMR SID_UPDATE cadence :: sid_delta_ts=[1280, 1280] frames=[8, 8] expected_ts=1280 expected_frames=8 (26.093 SID_UPDATE every 8 frames)\nSCOPE: AMR local evidence based on speech + no-data/DTX silence media; LOCAL_BEHAVIOR=PASS_WITHIN_SAMPLE; STANDARD_ASSERTION=PASS; SID_UPDATE cadence is 8 frames and no NO_DATA was transmitted within the supplied sample.\nSCENARIO: TC-025 observed non-compliant negative control expected=LIMITED_PASS/STANDARD_ASSERTION=FAIL actual=LIMITED_PASS\n  [OK ] RTP AMR/8000 media packets observed :: rtp_pkts=42\n  [OK ] speech frames observed :: speech_ft0_7=10\n  [BAD ] NO_DATA frame count :: amr_ft15_nodata=2; non-zero means NO_DATA was present in the sample\n  [OK ] SID/CN frames observed :: amr_ft8_sid=2\n  [BAD ] 26.093 NO_DATA transmission constraint :: no_data_transmitted=2 expected=0 (NO_DATA should not be transmitted over AN)\n  [BAD ] AMR SID_UPDATE cadence :: sid_delta_ts=[160000, 160000] frames=[1000, 1000] expected_ts=1280 expected_frames=8 (26.093 SID_UPDATE every 8 frames)\nSCOPE: AMR local evidence based on speech + no-data/DTX silence media; LOCAL_BEHAVIOR=PARTIAL; STANDARD_ASSERTION=FAIL; the supplied sample violates an explicit 26.093 constraint; this is a negative control result, not a full SCR PASS. NO_DATA frames were transmitted over RTP; TS 26.093 line 229 says NO_DATA should not be transmitted over AN.\nSCENARIO: TC-025 no-SID evidence-boundary fixture expected=LIMITED_PASS/STANDARD_ASSERTION=FAIL actual=LIMITED_PASS\n  [OK ] RTP AMR/8000 media packets observed :: rtp_pkts=42\n  [OK ] speech frames observed :: speech_ft0_7=10\n  [BAD ] NO_DATA frame count :: amr_ft15_nodata=1; non-zero means NO_DATA was present in the sample\n  [BAD ] SID/CN frames observed :: amr_ft8_sid=0\n  [BAD ] 26.093 NO_DATA transmission constraint :: no_data_transmitted=1 expected=0 (NO_DATA should not be transmitted over AN)\n  [N/A ] AMR SID_UPDATE cadence :: N/A: no SID interval data\nSCOPE: AMR local evidence based on speech + no-data/DTX silence media; LOCAL_BEHAVIOR=PARTIAL; STANDARD_ASSERTION=FAIL; the supplied sample violates an explicit 26.093 constraint; this is a negative control result, not a full SCR PASS. NO_DATA frames were transmitted over RTP; TS 26.093 line 229 says NO_DATA should not be transmitted over AN.\nSCENARIO: TC-025 log without CN/silence-frame evidence expected=RESTRICTED actual=RESTRICTED\n  [BAD ] SDP dtx signaling observed :: dtx_lines=0\n  [BAD ] SDP CN/comfort-noise payload observed :: cng_lines=0\n  [OK ] media stream activity observed :: media=True\n  [N/A ] silence-frame / CN media evidence present :: REQUIRED_MEDIA_EVIDENCE=CN/silence frames\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc032_error_codes.py",
+      "path": "C:\\标准例程-github\\runners\\tc032_error_codes.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-032 503 pass expected=PASS actual=PASS\n  [OK ] INVITE sent :: invite_lines=2\n  [OK ] 503 response observed :: 503_lines=1\n  [OK ] Retry-After present :: retry_after=[20]\n  [OK ] ACK to error response :: ack=True\n  [OK ] retry INVITE after Retry-After observed :: invites=2 has_200=True\n  [OK ] graceful release/BYE :: bye=True\nSCENARIO: TC-032 503 fail expected=FAIL actual=FAIL\n  [OK ] INVITE sent :: invite_lines=2\n  [OK ] 503 response observed :: 503_lines=1\n  [BAD ] Retry-After present :: retry_after=[]\n  [OK ] ACK to error response :: ack=True\n  [OK ] retry INVITE after Retry-After observed :: invites=2 has_200=True\n  [OK ] graceful release/BYE :: bye=True\nSCENARIO: TC-032 504 pass expected=PASS actual=PASS\n  [OK ] INVITE present :: invite=True\n  [OK ] 504 response observed :: 504=True\n  [OK ] P-Asserted-Identity present :: pai=True\n  [OK ] Content-Type 3gpp-ims+xml :: ims_xml=True\n  [OK ] alternative-service type=restoration :: restoration=True\n  [OK ] action=initial-registration :: action=True\n  [OK ] initial REGISTER after 504 :: register_after=True\n  [OK ] REGISTER traffic present :: register=True\nSELFCHECK PASS"
+    },
+    {
+      "name": "tc033_timer_timeout.py",
+      "path": "C:\\标准例程-github\\runners\\tc033_timer_timeout.py",
+      "category": "verdict script",
+      "returncode": 0,
+      "status": "PASS",
+      "last_line": "SELFCHECK PASS",
+      "output": "SCENARIO: TC-033 timeout pass expected=PASS actual=PASS\n  [OK ] INVITE attempted :: invite_attempts=3\n  [OK ] retransmission observed :: invites=3\n  [OK ] timeout / give-up observed :: timeout=True\n  [OK ] no fatal/crash :: fatal=False\n  [OK ] stack remains responsive :: responsive=True\nSCENARIO: TC-033 timeout fail expected=FAIL actual=FAIL\n  [OK ] INVITE attempted :: invite_attempts=1\n  [BAD ] retransmission observed :: invites=1\n  [BAD ] timeout / give-up observed :: timeout=False\n  [OK ] no fatal/crash :: fatal=False\n  [BAD ] stack remains responsive :: responsive=False\nSELFCHECK PASS"
+    }
+  ]
+}

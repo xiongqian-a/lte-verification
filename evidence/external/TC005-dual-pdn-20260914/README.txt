@@ -1,0 +1,4 @@
+tc005 evidence timestamp=20260914-184930
+result=L1_SIMULATED_PASS
+official_consistency=PENDING_INSTRUMENT
+ipv6=RESTRICTED

@@ -1,0 +1,4258 @@
+{
+  "schema": "official_tp_registration_auth_error_blocks",
+  "spec": "3GPP TS 34.229-1",
+  "version": "V14.7.0 (2019-06)",
+  "source_file": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\_extract\\34229-1e70-word.txt",
+  "source_line_convention": "Python str.splitlines() index (1-based)",
+  "note": "Complete official case sections for registration, invalid AKA challenge handling, 503 and 504 restoration. Raw rows are verbatim; no procedure or verdict text is synthesized.",
+  "blocks": [
+    {
+      "ref": "8.1",
+      "title": "Initial registration",
+      "source_line_start": 3875,
+      "source_line_end": 4151,
+      "next_line": 4152,
+      "next_line_text": "8.2\tUser Initiated Re-Registration",
+      "heading_text": "8.1\tInitial registration ",
+      "used_by": [
+        "TC-011"
+      ],
+      "key_markers": [
+        "8.1.1\tDefinition",
+        "8.1.2\tConformance requirement",
+        "8.1.3\tTest purpose",
+        "8.1.4\tMethod of test",
+        "8.1.5\tTest requirements",
+        "AKAv1-MD5",
+        "Security-Client",
+        "Security-Server",
+        "reg event package"
+      ],
+      "subsection_headers": [
+        {
+          "line": 3876,
+          "number": "8.1.1",
+          "title": "Definition",
+          "text": "8.1.1\tDefinition"
+        },
+        {
+          "line": 3878,
+          "number": "8.1.2",
+          "title": "Conformance requirement",
+          "text": "8.1.2\tConformance requirement"
+        },
+        {
+          "line": 4104,
+          "number": "8.1.3",
+          "title": "Test purpose",
+          "text": "8.1.3\tTest purpose"
+        },
+        {
+          "line": 4118,
+          "number": "8.1.4",
+          "title": "Method of test",
+          "text": "8.1.4\tMethod of test"
+        },
+        {
+          "line": 4140,
+          "number": "8.1.5",
+          "title": "Test requirements",
+          "text": "8.1.5\tTest requirements"
+        }
+      ],
+      "source_note": null,
+      "raw_rows": [
+        [
+          3875,
+          "8.1\tInitial registration "
+        ],
+        [
+          3876,
+          "8.1.1\tDefinition"
+        ],
+        [
+          3877,
+          "Test to verify that the UE can correctly register to IMS services when equipped with UICC that contains either both ISIM and USIM applications or only USIM application but not ISIM. The process consists of sending initial registration to S-CSCF via the P-CSCF discovered, authenticating the user and finally subscribing the registration event package for the registered default public user identity. "
+        ],
+        [
+          3878,
+          "8.1.2\tConformance requirement"
+        ],
+        [
+          3879,
+          "[TS 24.229, clause C.2]:"
+        ],
+        [
+          3880,
+          "In case the UE is loaded with a UICC that contains a USIM but does not contain an ISIM, the UE shall:"
+        ],
+        [
+          3881,
+          "-\tgenerate a private user identity;"
+        ],
+        [
+          3882,
+          "-\tgenerate a temporary public user identity; and"
+        ],
+        [
+          3883,
+          "-\tgenerate a home network domain name to address the SIP REGISTER request to."
+        ],
+        [
+          3884,
+          "All these three parameters are derived from the IMSI parameter in the USIM, according to the procedures described in 3GPP TS 23.003. Also in this case, the UE shall derive new values every time the UICC is changed, and shall discard existing values if the UICC is removed."
+        ],
+        [
+          3885,
+          "NOTE:\tIf there is an ISIM and a USIM on a UICC, the ISIM is used for authentication to the IM CN subsystem, as described in 3GPP TS 33.203. See also subclause 5.1.1.1A."
+        ],
+        [
+          3886,
+          "[TS 24.229, clause 5.1.1.1A]:"
+        ],
+        [
+          3887,
+          "This subclause applies when a UE contains either an ISIM or a USIM."
+        ],
+        [
+          3888,
+          "The ISIM shall always be used for authentication to the IM CN subsystem, if it is present, as described in 3GPP TS 33.203."
+        ],
+        [
+          3889,
+          "The ISIM is preconfigured with all the necessary parameters to initiate the registration to the IM CN subsystem. These parameters include:"
+        ],
+        [
+          3890,
+          "-\tthe private user identity;"
+        ],
+        [
+          3891,
+          "-\tone or more public user identities; and"
+        ],
+        [
+          3892,
+          "-\tthe home network domain name used to address the SIP REGISTER request"
+        ],
+        [
+          3893,
+          "The first public user identity in the list stored in the ISIM is used in emergency registration requests. "
+        ],
+        [
+          3894,
+          "In case the UE does not contain an ISIM, the UE shall:"
+        ],
+        [
+          3895,
+          "-\tgenerate a private user identity;"
+        ],
+        [
+          3896,
+          "-\tgenerate a temporary public user identity; and"
+        ],
+        [
+          3897,
+          "-\tgenerate a home network domain name to address the SIP REGISTER request to;"
+        ],
+        [
+          3898,
+          "in accordance with the procedures in clause C.2."
+        ],
+        [
+          3899,
+          "The temporary public user identity is only used in REGISTER requests, i.e. initial registration, re-registration, mobile-initiated deregistration."
+        ],
+        [
+          3900,
+          "The UE shall not reveal to the user the temporary public user identity if the temporary public user identity is barred. The temporary public user identity is not barred if received by the UE in the P-Associated-URI header."
+        ],
+        [
+          3901,
+          "If the UE is unable to derive the parameters in this subclause for any reason, then the UE shall not proceed with the request associated with the use of these parameters and will not be able to register to the IM CN subsystem."
+        ],
+        [
+          3902,
+          "[TS 24.229, clause 5.1.1.2.1]:"
+        ],
+        [
+          3903,
+          "The initial registration procedure consists of the UE sending an unprotected REGISTER request and, if challenged depending on the security mechanism supported for this UE, sending the integrity-protected REGISTER request or other appropriate response to the challenge. The UE can register a public user identity with any of its contact addresses at any time after it has acquired an IP address, discovered a P-CSCF, and established an IP-CAN bearer that can be used for SIP signalling. However, the UE shall only initiate a new registration procedure when it has received a final response from the registrar for the ongoing registration, or the previous REGISTER request has timed out."
+        ],
+        [
+          3904,
+          "When registering any public user identity belonging to the UE, the UE shall either use an already active pair of security associations or a TLS session to protect the REGISTER requests, or register the public user identity via a new initial registration procedure."
+        ],
+        [
+          3905,
+          "When binding any one of its public user identities to an additional contact address via a new initial registration procedure, the UE shall follow the procedures described in RFC 5626. The set of security associations or a TLS session resulting from this initial registration procedure will have no impact on the existing set of security associations or TLS sessions that have been established as a result of previous initial registration procedures. However, if the UE registers any one of its public user identities with a new contact address via a new initial registration procedure and does not employ the procedures described in RFC 5626, then the new set of security associations or TLS session shall replace any existing set of security association or TLS session."
+        ],
+        [
+          3906,
+          "If the UE detects that the existing security associations or TLS sessions associated with a given contact address are no longer active (e.g., after receiving no response to several protected messages), the UE shall: "
+        ],
+        [
+          3907,
+          "-\tconsider all previously registered public user identities bound to this security associations or TLS session that are only associated with this contact address as deregistered; and"
+        ],
+        [
+          3908,
+          "-\tstop processing all associated ongoing dialogs and transactions that were using the security associations or TLS session associated with this contact address, if any (i.e. no further SIP signalling will be sent by the UE on behalf of these transactions or dialogs)."
+        ],
+        [
+          3909,
+          "The UE shall send the unprotected REGISTER requests to the port advertised to the UE during the P-CSCF discovery procedure. If the UE does not receive any specific port information during the P-CSCF discovery procedure, or if the UE was pre-configured with the P-CSCF's IP address or domain name and was unable to obtain specific port information, the UE shall send the unprotected REGISTER request to the SIP default port values as specified in RFC 3261. "
+        ],
+        [
+          3910,
+          "NOTE 1:\tThe UE will only send further registration and subsequent SIP messages towards the same port of the P-CSCF for security mechanisms that do not require using negotiated ports for exchanging protected messages."
+        ],
+        [
+          3911,
+          "The UE shall extract or derive a public user identity, the private user identity, and the domain name to be used in the Request-URI in the registration, according to the procedures described in subclause 5.1.1.1A or subclause 5.1.1.1B. A public user identity may be input by the end user."
+        ],
+        [
+          3912,
+          "[TS 24.229 Rel-8, clause 5.1.1.2.1]:"
+        ],
+        [
+          3913,
+          "On sending an unprotected REGISTER request, the UE shall populate the header fields as follows:"
+        ],
+        [
+          3914,
+          "a)\ta From header field set to the SIP URI that contains the public user identity to be registered;"
+        ],
+        [
+          3915,
+          "b)\ta To header field set to the SIP URI that contains the public user identity to be registered;"
+        ],
+        [
+          3916,
+          "c)\ta Contact header field set to include SIP URI(s) containing the IP address or FQDN of the UE in the hostport parameter. If the UE supports GRUU (see table A.4, item A.4/53) or multiple registrations, the UE shall include a \"+sip.instance\" header field parameter containing the instance ID. If the UE supports multiple registrations it shall include \"reg-id\" header field parameter as described in RFC 5626. The UE shall include all supported ICSI values (coded as specified in subclause 7.2A.8.2) in a g.3gpp.icsi-ref media feature tag as defined in subclause 7.9.2 and RFC 3840 for the IMS communication services it intends to use, and IARI values (coded as specified in subclause 7.2A.9.2), for the IMS applications it intends to use in a g.3gpp.iari-ref media feature tag as defined in subclause 7.9.3 and RFC 3840;"
+        ],
+        [
+          3917,
+          "d)\ta Via header field set to include the sent-by field containing the IP address or FQDN of the UE and the port number where the UE expects to receive the response to this request when UDPis used. For TCP, the response is received on the TCP connection on which the request was sent. The UE shall also include a \"rport\" header field parameter with no value in the Via header field. Unless the UE has been configured to not send keep-alives, and unless the UE is directly connected to an IP-CAN for which usage of NAT is not defined, it shall include a \"keep\" header field parameter with no value in the Via header field, in order to indicate support of sending keep-alives associated with the registration, as described in RFC 6223;"
+        ],
+        [
+          3918,
+          "NOTE 2:\tWhen sending the unprotected REGISTER request using UDP, the UE transmit the request from the same IP address and port on which it expects to receive the response to this request."
+        ],
+        [
+          3919,
+          "e)\ta registration expiration interval value of 600 000 seconds as the value desired for the duration of the registration;"
+        ],
+        [
+          3920,
+          "NOTE 3:\tThe registrar (S-CSCF) might decrease the duration of the registration in accordance with network policy. Registration attempts with a registration period of less than a predefined minimum value defined in the registrar will be rejected with a 423 (Interval Too Brief) response."
+        ],
+        [
+          3921,
+          "f)\ta Request-URI set to the SIP URI of the domain name of the home network used to address the REGISTER request;"
+        ],
+        [
+          3922,
+          "g)\tthe Supported header field containing the option-tag \"path\", and"
+        ],
+        [
+          3923,
+          "1)\tif GRUU is supported, the option-tag \"gruu\"; and"
+        ],
+        [
+          3924,
+          "2)\tif multiple registrations is supported, the option-tag \"outbound\"."
+        ],
+        [
+          3925,
+          "h)\tif a security association or TLS session exists, and if available to the UE (as defined in the access technology specific annexes for each access technology), a P-Access-Network-Info header field set as specified for the access network technology (see subclause 7.2A.4)."
+        ],
+        [
+          3926,
+          "[TS 24.229 Rel-9, clause 5.1.1.2.1]:"
+        ],
+        [
+          3927,
+          "..."
+        ],
+        [
+          3928,
+          "h)\tif a security association or TLS session exists, and if available to the UE (as defined in the access technology specific annexes for each access technology), a P-Access-Network-Info header field set as specified for the access network technology (see subclause 7.2A.4); and"
+        ],
+        [
+          3929,
+          "i)\ta Security-Client header field to announce the media plane security mechanisms the UE supports, if any, labelled with the \"mediasec\" header field parameter specified in subclause 7.2A.7."
+        ],
+        [
+          3930,
+          "NOTE 4:\tThe \"mediasec\" header field parameter indicates that security mechanisms are specific to the media plane."
+        ],
+        [
+          3931,
+          "[TS 24.229 Rel-8, clause 5.1.1.2.1]:"
+        ],
+        [
+          3932,
+          "On receiving the 200 (OK) response to the REGISTER request, the UE shall:"
+        ],
+        [
+          3933,
+          "a)\tstore the expiration time of the registration for the public user identities found in the To header field value and bind it either to the respective contact address of the UE or to the registration flow and the associated contact address (if the multiple registration mechanism is used);"
+        ],
+        [
+          3934,
+          "b)\tstore as the default public user identity the first URI on the list of URIs present in the P-Associated-URI header field and bind it to the respective contact address of the UE and the associated set of security associations or TLS session;"
+        ],
+        [
+          3935,
+          "NOTE 4:\tWhen using the respective contact address and associated set of security associations or TLS session, the UE can utilize additional URIs contained in the P-Associated-URI header field and bound it to the respective contact address of the UE and the associated set of security associations or TLS session, e.g. for application purposes."
+        ],
+        [
+          3936,
+          "c)\ttreat the identity under registration as a barred public user identity, if it is not included in the P-Associated-URI header field;"
+        ],
+        [
+          3937,
+          "d)\tstore the list of service route values contained in the Service-Route header field and bind the list either to the contact address or to the registration flow and the associated set of security associations or TLS session over which the REGISTER request was sent; "
+        ],
+        [
+          3938,
+          "NOTE 5:\tWhen multiple registration mechanism is not used, there will be only one list of service route values bound to a contact address. However, when multiple registration mechanism is used, there will be different list of service route values bound to each registration flow and the associated contact address."
+        ],
+        [
+          3939,
+          "NOTE 6:\tThe UE will use the stored list of service route values to build a proper preloaded Route header field for new dialogs and standalone transactions when using either the respective contact address or to the registration flow and the associated contact address (if the multiple registration mechanism is used), and the associated set of security associations or TLS session."
+        ],
+        [
+          3940,
+          "e)\tfind the Contact header field within the response that matches the one included in the REGISTER request. If this contains a \"pub-gruu\" header field parameter or a \"temp-gruu\" header field parameter or both, and the UE supports GRUU (see table A.4, item A.4/53), then store the value of those parameters as the GRUUs for the UE in association with the public user identity and the contact address that was registered;"
+        ],
+        [
+          3941,
+          "f)\tif the REGISTER request contained the \"reg-id\" and \"+sip.instance\" Contact header field parameter and the \"outbound\" option tag in a Supported header field, the UE shall check whether the option-tag \"outbound\" is present in the Require header field:"
+        ],
+        [
+          3942,
+          "-\tif no option-tag \"outbound\" is present, the UE shall conclude that the S-CSCF does not support the registration procedure as described in RFC 5626, and the S-CSCF has followed the registration procedure as described in RFC 5627 or RFC 3261, i.e., if there is a previously registered contact address, the S-CSCF replaced the old contact address and associated information with the new contact address and associated information (see bullet e) above). Upon detecting that the S-CSCF does not support the registration procedure as defined in RFC 5626, the UE shall refrain from registering any additional IMS flows for the same private identity as described in RFC 5626; or"
+        ],
+        [
+          3943,
+          "NOTE 7:\tUpon replaces the old contact address with the new contact address, the S-CSCF performs the network initiated deregistration procedure for the previously registered public user identities and the associated old contact address as described in subclause 5.4.1.5. Hence, the UE will receive a NOTIFY request informing the UE about the deregistration of the old contact address. "
+        ],
+        [
+          3944,
+          "-\tif an option-tag \"outbound\" is present, the UE may establish additional IMS flows for the same private identity, as defined in RFC 5626; and"
+        ],
+        [
+          3945,
+          "g)\tif the Via header field contains a \"keep\" header field parameter with a value, unless the UE detects that it is not behind a NAT, start to send keep-alives associated with the registration towards the P-CSCF, as described in RFC 6223.[TS 24.229 Rel-9, clause 5.1.1.2.1]:"
+        ],
+        [
+          3946,
+          "..."
+        ],
+        [
+          3947,
+          "g)\tstore the announcement of media plane security mechanisms the P-CSCF (IMS-ALG) supports labelled with the \"mediasec\" header field parameter specified in subclause 7.2A.7 and received in the Security-Server header field, if any. Once the UE chooses a media security mechanism from the list received in the Security-Server header field from the server, it may initiate that mechanism on a media level when it initiates new media in an existing session; and"
+        ],
+        [
+          3948,
+          "NOTE 9:\tThe \"mediasec\" header field parameter indicates that security mechanisms are specific to the media plane"
+        ],
+        [
+          3949,
+          "h)\tif the Via header field contains a \"keep\" header field parameter with a value, unless the UE detects that it is not behind a NAT, start to send keep-alives associated with the registration towards the P-CSCF, as described in RFC 6223."
+        ],
+        [
+          3950,
+          "[TS 24.229 Rel-10, clause 5.1.1.2.1]:"
+        ],
+        [
+          3951,
+          "On sending an unprotected REGISTER request, the UE shall populate the header fields as follows:"
+        ],
+        [
+          3952,
+          "a)\ta From header field set to the SIP URI that contains the public user identity to be registered;"
+        ],
+        [
+          3953,
+          "b)\ta To header field set to the SIP URI that contains the public user identity to be registered;"
+        ],
+        [
+          3954,
+          "c)\ta Contact header field set to include SIP URI(s) containing the IP address or FQDN of the UE in the hostport parameter. If the UE:"
+        ],
+        [
+          3955,
+          "1)\tsupports GRUU (see table A.4, item A.4/53);"
+        ],
+        [
+          3956,
+          "2)\tsupports multiple registrations;"
+        ],
+        [
+          3957,
+          "3)\thas an IMEI available; or"
+        ],
+        [
+          3958,
+          "4)\thas an MEID available;"
+        ],
+        [
+          3959,
+          "\tthe UE shall include a \"+sip.instance\" header field parameter containing the instance ID. Only the IMEI shall be used for generating an instance ID for a multi-mode UE that supports both 3GPP and 3GPP2 defined radio access networks."
+        ],
+        [
+          3960,
+          "NOTE 2:\tThe requirement placed on the UE to include an instance ID based on the IMEI or the MEID when the UE does not support GRUU and does not support multiple registrations does not imply any additional requirements on the network."
+        ],
+        [
+          3961,
+          "\tIf the UE supports multiple registrations it shall include \"reg-id\" header field parameter as described in RFC 5626 [92]. The UE shall include all supported ICSI values (coded as specified in subclause 7.2A.8.2) in a g.3gpp.icsi-ref media feature tag as defined in subclause 7.9.2 and RFC 3840 [62] for the IMS communication services it intends to use, and IARI values (coded as specified in subclause 7.2A.9.2), for the IMS applications it intends to use in a g.3gpp.iari-ref media feature tag as defined in subclause 7.9.3 and RFC 3840 [62];"
+        ],
+        [
+          3962,
+          "d)\ta Via header field set to include the sent-by field containing the IP address or FQDN of the UE and the port number where the UE expects to receive the response to this request when UDPis used. For TCP, the response is received on the TCP connection on which the request was sent. The UE shall also include a \"rport\" header field parameter with no value in the Via header field. Unless the UE has been configured to not send keep-alives, and unless the UE is directly connected to an IP-CAN for which usage of NAT is not defined, it shall include a \"keep\" header field parameter with no value in the Via header field, in order to indicate support of sending keep-alives associated with the registration, as described in RFC 6223 [143];"
+        ],
+        [
+          3963,
+          "NOTE 3:\tWhen sending the unprotected REGISTER request using UDP, the UE transmit the request from the same IP address and port on which it expects to receive the response to this request."
+        ],
+        [
+          3964,
+          "e)\ta registration expiration interval value of 600 000 seconds as the value desired for the duration of the registration;"
+        ],
+        [
+          3965,
+          "NOTE 4:\tThe registrar (S-CSCF) might decrease the duration of the registration in accordance with network policy. Registration attempts with a registration period of less than a predefined minimum value defined in the registrar will be rejected with a 423 (Interval Too Brief) response."
+        ],
+        [
+          3966,
+          "f)\ta Request-URI set to the SIP URI of the domain name of the home network used to address the REGISTER request;"
+        ],
+        [
+          3967,
+          "g)\tthe Supported header field containing the option-tag \"path\", and"
+        ],
+        [
+          3968,
+          "1)\tif GRUU is supported, the option-tag \"gruu\"; and"
+        ],
+        [
+          3969,
+          "2)\tif multiple registrations is supported, the option-tag \"outbound\"."
+        ],
+        [
+          3970,
+          "h)\tif a security association or TLS session exists, and if available to the UE (as defined in the access technology specific annexes for each access technology), a P-Access-Network-Info header field set as specified for the access network technology (see subclause 7.2A.4); and"
+        ],
+        [
+          3971,
+          "i)\ta Security-Client header field to announce the media plane security mechanisms the UE supports, if any, labelled with the \"mediasec\" header field parameter specified in subclause 7.2A.7."
+        ],
+        [
+          3972,
+          "NOTE 5:\tThe \"mediasec\" header field parameter indicates that security mechanisms are specific to the media plane."
+        ],
+        [
+          3973,
+          "On receiving the 200 (OK) response to the REGISTER request, the UE shall:"
+        ],
+        [
+          3974,
+          "a)\tstore the expiration time of the registration for the public user identities found in the To header field value and bind it either to the respective contact address of the UE or to the registration flow and the associated contact address (if the multiple registration mechanism is used);"
+        ],
+        [
+          3975,
+          "b)\tstore as the default public user identity the first URI on the list of URIs present in the P-Associated-URI header field and bind it to the respective contact address of the UE and the associated set of security associations or TLS session;"
+        ],
+        [
+          3976,
+          "NOTE 6:\tWhen using the respective contact address and associated set of security associations or TLS session, the UE can utilize additional URIs contained in the P-Associated-URI header field and bound it to the respective contact address of the UE and the associated set of security associations or TLS session, e.g. for application purposes."
+        ],
+        [
+          3977,
+          "c)\ttreat the identity under registration as a barred public user identity, if it is not included in the P-Associated-URI header field;"
+        ],
+        [
+          3978,
+          "d)\tstore the list of service route values contained in the Service-Route header field and bind the list either to the contact address or to the registration flow and the associated contact address (if the multiple registration mechanism is used), and the associated set of security associations or TLS session over which the REGISTER request was sent;"
+        ],
+        [
+          3979,
+          "NOTE 7:\tWhen multiple registration mechanism is not used, there will be only one list of service route values bound to a contact address. However, when multiple registration mechanism is used, there will be different list of service route values bound to each registration flow and the associated contact address."
+        ],
+        [
+          3980,
+          "NOTE 8:\tThe UE will use the stored list of service route values to build a proper preloaded Route header field for new dialogs and standalone transactions when using either the respective contact address or to the registration flow and the associated contact address (if the multiple registration mechanism is used), and the associated set of security associations or TLS session."
+        ],
+        [
+          3981,
+          "e)\tfind the Contact header field within the response that matches the one included in the REGISTER request. If this contains a \"pub-gruu\" header field parameter or a \"temp-gruu\" header field parameter or both, and the UE supports GRUU (see table A.4, item A.4/53), then store the value of those parameters as the GRUUs for the UE in association with the public user identity and the contact address that was registered;"
+        ],
+        [
+          3982,
+          "f)\tif the REGISTER request contained the \"reg-id\" and \"+sip.instance\" Contact header field parameter and the \"outbound\" option tag in a Supported header field, the UE shall check whether the option-tag \"outbound\" is present in the Require header field:"
+        ],
+        [
+          3983,
+          "-\tif no option-tag \"outbound\" is present, the UE shall conclude that the S-CSCF does not support the registration procedure as described in RFC 5626, and the S-CSCF has followed the registration procedure as described in RFC 5627 or RFC 3261, i.e., if there is a previously registered contact address, the S-CSCF replaced the old contact address and associated information with the new contact address and associated information (see bullet e) above). Upon detecting that the S-CSCF does not support the registration procedure as defined in RFC 5626, the UE shall refrain from registering any additional IMS flows for the same private identity as described in RFC 5626; or"
+        ],
+        [
+          3984,
+          "NOTE 9:\tUpon replaces the old contact address with the new contact address, the S-CSCF performs the network initiated deregistration procedure for the previously registered public user identities and the associated old contact address as described in subclause 5.4.1.5. Hence, the UE will receive a NOTIFY request informing the UE about the deregistration of the old contact address. "
+        ],
+        [
+          3985,
+          "-\tif an option-tag \"outbound\" is present, the UE may establish additional IMS flows for the same private identity, as defined in RFC 5626;"
+        ],
+        [
+          3986,
+          "g)\tstore the announcement of media plane security mechanisms the P-CSCF (IMS-ALG) supports labelled with the \"mediasec\" header field parameter specified in subclause 7.2A.7 and received in the Security-Server header field, if any. Once the UE chooses a media security mechanism from the list received in the Security-Server header field from the server, it may initiate that mechanism on a media level when it initiates new media in an existing session; and"
+        ],
+        [
+          3987,
+          "NOTE 10:\tThe \"mediasec\" header field parameter indicates that security mechanisms are specific to the media plane."
+        ],
+        [
+          3988,
+          "h)\tif the Via header field contains a \"keep\" header field parameter with a value, unless the UE detects that it is not behind a NAT, start to send keep-alives associated with the registration towards the P-CSCF, as described in RFC 6223."
+        ],
+        [
+          3989,
+          "[TS 24.229, clause 5.1.1.2.2]:"
+        ],
+        [
+          3990,
+          "On sending a REGISTER request, as defined in subclause 5.1.1.2.1, the UE shall additionally populate the header fields as follows:"
+        ],
+        [
+          3991,
+          "a)\tan Authorization header field, with:"
+        ],
+        [
+          3992,
+          "-\tthe \"username\" header field parameter, set to the value of the private user identity;"
+        ],
+        [
+          3993,
+          "-\tthe \"realm\" header field parameter, set to the domain name of the home network;"
+        ],
+        [
+          3994,
+          "-\tthe \"uri\" header field parameter, set to the SIP URI of the domain name of the home network;"
+        ],
+        [
+          3995,
+          "-\tthe \"nonce\" header field parameter, set to an empty value; and"
+        ],
+        [
+          3996,
+          "-\tthe \"response\" header field parameter, set to an empty value;"
+        ],
+        [
+          3997,
+          "NOTE 1:\tIf the UE specifies its FQDN in the hostport parameter in the Contact header field and in the sent-by field in the Via header field, then it has to ensure that the given FQDN will resolve (e.g., by reverse DNS lookup) to the IP address that is bound to the security association."
+        ],
+        [
+          3998,
+          "NOTE 2:\tThe UE associates two ports, a protected client port and a protected server port, with each pair of security association. For details on the selection of the port values see 3GPP TS 33.203."
+        ],
+        [
+          3999,
+          "b)\tadditionally for the Contact header field, if the REGISTER request is protected by a security association, include the protected server port value in the hostport parameter;"
+        ],
+        [
+          4000,
+          "c)\tadditionally for the Via header field, for UDP, if the REGISTER request is protected by a security association, include the protected server port value in the sent-by field; and"
+        ],
+        [
+          4001,
+          "d)\ta Security-Client header field set to specify the signalling plane security mechanism the UE supports, the IPsec layer algorithms the UE supports and the parameters needed for the security association setup. The UE shall support the setup of two pairs of security associations as defined in 3GPP TS 33.203. The syntax of the parameters needed for the security association setup is specified in annex H of 3GPP TS 33.203. The UE shall support the \"ipsec-3gpp\" security mechanism, as specified in RFC 3329. The UE shall support the IPsec layer algorithms for integrity and confidentiality protection as defined in 3GPP TS 33.203, and shall announce support for them according to the procedures defined in RFC 3329."
+        ],
+        [
+          4002,
+          "On receiving the 200 (OK) response to the REGISTER request defined in subclause 5.1.1.2.1, the UE shall additionally:"
+        ],
+        [
+          4003,
+          "1)\tIf the UE supports multiple registrations and the REGISTER request contained the \"+sip.instance\" header field parameter and the \"reg-id\" header field parameter in the Contact header field, and the \"outbound\" option-tag in the Supported header field, the UE shall check whether the option-tag \"outbound\" is present in the Require header field. If the option-tag \"outbound\" is present, then the UE shall use the bidirectional flow as defined in RFC 5626 as follows:"
+        ],
+        [
+          4004,
+          "a)\tfor UDP, the bidirectional flow consists of two unidirectional flows, i.e. the first unidirectional flow is identified with the UE's protected client port, the P-CSCF's protected server port, and the respective IP addresses. The UE uses this flow to send the requests and responses to the P-CSCF. The second unidirectional flow is identified with the P-CSCF's protected client port, the UE's protected server port and the IP addresses. The second unidirectional flow is used by the UE to receive the requests and responses from the P-CSCF; or"
+        ],
+        [
+          4005,
+          "b)\tfor TCP, the bidirectional flow is the TCP connection between the UE and the P-CSCF. This TCP connection was established by the UE, i.e. from the UE's protected client port and the UE's IP address to the P-CSCF's protected server port and the P-CSCF's IP address. This TCP connection is used to exchange SIP messages between the UE and the P-CSCF; and"
+        ],
+        [
+          4006,
+          "2)\tset the security association lifetime to the longest of either the previously existing security association lifetime (if available), or the lifetime of the just completed registration plus 30 seconds."
+        ],
+        [
+          4007,
+          "NOTE 3:\tIf the UE receives Authentication-Info, it will proceed as described in RFC 3310."
+        ],
+        [
+          4008,
+          "When a 401 (Unauthorized) response to a REGISTER is received the UE shall behave as described in subclause 5.1.1.5.1."
+        ],
+        [
+          4009,
+          "[TS 24.229, clause 5.1.1.5.1]:"
+        ],
+        [
+          4010,
+          "Authentication is performed during initial registration. A UE can be re-authenticated during subsequent reregistrations, deregistrations or registrations of additional public user identities. When the network requires authentication or re-authentication of the UE, the UE will receive a 401 (Unauthorized) response to the REGISTER request."
+        ],
+        [
+          4011,
+          "On receiving a 401 (Unauthorized) response to the REGISTER request, the UE shall:"
+        ],
+        [
+          4012,
+          "1)\textract the RAND and AUTN parameters;"
+        ],
+        [
+          4013,
+          "2)\tcheck the validity of a received authentication challenge, as described in 3GPP TS 33.203 i.e. the locally calculated XMAC must match the MAC parameter derived from the AUTN part of the challenge; and the SQN parameter derived from the AUTN part of the challenge must be within the correct range; and"
+        ],
+        [
+          4014,
+          "3)\tcheck the existence of the Security-Server header field as described in RFC 3329. If the Security-Server header field is not present or it does not contain the parameters required for the setup of the set of security associations (see annex H of 3GPP TS 33.203), the UE shall abandon the authentication procedure and send a new REGISTER request with a new Call-ID."
+        ],
+        [
+          4015,
+          "[TS 24.229 Rel-8, clause 5.1.1.5.1]:"
+        ],
+        [
+          4016,
+          "In the case that the 401 (Unauthorized) response to the REGISTER request is deemed to be valid the UE shall:"
+        ],
+        [
+          4017,
+          "1)\tcalculate the RES parameter and derive the keys CK and IK from RAND as described in 3GPP TS 33.203;"
+        ],
+        [
+          4018,
+          "2)\tset up a temporary set of security associations for this registration based on the static list and parameters the UE received in the 401 (Unauthorized) response and its capabilities sent in the Security-Client header field in the REGISTER request. The UE sets up the temporary set of security associations using the most preferred mechanism and algorithm returned by the P-CSCF and supported by the UE and using IK and CK (only if encryption enabled) as the shared key. The UE shall use the parameters received in the Security-Server header field to setup the temporary set of security associations. The UE shall set a temporary SIP level lifetime for the temporary set of security associations to the value of reg-await-auth timer; and"
+        ],
+        [
+          4019,
+          "3)\tsend another REGISTER request towards the protected server port indicated in the response using the temporary set of security associations to protect the message. The header fields are populated as defined for the initial REGISTER request that was challenged with the received 401 (Unauthorized) response, with the addition that the UE shall include an Authorization header field containing:"
+        ],
+        [
+          4020,
+          "-\tthe \"realm\" header field parameter set to the value as received in the \"realm\" WWW-Authenticate header field parameter;"
+        ],
+        [
+          4021,
+          "-\tthe \"username\" header field parameter, set to the value of the private user identity;"
+        ],
+        [
+          4022,
+          "-\tthe \"response\" header field parameter that contains the RES parameter, as described in RFC 3310;"
+        ],
+        [
+          4023,
+          "-\tthe \"uri\" header field parameter, set to the SIP URI of the domain name of the home network;"
+        ],
+        [
+          4024,
+          "-\tthe \"algorithm\" header field parameter, set to the value received in the 401 (Unauthorized) response; and"
+        ],
+        [
+          4025,
+          "-\tthe \"nonce\" header field parameter, set to the value received in the 401 (Unauthorized) response. "
+        ],
+        [
+          4026,
+          "\tThe UE shall also insert the Security-Client header field that is identical to the Security-Client header field that was included in the previous REGISTER request (i.e. the REGISTER request that was challenged with the received 401 (Unauthorized) response). The UE shall also insert the Security-Verify header field into the request, by mirroring in it the content of the Security-Server header field received in the 401 (Unauthorized) response. The UE shall set the Call-ID of the security association protected REGISTER request which carries the authentication challenge response to the same value as the Call-ID of the 401 (Unauthorized) response which carried the challenge."
+        ],
+        [
+          4027,
+          "[TS 24.229 Rel-9, clause 5.1.1.5.1]:"
+        ],
+        [
+          4028,
+          "In the case that the 401 (Unauthorized) response to the REGISTER request is deemed to be valid the UE shall:"
+        ],
+        [
+          4029,
+          "1)\tcalculate the RES parameter and derive the keys CK and IK from RAND as described in 3GPP TS 33.203 [19];"
+        ],
+        [
+          4030,
+          "2)\tset up a temporary set of security associations for this registration based on the static list and parameters the UE received in the 401 (Unauthorized) response and its capabilities sent in the Security-Client header field in the REGISTER request. The UE sets up the temporary set of security associations using the most preferred mechanism and algorithm returned by the P-CSCF and supported by the UE and using IK and CK (only if encryption enabled) as the shared key. The UE shall use the parameters received in the Security-Server header field to setup the temporary set of security associations. The UE shall set a temporary SIP level lifetime for the temporary set of security associations to the value of reg-await-auth timer;"
+        ],
+        [
+          4031,
+          "3)\tstore the announcement of the media plane security mechanisms the P-CSCF (IMS-ALG) supports received in the Security-Server header field and labelled with the \"mediasec\" header field parameter specified in subclause 7.2A.7, if any; and"
+        ],
+        [
+          4032,
+          "NOTE 1:\tThe \"mediasec\" header field parameter indicates that security mechanisms are specific to the media plane."
+        ],
+        [
+          4033,
+          "4)\tsend another REGISTER request towards the protected server port indicated in the response using the temporary set of security associations to protect the message. The header fields are populated as defined for the initial REGISTER request that was challenged with the received 401 (Unauthorized) response, with the addition that the UE shall include an Authorization header field containing:"
+        ],
+        [
+          4034,
+          "-\tthe \"realm\" header field parameter set to the value as received in the \"realm\" WWW-Authenticate header field parameter;"
+        ],
+        [
+          4035,
+          "-\tthe \"username\" header field parameter, set to the value of the private user identity;"
+        ],
+        [
+          4036,
+          "-\tthe \"response\" header field parameter that contains the RES parameter, as described in RFC 3310 [49];"
+        ],
+        [
+          4037,
+          "-\tthe \"uri\" header field parameter, set to the SIP URI of the domain name of the home network;"
+        ],
+        [
+          4038,
+          "-\tthe \"algorithm\" header field parameter, set to the value received in the 401 (Unauthorized) response; and"
+        ],
+        [
+          4039,
+          "-\tthe \"nonce\" header field parameter, set to the value received in the 401 (Unauthorized) response. "
+        ],
+        [
+          4040,
+          "\tThe UE shall also insert the Security-Client header field that is identical to the Security-Client header field that was included in the previous REGISTER request (i.e. the REGISTER request that was challenged with the received 401 (Unauthorized) response). The UE shall also insert the Security-Verify header field into the request, by mirroring in it the content of the Security-Server header field received in the 401 (Unauthorized) response. The UE shall set the Call-ID of the security association protected REGISTER request which carries the authentication challenge response to the same value as the Call-ID of the 401 (Unauthorized) response which carried the challenge."
+        ],
+        [
+          4041,
+          "[TS 24.229, clause 5.1.1.5.1]:"
+        ],
+        [
+          4042,
+          "On receiving the 200 (OK) response for the security association protected REGISTER request registering a public user identity with the associated contact address, the UE shall:"
+        ],
+        [
+          4043,
+          "-\tchange the temporary set of security associations to a newly established set of security associations, i.e. set its SIP level lifetime to the longest of either the previously existing set of security associations SIP level lifetime, or the lifetime of the just completed registration plus 30 seconds; and"
+        ],
+        [
+          4044,
+          "-\tif this is the only set of security associations available toward the P-CSCF, use the newly established set of security associations for further messages sent towards the P-CSCF. If there are additional sets of security associations (e.g. due to registration of multiple contact addresses), the UE can either use them or use the newly established set of security associations for further messages sent towards the P-CSCF as appropriate."
+        ],
+        [
+          4045,
+          "NOTE 2:\tIf the UE has registered multiple contact addresses, the UE can either send requests towards the P-CSCF over the newly established set of security associations, or use different UE's contact address and associated set of security associations when sending the requests towards the P-CSCF. Responses towards the P-CSCF that are sent via UDP will be sent over the same set of security associations that the related request was received on. Responses towards the P-CSCF that are sent via TCP will be sent over the same set of security associations that the related request was received on."
+        ],
+        [
+          4046,
+          "When the first request or response protected with the newly established set of security associations is received from the P-CSCF or when the lifetime of the old set of security associations expires, the UE shall delete the old set of security associations and related keys it may have with the P-CSCF after all SIP transactions that use the old set of security associations are completed."
+        ],
+        [
+          4047,
+          "[TS 24.229, clause 5.1.1.3]:"
+        ],
+        [
+          4048,
+          "Upon receipt of a 2xx response to the initial registration, the UE shall subscribe to the reg event package for the public user identity registered at the user's registrar (S-CSCF) as described in RFC 3680."
+        ],
+        [
+          4049,
+          "The UE shall subscribe to the reg event package upon registering a new contact address via an initial registration procedure. If the UE receives a NOTIFY request via the newly established subscription dialog and via the previously established subscription dialogs (there will be at least one), the UE may terminate the previously established subscription dialogs and keep only the newly established subscription dialog."
+        ],
+        [
+          4050,
+          "The UE shall use the default public user identity for subscription to the registration-state event package, if the public user identity that was used for initial registration is a barred public user identity. The UE may use either the default public user identity or the public user identity used for initial registration for the subscription to the registration-state event package, if the initial public user identity that was used for initial registration is not barred."
+        ],
+        [
+          4051,
+          "[TS 24.229 Rel-8, clause 5.1.1.3]:"
+        ],
+        [
+          4052,
+          "On sending a SUBSCRIBE request, the UE shall populate the header fields as follows:"
+        ],
+        [
+          4053,
+          "a)\ta Request-URI set to the resource to which the UE wants to be subscribed to, i.e. to a SIP URI that contains the public user identity used for subscription;"
+        ],
+        [
+          4054,
+          "b)\ta From header field set to a SIP URI that contains the public user identity used for subscription;"
+        ],
+        [
+          4055,
+          "c)\ta To header field set to a SIP URI that contains the public user identity used for subscription;"
+        ],
+        [
+          4056,
+          "d)\tan Event header field set to the \"reg\" event package;"
+        ],
+        [
+          4057,
+          "e)\tan Expires header field set to 600 000 seconds as the value desired for the duration of the subscription;"
+        ],
+        [
+          4058,
+          "f)\tif available to the UE (as defined in the access technology specific annexes for each access technology), a P-Access-Network-Info header field set as specified for the access network technology (see subclause 7.2A.4); and"
+        ],
+        [
+          4059,
+          "g)\ta Contact header field set to contain:."
+        ],
+        [
+          4060,
+          "the same IP address or FQDN, and if multiple registrations is supported, its instance ID (\"+sip.instance\" header field parameter) and an \"ob\" SIP URI parameter as described in RFC 5626;"
+        ],
+        [
+          4061,
+          "-\tif IMS AKA or SIP digest with TLS is being used as a security mechanism, the protected server port value as in the initial registration; and"
+        ],
+        [
+          4062,
+          "-\tif SIP digest without TLS, NASS-IMS bundled authentication or GPRS-IMS-Bundled authentication is being used as a security mechanism, the port value of an unprotected port where the UE expects to receive subsequent mid-dialog requests. The UE shall set the unprotected port value to the port value used in the initial REGISTER request."
+        ],
+        [
+          4063,
+          "Upon receipt of a 2xx response to the SUBSCRIBE request, the UE shall store the information for the established dialog and the expiration time as indicated in the Expires header field of the received response."
+        ],
+        [
+          4064,
+          "[TS 24.229 Rel-9, clause 5.1.1.3]:"
+        ],
+        [
+          4065,
+          "On sending a SUBSCRIBE request, the UE shall populate the header fields as follows:"
+        ],
+        [
+          4066,
+          "a)\ta Request-URI set to the resource to which the UE wants to be subscribed to, i.e. to a SIP URI that contains the public user identity used for subscription;"
+        ],
+        [
+          4067,
+          "b)\ta From header field set to a SIP URI that contains the public user identity used for subscription;"
+        ],
+        [
+          4068,
+          "c)\ta To header field set to a SIP URI that contains the public user identity used for subscription;"
+        ],
+        [
+          4069,
+          "d)\tan Event header field set to the \"reg\" event package;"
+        ],
+        [
+          4070,
+          "e)\tan Expires header field set to 600 000 seconds as the value desired for the duration of the subscription;"
+        ],
+        [
+          4071,
+          "f)\tvoid; and"
+        ],
+        [
+          4072,
+          "g)\tvoid."
+        ],
+        [
+          4073,
+          "Upon receipt of a 2xx response to the SUBSCRIBE request, the UE shall store the information for the established dialog and the expiration time as indicated in the Expires header field of the received response."
+        ],
+        [
+          4074,
+          "[TS 24.229, clause 5.1.2.1]:"
+        ],
+        [
+          4075,
+          "Upon receipt of a 2xx response to the SUBSCRIBE request the UE shall maintain the generated dialog (identified by the values of the Call-ID header field, and the values of tags in To and From header fields)."
+        ],
+        [
+          4076,
+          "Upon receipt of a NOTIFY request on the dialog which was generated during subscription to the reg event package the UE shall perform the following actions:"
+        ],
+        [
+          4077,
+          "-\tif a state attribute \"active\", i.e. registered is received for one or more public user identities, the UE shall store the indicated public user identities as registered;"
+        ],
+        [
+          4078,
+          "-\tif a state attribute \"active\" is received, and the UE supports GRUU (see table A.4, item A.4/53), then for each public user identity indicated in the notification that contains a <pub-gruu> element or a <temp-gruu> element or both (as defined in RFC 5628) then the UE shall store the value of those elements in association with the public user identity;"
+        ],
+        [
+          4079,
+          "-\tif a state attribute \"terminated\", i.e. deregistered is received for one or more public user identities, the UE shall store the indicated public user identities as deregistered and shall remove any associated GRUUs."
+        ],
+        [
+          4080,
+          "NOTE 1:\tThere may be public user identities which are automatically registered within the registrar (S-CSCF) of the user upon registration of one public user identity or when S-CSCF receives a Push-Profile-Request (PPR) from the HSS (as described in 3GPP TS 29.228) changing the status of a public user identity associated with a registered implicit set from barred to non-barred. Usually these automatically or implicitly registered public user identities belong to the same service profile of the user and they might not be available within the UE. The implicitly registered public user identities may also belong to different service profiles. The here-described procedures provide a different mechanism (to the 200 (OK) response to the REGISTER request) to inform the UE about these automatically registered public user identities."
+        ],
+        [
+          4081,
+          "NOTE 2:\tRFC 5628 provides guidance on the management of temporary GRUUs, utilizing information provided in the reg event notification."
+        ],
+        [
+          4082,
+          "[TS 24.229, clause 5.1.2A.1.1]:"
+        ],
+        [
+          4083,
+          "The procedures of this subclause are general to all requests and responses, except those for the REGISTER method."
+        ],
+        [
+          4084,
+          "When the UE sends any request using either a given contact address, or to the registration flow and the associated contact address the UE shall:"
+        ],
+        [
+          4085,
+          "-\tif IMS AKA is in use as a security mechanism:"
+        ],
+        [
+          4086,
+          "a)\tif the UE has not obtained a GRUU, populate the Contact header field of the request with the protected server port and the respective contact address; and"
+        ],
+        [
+          4087,
+          "b)\tinclude the protected server port and the respective contact address in the Via header field entry relating to the UE;"
+        ],
+        [
+          4088,
+          "-\tif SIP digest without TLS is in use as a security mechanism:"
+        ],
+        [
+          4089,
+          "a)\tif the UE has not obtained a GRUU, populate the Contact header field of the request with the port value of an unprotected port and the contact address where the UE expects to receive subsequent mid-dialog requests; and"
+        ],
+        [
+          4090,
+          "b)\tpopulate the Via header field of the request with the port value of an unprotected port and the respective contact address where the UE expects to receive responses to the request; "
+        ],
+        [
+          4091,
+          "..."
+        ],
+        [
+          4092,
+          "If available to the UE (as defined in the access technology specific annexes for each access technology), the UE shall insert a P-Access-Network-Info header field into any request for a dialog, any subsequent request (except ACK requests and CANCEL requests) or response (except CANCEL responses) within a dialog or any request for a standalone method (see subclause 7.2A.4)."
+        ],
+        [
+          4093,
+          "NOTE 13:\tDuring the dialog, the points of attachment to the IP-CAN of the UE may change (e.g. UE connects to different cells). The UE will populate the P-Access-Network-Info header field in any request or response within a dialog with the current point of attachment to the IP-CAN (e.g. the current cell information)."
+        ],
+        [
+          4094,
+          "The UE shall build a proper preloaded Route header field value for all new dialogs and standalone transactions. The UE shall build a list of Route header field values made out of the following, in this order:"
+        ],
+        [
+          4095,
+          "a)\tthe P-CSCF URI containing the IP address or the FQDN learnt through the P-CSCF discovery procedures; and"
+        ],
+        [
+          4096,
+          "b)\tthe P-CSCF port based on the security mechanism in use:"
+        ],
+        [
+          4097,
+          "-\tif IMS AKA or SIP digest with TLS is in use as a security mechanism, the protected server port learnt during the registration procedure;"
+        ],
+        [
+          4098,
+          "-\tif SIP digest without TLS, NASS-IMS bundled authentication or GPRS-IMS-Bundled authentication is in use as a security mechanism, the unprotected server port used during the registration procedure;"
+        ],
+        [
+          4099,
+          "c)\tand the values received in the Service-Route header field saved from the 200 (OK) response to the last registration or re-registration of the public user identity with associated contact address. "
+        ],
+        [
+          4100,
+          "[TS 24.341, clause 5.3.2.2]"
+        ],
+        [
+          4101,
+          "On sending a REGISTER request, the SM-over-IP receiver shall indicate its capability to receive traditional short messages over IMS network by including a \"+g.3gpp.smsip\" parameter into the Contact header according to RFC 3840."
+        ],
+        [
+          4102,
+          "Reference(s)"
+        ],
+        [
+          4103,
+          "3GPP TS 24.229 [10], clauses 5.1.1.1A, 5.1.1.2.1 5.1.1.2, 5.1.1.35.1.1.5.1, 5.1.2.1, 5.1.2A.1, C.2 and TS 24.341, clause 5.3.2.2."
+        ],
+        [
+          4104,
+          "8.1.3\tTest purpose"
+        ],
+        [
+          4105,
+          "1)\tTo verify that UE correctly derives a private user identity, a temporary public user identity and a home network domain name from the IMSI parameter in the USIM if no ISIM is available on the UICC, according to the procedures described in 3GPP TS 23.003 [32] clause 13 or alternatively uses the values retrieved from ISIM, if ISIM is present; and"
+        ],
+        [
+          4106,
+          "2)\tTo verify that the UE sends a correctly composed initial REGISTER request to S-CSCF via the discovered P-CSCF, according to 3GPP TS 24.229 [10] clause 5.1.1.2; and TS 24.341 [90] clause 5.3.2.2 (if UE supports SM-over-IP receiver marked as yes)"
+        ],
+        [
+          4107,
+          "3)\tTo verify that after receiving a valid 401 (Unauthorized) response from S-CSCF for the initial REGISTER sent, the UE correctly authenticates itself by sending another REGISTER request with correctly composed Authorization header using AKAv1-MD5 algorithm (as described in RFC 3310 [17]); and"
+        ],
+        [
+          4108,
+          "4)\tTo verify that the UE announces to support the \"ipsec-3gpp\" security mechanism together the IPsec layer algorithms for integrity (Rel-5 onwards) and confidentiality (Rel-6 onwards) protection (as defined in 3GPP TS 33.203)according to the procedures defined in RFC 3329 [21]; and"
+        ],
+        [
+          4109,
+          "5)\tTo verify that the UE supports the IPsec layer algorithms for integrity (Rel-5 onwards) and confidentiality (Rel-6 onwards) protection as defined in 3GPP TS 33.203and uses the one that is preferred by the P-CSCF according to the procedures defined in RFC 3329 [21]; and"
+        ],
+        [
+          4110,
+          "6)\tTo verify that the UE sets up two pairs of security associations as defined in 3GPP TS 33.203 [14] clause 7 and uses those for sending the REGISTER request to authenticate itself and for sending any other subsequent request; and"
+        ],
+        [
+          4111,
+          "7)\tTo verify that after receiving a valid 200 OK response from S-CSCF for the REGISTER sent for authentication, the UE stores the default public user identity and information about barred user identities; and"
+        ],
+        [
+          4112,
+          "8)\tTo verify that after receiving a valid 200 OK response from S-CSCF for the REGISTER sent for authentication, the UE subscribes to the reg event package for the public user identity registered at the users registrar (S-CSCF) as described in RFC 3680 [22]; and"
+        ],
+        [
+          4113,
+          "9)\tTo verify that the UE uses the default public user identity for subscription to the registration-state event package, when the public user identity that was used for initial registration is a barred public user identity; and"
+        ],
+        [
+          4114,
+          "10)\tTo verify that the UE uses the stored service route for routing the SUBSCRIBE sent; and"
+        ],
+        [
+          4115,
+          "11)\tTo verify that after receiving a valid 200 OK response from S-CSCF to the SUBSCRIBE sent for registration event package, the UE maintains the generated dialog; and"
+        ],
+        [
+          4116,
+          "12)\tTo verify that after receiving a valid NOTIFY for the registration event package, the UE will update and store the registration state of the indicated public user identities accordingly (as specified in RFC 3680 [22] clause 5); and"
+        ],
+        [
+          4117,
+          "13)\tTo verify that the UE responds the received valid NOTIFY with 200 OK."
+        ],
+        [
+          4118,
+          "8.1.4\tMethod of test"
+        ],
+        [
+          4119,
+          "Initial conditions"
+        ],
+        [
+          4120,
+          "UE contains either ISIM and USIM applications or only USIM application on UICC. UE is not registered to IMS services."
+        ],
+        [
+          4121,
+          "SS is configured with the IMSI within the USIM application, the home domain name, public and private user identities together with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) that is configured on the UICC card equipped into the UE. SS is listening to SIP default port 5060 for both UDP and TCP protocols. SS is able to perform AKAv1-MD5 authentication algorithm for that IMPI, according to 3GPP TS 33.203 [14] clause 6.1 and RFC 3310 [17]."
+        ],
+        [
+          4122,
+          "Test procedure"
+        ],
+        [
+          4123,
+          "1-11)\tExecute the generic test procedure in Annex C.2 up to the last step."
+        ],
+        [
+          4124,
+          "NOTE:\tThis test case shall be run twice in order to test that the UE correctly supports both HMAC-MD5-96 and HMAC-SHA-1-96 algorithms. For each test round the name of the corresponding algorithm shall be configured into px_IMS_IpSecAlgorithm PIXIT."
+        ],
+        [
+          4125,
+          "Expected sequence"
+        ],
+        [
+          4126,
+          "Step"
+        ],
+        [
+          4127,
+          "Direction"
+        ],
+        [
+          4128,
+          "Message"
+        ],
+        [
+          4129,
+          "Comment"
+        ],
+        [
+          4130,
+          ""
+        ],
+        [
+          4131,
+          "UE"
+        ],
+        [
+          4132,
+          "SS"
+        ],
+        [
+          4133,
+          ""
+        ],
+        [
+          4134,
+          ""
+        ],
+        [
+          4135,
+          "1-11"
+        ],
+        [
+          4136,
+          ""
+        ],
+        [
+          4137,
+          " Steps defined in C.2"
+        ],
+        [
+          4138,
+          " IMS Registration"
+        ],
+        [
+          4139,
+          ""
+        ],
+        [
+          4140,
+          "8.1.5\tTest requirements"
+        ],
+        [
+          4141,
+          "If the UICC card equipped to the UE contains ISIM, the UE must read the following parameters from ISIM (instead of deriving them from USIM) and use they for the REGISTER requests:"
+        ],
+        [
+          4142,
+          "-\tthe private user identity; and"
+        ],
+        [
+          4143,
+          "-\tthe temporary public user identity; and"
+        ],
+        [
+          4144,
+          "-\tthe home network domain name."
+        ],
+        [
+          4145,
+          "Step 3: SS shall check that in accordance to the 3GPP TS 24.229 [10] clause 5.1.1.5 the UE sends another REGISTER request as follows:"
+        ],
+        [
+          4146,
+          "a)\tthe UE sets up the temporary set of security associations between the ports announced in Security-Client header (UE) in the REGISTER request and Security-Server header (SS) in the 401 Unauthorized response; and"
+        ],
+        [
+          4147,
+          "b)\tthe UE uses the most preferred mechanism and algorithm returned by the SS and supported by the UE for the temporary set of security associations; and"
+        ],
+        [
+          4148,
+          "c)\tthe UE uses IK derived from RAND as the shared key for integrity and confidentiality protection (if the UE supports IPSec ESP confidentiality protection) for the temporary set of security associations; and"
+        ],
+        [
+          4149,
+          "d)\tthe UE sends the second REGISTER over the temporary set of security associations; and"
+        ],
+        [
+          4150,
+          "Step 5: SS shall check that, in accordance to the 3GPP TS 24.229 [10] clause 5.1.1.3, the UE sends a SUBSCRIBE request for registration event package over the newly established set of security associations. "
+        ],
+        [
+          4151,
+          "NOTE:\tIf the UE specifies its FQDN in the host parameter in the Contact header and in the sent-by field in the Via header (within any of the request sent by the UE), then SS has to ensure that the given FQDN will resolve (e.g., by reverse DNS lookup) to the IP address that is bound to the security association (or to the unprotected port in the initial REGISTER)."
+        ]
+      ]
+    },
+    {
+      "ref": "8.2",
+      "title": "User Initiated Re-Registration",
+      "source_line_start": 4152,
+      "source_line_end": 4344,
+      "next_line": 4345,
+      "next_line_text": "8.3\tMobile Initiated Deregistration",
+      "heading_text": "8.2\tUser Initiated Re-Registration",
+      "used_by": [
+        "TC-014"
+      ],
+      "key_markers": [
+        "8.2.1\tDefinition",
+        "8.2.2\tConformance requirement",
+        "8.2.3\tTest purpose",
+        "8.2.4\tMethod of test",
+        "8.2.5\tTest requirements",
+        "60 seconds",
+        "600 seconds",
+        "1200 seconds",
+        "Security-Client",
+        "P-Associated-URI"
+      ],
+      "subsection_headers": [
+        {
+          "line": 4153,
+          "number": "8.2.1",
+          "title": "Definition",
+          "text": "8.2.1\tDefinition "
+        },
+        {
+          "line": 4155,
+          "number": "8.2.2",
+          "title": "Conformance requirement",
+          "text": "8.2.2\tConformance requirement"
+        },
+        {
+          "line": 4209,
+          "number": "8.2.3",
+          "title": "Test purpose",
+          "text": "8.2.3\tTest purpose"
+        },
+        {
+          "line": 4214,
+          "number": "8.2.4",
+          "title": "Method of test",
+          "text": "8.2.4\tMethod of test"
+        },
+        {
+          "line": 4265,
+          "number": null,
+          "title": "Specific Message Contents",
+          "text": "Specific Message Contents"
+        },
+        {
+          "line": 4341,
+          "number": "8.2.5",
+          "title": "Test requirements",
+          "text": "8.2.5\tTest requirements"
+        }
+      ],
+      "source_note": null,
+      "raw_rows": [
+        [
+          4152,
+          "8.2\tUser Initiated Re-Registration"
+        ],
+        [
+          4153,
+          "8.2.1\tDefinition "
+        ],
+        [
+          4154,
+          "Test to verify that the UE can re-register a previously registered public user identity at any time. This process is described in 3GPP TS 24.229 [10], clause 5.1.1.4. "
+        ],
+        [
+          4155,
+          "8.2.2\tConformance requirement"
+        ],
+        [
+          4156,
+          "[TS 24.229, clause 5.1.1.4.1]:"
+        ],
+        [
+          4157,
+          "The UE can perform the reregistration of a previously registered public user identity bound to any one of its contact addresses and the associated set of security associations or TLS sessions at any time after the initial registration has been completed."
+        ],
+        [
+          4158,
+          "The UE can perform the reregistration of a previously registered public user identity over any existing set of security associations or TLS session that is associated with the related contact address."
+        ],
+        [
+          4159,
+          "The UE can perform the reregistration of a previously registered public user identity via an initial registration as specified in subclause 5.1.1.2, when binding the previously registered public user identity to new contact address."
+        ],
+        [
+          4160,
+          "The UE can perform registration of additional public user identities at any time after the initial registration has been completed. The UE shall perform the registration of additional public user identities either:"
+        ],
+        [
+          4161,
+          "-\tover the existing set of security associations or TLS sessions, if appropriate to the security mechanism in use, that is associated with the related contact address; or"
+        ],
+        [
+          4162,
+          "-\tvia an initial registration as specified in subclause 5.1.1.2."
+        ],
+        [
+          4163,
+          "The UE can fetch bindings as defined in RFC 3261 at any time after the initial registration has been completed. The procedure for fetching bindings is the same as for a reregistration except that the REGISTER request does not contain a Contact header field."
+        ],
+        [
+          4164,
+          "Unless either the user or the application within the UE has determined that a continued registration is not required the UE shall reregister an already registered public user identity either 600 seconds before the expiration time if the previous registration was for greater than 1200 seconds, or when half of the time has expired if the previous registration was for 1200 seconds or less, or when the UE intends to update its capabilities according to RFC 3840 or when the UE needs to modify the ICSI values that the UE intends to use in a g.3gpp.icsi-ref media feature tag or IARI values that the UE intends to use in the g.3gpp.iari-ref media feature tag."
+        ],
+        [
+          4165,
+          "When sending a protected REGISTER request, the UE shall use a security association or TLS session associated with the contact address used to send the request, see 3GPP TS 33.203, established as a result of an earlier initial registration."
+        ],
+        [
+          4166,
+          "The UE shall extract or derive a public user identity, the private user identity, and the domain name to be used in the Request-URI in the registration, according to the procedures described in subclause 5.1.1.1A or subclause 5.1.1.1B."
+        ],
+        [
+          4167,
+          "On sending a REGISTER request that does not contain a challenge response, the UE shall populate the header fields as follows:"
+        ],
+        [
+          4168,
+          "a)\ta From header field set to the SIP URI that contains the public user identity to be registered;"
+        ],
+        [
+          4169,
+          "b)\ta To header field set to the SIP URI that contains the public user identity to be registered;"
+        ],
+        [
+          4170,
+          "c)\ta Contact header field set to include SIP URI(s) that contain(s) in the hostport parameter the IP address or FQDN of the UE, and containing the instance ID of the UE in the \"+sip.instance\" header field parameter, if the UE supports GRUU (see table A.4, item A.4/53) or multiple registrations. If the UE support multiple registrations, it shall include \"reg-id\" header field as described in RFC 5626. The UE shall include all supported ICSI values (coded as specified in subclause 7.2A.8.2) in a g.3gpp.icsi-ref media feature tag as defined in subclause 7.9.2 and RFC 3840 for the IMS communication it intends to use, and IARI values (coded as specified in subclause 7.2A.9.2), for the IMS applications it intends to use in a g.3gpp.iari-ref media feature tag as defined in subclause 7.9.3 and RFC 3840;"
+        ],
+        [
+          4171,
+          "d)\ta Via header field set to include the IP address or FQDN of the UE in the sent-by field. For the TCP, the response is received on the TCP connection on which the request was sent. If the UE previously has previously negotiated sending of keep-alives associated with the registration, it shall include a \"keep\" header field parameter with no value in the Via header field, in order to indicate continuous support to send keep-alives, as described in draft-ietf-sipcore-keep;"
+        ],
+        [
+          4172,
+          "e)\ta registration expiration interval value, set to 600 000 seconds as the value desired for the duration of the registration;"
+        ],
+        [
+          4173,
+          "NOTE 1:\tThe registrar (S-CSCF) might decrease the duration of the registration in accordance with network policy. Registration attempts with a registration period of less than a predefined minimum value defined in the registrar will be rejected with a 423 (Interval Too Brief) response."
+        ],
+        [
+          4174,
+          "f)\ta Request-URI set to the SIP URI of the domain name of the home network used to address the REGISTER request;"
+        ],
+        [
+          4175,
+          "g)\tthe Supported header field containing the option-tag \"path\", and if GRUU is supported, the option-tag \"gruu\";"
+        ],
+        [
+          4176,
+          "h)\tif available to the UE (as defined in the access technology specific annexes for each access technology), a P-Access-Network-Info header field set as specified for the access network technology (see subclause 7.2A.4); and"
+        ],
+        [
+          4177,
+          "i)\ta Security-Client header field to announce the media plane security mechanisms the UE supports, if any, according to the procedures described in draft-dawes-dispatch-mediasec-parameter."
+        ],
+        [
+          4178,
+          "NOTE 2:\tSecurity mechanisms that apply to the media plane are distinguished by the \"mediasec\" header field parameter."
+        ],
+        [
+          4179,
+          "On receiving the 200 (OK) response to the REGISTER request, the UE shall:"
+        ],
+        [
+          4180,
+          "a)\tbind the new expiration time of the registration for this public user identity found in the To header field value to the contact address used in this registration;"
+        ],
+        [
+          4181,
+          "b)\tstore the list of service route values contained in the Service-Route header field and bind the list to the contact address used in registration, in order to build a proper preloaded Route header field value for new dialogs and standalone transactions when using the respective contact address;"
+        ],
+        [
+          4182,
+          "NOTE 3:\tIf the list of Service-Route headers saved from a previous registration and bound to this contact address and the associated set of security associations or TLS session already exist, then the received list of Service-Route headers replaces the old list."
+        ],
+        [
+          4183,
+          "NOTE 4:\tThe UE can utilize additional URIs contained in the P-Associated-URI header field, e.g. for application purposes."
+        ],
+        [
+          4184,
+          "c)\tfind the Contact header field within the response that matches the one included in the REGISTER request. If this contains a \"pub-gruu\" header field parameter or a \"temp-gruu\" header field parameter or both, and the UE supports GRUU (see table A.4, item A.4/53), then store the value of those parameters as the GRUUs for the UE in association with the public user identity and the contact address that was registered;"
+        ],
+        [
+          4185,
+          "d)\tstore the announcement of the media plane security mechanisms the P-CSCF (IMS-ALG) supports received in the Security-Server header field, if any, according to the procedures described in draft-dawes-dispatch-mediasec-parameter; and"
+        ],
+        [
+          4186,
+          "NOTE 5:\tSecurity mechanisms that apply to the media plane are distinguished by the \"mediasec\" header field parameter."
+        ],
+        [
+          4187,
+          "e)\tif the Via header field contains a \"keep\" header field parameter with a value, continue to send keep-alives as described in draft-ietf-sipcore-keep, towards the P-CSCF."
+        ],
+        [
+          4188,
+          "When a 401 (Unauthorized) response to a REGISTER is received the UE shall behave as described in subclause 5.1.1.5.1."
+        ],
+        [
+          4189,
+          "[TS 24.229, clause 5.1.1.4.2]:"
+        ],
+        [
+          4190,
+          "On sending a REGISTER request, as defined in subclause 5.1.1.4.1, the UE shall additionally populate the header fields as follows:"
+        ],
+        [
+          4191,
+          "a)\tan Authorization header field, with:"
+        ],
+        [
+          4192,
+          "-\tthe \"username\" header field parameter set to the value of the private user identity;"
+        ],
+        [
+          4193,
+          "-\tthe \"realm\" header field parameter directive, set to the value as received in the \"realm\" WWW-Authenticate header field parameter;"
+        ],
+        [
+          4194,
+          "-\tthe \"uri\" header field parameter, set to the SIP URI of the domain name of the home network;"
+        ],
+        [
+          4195,
+          "-\tthe \"nonce\" header field parameter, set to last received nonce value; and"
+        ],
+        [
+          4196,
+          "-\tthe \"response\" header field parameter, set to the last calculated response value;"
+        ],
+        [
+          4197,
+          "NOTE 1:\tIf the UE specifies its FQDN in the hostport parameter in the Contact header field and in the sent-by field in the Via header field, then it has to ensure that the given FQDN will resolve (e.g., by reverse DNS lookup) to the IP address that is bound to the security association."
+        ],
+        [
+          4198,
+          "NOTE 2:\tThe UE associates two ports, a protected client port and a protected server port, with each pair of security associations. For details on the selection of the protected port value see 3GPP TS 33.203."
+        ],
+        [
+          4199,
+          "NOTE 3:\tIf the UE is setting up an additional registration using procedures specified in RFC 5626 and the UE accesses the network through 3GPP or 3GPP2 systems without any NAT, the flow is considered to be \"logical flow\"."
+        ],
+        [
+          4200,
+          "b)\tadditionally for the Contact header field, include the protected server port value in the hostport parameter;"
+        ],
+        [
+          4201,
+          "c)\tadditionally for the Via header field, for UDP, if the REGISTER request is protected by a security association, include the protected server port value in the sent-by field;"
+        ],
+        [
+          4202,
+          "d)\ta Security-Client header field, set to specify the signalling plane security mechanism it supports, the IPsec layer algorithms for security and confidentiality protection it supports and the new parameter values needed for the setup of two new pairs of security associations. For further details see 3GPP TS 33.203 and RFC 3329; and"
+        ],
+        [
+          4203,
+          "e)\ta Security-Verify header field that contains the content of the Security-Server header field received in the 401 (Unauthorized) response of the last successful authentication."
+        ],
+        [
+          4204,
+          "On receiving the 200 (OK) response to the REGISTER request, the UE shall additionally:"
+        ],
+        [
+          4205,
+          "a)\tset the security association lifetime associated with this contact address and the associated set of security associations to the longest of either the previously existing security association lifetime, or the lifetime of the just completed registration plus 30 seconds."
+        ],
+        [
+          4206,
+          "NOTE 4:\tIf the UE receives Authentication-Info, it will proceed as described in RFC 3310."
+        ],
+        [
+          4207,
+          "Reference(s)"
+        ],
+        [
+          4208,
+          "3GPP TS 24.229 [10], clauses 5.1.1.4.1 and 5.1.1.4.2. "
+        ],
+        [
+          4209,
+          "8.2.3\tTest purpose"
+        ],
+        [
+          4210,
+          "1)\tTo verify that the UE can re-register a previously registered public user identity at either 600 seconds before the expiration time if the initial registration was for greater than 1200 seconds, or when half of the time has expired if the initial registration was for 1200 seconds or less; and "
+        ],
+        [
+          4211,
+          "2)\tExtract or derive a public user identity, the private user identity, and the domain name to be used in the Request-URI in the registration; and"
+        ],
+        [
+          4212,
+          "3)\tTo verify that the UE populates the header field in the REGISTER request with From, To, Via, Contact, Authorization, Expires, Security-Client, Security-verify, Supported, and P-Access-Network-Info headers; and"
+        ],
+        [
+          4213,
+          "4)\tUpon receiving 200 OK for REGISTER, the UE shall store the new expiration time of the registration for this public user identity, the list of URIs contained in the P-Associated-URI header value and use these values in the next re-register request."
+        ],
+        [
+          4214,
+          "8.2.4\tMethod of test"
+        ],
+        [
+          4215,
+          "Initial conditions"
+        ],
+        [
+          4216,
+          "UE contains either ISIM and USIM applications or only USIM application on UICC. UE is not registered to IMS services, but has an active PDP context and has discovered the SS as P-CSCF by executing the generic test procedure in Annex C.2 up to step 3."
+        ],
+        [
+          4217,
+          "SS is configured with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) configured on the UICC card equipped into the UE. SS is able to perform AKAv1-MD5 authentication algorithm for that IMPI, according to 3GPP TS 33.203 [14] clause 6.1 and RFC 3310 [17]."
+        ],
+        [
+          4218,
+          "Test procedure"
+        ],
+        [
+          4219,
+          "1-8C) The same procedure as in Annex C.2 is used with the exception that the SS sets the expiration time to 120 seconds in Step 4."
+        ],
+        [
+          4220,
+          "9)\tBefore half of the time has expired from the initial registration SS receives re-register message request with the From, To, Via, Contact, Authorization, Expires, Security-Client, Security-verify, Supported, and P-Access-Network-Info header fields."
+        ],
+        [
+          4221,
+          "10)\tSS responds to the REGISTER request with valid 200 OK response with the list of URIs contained in the P-Associated-URI header value, the new expiration time (1200 seconds) of the registration for this public user identity."
+        ],
+        [
+          4222,
+          "11)\tSS waits for the REGISTER request and verifies it is received at least 600 seconds before the expected expiration time."
+        ],
+        [
+          4223,
+          "12)\tSS responds to the REGISTER request with valid 200 OK response with the list of URIs contained in the P-Associated-URI header value, the new expiration time (1800 seconds) of the registration for this public user identity."
+        ],
+        [
+          4224,
+          "13)\tSS waits for the REGISTER request and verifies it is received at least 600 seconds before the expected expiration time."
+        ],
+        [
+          4225,
+          "14)\tSS responds to the REGISTER request with valid 200 OK response. SS shall populate the headers of the 200 OK response according to the 200 response for REGISTER common message definition."
+        ],
+        [
+          4226,
+          "Expected sequence"
+        ],
+        [
+          4227,
+          "Step"
+        ],
+        [
+          4228,
+          "Direction"
+        ],
+        [
+          4229,
+          "Message"
+        ],
+        [
+          4230,
+          "Comment"
+        ],
+        [
+          4231,
+          ""
+        ],
+        [
+          4232,
+          "UE"
+        ],
+        [
+          4233,
+          "SS"
+        ],
+        [
+          4234,
+          ""
+        ],
+        [
+          4235,
+          ""
+        ],
+        [
+          4236,
+          "1-8C"
+        ],
+        [
+          4237,
+          ""
+        ],
+        [
+          4238,
+          "Messages 1-11 of Annex C.2"
+        ],
+        [
+          4239,
+          "The same messages as in Annex C.2 are used with the exception that in Step 7 of C.2, the SS responds with 200 OK indicating 120 seconds expiration time."
+        ],
+        [
+          4240,
+          "9"
+        ],
+        [
+          4241,
+          "-->"
+        ],
+        [
+          4242,
+          "REGISTER"
+        ],
+        [
+          4243,
+          "The SS receives REGISTER from the UE 60 seconds before the expiration time set in the initial registration request."
+        ],
+        [
+          4244,
+          "10"
+        ],
+        [
+          4245,
+          "<--"
+        ],
+        [
+          4246,
+          "200 OK"
+        ],
+        [
+          4247,
+          "The SS responds with 200 OK indicating 1200 seconds expiration time."
+        ],
+        [
+          4248,
+          "11"
+        ],
+        [
+          4249,
+          "-->"
+        ],
+        [
+          4250,
+          "REGISTER"
+        ],
+        [
+          4251,
+          "The SS receives REGISTER from the UE 600 seconds before the expiration time set in step 10."
+        ],
+        [
+          4252,
+          "12"
+        ],
+        [
+          4253,
+          "<--"
+        ],
+        [
+          4254,
+          "200 OK"
+        ],
+        [
+          4255,
+          "The SS responds with 200 OK indicating 1800 seconds expiration time."
+        ],
+        [
+          4256,
+          "13"
+        ],
+        [
+          4257,
+          "-->"
+        ],
+        [
+          4258,
+          "REGISTER"
+        ],
+        [
+          4259,
+          "The SS receives REGISTER from the UE 600 seconds before the expiration time set in step 12"
+        ],
+        [
+          4260,
+          "14"
+        ],
+        [
+          4261,
+          "<--"
+        ],
+        [
+          4262,
+          "200 OK"
+        ],
+        [
+          4263,
+          "The SS responds with 200 OK indicating the default expiration time."
+        ],
+        [
+          4264,
+          ""
+        ],
+        [
+          4265,
+          "Specific Message Contents"
+        ],
+        [
+          4266,
+          "Messages in Step 1-8C"
+        ],
+        [
+          4267,
+          "Messages in Step 1-8C are the same as those specified in Annex C.2 with the following exception for the 200 OK for REGISTER in Step 7 of C.2:"
+        ],
+        [
+          4268,
+          "Use the default message \"200 OK for REGISTER\" in annex A.1.3 with the following exceptions:"
+        ],
+        [
+          4269,
+          "Header/param"
+        ],
+        [
+          4270,
+          "Value/remark"
+        ],
+        [
+          4271,
+          "Contact"
+        ],
+        [
+          4272,
+          ""
+        ],
+        [
+          4273,
+          "\texpires"
+        ],
+        [
+          4274,
+          "120"
+        ],
+        [
+          4275,
+          ""
+        ],
+        [
+          4276,
+          "REGISTER (Step 9)"
+        ],
+        [
+          4277,
+          "Use the default message \"REGISTER\" in annex A.1.1 with conditions A2 \"Subsequent REGISTER sent over security associations\" and A17 \"UE initiated IMS re-registration or de-registration\" and with the following exceptions:"
+        ],
+        [
+          4278,
+          "Header/param"
+        ],
+        [
+          4279,
+          "Value/remark"
+        ],
+        [
+          4280,
+          "Security-Client"
+        ],
+        [
+          4281,
+          ""
+        ],
+        [
+          4282,
+          "\tspi-c"
+        ],
+        [
+          4283,
+          "new SPI number of the inbound SA at the protected client port, shall be different than in step 3"
+        ],
+        [
+          4284,
+          "\tspi-s"
+        ],
+        [
+          4285,
+          "new SPI number of the inbound SA at the protected server port, shall be different than in step 3"
+        ],
+        [
+          4286,
+          "\tport-c"
+        ],
+        [
+          4287,
+          "new protected client port, shall be different than in step 3"
+        ],
+        [
+          4288,
+          "\tport-s"
+        ],
+        [
+          4289,
+          "Same value as in the previous REGISTER"
+        ],
+        [
+          4290,
+          ""
+        ],
+        [
+          4291,
+          "200 OK for REGISTER (Step 10)"
+        ],
+        [
+          4292,
+          "Use the default message \"200 OK for REGISTER\" in annex A.1.3 with the following exceptions:"
+        ],
+        [
+          4293,
+          "Header/param"
+        ],
+        [
+          4294,
+          "Value/remark"
+        ],
+        [
+          4295,
+          "Contact"
+        ],
+        [
+          4296,
+          ""
+        ],
+        [
+          4297,
+          "\texpires"
+        ],
+        [
+          4298,
+          "1200"
+        ],
+        [
+          4299,
+          ""
+        ],
+        [
+          4300,
+          "REGISTER (Step 11)"
+        ],
+        [
+          4301,
+          "Use the default message \"REGISTER\" in annex A.1.1 with conditions A2 \"Subsequent REGISTER sent over security associations\" and A17 \"UE initiated IMS re-registration or de-registration\" and with the following exceptions:"
+        ],
+        [
+          4302,
+          "Header/param"
+        ],
+        [
+          4303,
+          "Value/remark"
+        ],
+        [
+          4304,
+          "Security-Client"
+        ],
+        [
+          4305,
+          ""
+        ],
+        [
+          4306,
+          "\tspi-c"
+        ],
+        [
+          4307,
+          "new SPI number of the inbound SA at the protected client port, shall be different than in step 3 but may or may not be the same as in step 9"
+        ],
+        [
+          4308,
+          "\tspi-s"
+        ],
+        [
+          4309,
+          "new SPI number of the inbound SA at the protected server port, shall be different than in step 3 but may or may not be the same as in step 9"
+        ],
+        [
+          4310,
+          "\tport-c"
+        ],
+        [
+          4311,
+          "new protected client port, shall be different than in step 3 but may or may not be the same as in step 9"
+        ],
+        [
+          4312,
+          "\tport-s"
+        ],
+        [
+          4313,
+          "Same value as in the previous REGISTER"
+        ],
+        [
+          4314,
+          ""
+        ],
+        [
+          4315,
+          "200 OK for REGISTER (Step 12)"
+        ],
+        [
+          4316,
+          "Use the default message \"200 OK for REGISTER\" in annex A.1.3 with the following exceptions:"
+        ],
+        [
+          4317,
+          "Header/param"
+        ],
+        [
+          4318,
+          "Value/remark"
+        ],
+        [
+          4319,
+          "Contact"
+        ],
+        [
+          4320,
+          ""
+        ],
+        [
+          4321,
+          "\texpires"
+        ],
+        [
+          4322,
+          "1800"
+        ],
+        [
+          4323,
+          ""
+        ],
+        [
+          4324,
+          "REGISTER (Step 13)"
+        ],
+        [
+          4325,
+          "Use the default message \"REGISTER\" in annex A.1.1 with conditions A2 \"Subsequent REGISTER sent over security associations\" and A17 \"UE initiated IMS re-registration or de-registration\" and with the following exceptions:"
+        ],
+        [
+          4326,
+          "Header/param"
+        ],
+        [
+          4327,
+          "Value/remark"
+        ],
+        [
+          4328,
+          "Security-Client"
+        ],
+        [
+          4329,
+          ""
+        ],
+        [
+          4330,
+          "\tspi-c"
+        ],
+        [
+          4331,
+          "new SPI number of the inbound SA at the protected client port, shall be different than in step 3 but may or may not be the same as in step 9 or step 11"
+        ],
+        [
+          4332,
+          "\tspi-s"
+        ],
+        [
+          4333,
+          "new SPI number of the inbound SA at the protected server port, shall be different than in step 3 but may or may not be the same as in step 9 or step 11"
+        ],
+        [
+          4334,
+          "\tport-c"
+        ],
+        [
+          4335,
+          "new protected client, shall be different than in step 3 but may or may not be the same as in step 9 or step 11"
+        ],
+        [
+          4336,
+          "\tport-s"
+        ],
+        [
+          4337,
+          "Same value as in the previous REGISTER"
+        ],
+        [
+          4338,
+          ""
+        ],
+        [
+          4339,
+          "200 OK for REGISTER (Step 14)"
+        ],
+        [
+          4340,
+          "Use the default message \"200 OK for REGISTER\" in annex A.1.3."
+        ],
+        [
+          4341,
+          "8.2.5\tTest requirements"
+        ],
+        [
+          4342,
+          "1.\tThe UE shall in step 9 send the REGISTER request within 60 seconds from the time instant that it receives 200 OK in step 4 from the SS."
+        ],
+        [
+          4343,
+          "2.\tThe UE shall in step 11 send the REGISTER request within 600 seconds from the time instant that it receives 200 OK from the SS in step 10."
+        ],
+        [
+          4344,
+          "3.\tThe UE shall in step 13 send the REGISTER request within 1200 seconds from the time instant that it receives 200 OK from the SS in step 12. "
+        ]
+      ]
+    },
+    {
+      "ref": "9.1",
+      "title": "Invalid Behaviour - MAC Parameter Invalid",
+      "source_line_start": 5452,
+      "source_line_end": 5602,
+      "next_line": 5603,
+      "next_line_text": "9.2\tInvalid Behaviour - SQN out of range ",
+      "heading_text": "9.1\tInvalid Behaviour - MAC Parameter Invalid ",
+      "used_by": [
+        "TC-013"
+      ],
+      "key_markers": [
+        "9.1.1\tDefinition",
+        "9.1.2\tConformance requirement",
+        "9.1.3\tTest purpose",
+        "9.1.4\tMethod of test",
+        "9.1.5\tTest requirements",
+        "MAC value in AUTN should be incorrect",
+        "contains no AUTS directive",
+        "empty response directive",
+        "does not create a temporary set of security associations"
+      ],
+      "subsection_headers": [
+        {
+          "line": 5453,
+          "number": "9.1.1",
+          "title": "Definition",
+          "text": "9.1.1\tDefinition"
+        },
+        {
+          "line": 5455,
+          "number": "9.1.2",
+          "title": "Conformance requirement",
+          "text": "9.1.2\tConformance requirement"
+        },
+        {
+          "line": 5471,
+          "number": "9.1.3",
+          "title": "Test purpose",
+          "text": "9.1.3\tTest purpose"
+        },
+        {
+          "line": 5478,
+          "number": "9.1.4",
+          "title": "Method of test",
+          "text": "9.1.4\tMethod of test"
+        },
+        {
+          "line": 5596,
+          "number": "9.1.5",
+          "title": "Test requirements",
+          "text": "9.1.5\tTest requirements"
+        }
+      ],
+      "source_note": null,
+      "raw_rows": [
+        [
+          5452,
+          "9.1\tInvalid Behaviour - MAC Parameter Invalid "
+        ],
+        [
+          5453,
+          "9.1.1\tDefinition"
+        ],
+        [
+          5454,
+          "To test that the UE when receiving a 401 (Unauthorized) response with an invalid MAC value to its initial REGISTER request behaves correctly. This procedure is described in 3GPP TS 24.229 [10] clause 5.1.1.5. "
+        ],
+        [
+          5455,
+          "9.1.2\tConformance requirement"
+        ],
+        [
+          5456,
+          "[TS 24.229, clause 5.1.1.5.1]"
+        ],
+        [
+          5457,
+          "Authentication is performed during initial registration. A UE can be re-authenticated during subsequent reregistrations, deregistrations or registrations of additional public user identities. When the network requires authentication or re-authentication of the UE, the UE will receive a 401 (Unauthorized) response to the REGISTER request."
+        ],
+        [
+          5458,
+          "On receiving a 401 (Unauthorized) response to the REGISTER request, the UE shall:"
+        ],
+        [
+          5459,
+          "1)\textract the RAND and AUTN parameters;"
+        ],
+        [
+          5460,
+          "2)\tcheck the validity of a received authentication challenge, as described in 3GPP TS 33.203 [19] i.e. the locally calculated XMAC must match the MAC parameter derived from the AUTN part of the challenge; and the SQN parameter derived from the AUTN part of the challenge must be within the correct range; and"
+        ],
+        [
+          5461,
+          "..."
+        ],
+        [
+          5462,
+          "[TS 24.229 Rel-12, clause 5.1.1.5.3]"
+        ],
+        [
+          5463,
+          "If, in a 401 (Unauthorized) response, either the MAC or SQN is incorrect the UE shall respond with a further REGISTER indicating to the S-CSCF that the challenge has been deemed invalid as follows:"
+        ],
+        [
+          5464,
+          "-\tin the case where the UE deems the MAC parameter to be invalid the subsequent REGISTER request shall contain no \"auts\" Authorization header field parameter and an empty \"response\" Authorization header field parameter, i.e. no authentication challenge response;"
+        ],
+        [
+          5465,
+          "-\tin the case where the UE deems the SQN to be out of range, the subsequent REGISTER request shall contain the \"auts\" Authorization header field parameter (see 3GPP TS 33.102 [18])."
+        ],
+        [
+          5466,
+          "NOTE:\tIn the case of the SQN being out of range, a \"response\" Authorization header field parameter can be included by the UE, based on the procedures described in RFC 3310 [49]."
+        ],
+        [
+          5467,
+          "Whenever the UE detects any of the above cases, the UE shall:"
+        ],
+        [
+          5468,
+          "-\tsend the REGISTER request using an existing set of security associations, if available (see 3GPP TS 33.203 [19]);"
+        ],
+        [
+          5469,
+          "-\tpopulate a new Security-Client header field within the REGISTER request and associated contact address, set to specify the security mechanisms it supports, the IPsec layer algorithms for integrity and confidentiality protection it supports and the parameters needed for the new security association setup. These parameters shall contain new values for spi_uc, spi_us and port_uc; and "
+        ],
+        [
+          5470,
+          "-\tnot create a temporary set of security associations."
+        ],
+        [
+          5471,
+          "9.1.3\tTest purpose"
+        ],
+        [
+          5472,
+          "1)\tTo verify that after receiving a 401 (Unauthorized) response for the initial REGISTER sent, the UE checks that the locally calculated XMAC matches the MAC parameter derived from the AUTN part of the challenge."
+        ],
+        [
+          5473,
+          "2)\tIf the value of MAC derived from the AUTN part of the 401 (Unauthorized) response received by the UE does not match the value of locally calculated XMAC:"
+        ],
+        [
+          5474,
+          "-\tthe UE responds with a further REGISTER indicating that the challenge has been deemed invalid; and"
+        ],
+        [
+          5475,
+          "-\tthis subsequent REGISTER request contains no \"auts\" Authorization header field parameter and an empty \"response\" Authorization header field parameter, i.e. no authentication challenge response; and"
+        ],
+        [
+          5476,
+          "-\tthe UE populates a new Security-Client header field within the REGISTER request and associated contact address, set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup. These parameters contain new values for spi_uc, spi_us and port_uc; and"
+        ],
+        [
+          5477,
+          "-\tthe UE does not create a temporary set of security associations."
+        ],
+        [
+          5478,
+          "9.1.4\tMethod of test"
+        ],
+        [
+          5479,
+          "Initial conditions"
+        ],
+        [
+          5480,
+          "UE contains either ISIM and USIM applications or only USIM application on UICC. UE is not registered to IMS services, but executed the generic test procedure in Annex C.2 up to step 3."
+        ],
+        [
+          5481,
+          "SS is configured with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) configured on the UICC card equipped into the UE. SS is able to perform AKAv1-MD5 authentication algorithm for that IMPI, according to 3GPP TS 33.203 [14] clause 6.1 and RFC 3310 [17]. SS is listening to SIP default port 5060 for both UDP and TCP protocols."
+        ],
+        [
+          5482,
+          "Test procedure"
+        ],
+        [
+          5483,
+          "1)\tIMS registration is initiated on the UE. SS waits for the UE to send an initial REGISTER request, in accordance to 3GPP TS 24.229 [10], clause 5.1.1.2"
+        ],
+        [
+          5484,
+          "2)\tSS responds to the initial REGISTER request with an invalid 401 Unauthorized response, headers populated as follows:"
+        ],
+        [
+          5485,
+          "a)\tTo, From, Via, CSeq, Call-ID and Content-Length headers according to RFC 3261 [15] clauses 8.2.6.2 and 20.14; and"
+        ],
+        [
+          5486,
+          "b)\tWWW-Authentication header with AKAv1-MD5 authentication challenge according to 3GPP TS 24.229 [10], clause 5.4.1.2.1 and RFC 3310 [17] clause 3; except that the MAC value in AUTN should be incorrect "
+        ],
+        [
+          5487,
+          "c)\tSecurity-Server header according to 3GPP TS 24.229 [10], clause 5.2.2 and RFC 3329 [21] clause 2."
+        ],
+        [
+          5488,
+          "3)\tSS waits for the UE to send a second Registration message indicating that the received 401 Unauthorized message was invalid"
+        ],
+        [
+          5489,
+          "4)\tSS sends an invalid 401 Unauthorized message, same as in step 2)"
+        ],
+        [
+          5490,
+          "5)\tSS waits for the UE to send a third Registration message indicating that the received 401 Unauthorized message was invalid"
+        ],
+        [
+          5491,
+          "6) - 12) SS completes the registration procedure (to get the UE in a stable state at the end of the test case)."
+        ],
+        [
+          5492,
+          "Expected sequence"
+        ],
+        [
+          5493,
+          "Step"
+        ],
+        [
+          5494,
+          "Direction"
+        ],
+        [
+          5495,
+          "Message"
+        ],
+        [
+          5496,
+          "Comment"
+        ],
+        [
+          5497,
+          ""
+        ],
+        [
+          5498,
+          "UE"
+        ],
+        [
+          5499,
+          "SS"
+        ],
+        [
+          5500,
+          ""
+        ],
+        [
+          5501,
+          ""
+        ],
+        [
+          5502,
+          "1"
+        ],
+        [
+          5503,
+          "-->"
+        ],
+        [
+          5504,
+          "REGISTER"
+        ],
+        [
+          5505,
+          "UE sends initial registration for IMS services."
+        ],
+        [
+          5506,
+          "2"
+        ],
+        [
+          5507,
+          "<--"
+        ],
+        [
+          5508,
+          "401 Unauthorized"
+        ],
+        [
+          5509,
+          "The SS responds with an invalid AKAv1-MD5 authentication challenge with an invalid MAC value."
+        ],
+        [
+          5510,
+          "3"
+        ],
+        [
+          5511,
+          "-->"
+        ],
+        [
+          5512,
+          "REGISTER"
+        ],
+        [
+          5513,
+          "REGISTER request:"
+        ],
+        [
+          5514,
+          "- contains no AUTS directive and an empty response directive, i.e. no authentication challenge response "
+        ],
+        [
+          5515,
+          "- UE populates a new Security-Client header set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup"
+        ],
+        [
+          5516,
+          "4"
+        ],
+        [
+          5517,
+          "<--"
+        ],
+        [
+          5518,
+          "401 Unauthorized"
+        ],
+        [
+          5519,
+          "The SS responds with an invalid AKAv1-MD5 authentication challenge with an invalid MAC value."
+        ],
+        [
+          5520,
+          "5"
+        ],
+        [
+          5521,
+          "-->"
+        ],
+        [
+          5522,
+          "REGISTER"
+        ],
+        [
+          5523,
+          "REGISTER request:"
+        ],
+        [
+          5524,
+          "- contains no AUTS directive and an empty response directive, i.e. no authentication challenge response"
+        ],
+        [
+          5525,
+          "- UE populates a new Security-Client header set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup "
+        ],
+        [
+          5526,
+          "6"
+        ],
+        [
+          5527,
+          "<--"
+        ],
+        [
+          5528,
+          "401 Unauthorized"
+        ],
+        [
+          5529,
+          "The SS responds with a valid AKAv1-MD5 authentication challenge and security mechanisms supported by the network."
+        ],
+        [
+          5530,
+          "7"
+        ],
+        [
+          5531,
+          "-->"
+        ],
+        [
+          5532,
+          "REGISTER"
+        ],
+        [
+          5533,
+          "UE completes the security negotiation procedures, sets up a temporary set of SAs and uses those for sending another REGISTER with AKAv1-MD5 credentials."
+        ],
+        [
+          5534,
+          "8"
+        ],
+        [
+          5535,
+          "<--"
+        ],
+        [
+          5536,
+          "200 OK"
+        ],
+        [
+          5537,
+          "The SS responds with 200 OK."
+        ],
+        [
+          5538,
+          "9"
+        ],
+        [
+          5539,
+          "-->"
+        ],
+        [
+          5540,
+          "SUBSCRIBE"
+        ],
+        [
+          5541,
+          "UE subscribes to its registration event package. "
+        ],
+        [
+          5542,
+          "10"
+        ],
+        [
+          5543,
+          "<--"
+        ],
+        [
+          5544,
+          "200 OK"
+        ],
+        [
+          5545,
+          "The SS responds SUBSCRIBE with 200 OK"
+        ],
+        [
+          5546,
+          "11"
+        ],
+        [
+          5547,
+          "<--"
+        ],
+        [
+          5548,
+          "NOTIFY"
+        ],
+        [
+          5549,
+          "The SS sends initial NOTIFY for registration event package, containing full registration state information for the registered public user identity in the XML body "
+        ],
+        [
+          5550,
+          "12"
+        ],
+        [
+          5551,
+          "-->"
+        ],
+        [
+          5552,
+          "200 OK"
+        ],
+        [
+          5553,
+          "The UE responds the NOTIFY with 200 OK"
+        ],
+        [
+          5554,
+          ""
+        ],
+        [
+          5555,
+          "Specific message contents"
+        ],
+        [
+          5556,
+          "REGISTER (Step 1)"
+        ],
+        [
+          5557,
+          "Use the default message \"REGISTER\" in annex A.1.1 with condition A1."
+        ],
+        [
+          5558,
+          "401 UNAUTHORIZED (Steps 2 and 4)"
+        ],
+        [
+          5559,
+          "Use the default message \"401 Unauthorized for REGISTER\" in annex A.1.2 with the following exceptions:"
+        ],
+        [
+          5560,
+          "Header/param"
+        ],
+        [
+          5561,
+          "Value/remark"
+        ],
+        [
+          5562,
+          "WWW-Authenticate"
+        ],
+        [
+          5563,
+          ""
+        ],
+        [
+          5564,
+          "\tnonce"
+        ],
+        [
+          5565,
+          "Base 64 encoding of RAND and AUTN, incorrect MAC value is used to generate"
+        ],
+        [
+          5566,
+          ""
+        ],
+        [
+          5567,
+          "REGISTER (Steps 3 and 5)"
+        ],
+        [
+          5568,
+          "Use the default message \"REGISTER\" in annex A.1.1 with condition A1 with the following exceptions:"
+        ],
+        [
+          5569,
+          "Header/param"
+        ],
+        [
+          5570,
+          "Value/remark"
+        ],
+        [
+          5571,
+          "CSeq"
+        ],
+        [
+          5572,
+          ""
+        ],
+        [
+          5573,
+          "\tvalue"
+        ],
+        [
+          5574,
+          "The value sent in the previous REGISTER message + 1 (incremented)"
+        ],
+        [
+          5575,
+          "Call-ID"
+        ],
+        [
+          5576,
+          ""
+        ],
+        [
+          5577,
+          "\tcallid"
+        ],
+        [
+          5578,
+          "The same value as in REGISTER in Step 1"
+        ],
+        [
+          5579,
+          "Authorization"
+        ],
+        [
+          5580,
+          ""
+        ],
+        [
+          5581,
+          "\tresponse"
+        ],
+        [
+          5582,
+          "It shall be present but empty"
+        ],
+        [
+          5583,
+          "\tauth-param"
+        ],
+        [
+          5584,
+          "If present it shall not contain the auts directive"
+        ],
+        [
+          5585,
+          "\tnonce-count"
+        ],
+        [
+          5586,
+          "value or presence of the parameter not to be checked"
+        ],
+        [
+          5587,
+          "Security-Client"
+        ],
+        [
+          5588,
+          ""
+        ],
+        [
+          5589,
+          "     spi-c"
+        ],
+        [
+          5590,
+          "new SPI number of the inbound SA at the protected client port, must be different from the value used in step 1 (and step 3 when in step 5)"
+        ],
+        [
+          5591,
+          "     spi-s"
+        ],
+        [
+          5592,
+          "new SPI number of the inbound SA at the protected server port, must be different from the value used in step 1 (and step 3 when in step 5)"
+        ],
+        [
+          5593,
+          "     port-c"
+        ],
+        [
+          5594,
+          "new protected client port needed for the setup of new pairs of security associations, must be different from the value used in step 1 (and step 3 when in step 5)"
+        ],
+        [
+          5595,
+          ""
+        ],
+        [
+          5596,
+          "9.1.5\tTest requirements"
+        ],
+        [
+          5597,
+          "SS shall check in step 3 and 5 that in accordance to the 3GPP TS 24.229 [10] clause 5.1.1.5"
+        ],
+        [
+          5598,
+          "-\tthe UE responds with a further REGISTER indicating to the S-CSCF that the challenge has been deemed invalid; and"
+        ],
+        [
+          5599,
+          "-\tsends the REGISTER request using no security associations; and"
+        ],
+        [
+          5600,
+          "-\tthe REGISTER request contains no AUTS directive and an empty response directive, i.e. no authentication challenge; and"
+        ],
+        [
+          5601,
+          "-\tpopulates a new Security-Client header within the REGISTER request, set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup; and"
+        ],
+        [
+          5602,
+          "-\tdoes not create a temporary set of security associations."
+        ]
+      ]
+    },
+    {
+      "ref": "9.2",
+      "title": "Invalid Behaviour - SQN out of range",
+      "source_line_start": 5603,
+      "source_line_end": 5739,
+      "next_line": 5740,
+      "next_line_text": "10\tSubscription",
+      "heading_text": "9.2\tInvalid Behaviour - SQN out of range ",
+      "used_by": [
+        "TC-013"
+      ],
+      "key_markers": [
+        "9.2.1\tDefinition",
+        "9.2.2\tConformance requirement",
+        "9.2.3\tTest purpose",
+        "9.2.4\tMethod of test",
+        "9.2.5\tTest requirements",
+        "SQN value in AUTN should be out of range",
+        "contains AUTS directive",
+        "auts= \"auts-value\"",
+        "temporary set of security associations"
+      ],
+      "subsection_headers": [
+        {
+          "line": 5604,
+          "number": "9.2.1",
+          "title": "Definition",
+          "text": "9.2.1\tDefinition"
+        },
+        {
+          "line": 5607,
+          "number": "9.2.2",
+          "title": "Conformance requirement",
+          "text": "9.2.2\tConformance requirement"
+        },
+        {
+          "line": 5623,
+          "number": "9.2.3",
+          "title": "Test purpose",
+          "text": "9.2.3\tTest purpose"
+        },
+        {
+          "line": 5631,
+          "number": "9.2.4",
+          "title": "Method of test",
+          "text": "9.2.4\tMethod of test"
+        },
+        {
+          "line": 5730,
+          "number": "9.2.5",
+          "title": "Test requirements",
+          "text": "9.2.5\tTest requirements"
+        }
+      ],
+      "source_note": "The 9.2 Test purpose text says no auts and an empty response, while the later step 3, Specific Message Contents and Test requirements explicitly require AUTS for the SQN-out-of-range case. This extraction preserves both source statements and does not rewrite either one.",
+      "raw_rows": [
+        [
+          5603,
+          "9.2\tInvalid Behaviour - SQN out of range "
+        ],
+        [
+          5604,
+          "9.2.1\tDefinition"
+        ],
+        [
+          5605,
+          "To test that the UE when receiving a 401 (Unauthorized) response with SQN out of range to its initial REGISTER request behaves correctly. This procedure is described in 3GPP TS 24.229 [10] clause 5.1.1.5. "
+        ],
+        [
+          5606,
+          "To test after a failed authentication attempt that the UE when receiving a valid 401 (Unauthorized) response to its initial REGISTER request behaves correctly. This procedure is described in 24.229 [10] clause 5.1.1.5."
+        ],
+        [
+          5607,
+          "9.2.2\tConformance requirement"
+        ],
+        [
+          5608,
+          "[TS 24.229, clause 5.1.1.5.1]"
+        ],
+        [
+          5609,
+          "Authentication is performed during initial registration. A UE can be re-authenticated during subsequent reregistrations, deregistrations or registrations of additional public user identities. When the network requires authentication or re-authentication of the UE, the UE will receive a 401 (Unauthorized) response to the REGISTER request."
+        ],
+        [
+          5610,
+          "On receiving a 401 (Unauthorized) response to the REGISTER request, the UE shall:"
+        ],
+        [
+          5611,
+          "1)\textract the RAND and AUTN parameters;"
+        ],
+        [
+          5612,
+          "2)\tcheck the validity of a received authentication challenge, as described in 3GPP TS 33.203 [19] i.e. the locally calculated XMAC must match the MAC parameter derived from the AUTN part of the challenge; and the SQN parameter derived from the AUTN part of the challenge must be within the correct range; and"
+        ],
+        [
+          5613,
+          "..."
+        ],
+        [
+          5614,
+          "[TS 24.229 Rel-12, clause 5.1.1.5.3]"
+        ],
+        [
+          5615,
+          "If, in a 401 (Unauthorized) response, either the MAC or SQN is incorrect the UE shall respond with a further REGISTER indicating to the S-CSCF that the challenge has been deemed invalid as follows:"
+        ],
+        [
+          5616,
+          "-\tin the case where the UE deems the MAC parameter to be invalid the subsequent REGISTER request shall contain no \"auts\" Authorization header field parameter and an empty \"response\" Authorization header field parameter, i.e. no authentication challenge response;"
+        ],
+        [
+          5617,
+          "-\tin the case where the UE deems the SQN to be out of range, the subsequent REGISTER request shall contain the \"auts\" Authorization header field parameter (see 3GPP TS 33.102 [18])."
+        ],
+        [
+          5618,
+          "NOTE:\tIn the case of the SQN being out of range, a \"response\" Authorization header field parameter can be included by the UE, based on the procedures described in RFC 3310 [49]."
+        ],
+        [
+          5619,
+          "Whenever the UE detects any of the above cases, the UE shall:"
+        ],
+        [
+          5620,
+          "-\tsend the REGISTER request using an existing set of security associations, if available (see 3GPP TS 33.203 [19]);"
+        ],
+        [
+          5621,
+          "-\tpopulate a new Security-Client header field within the REGISTER request and associated contact address, set to specify the security mechanisms it supports, the IPsec layer algorithms for integrity and confidentiality protection it supports and the parameters needed for the new security association setup. These parameters shall contain new values for spi_uc, spi_us and port_uc; and "
+        ],
+        [
+          5622,
+          "-\tnot create a temporary set of security associations."
+        ],
+        [
+          5623,
+          "9.2.3\tTest purpose"
+        ],
+        [
+          5624,
+          "1)\tTo verify that after receiving a 401 (Unauthorized) response for the initial REGISTER sent, the UE checks that the SQN parameter derived from the AUTN part of the authentication challenge is within the correct range."
+        ],
+        [
+          5625,
+          "2)\tIf the value of SQN derived from the AUTN part of the 401 (Unauthorized) received by the UE is out of range: "
+        ],
+        [
+          5626,
+          "-\tthe UE responds with a further REGISTER indicating that the challenge has been deemed invalid; and"
+        ],
+        [
+          5627,
+          "-\tthis subsequent REGISTER request contains no \"auts\" Authorization header field parameter and an empty \"response\" Authorization header field parameter, i.e. no authentication challenge response; and"
+        ],
+        [
+          5628,
+          "-\tthe UE populates a new Security-Client header field within the REGISTER request and associated contact address, set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup. These parameters contain new values for spi_uc, spi_us and port_uc; and"
+        ],
+        [
+          5629,
+          "-\tthe UE does not create a temporary set of security associations."
+        ],
+        [
+          5630,
+          "3)\tTo verify after a failed authentication attempt if the UE receives a valid 401 (Unauthorized) message from the network in response to the Register request sent, the UE is able to perform the authentication and registration successfully."
+        ],
+        [
+          5631,
+          "9.2.4\tMethod of test"
+        ],
+        [
+          5632,
+          "Initial conditions"
+        ],
+        [
+          5633,
+          "UE contains either ISIM and USIM applications or only USIM application on UICC. UE is not registered to IMS services, but has discovered the SS as P-CSCF by executing the generic test procedure in Annex C.2 up to step 3."
+        ],
+        [
+          5634,
+          "SS is configured with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) configured on the UICC card equipped into the UE. SS is able to perform AKAv1-MD5 authentication algorithm for that IMPI, according to 3GPP TS 33.203 [14] clause 6.1 and RFC 3310 [17]. SS is listening to SIP default port 5060 for both UDP and TCP protocols."
+        ],
+        [
+          5635,
+          "Test procedure"
+        ],
+        [
+          5636,
+          "1)\tIMS registration is initiated on the UE. SS waits for the UE to send an initial REGISTER request, in accordance to 3GPP TS 24.229 [10], clause 5.1.1.2"
+        ],
+        [
+          5637,
+          "2)\tSS responds to the initial REGISTER request with an invalid 401 Unauthorized response, headers populated as follows:"
+        ],
+        [
+          5638,
+          "a)\tTo, From, Via, CSeq, Call-ID and Content-Length headers according to RFC 3261 [15] clauses 8.2.6.2 and 20.14; and"
+        ],
+        [
+          5639,
+          "b)\tWWW-Authentication header with AKAv1-MD5 authentication challenge according to 3GPP TS `24.229 [10], clause 5.4.1.2.1 and RFC 3310 [17] clause 3; except that the SQN value in AUTN should be out of range"
+        ],
+        [
+          5640,
+          "c)\tSecurity-Server header according to 3GPP TS 24.229 [10], clause 5.2.2 and RFC 3329 [21] clause 2."
+        ],
+        [
+          5641,
+          "3)\tSS waits for the UE to send a second Registration message indicating that the received 401 Unauthorized message was invalid"
+        ],
+        [
+          5642,
+          "4)\tSS sends a valid 401 Unauthorized message to the UE"
+        ],
+        [
+          5643,
+          "5)\tSS waits for the UE to send a Registration request using the temporary set of security associations to protect the message. The Registration request shall contain the valid answer to the authentication challenge in 401 Unauthorized sent in the previous step"
+        ],
+        [
+          5644,
+          "6)\tContinue test execution with the Generic test procedure in Annex C.2, step 7, sent over the same temporary set of security associations that the UE used for sending the REGISTER request"
+        ],
+        [
+          5645,
+          "Expected sequence"
+        ],
+        [
+          5646,
+          "Step"
+        ],
+        [
+          5647,
+          "Direction"
+        ],
+        [
+          5648,
+          "Message"
+        ],
+        [
+          5649,
+          "Comment"
+        ],
+        [
+          5650,
+          ""
+        ],
+        [
+          5651,
+          "UE"
+        ],
+        [
+          5652,
+          "SS"
+        ],
+        [
+          5653,
+          ""
+        ],
+        [
+          5654,
+          ""
+        ],
+        [
+          5655,
+          "1"
+        ],
+        [
+          5656,
+          "-->"
+        ],
+        [
+          5657,
+          "REGISTER"
+        ],
+        [
+          5658,
+          "UE sends initial registration for IMS services."
+        ],
+        [
+          5659,
+          "2"
+        ],
+        [
+          5660,
+          "<--"
+        ],
+        [
+          5661,
+          "401 Unauthorized"
+        ],
+        [
+          5662,
+          "The SS responds with an invalid AKAv1-MD5 authentication challenge with SQN out of range."
+        ],
+        [
+          5663,
+          "3"
+        ],
+        [
+          5664,
+          "-->"
+        ],
+        [
+          5665,
+          "REGISTER"
+        ],
+        [
+          5666,
+          "REGISTER request:"
+        ],
+        [
+          5667,
+          "- contains AUTS directive"
+        ],
+        [
+          5668,
+          "- UE populates a new Security-Client header set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup."
+        ],
+        [
+          5669,
+          "4"
+        ],
+        [
+          5670,
+          "<--"
+        ],
+        [
+          5671,
+          "401 Unauthorized"
+        ],
+        [
+          5672,
+          "This is a valid 401 (Unauthorized) message."
+        ],
+        [
+          5673,
+          "5"
+        ],
+        [
+          5674,
+          "-->"
+        ],
+        [
+          5675,
+          "REGISTER"
+        ],
+        [
+          5676,
+          "Message is sent using the temporary set of security associations to protect the message."
+        ],
+        [
+          5677,
+          "Contains the valid answer to the authentication challenge sent in the 401 (Unauthorized) message."
+        ],
+        [
+          5678,
+          "6"
+        ],
+        [
+          5679,
+          "<---->"
+        ],
+        [
+          5680,
+          "Continue with Annex C.2 step 7"
+        ],
+        [
+          5681,
+          "Execute the Generic test procedure Annex C.2 steps 7-11 in order to get the UE in a stable registered state."
+        ],
+        [
+          5682,
+          ""
+        ],
+        [
+          5683,
+          "Specific message contents"
+        ],
+        [
+          5684,
+          "REGISTER (Step 1)"
+        ],
+        [
+          5685,
+          "Use the default message \"REGISTER\" in annex A.1.1 with condition A1."
+        ],
+        [
+          5686,
+          "401 UNAUTHORIZED (Step 2)"
+        ],
+        [
+          5687,
+          "Use the default message \"401 Unauthorized for REGISTER\" in annex A.1.2 with the following exceptions:"
+        ],
+        [
+          5688,
+          "Header/param"
+        ],
+        [
+          5689,
+          "Value/remark"
+        ],
+        [
+          5690,
+          "WWW-Authenticate"
+        ],
+        [
+          5691,
+          ""
+        ],
+        [
+          5692,
+          "\tnonce"
+        ],
+        [
+          5693,
+          "Base 64 encoding of RAND and AUTN, generated with SQN out of range with the AMF information field set to AMFRESYNCH value to trigger SQN re-synchronisation procedure in test ISIM/USIM, see TS 34.108 clause 8.1.2.2."
+        ],
+        [
+          5694,
+          ""
+        ],
+        [
+          5695,
+          "REGISTER (Step 3)"
+        ],
+        [
+          5696,
+          "Use the default message \"REGISTER\" in annex A.1.1 with condition A1 with the following exceptions:"
+        ],
+        [
+          5697,
+          "Header/param"
+        ],
+        [
+          5698,
+          "Value/remark"
+        ],
+        [
+          5699,
+          "CSeq"
+        ],
+        [
+          5700,
+          ""
+        ],
+        [
+          5701,
+          "\tvalue"
+        ],
+        [
+          5702,
+          "The value sent in the previous REGISTER message + 1 (incremented)"
+        ],
+        [
+          5703,
+          "Call-ID"
+        ],
+        [
+          5704,
+          ""
+        ],
+        [
+          5705,
+          "\tcallid"
+        ],
+        [
+          5706,
+          "The same value as in REGISTER in Step 1"
+        ],
+        [
+          5707,
+          "Authorization"
+        ],
+        [
+          5708,
+          ""
+        ],
+        [
+          5709,
+          "\tnonce"
+        ],
+        [
+          5710,
+          "Same value as the opaque value in the previous 401 UNAUTHORIZED message"
+        ],
+        [
+          5711,
+          "\topaque"
+        ],
+        [
+          5712,
+          "Same value as the opaque value in the previous 401 UNAUTHORIZED message"
+        ],
+        [
+          5713,
+          "\tresponse"
+        ],
+        [
+          5714,
+          "parameter may exist, but value not to be checked"
+        ],
+        [
+          5715,
+          "\tauth-param"
+        ],
+        [
+          5716,
+          "auts= \"auts-value\", auts-value not to be checked"
+        ],
+        [
+          5717,
+          "\tnonce-count"
+        ],
+        [
+          5718,
+          "value or presence of the parameter not to be checked"
+        ],
+        [
+          5719,
+          "Security-Client"
+        ],
+        [
+          5720,
+          ""
+        ],
+        [
+          5721,
+          "     spi-c"
+        ],
+        [
+          5722,
+          "new SPI number of the inbound SA at the protected client port, must be different from the value used in step 1"
+        ],
+        [
+          5723,
+          "     spi-s"
+        ],
+        [
+          5724,
+          "new SPI number of the inbound SA at the protected server port, must be different from the value used in step 1"
+        ],
+        [
+          5725,
+          "     port-c"
+        ],
+        [
+          5726,
+          "new protected client port needed for the setup of new pairs of security associations, must be different from the value used in step 1"
+        ],
+        [
+          5727,
+          ""
+        ],
+        [
+          5728,
+          "REGISTER (Step 5)"
+        ],
+        [
+          5729,
+          "Use the default message \"REGISTER\" in annex A.1.1 with condition A2."
+        ],
+        [
+          5730,
+          "9.2.5\tTest requirements"
+        ],
+        [
+          5731,
+          "SS shall check in step 3 that in accordance to the 3GPP TS 24.229 [10] clause 5.1.1.5"
+        ],
+        [
+          5732,
+          "-\tthe UE responds with a further REGISTER indicating to the S-CSCF that the challenge has been deemed invalid; and"
+        ],
+        [
+          5733,
+          "-\tsends the REGISTER request using no security associations; and"
+        ],
+        [
+          5734,
+          "-\tthe REGISTER request contains \"auts\" Authorization header field parameter; and"
+        ],
+        [
+          5735,
+          "-\tpopulates a new Security-Client header within the REGISTER request, set to specify the security mechanism it supports, the IPsec layer algorithms it supports and the parameters needed for the new security association setup; and"
+        ],
+        [
+          5736,
+          "-\tdoes not create a temporary set of security associations."
+        ],
+        [
+          5737,
+          "SS shall check in step 5 that in accordance to the 3GPP TS 24.229 [10] clause 5.1.1.5"
+        ],
+        [
+          5738,
+          "-\tthe UE sets up the temporary set of security associations between the ports announced in Security-Client header (UE) in the REGISTER request and Security-Server header (SS) in the 401 Unauthorized response; and"
+        ],
+        [
+          5739,
+          "-\tsends the Registration request using the temporary set of security associations to protect the message."
+        ]
+      ]
+    },
+    {
+      "ref": "10.1",
+      "title": "Invalid Behaviour - 503 Service Unavailable",
+      "source_line_start": 5741,
+      "source_line_end": 5809,
+      "next_line": 5810,
+      "next_line_text": "11\tNotification",
+      "heading_text": "10.1\tInvalid Behaviour - 503 Service Unavailable",
+      "used_by": [
+        "TC-032"
+      ],
+      "key_markers": [
+        "10.1.1\tDefinition",
+        "10.1.2\tConformance requirement",
+        "10.1.3\tTest purpose",
+        "10.1.4\tMethod of test",
+        "10.1.5\tTest requirements",
+        "503 Service Unavailable",
+        "Retry-After",
+        "shall not automatically reattempt",
+        "SUBSCRIBE"
+      ],
+      "subsection_headers": [
+        {
+          "line": 5742,
+          "number": "10.1.1",
+          "title": "Definition",
+          "text": "10.1.1\tDefinition"
+        },
+        {
+          "line": 5744,
+          "number": "10.1.2",
+          "title": "Conformance requirement",
+          "text": "10.1.2\tConformance requirement"
+        },
+        {
+          "line": 5749,
+          "number": "10.1.3",
+          "title": "Test purpose",
+          "text": "10.1.3\tTest purpose"
+        },
+        {
+          "line": 5751,
+          "number": "10.1.4",
+          "title": "Method of test",
+          "text": "10.1.4\tMethod of test"
+        },
+        {
+          "line": 5793,
+          "number": null,
+          "title": "Specific Message Contents",
+          "text": "Specific Message Contents"
+        },
+        {
+          "line": 5807,
+          "number": "10.1.5",
+          "title": "Test requirements",
+          "text": "10.1.5\tTest requirements"
+        }
+      ],
+      "source_note": null,
+      "raw_rows": [
+        [
+          5741,
+          "10.1\tInvalid Behaviour - 503 Service Unavailable"
+        ],
+        [
+          5742,
+          "10.1.1\tDefinition"
+        ],
+        [
+          5743,
+          "Test to verify that when the UE receives a 503 (Service Unavailable) response to a SUBSCRIBE request containing a Retry-After header, then the UE shall not automatically reattempt the request until after the period indicated by the Retry-After header contents. This can happen when the server is temporarily unable to process the request due to a temporary overloading or maintenance of the server. "
+        ],
+        [
+          5744,
+          "10.1.2\tConformance requirement"
+        ],
+        [
+          5745,
+          "[TS 24.229, clause 5.1.2.2]"
+        ],
+        [
+          5746,
+          "If the UA receives a 503 (Service Unavailable) response to an initial SUBSCRIBE request containing a Retry-After header, then the UE shall not automatically reattempt the request until after the period indicated by the Retry-After header contents."
+        ],
+        [
+          5747,
+          "Reference(s)"
+        ],
+        [
+          5748,
+          "3GPP TS 24.229 [10], clause 5.1.2.2."
+        ],
+        [
+          5749,
+          "10.1.3\tTest purpose"
+        ],
+        [
+          5750,
+          "To verify that after receiving a 503 (Service Unavailable) response to a SUBSCRIBE request, containing a Retry-After header, the UE shall not automatically reattempt the request until after the period indicated by the Retry-After header contents. This can happen when the server is temporarily unable to process the request due to a temporary overloading or maintenance of the server."
+        ],
+        [
+          5751,
+          "10.1.4\tMethod of test"
+        ],
+        [
+          5752,
+          "Initial conditions"
+        ],
+        [
+          5753,
+          "UE contains either ISIM and USIM applications or only USIM application on UICC. UE has activated a PDP context, discovered P-CSCF and registered to IMS services, by executing the generic test procedure in Annex C.2 up to step 7 or C.2a (GIBA only) up to step 5."
+        ],
+        [
+          5754,
+          "SS is configured with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) configured on the UICC card equipped into the UE. SS has performed AKAv1-MD5 authentication with the UE and accepted the registration (IMS security)."
+        ],
+        [
+          5755,
+          "Test procedure"
+        ],
+        [
+          5756,
+          "1)\tThe UE sends a SUBSCRIBE request over the established security associations."
+        ],
+        [
+          5757,
+          "2)\tThe SS responds to the SUBSCRIBE request with a 503 (Service Unavailable) response with the Retry-After header with period set to T, indicating how long the service is expected to be unavailable to the requesting client."
+        ],
+        [
+          5758,
+          "3)\tThe SS waits for the period of time T defined in the Retry-After header, to check that the UE does not try to SUBSCRIBE for the registration event during this period."
+        ],
+        [
+          5759,
+          "4)\tThe UE sends a new SUBSCRIBE request."
+        ],
+        [
+          5760,
+          "5)\tContinue test execution with the Generic test procedure in Annex C.2 or C.2a (GIBA only), step 9."
+        ],
+        [
+          5761,
+          "Expected sequence"
+        ],
+        [
+          5762,
+          "Step"
+        ],
+        [
+          5763,
+          "Direction"
+        ],
+        [
+          5764,
+          "Message"
+        ],
+        [
+          5765,
+          "Comment"
+        ],
+        [
+          5766,
+          ""
+        ],
+        [
+          5767,
+          "UE"
+        ],
+        [
+          5768,
+          "SS"
+        ],
+        [
+          5769,
+          ""
+        ],
+        [
+          5770,
+          ""
+        ],
+        [
+          5771,
+          "1"
+        ],
+        [
+          5772,
+          "-->"
+        ],
+        [
+          5773,
+          "SUBSCRIBE"
+        ],
+        [
+          5774,
+          "UE subscribes to its registration event package. "
+        ],
+        [
+          5775,
+          "2"
+        ],
+        [
+          5776,
+          "<--"
+        ],
+        [
+          5777,
+          "503 Service Unavailable"
+        ],
+        [
+          5778,
+          "The SS responds with 503 response containing a Retry-After header with period set to T."
+        ],
+        [
+          5779,
+          "3"
+        ],
+        [
+          5780,
+          ""
+        ],
+        [
+          5781,
+          ""
+        ],
+        [
+          5782,
+          "SS waits for Time T to check that the UE does not re-attempt the request."
+        ],
+        [
+          5783,
+          "4"
+        ],
+        [
+          5784,
+          "-->"
+        ],
+        [
+          5785,
+          "SUBSCRIBE "
+        ],
+        [
+          5786,
+          "UE reattempts to subscribe to its registration event package."
+        ],
+        [
+          5787,
+          "5"
+        ],
+        [
+          5788,
+          "<---->"
+        ],
+        [
+          5789,
+          "Continue with Annex C.2 step 9"
+        ],
+        [
+          5790,
+          "Execute the Generic test procedure Annex C.2 steps 9-11 in order to get the UE in a stable registered state."
+        ],
+        [
+          5791,
+          ""
+        ],
+        [
+          5792,
+          "NOTE:\tThe default messages contents in annex A are used with condition \"IMS security \" or \"GIBA\" when applicable"
+        ],
+        [
+          5793,
+          "Specific Message Contents"
+        ],
+        [
+          5794,
+          "SUBSCRIBE (Step 1)"
+        ],
+        [
+          5795,
+          "Use the default message \"SUBSCRIBE for reg-event package\" in annex A.1.4."
+        ],
+        [
+          5796,
+          "503 Service Unavailable response (Step 2)"
+        ],
+        [
+          5797,
+          "Use the default message \"503 Service Unavailable\" in annex A.4.2."
+        ],
+        [
+          5798,
+          "SUBSCRIBE (Step 4)"
+        ],
+        [
+          5799,
+          "Use the default message \"SUBSCRIBE for reg-event package\" in annex A.1.4 with the following exception:"
+        ],
+        [
+          5800,
+          "Header/param"
+        ],
+        [
+          5801,
+          "Value/remark"
+        ],
+        [
+          5802,
+          "Call-ID"
+        ],
+        [
+          5803,
+          ""
+        ],
+        [
+          5804,
+          "\tcallid"
+        ],
+        [
+          5805,
+          "value different from the previous SUBSCRIBE request"
+        ],
+        [
+          5806,
+          ""
+        ],
+        [
+          5807,
+          "10.1.5\tTest requirements"
+        ],
+        [
+          5808,
+          "Step 3: The UE shall not automatically reattempt the request during the period duration T."
+        ],
+        [
+          5809,
+          "Step 4: The UE reattempts to send a SUBSCRIBE request for registration event package."
+        ]
+      ]
+    },
+    {
+      "ref": "12.2",
+      "title": "MO Call - 503 Service Unavailable",
+      "source_line_start": 6060,
+      "source_line_end": 6118,
+      "next_line": 6119,
+      "next_line_text": "12.2a\tMO Call - 504 Server Time-out",
+      "heading_text": "12.2\tMO Call - 503 Service Unavailable",
+      "used_by": [
+        "TC-032"
+      ],
+      "key_markers": [
+        "12.2.1\tDefinition",
+        "12.2.2\tConformance requirement",
+        "12.2.3\tTest purpose",
+        "12.2.4\tMethod of test",
+        "12.2.5\tTest requirements",
+        "503 Service Unavailable",
+        "Retry-After",
+        "ACK",
+        "INVITE"
+      ],
+      "subsection_headers": [
+        {
+          "line": 6061,
+          "number": "12.2.1",
+          "title": "Definition",
+          "text": "12.2.1\tDefinition"
+        },
+        {
+          "line": 6063,
+          "number": "12.2.2",
+          "title": "Conformance requirement",
+          "text": "12.2.2\tConformance requirement"
+        },
+        {
+          "line": 6067,
+          "number": "12.2.3",
+          "title": "Test purpose",
+          "text": "12.2.3\tTest purpose"
+        },
+        {
+          "line": 6069,
+          "number": "12.2.4",
+          "title": "Method of test",
+          "text": "12.2.4\tMethod of test"
+        },
+        {
+          "line": 6113,
+          "number": null,
+          "title": "Specific Message Contents",
+          "text": "Specific Message Contents"
+        },
+        {
+          "line": 6117,
+          "number": "12.2.5",
+          "title": "Test requirements",
+          "text": "12.2.5\tTest requirements"
+        }
+      ],
+      "source_note": null,
+      "raw_rows": [
+        [
+          6060,
+          "12.2\tMO Call - 503 Service Unavailable"
+        ],
+        [
+          6061,
+          "12.2.1\tDefinition"
+        ],
+        [
+          6062,
+          "When a server is temporarily unable to process an INVITE request due to a temporary overloading or maintenance of the server sends a 503 Service Unavailable response. The server may indicate when the service will be available again in a Retry-After header field. This process is described in 3GPP TS 24.229 [10], clause 5.1.3.1. "
+        ],
+        [
+          6063,
+          "12.2.2\tConformance requirement"
+        ],
+        [
+          6064,
+          "Upon receiving a 503 (Service Unavailable) response to an initial INVITE request containing a Retry-After header, then the originating UE shall not automatically reattempt the request until after the period indicated by the Retry-After header contents."
+        ],
+        [
+          6065,
+          "Reference(s)"
+        ],
+        [
+          6066,
+          "3GPP TS 24.229 [10], clause 5.1.3.1."
+        ],
+        [
+          6067,
+          "12.2.3\tTest purpose"
+        ],
+        [
+          6068,
+          "To verify that when the UE receives a 503 (Service Unavailable) response to an initial INVITE request containing a Retry-After header, then the UE shall not automatically reattempt the request until after the period indicated by the Retry-After header contents."
+        ],
+        [
+          6069,
+          "12.2.4\tMethod of test"
+        ],
+        [
+          6070,
+          "Initial conditions"
+        ],
+        [
+          6071,
+          "UE contains either ISIM and USIM applications or only USIM application on UICC. UE has discovered P-CSCF and registered to IMS services, by executing the generic test procedure in Annex C.2 or C.2a (GIBA only) up to the last step."
+        ],
+        [
+          6072,
+          "SS is configured with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) configured on the UICC card equipped into the UE. SS has performed AKAv1-MD5 authentication with the UE and accepted the registration (IMS security)."
+        ],
+        [
+          6073,
+          "Test procedure applicable for a UE with E-UTRA support (TS 34.229-2 [5] A.18/1)"
+        ],
+        [
+          6074,
+          "For value of T see specific message content for 503 (Service Unavailable) message."
+        ],
+        [
+          6075,
+          "1-8)\tUE executes the procedures described in TS 36.508 [94] table 4.5A.6.3-1 steps 1 to 8."
+        ],
+        [
+          6076,
+          "9)\tThe SS responds with a 503 (Service Unavailable) response with the Retry-After header set to T."
+        ],
+        [
+          6077,
+          "10)\tThe SS waits for the UE to send an ACK to acknowledge the reception of the 503 (Service Unavailable) response."
+        ],
+        [
+          6078,
+          "11)\tSS waits for a duration of time T and checks that the UE does not reattempt sending the INVITE request. After the time T the UE may reattempt sending the INVITE request."
+        ],
+        [
+          6079,
+          "12)\tThe UE may reattempt sending the INVITE request after time T."
+        ],
+        [
+          6080,
+          "Expected sequence"
+        ],
+        [
+          6081,
+          "NOTE:\tOnly the IMS procedure relevant to the test purpose is described below."
+        ],
+        [
+          6082,
+          "Step"
+        ],
+        [
+          6083,
+          "Direction"
+        ],
+        [
+          6084,
+          "Message"
+        ],
+        [
+          6085,
+          "Comment"
+        ],
+        [
+          6086,
+          ""
+        ],
+        [
+          6087,
+          "UE"
+        ],
+        [
+          6088,
+          "SS"
+        ],
+        [
+          6089,
+          ""
+        ],
+        [
+          6090,
+          ""
+        ],
+        [
+          6091,
+          "1-3"
+        ],
+        [
+          6092,
+          ""
+        ],
+        [
+          6093,
+          "Steps 1, 2 and 3 defined in annex C.21"
+        ],
+        [
+          6094,
+          "MTSI MO speech call. Referred from 36.508 [94] table 4.5A.6.3-1 for a UE with E-UTRA support."
+        ],
+        [
+          6095,
+          "4"
+        ],
+        [
+          6096,
+          "<--"
+        ],
+        [
+          6097,
+          "503 Service Unavailable"
+        ],
+        [
+          6098,
+          "Including Retry-After header with period set to T"
+        ],
+        [
+          6099,
+          "5"
+        ],
+        [
+          6100,
+          "-->"
+        ],
+        [
+          6101,
+          "ACK"
+        ],
+        [
+          6102,
+          "The UE acknowledges the reception of the 503 (Service Unavailable) response"
+        ],
+        [
+          6103,
+          "6"
+        ],
+        [
+          6104,
+          ""
+        ],
+        [
+          6105,
+          ""
+        ],
+        [
+          6106,
+          "The SS waits for a duration of time T and checks that the UE does not re-send the INVITE request"
+        ],
+        [
+          6107,
+          "7"
+        ],
+        [
+          6108,
+          ""
+        ],
+        [
+          6109,
+          "Step 2 defined in annex C.21"
+        ],
+        [
+          6110,
+          "Optional"
+        ],
+        [
+          6111,
+          ""
+        ],
+        [
+          6112,
+          "NOTE:\tThe default messages contents in annex A are used with condition \"IMS security\" or \"GIBA\" when applicable"
+        ],
+        [
+          6113,
+          "Specific Message Contents"
+        ],
+        [
+          6114,
+          "Steps 1 - 3 as specified in annex C.21"
+        ],
+        [
+          6115,
+          "503 Service Unavailable (Step 4)"
+        ],
+        [
+          6116,
+          "Use the default message \"503 Service Unavailable\" in annex A.4.2."
+        ],
+        [
+          6117,
+          "12.2.5\tTest requirements"
+        ],
+        [
+          6118,
+          "At step 6 the UE shall not reattempt the INVITE request before time T from the time the SS receives the ACK from the UE in step 5."
+        ]
+      ]
+    },
+    {
+      "ref": "12.2a",
+      "title": "MO Call - 504 Server Time-out",
+      "source_line_start": 6119,
+      "source_line_end": 6186,
+      "next_line": 6187,
+      "next_line_text": "12.3 to 12.11\tVoid",
+      "heading_text": "12.2a\tMO Call - 504 Server Time-out",
+      "used_by": [
+        "TC-015",
+        "TC-032"
+      ],
+      "key_markers": [
+        "12.2a.1\tDefinition",
+        "12.2a.2\tConformance requirement",
+        "12.2a.3\tTest purpose",
+        "12.2a.4\tMethod of test",
+        "12.2a.5\tTest requirements",
+        "504 Server Time-out",
+        "P-Asserted-Identity",
+        "initial registration",
+        "Service-Route"
+      ],
+      "subsection_headers": [
+        {
+          "line": 6120,
+          "number": "12.2a.1",
+          "title": "Definition",
+          "text": "12.2a.1\tDefinition"
+        },
+        {
+          "line": 6122,
+          "number": "12.2a.2",
+          "title": "Conformance requirement",
+          "text": "12.2a.2\tConformance requirement"
+        },
+        {
+          "line": 6136,
+          "number": "12.2a.3",
+          "title": "Test purpose",
+          "text": "12.2a.3\tTest purpose"
+        },
+        {
+          "line": 6138,
+          "number": "12.2a.4",
+          "title": "Method of test",
+          "text": "12.2a.4\tMethod of test"
+        },
+        {
+          "line": 6176,
+          "number": null,
+          "title": "Specific Message Contents",
+          "text": "Specific Message Contents"
+        },
+        {
+          "line": 6185,
+          "number": "12.2a.5",
+          "title": "Test requirements",
+          "text": "12.2a.5\tTest requirements"
+        }
+      ],
+      "source_note": null,
+      "raw_rows": [
+        [
+          6119,
+          "12.2a\tMO Call - 504 Server Time-out"
+        ],
+        [
+          6120,
+          "12.2a.1\tDefinition"
+        ],
+        [
+          6121,
+          "When the S-CSCF is temporarily unable to process an INVITE as the S-CSCF does not have the user profile or does not trust the data that it has (e.g. due to restart), the S-CSCF can reject the request by returning a 504 (Server Time-out) response to the UE with specific content as specified in 3GPP TS 24.229 [10] clause 5.4.3.2. As a result the UE will initiate restoration procedures by performing an initial registration."
+        ],
+        [
+          6122,
+          "12.2a.2\tConformance requirement"
+        ],
+        [
+          6123,
+          "In the event the UE receives a 504 (Server Time-out) response containing:"
+        ],
+        [
+          6124,
+          "1)\ta P-Asserted-Identity header field set to a value equal to a URI:"
+        ],
+        [
+          6125,
+          "a)\tfrom the Service-Route header field value received during registration; or"
+        ],
+        [
+          6126,
+          "b)\tfrom the Path header field value received during registration; and"
+        ],
+        [
+          6127,
+          "2)\ta Content-Type header field set according to subclause 7.6 (i.e. \"application/3gpp-ims+xml\"), independent of the value or presence of the Content-Disposition header field, independent of the value or presence of Content-Disposition parameters, then the default content disposition, identified as \"3gpp-alternative-service\", is applied as follows:"
+        ],
+        [
+          6128,
+          "a)\tif the 504 (Server Time-out) response includes an IM CN subsystem XML body as described in subclause 7.6 with the <ims-3gpp> element, including a version attribute, with the <alternative-service> child element:"
+        ],
+        [
+          6129,
+          "a)\twith the <type> child element set to \"restoration\" (see table 7.7AA); and"
+        ],
+        [
+          6130,
+          "b)\twith the <action> child element set to \"initial-registration\" (see table 7.7AB);"
+        ],
+        [
+          6131,
+          "\tthen the UE:"
+        ],
+        [
+          6132,
+          "-\tshall initiate restoration procedures by performing an initial registration as specified in subclause 5.1.1.2; and"
+        ],
+        [
+          6133,
+          "-\tmay provide an indication to the user based on the text string contained in the <reason> child element of the <alternative-service> child element of the <ims-3gpp> element."
+        ],
+        [
+          6134,
+          "Reference(s)"
+        ],
+        [
+          6135,
+          "3GPP TS 24.229 [10], clause 5.1.2A.1.6"
+        ],
+        [
+          6136,
+          "12.2a.3\tTest purpose"
+        ],
+        [
+          6137,
+          "To verify that when the UE receives a 504 (Server Time-out) response to an INVITE request containing a P-Asserted-Identity header field set to a value equal to a URI from the Service-Route header field value received during registration and the rest of the message is set as described in [10] subclause 5.1.2A.1.6, then the UE initiates restoration procedures by performing an initial registration as specified in [10] subclause 5.1.1.2."
+        ],
+        [
+          6138,
+          "12.2a.4\tMethod of test"
+        ],
+        [
+          6139,
+          "Initial conditions"
+        ],
+        [
+          6140,
+          "UE contains an ISIM and USIM or only USIM application on the UICC. UE has activated a PDP context/EPS bearer, discovered P-CSCF and registered to IMS services, by executing the generic test procedure in Annex C.2 up to the last step."
+        ],
+        [
+          6141,
+          "SS is configured with the shared secret key of IMS AKA algorithm, related to the IMS private user identity (IMPI) configured on the UICC card equipped into the UE. SS has performed AKAv1-MD5 authentication with the UE and accepted the registration (IMS security)."
+        ],
+        [
+          6142,
+          "Test procedure applicable for a UE with E-UTRA support (TS 34.229-2 [5] A.18/1)"
+        ],
+        [
+          6143,
+          "1-8)\tUE executes the procedures described in TS 36.508 [94] table 4.5A.6.3-1 steps 1 to 8."
+        ],
+        [
+          6144,
+          "9)\tThe SS responds with a 504 (Server Time-out) response. "
+        ],
+        [
+          6145,
+          "10)\tThe SS waits for the UE to send an ACK to acknowledge the reception of 504 (Server Time-out) response."
+        ],
+        [
+          6146,
+          "11-18)\tAs specified in steps 4-11 annex C.2."
+        ],
+        [
+          6147,
+          "Expected sequence"
+        ],
+        [
+          6148,
+          "NOTE:\tOnly the IMS procedure relevant to the test purpose is described below."
+        ],
+        [
+          6149,
+          "Step"
+        ],
+        [
+          6150,
+          "Direction"
+        ],
+        [
+          6151,
+          "Message"
+        ],
+        [
+          6152,
+          "Comment"
+        ],
+        [
+          6153,
+          ""
+        ],
+        [
+          6154,
+          "UE"
+        ],
+        [
+          6155,
+          "SS"
+        ],
+        [
+          6156,
+          ""
+        ],
+        [
+          6157,
+          ""
+        ],
+        [
+          6158,
+          "1-2"
+        ],
+        [
+          6159,
+          ""
+        ],
+        [
+          6160,
+          "Steps 1-2 defined in annex C.21"
+        ],
+        [
+          6161,
+          "MTSI MO speech call. Referred from 36.508 [94] table 4.5A.6.3-1 for a UE with E-UTRA support."
+        ],
+        [
+          6162,
+          "3"
+        ],
+        [
+          6163,
+          "<--"
+        ],
+        [
+          6164,
+          "504 Server Time-out"
+        ],
+        [
+          6165,
+          "Set as per the specific message contents."
+        ],
+        [
+          6166,
+          "4"
+        ],
+        [
+          6167,
+          "-->"
+        ],
+        [
+          6168,
+          "ACK"
+        ],
+        [
+          6169,
+          ""
+        ],
+        [
+          6170,
+          "5-12"
+        ],
+        [
+          6171,
+          "-->"
+        ],
+        [
+          6172,
+          "Steps 4-11 defined in annex C.2"
+        ],
+        [
+          6173,
+          "The UE performs an initial registration."
+        ],
+        [
+          6174,
+          ""
+        ],
+        [
+          6175,
+          "NOTE:\tThe default messages contents in annex A are used with condition \"IMS security\" or \"GIBA\" when applicable."
+        ],
+        [
+          6176,
+          "Specific Message Contents"
+        ],
+        [
+          6177,
+          "Steps 1-2"
+        ],
+        [
+          6178,
+          "As specified in annex C.21"
+        ],
+        [
+          6179,
+          "504 Server Time-out (Step 3)"
+        ],
+        [
+          6180,
+          "Use the default message \"504 Server Time-out\" in Annex A.4.6"
+        ],
+        [
+          6181,
+          "ACK (Step 4)"
+        ],
+        [
+          6182,
+          "As specified in annex A.2.7."
+        ],
+        [
+          6183,
+          "Steps 5-12"
+        ],
+        [
+          6184,
+          "As specified in annex C.2."
+        ],
+        [
+          6185,
+          "12.2a.5\tTest requirements"
+        ],
+        [
+          6186,
+          "After step 3 the UE shall perform an initial registration."
+        ]
+      ]
+    }
+  ]
+}

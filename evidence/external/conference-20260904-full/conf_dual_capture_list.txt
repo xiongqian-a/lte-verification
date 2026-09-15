@@ -1,0 +1,4 @@
++OK Conference 888 (2 members rate: 8000 flags: running|answered|enforce_min|dynamic|exit_sound|enter_sound|json_status)
+3;sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org;40bbe223-fae8-4e46-b3d1-6515462a4dd5;001010123456780;001010123456780;hear|speak|floor;0;0;100
+2;sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org;ad88ee18-3da4-4377-a4c9-3ca006269830;001010123456780;001010123456780;hear|speak;0;0;100
+

@@ -1,0 +1,39 @@
+Active RF plugins: libsrsran_rf_zmq.so
+Inactive RF plugins: 
+---  Software Radio Systems LTE eNodeB  ---
+
+Reading configuration file /home/co1750/tc005-o5g/enb-tc005.conf...
+Failed to `mlockall`: {}
+Built in Release mode using commit ce8a3ca on branch HEAD.
+
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Success
+Opening 1 channels in RF device=zmq with args=tx_port=tcp://*:2100,rx_port=tcp://localhost:2101,id=enb,base_srate=23.04e6
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Invalid argument
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Invalid argument
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Invalid argument
+Warning: Failed to create thread with real-time priority. Creating it with normal priority: Invalid argument
+Supported RF device list: zmq file
+CHx base_srate=23.04e6
+CHx id=enb
+Current sample rate is 1.92 MHz with a base rate of 23.04 MHz (x12 decimation)
+CH0 rx_port=tcp://localhost:2101
+CH0 tx_port=tcp://*:2100
+
+==== eNodeB started ===
+Type <t> to view trace
+Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
+Current sample rate is 11.52 MHz with a base rate of 23.04 MHz (x2 decimation)
+Setting frequency: DL=2680.0 Mhz, UL=2560.0 MHz for cc_idx=0 nof_prb=50
+Closing stdin thread.
+RACH:  tti=341, cc=0, pci=1, preamble=5, offset=0, temp_crnti=0x46
+User 0x46 connected
+User 0x46 connected
+User 0x46 connected
+Disconnecting rnti=0x46.
+Stopping ..
+SCTP Association Shutdown. Association: 0
+Restarting S1 connection
+connect(): Connection refused
+Failed to initiate S1 connection. Attempting reconnection in 10 seconds
+Saving S1AP PCAP file (DLT=150) to /home/co1750/tc005-o5g/pcaps/enb_s1ap.pcap
+---  exiting  ---

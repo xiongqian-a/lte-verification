@@ -1,0 +1,4665 @@
+{
+  "scope": "功能 TC 与官方 TP 映射注册表",
+  "version": "2026-09-15",
+  "policy": [
+    "本地 PASS 只代表研发/功能行为符合预期，不等同 36.523-1 或 34.229-1 一致性，不等同 pjsua 新栈合规，不等同第三方入网。",
+    "官方一致性 Verdict 必须由一致性测试仪/检测机构按官方 TP 判 P/F。",
+    "未被官方正文核到的 ID/判据一律标 RESTRICTED/L2_REQUIRED，不得伪造 PASS。"
+  ],
+  "evidence_levels": {
+    "LOCAL_PASS": "真实本地/测试台日志字段级 PASS",
+    "SELFCHECK_PASS": "判定脚本自检 PASS，未挂真实日志",
+    "STANDARD_ALIGNED": "标准判据已对齐，尚未执行端到端",
+    "RESTRICTED": "缺真实核心网/eNB/IMS/仪表/运营商依赖，不能判一致性",
+    "L2_REQUIRED": "需要一致性测试仪或正式实验室"
+  },
+  "sources": {
+    "36523": "C:/11/523协议/523-1v14.pdf",
+    "34229": "C:/11/523协议/34229-1-e80.pdf; workspace extraction C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34229-1e70-word.txt",
+    "24229": "C:/Users/co1750/Downloads/24229-eh0/24229-eh0.doc 与 _extract/24229.txt",
+    "26114": "C:/11/523协议/26114-ec0.pdf 与 _extract/26114.txt",
+    "24301": "C:/11/523协议/ts_124301v180600p.pdf 与 _extract/24301.txt",
+    "24628": "C:/Users/co1750/Downloads/download (3)/24628-e10/24628-e10.doc 与 _extract/24628.txt",
+    "36508": "C:/Users/co1750/Downloads/ts_136508v140300p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt",
+    "24173": "C:/Users/co1750/Downloads/ts_124173v140300p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/24173.txt",
+    "36509": "C:/Users/co1750/Downloads/ts_136509v140000p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36509.txt",
+    "3652302": "C:/Users/co1750/Downloads/ts_13652302v140300p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/3652302.txt",
+    "34108": "C:/Users/co1750/Downloads/ts_134108v140200p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34108.txt"
+  },
+  "entries": [
+    {
+      "tc": "TC-001",
+      "name": "IMS APN PDN 连接",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "10.5.1",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS | 20260914_NAS_TEST_RERUN",
+      "localScript": "work/run_tc_evidence.py",
+      "note": "UE 侧 nas_test 重跑：IMS APN PDN 请求/PTI/dedicated accept 已复现；端到端真实 eNB/EPC 仍缺",
+      "blocker": "真实 eNB/EPC 端到端",
+      "officialBoundaries": [
+        {
+          "section": "10.5.1",
+          "body_line": 229255,
+          "tp_line": 229256,
+          "conformance_line": 229285,
+          "test_description_line": 229443,
+          "pre_test_line": 229444,
+          "procedure_line": 229450,
+          "main_behaviour_table": "Table 10.5.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 229451,
+          "main_behaviour_end_line": 229517,
+          "parallel_behaviour_tables": [
+            {
+              "table": "Table 10.5.1.3.2-2: Parallel behaviour",
+              "table_line": 229519,
+              "table_end_line": 229528
+            }
+          ],
+          "specific_message_line": 229530,
+          "specific_message_end_line": 229651,
+          "specific_message_tables": [
+            {
+              "table": "Table 10.5.1.3.3-0: Message RRCConnectionRequest (step 1a, Table 10.5.1.3.2-1)",
+              "table_line": 229531,
+              "table_end_line": 229540,
+              "derivation_paths": [
+                "36.508 table 4.6.1-16"
+              ]
+            },
+            {
+              "table": "Table 10.5.1.3.3-1: Message PDN CONNECTIVITY REQUEST (step 2, Table 10.5.1.3.2-1)",
+              "table_line": 229546,
+              "table_end_line": 229580,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-20",
+                "36.508 table 4.6.1-8 using condition DRB(2,0)"
+              ]
+            },
+            {
+              "table": "Table 10.5.1.3.3-2: Message ACTIVATE DEFAULT EPS BEARER CONTEXT REQUEST (step 3, Table",
+              "table_line": 229582,
+              "table_end_line": 229602,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-6"
+              ]
+            },
+            {
+              "table": "Table 10.5.1.3.3-3: Message ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST (step 3, Table",
+              "table_line": 229609,
+              "table_end_line": 229629,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-3"
+              ]
+            },
+            {
+              "table": "Table 10.5.1.3.3-4: Message ACTIVATE DEFAULT EPS BEARER CONTEXT ACCEPT (step 4, Table",
+              "table_line": 229632,
+              "table_end_line": 229639,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-4"
+              ]
+            },
+            {
+              "table": "Table 10.5.1.3.3-5: Message ACTIVATE DEDICATED EPS BEARER CONTEXT ACCEPT (step 6, Table",
+              "table_line": 229642,
+              "table_end_line": 229649,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-1"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 229255-229256 (36.523-1 10.5.1 title and Test Purpose)",
+        "523-1v14.txt line 229443-229517 (36.523-1 10.5.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 229451-229517 (36.523-1 10.5.1 Main behaviour)",
+        "523-1v14.txt line 229530-229651 (36.523-1 10.5.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 229519-229528 (36.523-1 Table 10.5.1.3.2-2: Parallel behaviour)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 16410-16410 (36.508 Table 4.5A.1-1 IP address allocation in the U-plane)",
+        "36508.txt line 20856-20856 (36.508 Table 4.6.1-16 RRCConnectionRequest)",
+        "36508.txt line 30198-30198 (36.508 Table 4.7.3-20 PDN CONNECTIVITY REQUEST)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 229255-229256 (36.523-1 10.5.1 title and Test Purpose)",
+        "523-1v14.txt line 229443-229517 (36.523-1 10.5.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 229451-229517 (36.523-1 10.5.1 Main behaviour)",
+        "523-1v14.txt line 229530-229651 (36.523-1 10.5.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 229519-229528 (36.523-1 Table 10.5.1.3.2-2: Parallel behaviour)",
+        "36508.txt line 16410-16410 (36.508 Table 4.5A.1-1 IP address allocation in the U-plane)",
+        "36508.txt line 20856-20856 (36.508 Table 4.6.1-16 RRCConnectionRequest)",
+        "36508.txt line 30198-30198 (36.508 Table 4.7.3-20 PDN CONNECTIVITY REQUEST)"
+      ]
+    },
+    {
+      "tc": "TC-002",
+      "name": "专用 Bearer 建立",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "10.2.1",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "work/run_tc_evidence.py",
+      "note": "UE 单测注入/字段证据；缺真实 EPC 触发专用承载",
+      "blocker": "真实 EPC 触发",
+      "officialBoundaries": [
+        {
+          "section": "10.2.1",
+          "body_line": 227717,
+          "tp_line": 227718,
+          "conformance_line": 227728,
+          "test_description_line": 227747,
+          "pre_test_line": 227748,
+          "procedure_line": 227760,
+          "main_behaviour_table": "Table 10.2.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 227761,
+          "main_behaviour_end_line": 227801,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 227807,
+          "specific_message_end_line": 227884,
+          "specific_message_tables": [
+            {
+              "table": "Table 10.2.1.3.3-1: Message ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST (step 3, Table",
+              "table_line": 227808,
+              "table_end_line": 227844,
+              "derivation_paths": [
+                "36.508 table 4.7.3-3 and table 4.6.1-8 with condition AM-DRB-ADD(2)"
+              ]
+            },
+            {
+              "table": "Table 10.2.1.3.3-2: Message ACTIVATE DEDICATED EPS BEARER CONTEXT ACCEPT (step 4, Table",
+              "table_line": 227846,
+              "table_end_line": 227859,
+              "derivation_paths": [
+                "36.508 table 4.7.3-1"
+              ]
+            },
+            {
+              "table": "Table 10.2.1.3.3-3: Reference packet filter (step 5, Table 10.2.1.3.2-1)",
+              "table_line": 227862,
+              "table_end_line": 227879,
+              "derivation_paths": [
+                "36.508 table 6.6.2-5:"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 227717-227718 (36.523-1 10.2.1 title and Test Purpose)",
+        "523-1v14.txt line 227747-227801 (36.523-1 10.2.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 227761-227801 (36.523-1 10.2.1 Main behaviour)",
+        "523-1v14.txt line 227807-227884 (36.523-1 10.2.1 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 29100-29100 (36.508 Table 4.7.3-3 ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST)",
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)",
+        "36508.txt line 29018-29018 (36.508 Table 4.7.3-1 ACTIVATE DEDICATED EPS BEARER CONTEXT ACCEPT)",
+        "36508.txt line 43510-43510 (36.508 Table 6.6.2-5 Reference packet filter #4)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 227717-227718 (36.523-1 10.2.1 title and Test Purpose)",
+        "523-1v14.txt line 227747-227801 (36.523-1 10.2.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 227761-227801 (36.523-1 10.2.1 Main behaviour)",
+        "523-1v14.txt line 227807-227884 (36.523-1 10.2.1 .3.3 Specific message contents)",
+        "36508.txt line 29100-29100 (36.508 Table 4.7.3-3 ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST)",
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)",
+        "36508.txt line 29018-29018 (36.508 Table 4.7.3-1 ACTIVATE DEDICATED EPS BEARER CONTEXT ACCEPT)",
+        "36508.txt line 43510-43510 (36.508 Table 6.6.2-5 Reference packet filter #4)"
+      ]
+    },
+    {
+      "tc": "TC-003",
+      "name": "专用 Bearer 释放",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "10.4.1",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "work/run_tc_evidence.py",
+      "note": "4 子例；UE 单测注入/字段证据；缺真实 EPC 触发释放",
+      "blocker": "真实 EPC 触发",
+      "officialBoundaries": [
+        {
+          "section": "10.4.1",
+          "body_line": 228159,
+          "tp_line": 228160,
+          "conformance_line": 228193,
+          "test_description_line": 228274,
+          "pre_test_line": 228275,
+          "procedure_line": 228288,
+          "main_behaviour_table": "Table 10.4.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 228289,
+          "main_behaviour_end_line": 228677,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 228679,
+          "specific_message_end_line": 229058,
+          "specific_message_tables": [
+            {
+              "table": "Table 10.4.1.3.3-1: Message PDN CONNECTIVITY REQUEST (step 2, 22 and 35, Table 10.4.1.3.2-1)",
+              "table_line": 228680,
+              "table_end_line": 228697,
+              "derivation_paths": [
+                "36.508 table 4.7.3-20"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-2: Message ACTIVATE DEFAULT EPS BEARER CONTEXT REQUEST (step 3, 23 and",
+              "table_line": 228704,
+              "table_end_line": 228730,
+              "derivation_paths": [
+                "36.508 table 4.7.3-6 and table 4.6.1-8 with condition AM-DRB-ADD(2)"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-3: Message ACTIVATE DEFAULT EPS BEARER CONTEXT ACCEPT (step 4, 24 and",
+              "table_line": 228733,
+              "table_end_line": 228746,
+              "derivation_paths": [
+                "36.508 table 4.7.3-4"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-4: Message ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST (step 5, 12,",
+              "table_line": 228753,
+              "table_end_line": 228783,
+              "derivation_paths": [
+                "36.508 table 4.7.3-3 and table 4.6.1-8 with condition AM-DRB-ADD(3)"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-5: Message ACTIVATE DEDICATED EPS BEARER CONTEXT ACCEPT (step 6, 13, 26",
+              "table_line": 228786,
+              "table_end_line": 228800,
+              "derivation_paths": [
+                "36.508 table 4.7.3-1"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-6: Message DEACTIVATE EPS BEARER CONTEXT REQUEST (step 10, Table",
+              "table_line": 228803,
+              "table_end_line": 228822,
+              "derivation_paths": [
+                "36.508 table 4.7.3-12 and table 4.6.1-8 with condition DRB-REL(3)"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-7: Message DEACTIVATE EPS BEARER CONTEXT ACCEPT (step 11, Table",
+              "table_line": 228828,
+              "table_end_line": 228842,
+              "derivation_paths": [
+                "36.508 table 4.7.3-11"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-8: Message DEACTIVATE EPS BEARER CONTEXT REQUEST (step 14, Table",
+              "table_line": 228845,
+              "table_end_line": 228864,
+              "derivation_paths": [
+                "36.508 table 4.7.3-12 and table 4.6.1-8 with condition DRB-REL(2)"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-9: Message DEACTIVATE EPS BEARER CONTEXT ACCEPT (step 15, Table",
+              "table_line": 228866,
+              "table_end_line": 228910,
+              "derivation_paths": [
+                "36.508 table 4.7.3-11",
+                "36.508 table 4.7.3-16"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-10: Message DEACTIVATE EPS BEARER CONTEXT REQUEST (step 18, Table",
+              "table_line": 228913,
+              "table_end_line": 228929,
+              "derivation_paths": [
+                "36.508 table 4.7.3-12 and table 4.6.1-8 with condition DRB-REL(2)"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-11: Message DEACTIVATE EPS BEARER CONTEXT ACCEPT (step 19, Table",
+              "table_line": 228931,
+              "table_end_line": 228948,
+              "derivation_paths": [
+                "36.508 table 4.7.3-11",
+                "36.508 table 4.6.1-8 with condition SRB2-DRB(0, 1)"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-12: Message MODIFY EPS BEARER CONTEXT REQUEST (step 32 and 43A, Table",
+              "table_line": 228954,
+              "table_end_line": 228966,
+              "derivation_paths": [
+                "36.508 table 4.7.3-16"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-13: Message MODIFY EPS BEARER CONTEXT REJECT (step 32A and 43B, Table",
+              "table_line": 228969,
+              "table_end_line": 228984,
+              "derivation_paths": [
+                "36.508 table 4.7.3-14"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-14: Message MODIFY EPS BEARER CONTEXT REQUEST (step 16, 32B and 43C,",
+              "table_line": 228987,
+              "table_end_line": 228999,
+              "derivation_paths": [
+                "36.508 table 4.7.3-16"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-15: Message MODIFY EPS BEARER CONTEXT REJECT (step 17, 32C and 43D, Table",
+              "table_line": 229002,
+              "table_end_line": 229017,
+              "derivation_paths": [
+                "36.508 table 4.7.3-14"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-16: Message TRACKING AREA UPDATE REQUEST (step 42, Table 10.4.1.3.2-1)",
+              "table_line": 229024,
+              "table_end_line": 229038,
+              "derivation_paths": [
+                "36.508 table 4.7.2-27"
+              ]
+            },
+            {
+              "table": "Table 10.4.1.3.3-17: Message TRACKING AREA UPDATE ACCEPT (step 43, Table 10.4.1.3.2-1)",
+              "table_line": 229040,
+              "table_end_line": 229057,
+              "derivation_paths": [
+                "36.508 table 4.7.2-24"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 228159-228160 (36.523-1 10.4.1 title and Test Purpose)",
+        "523-1v14.txt line 228274-228677 (36.523-1 10.4.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 228289-228677 (36.523-1 10.4.1 Main behaviour)",
+        "523-1v14.txt line 228679-229058 (36.523-1 10.4.1 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 10026-10026 (36.508 Table 4.4.3.3-1 SystemInformationBlockType2)",
+        "36508.txt line 16410-16410 (36.508 Table 4.5A.1-1 IP address allocation in the U-plane)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 228159-228160 (36.523-1 10.4.1 title and Test Purpose)",
+        "523-1v14.txt line 228274-228677 (36.523-1 10.4.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 228289-228677 (36.523-1 10.4.1 Main behaviour)",
+        "523-1v14.txt line 228679-229058 (36.523-1 10.4.1 .3.3 Specific message contents)",
+        "36508.txt line 10026-10026 (36.508 Table 4.4.3.3-1 SystemInformationBlockType2)",
+        "36508.txt line 16410-16410 (36.508 Table 4.5A.1-1 IP address allocation in the U-plane)"
+      ]
+    },
+    {
+      "tc": "TC-004",
+      "name": "IMS PDN 拒绝/重试",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "10.5.3 / 10.5.4",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS | 20260914_NAS_TEST_RERUN",
+      "localScript": "work/tc004_state_patch.py",
+      "note": "UE 侧 nas_test 重跑：PDN REJECT cause=0x20、state=INACTIVE、T3482 停止、backoff 720s 已复现；真实核心网注入仍缺",
+      "blocker": "真实核心网注入",
+      "officialBoundaries": [
+        {
+          "section": "10.5.3",
+          "body_line": 230182,
+          "tp_line": 230183,
+          "conformance_line": 230192,
+          "test_description_line": 230253,
+          "pre_test_line": 230254,
+          "procedure_line": 230265,
+          "main_behaviour_table": "Table 10.5.3.3.2-1: Main behaviour",
+          "main_behaviour_line": 230266,
+          "main_behaviour_end_line": 230344,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 230350,
+          "specific_message_end_line": 230458,
+          "specific_message_tables": [
+            {
+              "table": "Table 10.5.3.3.3-1: Message PDN CONNECTIVITY REQUEST (step 2, table 10.5.3.3.2-1)",
+              "table_line": 230351,
+              "table_end_line": 230369,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-20"
+              ]
+            },
+            {
+              "table": "Table 10.5.3.3.3-2: Message PDN CONNECTIVITY REJECT (step 3, table 10.5.3.3.2-1)",
+              "table_line": 230372,
+              "table_end_line": 230388,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-19"
+              ]
+            },
+            {
+              "table": "Table 10.5.3.3.3-3: Void",
+              "table_line": 230390,
+              "table_end_line": 230390,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 10.5.3.3.3-4: Message PDN CONNECTIVITY REQUEST (step 9A, table 10.5.3.3.2-1)",
+              "table_line": 230391,
+              "table_end_line": 230413,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-20"
+              ]
+            },
+            {
+              "table": "Table 10.5.3.3.3-5: Message ACTIVATE DEFAULT EPS BEARER CONTEXT REQUEST (step 9B, table",
+              "table_line": 230420,
+              "table_end_line": 230440,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-6 and table 4.6.1-8 with condition AM-DRB-ADD(2)"
+              ]
+            },
+            {
+              "table": "Table 10.5.3.3.3-6: Message ACTIVATE DEFAULT EPS BEARER CONTEXT ACCEPT (step 10, table",
+              "table_line": 230443,
+              "table_end_line": 230456,
+              "derivation_paths": [
+                "36.508 table 4.7.3-1"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "10.5.4",
+          "body_line": 230459,
+          "tp_line": 230461,
+          "conformance_line": 230480,
+          "test_description_line": 230547,
+          "pre_test_line": 230548,
+          "procedure_line": 230573,
+          "main_behaviour_table": "Table 10.5.4.3.2-1: Main behaviour",
+          "main_behaviour_line": 230574,
+          "main_behaviour_end_line": 230650,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 230656,
+          "specific_message_end_line": 230787,
+          "specific_message_tables": [
+            {
+              "table": "Table 10.5.4.3.3-1: Message EXTENDED SERVICE REQUEST (step 2 and 5, table 10.5.4.3.2-1)",
+              "table_line": 230692,
+              "table_end_line": 230700,
+              "derivation_paths": [
+                "36.508 table 4.7.2-14A"
+              ]
+            },
+            {
+              "table": "Table 10.5.4.3.3-2: Message RRCConnectionRelease (step 3, Table 10.5.4.3.2-1)",
+              "table_line": 230707,
+              "table_end_line": 230733,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-15"
+              ]
+            },
+            {
+              "table": "Table 10.5.4.3.3-3: Message PDN CONNECTIVITY REQUEST (step 7, Table 10.5.4.3.2-1)",
+              "table_line": 230735,
+              "table_end_line": 230758,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-20"
+              ]
+            },
+            {
+              "table": "Table 10.5.4.3.3-4: Message ACTIVATE DEFAULT EPS BEARER CONTEXT REQUEST (step 8, Table",
+              "table_line": 230765,
+              "table_end_line": 230785,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-6"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 230182-230183 (36.523-1 10.5.3 title and Test Purpose)",
+        "523-1v14.txt line 230253-230344 (36.523-1 10.5.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 230266-230344 (36.523-1 10.5.3 Main behaviour)",
+        "523-1v14.txt line 230350-230458 (36.523-1 10.5.3 .3.3 Specific message contents)",
+        "523-1v14.txt line 230459-230461 (36.523-1 10.5.4 title and Test Purpose)",
+        "523-1v14.txt line 230547-230650 (36.523-1 10.5.4 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 230574-230650 (36.523-1 10.5.4 Main behaviour)",
+        "523-1v14.txt line 230656-230787 (36.523-1 10.5.4 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "24301.txt line 16118-16178 (TS 24.301 6.5.1.4 PDN CONNECTIVITY REJECT and T3482 handling)",
+        "24301.txt line 16368-16458 (TS 24.301 6.5.1.4.3 ESM cause #32 re-attempt/back-off rules)",
+        "36508.txt line 30166-30166 (36.508 Table 4.7.3-19 PDN CONNECTIVITY REJECT)",
+        "36508.txt line 30198-30198 (36.508 Table 4.7.3-20 PDN CONNECTIVITY REQUEST)",
+        "36508.txt line 27956-27956 (36.508 Table 4.7.2-4 ATTACH REQUEST)",
+        "36508.txt line 27675-27675 (36.508 Table 4.7.2-1 ATTACH ACCEPT)",
+        "36508.txt line 28374-28374 (36.508 Table 4.7.2-14A EXTENDED SERVICE REQUEST)",
+        "36508.txt line 20820-20820 (36.508 Table 4.6.1-15 RRCConnectionRelease)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 230182-230183 (36.523-1 10.5.3 title and Test Purpose)",
+        "523-1v14.txt line 230253-230344 (36.523-1 10.5.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 230266-230344 (36.523-1 10.5.3 Main behaviour)",
+        "523-1v14.txt line 230350-230458 (36.523-1 10.5.3 .3.3 Specific message contents)",
+        "523-1v14.txt line 230459-230461 (36.523-1 10.5.4 title and Test Purpose)",
+        "523-1v14.txt line 230547-230650 (36.523-1 10.5.4 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 230574-230650 (36.523-1 10.5.4 Main behaviour)",
+        "523-1v14.txt line 230656-230787 (36.523-1 10.5.4 .3.3 Specific message contents)",
+        "24301.txt line 16118-16178 (TS 24.301 6.5.1.4 PDN CONNECTIVITY REJECT and T3482 handling)",
+        "24301.txt line 16368-16458 (TS 24.301 6.5.1.4.3 ESM cause #32 re-attempt/back-off rules)",
+        "36508.txt line 30166-30166 (36.508 Table 4.7.3-19 PDN CONNECTIVITY REJECT)",
+        "36508.txt line 30198-30198 (36.508 Table 4.7.3-20 PDN CONNECTIVITY REQUEST)",
+        "36508.txt line 27956-27956 (36.508 Table 4.7.2-4 ATTACH REQUEST)",
+        "36508.txt line 27675-27675 (36.508 Table 4.7.2-1 ATTACH ACCEPT)",
+        "36508.txt line 28374-28374 (36.508 Table 4.7.2-14A EXTENDED SERVICE REQUEST)",
+        "36508.txt line 20820-20820 (36.508 Table 4.6.1-15 RRCConnectionRelease)"
+      ]
+    },
+    {
+      "tc": "TC-005",
+      "name": "双 PDN 共存",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "9.2.1.1.28a",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LIMITED_PASS",
+      "localScript": "work/tc005_dual_pdn.py",
+      "note": "2026-09-14 co1750 srsRAN 4G + 补丁版 Open5GS 观察到 internet EBI=5、第二个 ims 默认承载 EBI=6、IMS 专用承载 EBI=7 且 linked_bearer_id=6；MME 维持 2 个 session，SGW-C 完成 Create Bearer Response。LOCAL_BEHAVIOR=PASS；IPv4v6/IPv6、method II P-CSCF discovery 逐字段、网络侧 additional PDN 释放/E1 和官方 Verdict 仍 RESTRICTED。",
+      "blocker": "L2: 一致性 SS/仪表；IPv6/IPv4v6 双栈分配、method II P-CSCF discovery 逐字段检查、additional PDN 网络侧释放/E1 结束态尚未由官方环境验证",
+      "officialBoundaries": [
+        {
+          "section": "9.2.1.1.28a",
+          "body_line": 198590,
+          "tp_line": 198591,
+          "conformance_line": 198612,
+          "test_description_line": 198664,
+          "pre_test_line": 198665,
+          "procedure_line": 198677,
+          "main_behaviour_table": "Table 9.2.1.1.28a.3.2-1: Main behaviour",
+          "main_behaviour_line": 198678,
+          "main_behaviour_end_line": 198739,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 198749,
+          "specific_message_end_line": 198763,
+          "specific_message_tables": [
+            {
+              "table": "Table 9.2.1.1.28a.3.3-1: Message PDN CONNECTIVITY REQUEST (step 18, table 9.2.1.1.28a.3.2-1)",
+              "table_line": 198750,
+              "table_end_line": 198758,
+              "derivation_paths": [
+                "TS 36.508 Table 4.7.3-20"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 198590-198591 (36.523-1 9.2.1.1.28a title and Test Purpose)",
+        "523-1v14.txt line 198664-198739 (36.523-1 9.2.1.1.28a .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 198678-198739 (36.523-1 9.2.1.1.28a Main behaviour)",
+        "523-1v14.txt line 198749-198763 (36.523-1 9.2.1.1.28a .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 14039-14039 (36.508 Table 4.5.2.3-1 UE registration procedure)",
+        "36508.txt line 18387-18387 (36.508 Table 4.5A.16.3-1 establishment of additional PDN connectivity)",
+        "36508.txt line 18630-18630 (36.508 Table 4.5A.18.3-1 release of additional PDN connectivity)",
+        "36508.txt line 16410-16410 (36.508 Table 4.5A.1-1 IP address allocation in the U-plane)",
+        "36508.txt line 42808-42808 (36.508 Table 6.4.3A.2-1 reference end states)",
+        "36508.txt line 30198-30198 (36.508 Table 4.7.3-20 PDN CONNECTIVITY REQUEST)",
+        "36508.txt line 27931-27931 (36.508 Table 4.7.2-3 ATTACH REJECT)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 198590-198591 (36.523-1 9.2.1.1.28a title and Test Purpose)",
+        "523-1v14.txt line 198664-198739 (36.523-1 9.2.1.1.28a .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 198678-198739 (36.523-1 9.2.1.1.28a Main behaviour)",
+        "523-1v14.txt line 198749-198763 (36.523-1 9.2.1.1.28a .3.3 Specific message contents)",
+        "36508.txt line 14039-14039 (36.508 Table 4.5.2.3-1 UE registration procedure)",
+        "36508.txt line 18387-18387 (36.508 Table 4.5A.16.3-1 establishment of additional PDN connectivity)",
+        "36508.txt line 18630-18630 (36.508 Table 4.5A.18.3-1 release of additional PDN connectivity)",
+        "36508.txt line 16410-16410 (36.508 Table 4.5A.1-1 IP address allocation in the U-plane)",
+        "36508.txt line 42808-42808 (36.508 Table 6.4.3A.2-1 reference end states)",
+        "36508.txt line 30198-30198 (36.508 Table 4.7.3-20 PDN CONNECTIVITY REQUEST)",
+        "36508.txt line 27931-27931 (36.508 Table 4.7.2-3 ATTACH REJECT)"
+      ]
+    },
+    {
+      "tc": "TC-006",
+      "name": "RoHC 能力协商",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "8.2.1.8",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "官方 TP 8.2.1.8 已逐行锚定；关键判据为 headerCompression=rohc 以及 profile0x0001/profile0x0002；真实 RRC/eNB/SS 或一致性仪表执行仍缺",
+      "blocker": "真实 RRC/eNB/SS 或合格一致性仪表缺失；静态能力/字段检查不能替代官方 TP Verdict",
+      "officialBoundaries": [
+        {
+          "section": "8.2.1.8",
+          "body_line": 99541,
+          "tp_line": 99543,
+          "conformance_line": 99552,
+          "test_description_line": 99614,
+          "pre_test_line": 99615,
+          "procedure_line": 99626,
+          "main_behaviour_table": "Table 8.2.1.8.3.2-1: Main behaviour",
+          "main_behaviour_line": 99627,
+          "main_behaviour_end_line": 99649,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 99651,
+          "specific_message_end_line": 99724,
+          "specific_message_tables": [
+            {
+              "table": "Table 8.2.1.8.3.3-1: RRCConnectionReconfiguration (step 1, Table 8.2.1.8.3.2-1)",
+              "table_line": 99652,
+              "table_end_line": 99674,
+              "derivation_paths": [
+                "TS 36.508 Table 4.6.1-8, condition DRB(0, 1)"
+              ]
+            },
+            {
+              "table": "Table 8.2.1.8.3.3-2: PDCP-Config (Table 8.2.1.8.3.3-1)",
+              "table_line": 99680,
+              "table_end_line": 99709,
+              "derivation_paths": [
+                "TS 36.508 Table 4.8.2.1.2.1-1"
+              ]
+            },
+            {
+              "table": "Table 8.2.1.8.3.3-3: RLC-Config (Table 8.2.1.8.3.3-1)",
+              "table_line": 99711,
+              "table_end_line": 99723,
+              "derivation_paths": [
+                "TS 36.508 Table 4.8.2.1.3.1-1"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 99541-99543 (36.523-1 8.2.1.8 title and Test Purpose)",
+        "523-1v14.txt line 99614-99649 (36.523-1 8.2.1.8 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 99627-99649 (36.523-1 8.2.1.8 Main behaviour)",
+        "523-1v14.txt line 99651-99724 (36.523-1 8.2.1.8 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)",
+        "36508.txt line 35011-35011 (36.508 Table 4.8.2.1.2.1-1 PDCP-Config-DRB-UM)",
+        "36508.txt line 35071-35071 (36.508 Table 4.8.2.1.3.1-1 RLC-Config-DRB-UM)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 99541-99543 (36.523-1 8.2.1.8 title and Test Purpose)",
+        "523-1v14.txt line 99614-99649 (36.523-1 8.2.1.8 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 99627-99649 (36.523-1 8.2.1.8 Main behaviour)",
+        "523-1v14.txt line 99651-99724 (36.523-1 8.2.1.8 .3.3 Specific message contents)",
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)",
+        "36508.txt line 35011-35011 (36.508 Table 4.8.2.1.2.1-1 PDCP-Config-DRB-UM)",
+        "36508.txt line 35071-35071 (36.508 Table 4.8.2.1.3.1-1 RLC-Config-DRB-UM)"
+      ]
+    },
+    {
+      "tc": "TC-007",
+      "name": "SPS / DRX",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "7.1.6.1 / 7.1.6.1a / 7.1.6.2 / 7.1.6.3 / 7.1.6.4 / 7.1.6.5",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "官方 DRX/eDRX 6 条 TP 已逐行锚定；7.1.6.5 的 .3.2 明确继承 7.1.6.1.3.2；SPS 无已核到的独立 LTE 一致性 TP，仅作行为补充",
+      "blocker": "真实 RRC/eNB/SS 或合格一致性仪表缺失；SPS 独立官方 LTE 一致性 TP 尚未核到",
+      "officialBoundaries": [
+        {
+          "section": "7.1.6.1",
+          "body_line": 57770,
+          "tp_line": 57771,
+          "conformance_line": 57812,
+          "test_description_line": 57898,
+          "pre_test_line": 57899,
+          "procedure_line": 57906,
+          "main_behaviour_table": "Table 7.1.6.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 57923,
+          "main_behaviour_end_line": 58127,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 58133,
+          "specific_message_end_line": 58170,
+          "specific_message_tables": [
+            {
+              "table": "Table 7.1.6.1.3.3-1: specific Parameters in RRCConnectionReconfiguration (step 0A of table",
+              "table_line": 58134,
+              "table_end_line": 58169,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-8"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "7.1.6.1a",
+          "body_line": 58171,
+          "tp_line": 58173,
+          "conformance_line": 58182,
+          "test_description_line": 58325,
+          "pre_test_line": 58326,
+          "procedure_line": 58333,
+          "main_behaviour_table": "Table 7.1.6.1a.3.2-1: Main behaviour",
+          "main_behaviour_line": 58340,
+          "main_behaviour_end_line": 58385,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 58391,
+          "specific_message_end_line": 58435,
+          "specific_message_tables": [
+            {
+              "table": "Table 7.1.6.1a.3.3-1: specific Parameters in RRCConnectionReconfiguration (step 0A of table",
+              "table_line": 58392,
+              "table_end_line": 58434,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-8"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "7.1.6.2",
+          "body_line": 58436,
+          "tp_line": 58438,
+          "conformance_line": 58466,
+          "test_description_line": 58520,
+          "pre_test_line": 58521,
+          "procedure_line": 58528,
+          "main_behaviour_table": "Table 7.1.6.2.3.2-1: Main behaviour",
+          "main_behaviour_line": 58534,
+          "main_behaviour_end_line": 58660,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 58666,
+          "specific_message_end_line": 58703,
+          "specific_message_tables": [
+            {
+              "table": "Table 7.1.6.2.3.3-1: specific Parameters in RRCConnectionReconfiguration (step 0A of table",
+              "table_line": 58667,
+              "table_end_line": 58702,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-8"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "7.1.6.3",
+          "body_line": 58704,
+          "tp_line": 58705,
+          "conformance_line": 58728,
+          "test_description_line": 58814,
+          "pre_test_line": 58815,
+          "procedure_line": 58822,
+          "main_behaviour_table": "Table 7.1.6.3.3.2-1: Main behaviour",
+          "main_behaviour_line": 58828,
+          "main_behaviour_end_line": 58919,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 58921,
+          "specific_message_end_line": 58961,
+          "specific_message_tables": [
+            {
+              "table": "Table 7.1.6.3.3.3-1: specific Parameters in RRCConnectionReconfiguration (step 1 of table 7.1.6.3.3.2-",
+              "table_line": 58922,
+              "table_end_line": 58960,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-8"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "7.1.6.4",
+          "body_line": 58962,
+          "tp_line": 58964,
+          "conformance_line": 58992,
+          "test_description_line": 59046,
+          "pre_test_line": 59047,
+          "procedure_line": 59058,
+          "main_behaviour_table": "Table 7.1.6.4.3.2-1: Main behaviour",
+          "main_behaviour_line": 59064,
+          "main_behaviour_end_line": 59190,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 59196,
+          "specific_message_end_line": 59236,
+          "specific_message_tables": [
+            {
+              "table": "Table 7.1.6.4.3.3-1: specific Parameters in RRCConnectionReconfiguration (step 1 of table 7.1.6.4.3.2-",
+              "table_line": 59197,
+              "table_end_line": 59235,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-8"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "7.1.6.5",
+          "body_line": 59237,
+          "tp_line": 59238,
+          "conformance_line": 59279,
+          "test_description_line": 59415,
+          "pre_test_line": 59416,
+          "procedure_line": 59427,
+          "main_behaviour_table": "Table 7.1.6.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 57923,
+          "main_behaviour_end_line": 58127,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 59429,
+          "specific_message_end_line": 59475,
+          "specific_message_tables": [
+            {
+              "table": "Table 7.1.6.5.3.3-1: specific Parameters in RRCConnectionReconfiguration (step 0A of table",
+              "table_line": 59430,
+              "table_end_line": 59474,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-8"
+              ]
+            }
+          ],
+          "inherited_from": "7.1.6.1.3.2"
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 57770-57771 (36.523-1 7.1.6.1 title and Test Purpose)",
+        "523-1v14.txt line 57898-58127 (36.523-1 7.1.6.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 57923-58127 (36.523-1 7.1.6.1 Main behaviour)",
+        "523-1v14.txt line 58133-58170 (36.523-1 7.1.6.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 58171-58173 (36.523-1 7.1.6.1a title and Test Purpose)",
+        "523-1v14.txt line 58325-58385 (36.523-1 7.1.6.1a .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 58340-58385 (36.523-1 7.1.6.1a Main behaviour)",
+        "523-1v14.txt line 58391-58435 (36.523-1 7.1.6.1a .3.3 Specific message contents)",
+        "523-1v14.txt line 58436-58438 (36.523-1 7.1.6.2 title and Test Purpose)",
+        "523-1v14.txt line 58520-58660 (36.523-1 7.1.6.2 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 58534-58660 (36.523-1 7.1.6.2 Main behaviour)",
+        "523-1v14.txt line 58666-58703 (36.523-1 7.1.6.2 .3.3 Specific message contents)",
+        "523-1v14.txt line 58704-58705 (36.523-1 7.1.6.3 title and Test Purpose)",
+        "523-1v14.txt line 58814-58919 (36.523-1 7.1.6.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 58828-58919 (36.523-1 7.1.6.3 Main behaviour)",
+        "523-1v14.txt line 58921-58961 (36.523-1 7.1.6.3 .3.3 Specific message contents)",
+        "523-1v14.txt line 58962-58964 (36.523-1 7.1.6.4 title and Test Purpose)",
+        "523-1v14.txt line 59046-59190 (36.523-1 7.1.6.4 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 59064-59190 (36.523-1 7.1.6.4 Main behaviour)",
+        "523-1v14.txt line 59196-59236 (36.523-1 7.1.6.4 .3.3 Specific message contents)",
+        "523-1v14.txt line 59237-59238 (36.523-1 7.1.6.5 title and Test Purpose)",
+        "523-1v14.txt line 59415-59427 (36.523-1 7.1.6.5 .3.1-.3.2 procedure (inherits 7.1.6.1.3.2))",
+        "523-1v14.txt line 57923-58127 (36.523-1 7.1.6.5 inherited Main behaviour (7.1.6.1.3.2))",
+        "523-1v14.txt line 59429-59475 (36.523-1 7.1.6.5 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 57770-57771 (36.523-1 7.1.6.1 title and Test Purpose)",
+        "523-1v14.txt line 57898-58127 (36.523-1 7.1.6.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 57923-58127 (36.523-1 7.1.6.1 Main behaviour)",
+        "523-1v14.txt line 58133-58170 (36.523-1 7.1.6.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 58171-58173 (36.523-1 7.1.6.1a title and Test Purpose)",
+        "523-1v14.txt line 58325-58385 (36.523-1 7.1.6.1a .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 58340-58385 (36.523-1 7.1.6.1a Main behaviour)",
+        "523-1v14.txt line 58391-58435 (36.523-1 7.1.6.1a .3.3 Specific message contents)",
+        "523-1v14.txt line 58436-58438 (36.523-1 7.1.6.2 title and Test Purpose)",
+        "523-1v14.txt line 58520-58660 (36.523-1 7.1.6.2 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 58534-58660 (36.523-1 7.1.6.2 Main behaviour)",
+        "523-1v14.txt line 58666-58703 (36.523-1 7.1.6.2 .3.3 Specific message contents)",
+        "523-1v14.txt line 58704-58705 (36.523-1 7.1.6.3 title and Test Purpose)",
+        "523-1v14.txt line 58814-58919 (36.523-1 7.1.6.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 58828-58919 (36.523-1 7.1.6.3 Main behaviour)",
+        "523-1v14.txt line 58921-58961 (36.523-1 7.1.6.3 .3.3 Specific message contents)",
+        "523-1v14.txt line 58962-58964 (36.523-1 7.1.6.4 title and Test Purpose)",
+        "523-1v14.txt line 59046-59190 (36.523-1 7.1.6.4 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 59064-59190 (36.523-1 7.1.6.4 Main behaviour)",
+        "523-1v14.txt line 59196-59236 (36.523-1 7.1.6.4 .3.3 Specific message contents)",
+        "523-1v14.txt line 59237-59238 (36.523-1 7.1.6.5 title and Test Purpose)",
+        "523-1v14.txt line 59415-59427 (36.523-1 7.1.6.5 .3.1-.3.2 procedure (inherits 7.1.6.1.3.2))",
+        "523-1v14.txt line 57923-58127 (36.523-1 7.1.6.5 inherited Main behaviour (7.1.6.1.3.2))",
+        "523-1v14.txt line 59429-59475 (36.523-1 7.1.6.5 .3.3 Specific message contents)",
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)"
+      ]
+    },
+    {
+      "tc": "TC-008",
+      "name": "DRB 建立/释放/重配置",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "8.2.1.3",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实 eNB/EPC 端到端缺",
+      "blocker": "真实 eNB/EPC",
+      "officialBoundaries": [
+        {
+          "section": "8.2.1.3",
+          "body_line": 98790,
+          "tp_line": 98792,
+          "conformance_line": 98801,
+          "test_description_line": 98836,
+          "pre_test_line": 98837,
+          "procedure_line": 98844,
+          "main_behaviour_table": "Table 8.2.1.3.3.2-1: Main behaviour",
+          "main_behaviour_line": 98845,
+          "main_behaviour_end_line": 98868,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 98870,
+          "specific_message_end_line": 98898,
+          "specific_message_tables": [
+            {
+              "table": "Table 8.2.1.3.3.3-1: RRCConnectionReconfiguration (step 1, Table 8.2.1.3.3.2-1)",
+              "table_line": 98871,
+              "table_end_line": 98893,
+              "derivation_paths": [
+                "36.508 table 4.6.1-8, condition DRB(1,0)"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 98790-98792 (36.523-1 8.2.1.3 title and Test Purpose)",
+        "523-1v14.txt line 98836-98868 (36.523-1 8.2.1.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 98845-98868 (36.523-1 8.2.1.3 Main behaviour)",
+        "523-1v14.txt line 98870-98898 (36.523-1 8.2.1.3 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 40682-40682 (36.508 Table 6.4.2.3-1 test procedure sequence)",
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 98790-98792 (36.523-1 8.2.1.3 title and Test Purpose)",
+        "523-1v14.txt line 98836-98868 (36.523-1 8.2.1.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 98845-98868 (36.523-1 8.2.1.3 Main behaviour)",
+        "523-1v14.txt line 98870-98898 (36.523-1 8.2.1.3 .3.3 Specific message contents)",
+        "36508.txt line 40682-40682 (36.508 Table 6.4.2.3-1 test procedure sequence)",
+        "36508.txt line 19886-19886 (36.508 Table 4.6.1-8 RRCConnectionReconfiguration)"
+      ]
+    },
+    {
+      "tc": "TC-009",
+      "name": "上行包路由 TFT",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "10.9.1",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实多承载+UL TFT 环境缺",
+      "blocker": "真实多承载 + UL TFT",
+      "officialBoundaries": [
+        {
+          "section": "10.9.1",
+          "body_line": 232864,
+          "tp_line": 232865,
+          "conformance_line": 232908,
+          "test_description_line": 233215,
+          "pre_test_line": 233216,
+          "procedure_line": 233228,
+          "main_behaviour_table": "Table 10.9.1.3.2-3: Main behaviour",
+          "main_behaviour_line": 233447,
+          "main_behaviour_end_line": 233538,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 233544,
+          "specific_message_end_line": 234169,
+          "specific_message_tables": [
+            {
+              "table": "Table 10.9.1.3.3-1: Message ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST step 0, Table",
+              "table_line": 233590,
+              "table_end_line": 233613,
+              "derivation_paths": [
+                "36.508 table 4.7.3-3 and table 4.6.1-8 with condition AM-DRB-ADD(2)"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-2: Message ACTIVATE DEDICATED EPS BEARER CONTEXT REQUEST ( step 0,",
+              "table_line": 233619,
+              "table_end_line": 233647,
+              "derivation_paths": [
+                "36.508 table 4.7.3-3 and table 4.6.1-8 with condition AM-DRB-ADD(3)"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-3: Message MODIFY EPS BEARER CONTEXT REQUEST (step 3, Table 10.9.1.3.2-3)",
+              "table_line": 233649,
+              "table_end_line": 233674,
+              "derivation_paths": [
+                "36.508 table 4.7.3-16 and table 4.6.1-3"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-4: Message MODIFY EPS BEARER CONTEXT ACCEPT (step 4, Table 10.9.1.3.2-3)",
+              "table_line": 233676,
+              "table_end_line": 233699,
+              "derivation_paths": [
+                "36.508 table 4.7.3-14"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-5: IP packet#1 (Table 10.9.1.3.2-2)",
+              "table_line": 233701,
+              "table_end_line": 233762,
+              "derivation_paths": [
+                "IETF RFC 791 section 3.1 (IPv4) or RFC 2460 section 3 (IPv6) and RFC 769 introduction"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-6: IP packet#2 (Table 10.9.1.3.2-2)",
+              "table_line": 233768,
+              "table_end_line": 233786,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-7: IP packet#3 (Table 10.9.1.3.2-2)",
+              "table_line": 233788,
+              "table_end_line": 233796,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-8: IP packet#4 (Table 10.9.1.3.2-2)",
+              "table_line": 233799,
+              "table_end_line": 233808,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-9: IP packet#5 (Table 10.9.1.3.2-2)",
+              "table_line": 233811,
+              "table_end_line": 233818,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-10: IP packet#6 (Table 10.9.1.3.2-2)",
+              "table_line": 233825,
+              "table_end_line": 233834,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-11: IP packet#7 (Table 10.9.1.3.2-2)",
+              "table_line": 233837,
+              "table_end_line": 233844,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-12: IP packet#8 (Table 10.9.1.3.2-2)",
+              "table_line": 233847,
+              "table_end_line": 233855,
+              "derivation_paths": [
+                "IP packet#1, Table 10.9.1.3.3-5"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-13: IP packet#9 (Table 10.9.1.3.2-2)",
+              "table_line": 233862,
+              "table_end_line": 233928,
+              "derivation_paths": [
+                "IETF RFC 791 section 3.1 (IPv4) or RFC 2460 section 3 (IPv6) and RFC 769 introduction"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-14: IP packet#10 (Table 10.9.1.3.2-2)",
+              "table_line": 233934,
+              "table_end_line": 233952,
+              "derivation_paths": [
+                "IP packet#9, Table 10.9.1.3.3-13"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-15: IP packet#11 (Table 10.9.1.3.2-2)",
+              "table_line": 233954,
+              "table_end_line": 233962,
+              "derivation_paths": [
+                "IP packet#9, Table 10.9.1.3.3-13"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-16: IP packet#12 (Table 10.9.1.3.2-2)",
+              "table_line": 233965,
+              "table_end_line": 233972,
+              "derivation_paths": [
+                "IP packet#9, Table 10.9.1.3.3-13"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-17: IP packet#13 (Table 10.9.1.3.2-2)",
+              "table_line": 233975,
+              "table_end_line": 233983,
+              "derivation_paths": [
+                "IP packet#9, Table 10.9.1.3.3-13"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-18: IP packet#14 (Table 10.9.1.3.2-2)",
+              "table_line": 233990,
+              "table_end_line": 234037,
+              "derivation_paths": [
+                "RFC 2460 section 3 (IPv6) and RFC 769 introduction"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-19: IP packet#15 (Table 10.9.1.3.2-2)",
+              "table_line": 234040,
+              "table_end_line": 234048,
+              "derivation_paths": [
+                "IP packet#14, Table 10.9.1.3.3-18"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-20: IP packet#16 (Table 10.9.1.3.2-2)",
+              "table_line": 234055,
+              "table_end_line": 234063,
+              "derivation_paths": [
+                "IP packet#14, Table 10.9.1.3.3-18"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-21: IP packet#17 (Table 10.9.1.3.2-2)",
+              "table_line": 234066,
+              "table_end_line": 234074,
+              "derivation_paths": [
+                "IP packet#14, Table 10.9.1.3.3-18"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-22: IP packet#18 (Table 10.9.1.3.2-2)",
+              "table_line": 234081,
+              "table_end_line": 234141,
+              "derivation_paths": [
+                "IETF RFC 791 section 3.1 (IPv4) or RFC 2460 section 3 (IPv6) and RFC 769 introduction"
+              ]
+            },
+            {
+              "table": "Table 10.9.1.3.3-23: IP packet#19 (Table 10.9.1.3.2-2)",
+              "table_line": 234147,
+              "table_end_line": 234169,
+              "derivation_paths": [
+                "IP packet#18, Table 10.9.1.3.3-22"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 232864-232865 (36.523-1 10.9.1 title and Test Purpose)",
+        "523-1v14.txt line 233215-233538 (36.523-1 10.9.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 233447-233538 (36.523-1 10.9.1 Main behaviour)",
+        "523-1v14.txt line 233544-234169 (36.523-1 10.9.1 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 29100-29100 (36.508 Table 4.7.3-3 dedicated bearer request carrying TFT)",
+        "36508.txt line 29276-29276 (36.508 Table 4.7.3-6 default bearer request)",
+        "36508.txt line 43510-43510 (36.508 Table 6.6.2-5 Reference packet filter #4)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 232864-232865 (36.523-1 10.9.1 title and Test Purpose)",
+        "523-1v14.txt line 233215-233538 (36.523-1 10.9.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 233447-233538 (36.523-1 10.9.1 Main behaviour)",
+        "523-1v14.txt line 233544-234169 (36.523-1 10.9.1 .3.3 Specific message contents)",
+        "36508.txt line 29100-29100 (36.508 Table 4.7.3-3 dedicated bearer request carrying TFT)",
+        "36508.txt line 29276-29276 (36.508 Table 4.7.3-6 default bearer request)",
+        "36508.txt line 43510-43510 (36.508 Table 6.6.2-5 Reference packet filter #4)"
+      ]
+    },
+    {
+      "tc": "TC-010",
+      "name": "TAU / Service Request / Paging",
+      "module": "01",
+      "officialSpec": "36.523-1",
+      "officialClause": "9.2.3.1.1 / 9.3.1.1 / 9.3.2.1",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实 RAN/EPC 触发缺",
+      "blocker": "真实 RAN/EPC",
+      "officialBoundaries": [
+        {
+          "section": "9.2.3.1.1",
+          "body_line": 206884,
+          "tp_line": 206885,
+          "conformance_line": 206910,
+          "test_description_line": 206947,
+          "pre_test_line": 206948,
+          "procedure_line": 206961,
+          "main_behaviour_table": "Table 9.2.3.1.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 206962,
+          "main_behaviour_end_line": 207032,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 207038,
+          "specific_message_end_line": 207122,
+          "specific_message_tables": [
+            {
+              "table": "Table 9.2.3.1.1.3.3-1: Message TRACKING AREA UPDATE REQUEST (step 2, Table 9.2.3.1.1.3.2-1)",
+              "table_line": 207039,
+              "table_end_line": 207048,
+              "derivation_paths": [
+                "36.508 table 4.7.2-27"
+              ]
+            },
+            {
+              "table": "Table 9.2.3.1.1.3.3-2: Message TRACKING AREA UPDATE ACCEPT (step 3, Table 9.2.3.1.1.3.2-1)",
+              "table_line": 207050,
+              "table_end_line": 207078,
+              "derivation_paths": [
+                "36.508 table 4.7.2-24"
+              ]
+            },
+            {
+              "table": "Table 9.2.3.1.1.3.3-3: Message TRACKING AREA UPDATE REQUEST (step 11, Table 9.2.3.1.1.3.2-1)",
+              "table_line": 207081,
+              "table_end_line": 207086,
+              "derivation_paths": [
+                "36.508 table 4.7.2-27"
+              ]
+            },
+            {
+              "table": "Table 9.2.3.1.1.3.3-4: Message TRACKING AREA UPDATE ACCEPT (step 12, Table 9.2.3.1.1.3.2-1)",
+              "table_line": 207092,
+              "table_end_line": 207120,
+              "derivation_paths": [
+                "36.508 table 4.7.2-24"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "9.3.1.1",
+          "body_line": 225035,
+          "tp_line": 225036,
+          "conformance_line": 225044,
+          "test_description_line": 225110,
+          "pre_test_line": 225111,
+          "procedure_line": 225124,
+          "main_behaviour_table": "Table 9.3.1.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 225125,
+          "main_behaviour_end_line": 225147,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 225149,
+          "specific_message_end_line": 225169,
+          "specific_message_tables": [
+            {
+              "table": "Table 9.3.1.1.3.3-1: ACTIVATE TEST MODE (preamble)",
+              "table_line": 225150,
+              "table_end_line": 225151,
+              "derivation_paths": [
+                "36.508, Table 4.7A-1, condition UE TEST LOOP MODE B"
+              ]
+            },
+            {
+              "table": "Table 9.3.1.1.3.3-2: CLOSE UE TEST LOOP (preamble)",
+              "table_line": 225153,
+              "table_end_line": 225157,
+              "derivation_paths": [
+                "36.508, Table 4.7A-3, condition UE TEST LOOP MODE B"
+              ]
+            },
+            {
+              "table": "Table 9.3.1.1.3.3-3: Message RRCConnectionRequest (step 3, Table 9.3.1.1.3.2-1)",
+              "table_line": 225159,
+              "table_end_line": 225168,
+              "derivation_paths": [
+                "36.508 table 4.6.1-16"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "9.3.2.1",
+          "body_line": 226784,
+          "tp_line": 226785,
+          "conformance_line": 226802,
+          "test_description_line": 226890,
+          "pre_test_line": 226891,
+          "procedure_line": 226902,
+          "main_behaviour_table": "Table 9.3.2.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 226903,
+          "main_behaviour_end_line": 226935,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 226937,
+          "specific_message_end_line": 226978,
+          "specific_message_tables": [
+            {
+              "table": "Table 9.3.2.1.3.3-1: RRCConnectionRequest (step 2, Table 9.3.2.1.3.2-1)",
+              "table_line": 226938,
+              "table_end_line": 226951,
+              "derivation_paths": [
+                "Table 4.6.1-16"
+              ]
+            },
+            {
+              "table": "Table 9.3.2.1.3.3-2: Paging (step 1, Table 9.3.2.1.3.2-1)",
+              "table_line": 226957,
+              "table_end_line": 226977,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-7"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 206884-206885 (36.523-1 9.2.3.1.1 title and Test Purpose)",
+        "523-1v14.txt line 206947-207032 (36.523-1 9.2.3.1.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 206962-207032 (36.523-1 9.2.3.1.1 Main behaviour)",
+        "523-1v14.txt line 207038-207122 (36.523-1 9.2.3.1.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 225035-225036 (36.523-1 9.3.1.1 title and Test Purpose)",
+        "523-1v14.txt line 225110-225147 (36.523-1 9.3.1.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 225125-225147 (36.523-1 9.3.1.1 Main behaviour)",
+        "523-1v14.txt line 225149-225169 (36.523-1 9.3.1.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 226784-226785 (36.523-1 9.3.2.1 title and Test Purpose)",
+        "523-1v14.txt line 226890-226935 (36.523-1 9.3.2.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 226903-226935 (36.523-1 9.3.2.1 Main behaviour)",
+        "523-1v14.txt line 226937-226978 (36.523-1 9.3.2.1 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 28903-28903 (36.508 Table 4.7.2-27 TRACKING AREA UPDATE REQUEST)",
+        "36508.txt line 28658-28658 (36.508 Table 4.7.2-24 TRACKING AREA UPDATE ACCEPT)",
+        "36508.txt line 15750-15750 (36.508 Table 4.5.3.3-1 generic radio bearer establishment)",
+        "36508.txt line 20856-20856 (36.508 Table 4.6.1-16 RRCConnectionRequest)",
+        "36508.txt line 19862-19862 (36.508 Table 4.6.1-7 Paging)",
+        "36509.txt line 1700-1735 (TS 36.509 5.4.4 UE test loop mode B U-plane routing)",
+        "36509.txt line 1827-1833 (TS 36.509 5.4.4.10 RRC/RR establishment in test loop mode B)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 206884-206885 (36.523-1 9.2.3.1.1 title and Test Purpose)",
+        "523-1v14.txt line 206947-207032 (36.523-1 9.2.3.1.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 206962-207032 (36.523-1 9.2.3.1.1 Main behaviour)",
+        "523-1v14.txt line 207038-207122 (36.523-1 9.2.3.1.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 225035-225036 (36.523-1 9.3.1.1 title and Test Purpose)",
+        "523-1v14.txt line 225110-225147 (36.523-1 9.3.1.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 225125-225147 (36.523-1 9.3.1.1 Main behaviour)",
+        "523-1v14.txt line 225149-225169 (36.523-1 9.3.1.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 226784-226785 (36.523-1 9.3.2.1 title and Test Purpose)",
+        "523-1v14.txt line 226890-226935 (36.523-1 9.3.2.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 226903-226935 (36.523-1 9.3.2.1 Main behaviour)",
+        "523-1v14.txt line 226937-226978 (36.523-1 9.3.2.1 .3.3 Specific message contents)",
+        "36508.txt line 28903-28903 (36.508 Table 4.7.2-27 TRACKING AREA UPDATE REQUEST)",
+        "36508.txt line 28658-28658 (36.508 Table 4.7.2-24 TRACKING AREA UPDATE ACCEPT)",
+        "36508.txt line 15750-15750 (36.508 Table 4.5.3.3-1 generic radio bearer establishment)",
+        "36508.txt line 20856-20856 (36.508 Table 4.6.1-16 RRCConnectionRequest)",
+        "36508.txt line 19862-19862 (36.508 Table 4.6.1-7 Paging)",
+        "36509.txt line 1700-1735 (TS 36.509 5.4.4 UE test loop mode B U-plane routing)",
+        "36509.txt line 1827-1833 (TS 36.509 5.4.4.10 RRC/RR establishment in test loop mode B)"
+      ]
+    },
+    {
+      "tc": "TC-011",
+      "name": "IMS 初始注册",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "8.1 Initial registration",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc011_register_flow.py",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 3875-4151 (TP 8.1)",
+        "34229-1e70-word.txt line 32380-32448 (Annex C.2)",
+        "34229-1e70-word.txt line 21415-23238 (Annex A.1.1-A.1.6)"
+      ],
+      "primaryEvidence": [
+        "TS 34.229-1 V14.7.0 8.1 Initial registration: 34229-1e70-word.txt line 3875-4151",
+        "TS 34.229-1 V14.7.0 Annex C.2 generic registration sequence: 34229-1e70-word.txt line 32380-32448",
+        "TS 34.229-1 V14.7.0 Annex A.1.1-A.1.6 default messages: 34229-1e70-word.txt line 21415-23238"
+      ],
+      "crossReferenceEvidence": [
+        "34229-1e70_ascii.txt line 3253-3502 (ASCII extraction cross-check only)"
+      ],
+      "note": "co1750 真实 401->200 字段 PASS；未按官方 SS .3.2 跑 P/F",
+      "blocker": "官方 SS/一致性仪表",
+      "officialBoundaries": [
+        {
+          "section": "8.1",
+          "title": "Initial registration",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 3875,
+          "body_end_line": 4151,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "8.1.1",
+              "title": "Definition",
+              "line": 3876
+            },
+            {
+              "number": "8.1.2",
+              "title": "Conformance requirement",
+              "line": 3878
+            },
+            {
+              "number": "8.1.3",
+              "title": "Test purpose",
+              "line": 4104
+            },
+            {
+              "number": "8.1.4",
+              "title": "Method of test",
+              "line": 4118
+            },
+            {
+              "number": "8.1.5",
+              "title": "Test requirements",
+              "line": 4140
+            }
+          ],
+          "definition_line": 3876,
+          "conformance_line": 3878,
+          "test_purpose_line": 4104,
+          "method_of_test_line": 4118,
+          "test_requirements_line": 4140,
+          "annex_a_refs": [
+            "A.1.1",
+            "A.1.2",
+            "A.1.3",
+            "A.1.4",
+            "A.1.5",
+            "A.1.6",
+            "A.1.7"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.1.1",
+              "title": "REGISTER",
+              "line_start": 21415,
+              "line_end": 22020
+            },
+            {
+              "ref": "A.1.2",
+              "title": "401 Unauthorized for REGISTER",
+              "line_start": 22021,
+              "line_end": 22255
+            },
+            {
+              "ref": "A.1.3",
+              "title": "200 OK for REGISTER",
+              "line_start": 22256,
+              "line_end": 22497
+            },
+            {
+              "ref": "A.1.4",
+              "title": "SUBSCRIBE for reg-event package",
+              "line_start": 22498,
+              "line_end": 22771
+            },
+            {
+              "ref": "A.1.5",
+              "title": "200 OK for SUBSCRIBE",
+              "line_start": 22772,
+              "line_end": 22918
+            },
+            {
+              "ref": "A.1.6",
+              "title": "NOTIFY for reg-event package",
+              "line_start": 22919,
+              "line_end": 23238
+            },
+            {
+              "ref": "A.1.7",
+              "title": "423 Interval Too Brief for REGISTER",
+              "line_start": 23239,
+              "line_end": 23312
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-012",
+      "name": "MO 呼叫建立",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "12.12 家族",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc012_mo_call.py",
+      "note": "co1750 真实 pjsua 呼叫 PASS；未按官方 .3.2 子例跑",
+      "blocker": "官方 SS/一致性仪表",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)"
+      ],
+      "crossReferenceEvidence": [],
+      "officialBoundaries": [
+        {
+          "section": "12.12.3-12.12.5",
+          "title": "MO MTSI Voice Call Successful with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6314,
+          "body_end_line": 6360,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.12a.3-12.12a.5",
+          "title": "MO MTSI Voice Call Successful without preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6390,
+          "body_end_line": 6529,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-013",
+      "name": "鉴权失败",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "Invalid Behaviour - MAC Parameter Invalid / SQN out of range",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "SELFCHECK_PASS",
+      "localScript": "work/tc013_invalid_auth.py",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 5452-5602 (9.1 MAC Parameter Invalid)",
+        "34229-1e70-word.txt line 5603-5739 (9.2 SQN out of range)"
+      ],
+      "primaryEvidence": [
+        "TS 34.229-1 V14.7.0 9.1 Invalid Behaviour - MAC Parameter Invalid: 34229-1e70-word.txt line 5452-5602",
+        "TS 34.229-1 V14.7.0 9.2 Invalid Behaviour - SQN out of range: 34229-1e70-word.txt line 5603-5739"
+      ],
+      "crossReferenceEvidence": [
+        "34229-1e70_ascii.txt line 4253-4392 (ASCII extraction cross-check only)"
+      ],
+      "note": "判定引擎自检 PASS；真实 bad-key 日志 EXPECTED_FAIL，不等同官方无效挑战处理；官方一致性 RESTRICTED/L2_REQUIRED；本轮只读侦察见 outputs/86-TC013-真实环境无效AKA注入可行性-20260914.md",
+      "blocker": "HSS 可注入错误向量，但当前 pjsua/ims_client_fix 缺 Security-Client/Security-Verify/auts/resync 与临时 SA 行为；需 UE 新栈实现或一致性仪表",
+      "officialBoundaries": [
+        {
+          "section": "9.1",
+          "title": "Invalid Behaviour - MAC Parameter Invalid",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 5452,
+          "body_end_line": 5602,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "9.1.1",
+              "title": "Definition",
+              "line": 5453
+            },
+            {
+              "number": "9.1.2",
+              "title": "Conformance requirement",
+              "line": 5455
+            },
+            {
+              "number": "9.1.3",
+              "title": "Test purpose",
+              "line": 5471
+            },
+            {
+              "number": "9.1.4",
+              "title": "Method of test",
+              "line": 5478
+            },
+            {
+              "number": "9.1.5",
+              "title": "Test requirements",
+              "line": 5596
+            }
+          ],
+          "definition_line": 5453,
+          "conformance_line": 5455,
+          "test_purpose_line": 5471,
+          "method_of_test_line": 5478,
+          "test_requirements_line": 5596
+        },
+        {
+          "section": "9.2",
+          "title": "Invalid Behaviour - SQN out of range",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 5603,
+          "body_end_line": 5739,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "9.2.1",
+              "title": "Definition",
+              "line": 5604
+            },
+            {
+              "number": "9.2.2",
+              "title": "Conformance requirement",
+              "line": 5607
+            },
+            {
+              "number": "9.2.3",
+              "title": "Test purpose",
+              "line": 5623
+            },
+            {
+              "number": "9.2.4",
+              "title": "Method of test",
+              "line": 5631
+            },
+            {
+              "number": "9.2.5",
+              "title": "Test requirements",
+              "line": 5730
+            }
+          ],
+          "definition_line": 5604,
+          "conformance_line": 5607,
+          "test_purpose_line": 5623,
+          "method_of_test_line": 5631,
+          "test_requirements_line": 5730
+        }
+      ]
+    },
+    {
+      "tc": "TC-014",
+      "name": "自动重注册",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "8.2 User Initiated Re-Registration",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS | 20260914_1800S_REREG_HEADERS",
+      "localScript": "work/tc014_rereg.py",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 4152-4344 (TP 8.2)",
+        "34229-1e70-word.txt line 32380-32448 (Annex C.2)",
+        "34229-1e70-word.txt line 21415-23238 (Annex A.1.1-A.1.6)"
+      ],
+      "primaryEvidence": [
+        "TS 34.229-1 V14.7.0 8.2 User Initiated Re-Registration: 34229-1e70-word.txt line 4152-4344",
+        "TS 34.229-1 V14.7.0 Annex C.2 generic registration sequence: 34229-1e70-word.txt line 32380-32448",
+        "TS 34.229-1 V14.7.0 Annex A.1.1-A.1.6 default messages: 34229-1e70-word.txt line 21415-23238"
+      ],
+      "crossReferenceEvidence": [
+        "34229-1e70_ascii.txt line 3504-3618 (ASCII extraction cross-check only)"
+      ],
+      "note": "2026-09-14 co1750 真实日志：8 次 REGISTER、4x401/4x200、CSeq 51261-51268 严格递增、Expires=1800、3 次手动重注册均到 200；官方到期时间窗、IPSEC SA 更新、P-Access-Network-Info 仍为 N/A",
+      "blocker": "官方 SS 定时窗口 / IPSEC / PANI",
+      "officialBoundaries": [
+        {
+          "section": "8.2",
+          "title": "User Initiated Re-Registration",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 4152,
+          "body_end_line": 4344,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "8.2.1",
+              "title": "Definition",
+              "line": 4153
+            },
+            {
+              "number": "8.2.2",
+              "title": "Conformance requirement",
+              "line": 4155
+            },
+            {
+              "number": "8.2.3",
+              "title": "Test purpose",
+              "line": 4209
+            },
+            {
+              "number": "8.2.4",
+              "title": "Method of test",
+              "line": 4214
+            },
+            {
+              "number": "",
+              "title": "Specific Message Contents",
+              "line": 4265
+            },
+            {
+              "number": "8.2.5",
+              "title": "Test requirements",
+              "line": 4341
+            }
+          ],
+          "definition_line": 4153,
+          "conformance_line": 4155,
+          "test_purpose_line": 4209,
+          "method_of_test_line": 4214,
+          "test_requirements_line": 4341,
+          "annex_a_refs": [
+            "A.1.1",
+            "A.1.2",
+            "A.1.3",
+            "A.1.4",
+            "A.1.5",
+            "A.1.6",
+            "A.1.7"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.1.1",
+              "title": "REGISTER",
+              "line_start": 21415,
+              "line_end": 22020
+            },
+            {
+              "ref": "A.1.2",
+              "title": "401 Unauthorized for REGISTER",
+              "line_start": 22021,
+              "line_end": 22255
+            },
+            {
+              "ref": "A.1.3",
+              "title": "200 OK for REGISTER",
+              "line_start": 22256,
+              "line_end": 22497
+            },
+            {
+              "ref": "A.1.4",
+              "title": "SUBSCRIBE for reg-event package",
+              "line_start": 22498,
+              "line_end": 22771
+            },
+            {
+              "ref": "A.1.5",
+              "title": "200 OK for SUBSCRIBE",
+              "line_start": 22772,
+              "line_end": 22918
+            },
+            {
+              "ref": "A.1.6",
+              "title": "NOTIFY for reg-event package",
+              "line_start": 22919,
+              "line_end": 23238
+            },
+            {
+              "ref": "A.1.7",
+              "title": "423 Interval Too Brief for REGISTER",
+              "line_start": 23239,
+              "line_end": 23312
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-015",
+      "name": "网络/IMS 重启恢复",
+      "module": "02",
+      "officialSpec": "34.229-1 + 24.229 + 36.523-1",
+      "officialClause": "MO Call 504 Server Time-out restoration",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc015_restoration.py",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 6119-6186 (TP 12.2a 504 restoration)"
+      ],
+      "primaryEvidence": [
+        "TS 34.229-1 V14.7.0 12.2a MO Call - 504 Server Time-out: 34229-1e70-word.txt line 6119-6186"
+      ],
+      "crossReferenceEvidence": [
+        "34229-1e70_ascii.txt line 4564-4599 (ASCII extraction cross-check only)"
+      ],
+      "note": "本地 504 alternative-service responder PASS；真实 S-CSCF 504 端到端缺",
+      "blocker": "真实 S-CSCF 重启/504",
+      "officialBoundaries": [
+        {
+          "section": "12.2a",
+          "title": "MO Call - 504 Server Time-out",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6119,
+          "body_end_line": 6186,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "12.2a.1",
+              "title": "Definition",
+              "line": 6120
+            },
+            {
+              "number": "12.2a.2",
+              "title": "Conformance requirement",
+              "line": 6122
+            },
+            {
+              "number": "12.2a.3",
+              "title": "Test purpose",
+              "line": 6136
+            },
+            {
+              "number": "12.2a.4",
+              "title": "Method of test",
+              "line": 6138
+            },
+            {
+              "number": "",
+              "title": "Specific Message Contents",
+              "line": 6176
+            },
+            {
+              "number": "12.2a.5",
+              "title": "Test requirements",
+              "line": 6185
+            }
+          ],
+          "definition_line": 6120,
+          "conformance_line": 6122,
+          "test_purpose_line": 6136,
+          "method_of_test_line": 6138,
+          "test_requirements_line": 6185
+        }
+      ]
+    },
+    {
+      "tc": "TC-016",
+      "name": "重复 REGISTER 幂等",
+      "module": "02",
+      "officialSpec": "24.229（行为支撑）",
+      "officialClause": "5.1.1.2.1 / 5.1.1.4.1（行为级）",
+      "mappingConfidence": "behavior",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc016_duplicate_register.py",
+      "note": "真实同 Call-ID 顺序重复 REGISTER 复判 PASS；24.229 行 3251/3468-3486 仅作行为支撑，无官方独立一致性 TC",
+      "blocker": "无官方独立 ID；需真实 IMS/SS 才能补端到端行为证据",
+      "sourceEvidenceLines": [
+        "24229.txt line 3251 (TS 24.229 V14.17.0 5.1.1.2.1: UE shall only initiate a new registration procedure after a final response or previous REGISTER timeout)",
+        "24229.txt line 3468-3486 (TS 24.229 V14.17.0 5.1.1.4.1: registration-state handling on 200 OK)"
+      ],
+      "primaryEvidence": [
+        "TS 24.229 V14.17.0 5.1.1.2.1 registration serialization support: 24229.txt line 3251",
+        "TS 24.229 V14.17.0 5.1.1.4.1 200 OK registration-state handling support: 24229.txt line 3468-3486"
+      ],
+      "crossReferenceEvidence": [
+        "Supporting protocol behaviour only; no independent 34.229-1 conformance TC for duplicate REGISTER idempotence"
+      ]
+    },
+    {
+      "tc": "TC-017",
+      "name": "两次呼叫+正常收尾",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "12.12 重复执行",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc017_two_calls.py",
+      "note": "真实双呼叫 PASS；属 12.12 重复/长稳变体",
+      "blocker": "官方子例完整执行",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)"
+      ],
+      "crossReferenceEvidence": [],
+      "officialBoundaries": [
+        {
+          "section": "12.12.3-12.12.5",
+          "title": "MO MTSI Voice Call Successful with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6314,
+          "body_end_line": 6360,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.12a.3-12.12a.5",
+          "title": "MO MTSI Voice Call Successful without preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6390,
+          "body_end_line": 6529,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-018",
+      "name": "畸形 REGISTER 容错",
+      "module": "02",
+      "officialSpec": "无独立官方 TC",
+      "officialClause": "自研健壮性（无官方 TP）",
+      "mappingConfidence": "behavior",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc018_malformed_register.py",
+      "note": "本地注入/自检 PASS；当前已核 24.229/34.229-1 无独立畸形 REGISTER 一致性 TC，归自研健壮性",
+      "blocker": "无官方一致性 ID；只作本地鲁棒性证据",
+      "sourceEvidenceLines": [],
+      "primaryEvidence": [
+        "No official TP line anchor; implementation robustness only and not a conformance verdict"
+      ],
+      "crossReferenceEvidence": [
+        "The verified TS 24.229 5.1.1.x material does not define a standalone malformed REGISTER conformance requirement"
+      ]
+    },
+    {
+      "tc": "TC-019",
+      "name": "MT 被叫呼叫",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "12.13 / 12.13a",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc019_mt_call.py",
+      "note": "co1750 pjsua MT 日志 PASS；缺真实 IMS 呼叫台端到端",
+      "blocker": "真实被叫/IMS 呼叫台",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 6561-6592 (TP 12.13.3-12.13.5 MT MTSI speech call with preconditions)",
+        "34229-1e70-word.txt line 6622-6744 (TP 12.13a.3-12.13a.5 MT MTSI speech call when remote end reserves resources before INVITE)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 25668-26027 (Annex A.2.9 INVITE for MT Call)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 6561-6592 (TP 12.13.3-12.13.5 MT MTSI speech call with preconditions)",
+        "34229-1e70-word.txt line 6622-6744 (TP 12.13a.3-12.13a.5 MT MTSI speech call when remote end reserves resources before INVITE)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 25668-26027 (Annex A.2.9 INVITE for MT Call)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)"
+      ],
+      "crossReferenceEvidence": [],
+      "officialBoundaries": [
+        {
+          "section": "12.13.3-12.13.5",
+          "title": "MT MTSI speech call with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6561,
+          "body_end_line": 6592,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.13a.3-12.13a.5",
+          "title": "MT MTSI speech call when remote end reserves resources before INVITE",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6622,
+          "body_end_line": 6744,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-020",
+      "name": "呼叫保持/恢复",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "15.11 / 15.12",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc020_hold_retrieve.py",
+      "note": "co1750 pjsua hold/resume 日志 PASS；缺真实 MMTel/IMS end-to-end",
+      "blocker": "真实 MMTel/IMS",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 9759-9824 (TP 15.11.3-15.11.5 MO Call Hold without announcement)",
+        "34229-1e70-word.txt line 9935-9985 (TP 15.12.3-15.12.5 MT Call Hold without announcement)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "24173.txt line 472-473 (TS 24.173 6.7 Communication Hold)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 9759-9824 (TP 15.11.3-15.11.5 MO Call Hold without announcement)",
+        "34229-1e70-word.txt line 9935-9985 (TP 15.12.3-15.12.5 MT Call Hold without announcement)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)"
+      ],
+      "crossReferenceEvidence": [
+        "24173.txt line 472-473 (TS 24.173 6.7 Communication Hold)"
+      ],
+      "officialBoundaries": [
+        {
+          "section": "15.11.3-15.11.5",
+          "title": "MO Call Hold without announcement",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 9759,
+          "body_end_line": 9824,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.7",
+            "A.2.8",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "15.12.3-15.12.5",
+          "title": "MT Call Hold without announcement",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 9935,
+          "body_end_line": 9985,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.7",
+            "A.2.8",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-021",
+      "name": "三方/REFER 会议",
+      "module": "02",
+      "officialSpec": "34.229-1",
+      "officialClause": "15.17 / 15.18 / 15.19 / 15.21",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc021_conference_refer.py",
+      "note": "双 UA REFER + conference join 字段级 PASS；官方 .3.2 子例未跑",
+      "blocker": "真实 MMTel/IMS/一致性仪表",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 10495-10564 (TP 15.17.3-15.17.5 Creating and leaving a conference)",
+        "34229-1e70-word.txt line 10579-10721 (TP 15.18.3-15.18.5 Inviting user to conference by sending REFER to the user)",
+        "34229-1e70-word.txt line 10738-10808 (TP 15.19.3-15.19.5 Inviting user to conference by sending REFER to the conference focus)",
+        "34229-1e70-word.txt line 10925-11364 (TP 15.21.3-15.21.5 Joining a conference after being invited to it)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 26028-26269 (Annex A.2.10 MO REFER)",
+        "34229-1e70-word.txt line 26270-26476 (Annex A.2.11 MT NOTIFY for refer package)",
+        "34229-1e70-word.txt line 26477-26664 (Annex A.2.12 MT REFER)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "34229-1e70-word.txt line 28644-28721 (Annex A.3.3 202 Accepted)",
+        "34229-1e70-word.txt line 29854-30102 (Annex A.5.3 NOTIFY for conference event package)",
+        "24628.txt line 383-453 (TS 24.628 4.4a special REFER handling)",
+        "24628.txt line 578-671 (TS 24.628 4.7.2.9.7 REFER 3pcc procedures)",
+        "24628.txt line 1870-2272 (TS 24.628 Annex E 3pcc signalling flows)",
+        "24173.txt line 478-481 (TS 24.173 6.10-6.11 Conference/ECT)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 10495-10564 (TP 15.17.3-15.17.5 Creating and leaving a conference)",
+        "34229-1e70-word.txt line 10579-10721 (TP 15.18.3-15.18.5 Inviting user to conference by sending REFER to the user)",
+        "34229-1e70-word.txt line 10738-10808 (TP 15.19.3-15.19.5 Inviting user to conference by sending REFER to the conference focus)",
+        "34229-1e70-word.txt line 10925-11364 (TP 15.21.3-15.21.5 Joining a conference after being invited to it)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 26028-26269 (Annex A.2.10 MO REFER)",
+        "34229-1e70-word.txt line 26270-26476 (Annex A.2.11 MT NOTIFY for refer package)",
+        "34229-1e70-word.txt line 26477-26664 (Annex A.2.12 MT REFER)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "34229-1e70-word.txt line 28644-28721 (Annex A.3.3 202 Accepted)",
+        "34229-1e70-word.txt line 29854-30102 (Annex A.5.3 NOTIFY for conference event package)"
+      ],
+      "crossReferenceEvidence": [
+        "24628.txt line 383-453 (TS 24.628 4.4a special REFER handling)",
+        "24628.txt line 578-671 (TS 24.628 4.7.2.9.7 REFER 3pcc procedures)",
+        "24628.txt line 1870-2272 (TS 24.628 Annex E 3pcc signalling flows)",
+        "24173.txt line 478-481 (TS 24.173 6.10-6.11 Conference/ECT)"
+      ],
+      "officialBoundaries": [
+        {
+          "section": "15.17.3-15.17.5",
+          "title": "Creating and leaving a conference",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 10495,
+          "body_end_line": 10564,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.8",
+            "A.2.10",
+            "A.2.11",
+            "A.2.12",
+            "A.3.1",
+            "A.3.3",
+            "A.5.3"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.10",
+              "title": "MO REFER",
+              "line_start": 26028,
+              "line_end": 26269
+            },
+            {
+              "ref": "A.2.11",
+              "title": "MT NOTIFY for refer package",
+              "line_start": 26270,
+              "line_end": 26476
+            },
+            {
+              "ref": "A.2.12",
+              "title": "MT REFER",
+              "line_start": 26477,
+              "line_end": 26664
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            },
+            {
+              "ref": "A.3.3",
+              "title": "202 Accepted",
+              "line_start": 28644,
+              "line_end": 28721
+            },
+            {
+              "ref": "A.5.3",
+              "title": "NOTIFY for conference event package",
+              "line_start": 29854,
+              "line_end": 30102
+            }
+          ]
+        },
+        {
+          "section": "15.18.3-15.18.5",
+          "title": "Inviting user to conference by sending REFER to the user",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 10579,
+          "body_end_line": 10721,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.8",
+            "A.2.10",
+            "A.2.11",
+            "A.2.12",
+            "A.3.1",
+            "A.3.3",
+            "A.5.3"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.10",
+              "title": "MO REFER",
+              "line_start": 26028,
+              "line_end": 26269
+            },
+            {
+              "ref": "A.2.11",
+              "title": "MT NOTIFY for refer package",
+              "line_start": 26270,
+              "line_end": 26476
+            },
+            {
+              "ref": "A.2.12",
+              "title": "MT REFER",
+              "line_start": 26477,
+              "line_end": 26664
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            },
+            {
+              "ref": "A.3.3",
+              "title": "202 Accepted",
+              "line_start": 28644,
+              "line_end": 28721
+            },
+            {
+              "ref": "A.5.3",
+              "title": "NOTIFY for conference event package",
+              "line_start": 29854,
+              "line_end": 30102
+            }
+          ]
+        },
+        {
+          "section": "15.19.3-15.19.5",
+          "title": "Inviting user to conference by sending REFER to the conference focus",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 10738,
+          "body_end_line": 10808,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.8",
+            "A.2.10",
+            "A.2.11",
+            "A.2.12",
+            "A.3.1",
+            "A.3.3",
+            "A.5.3"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.10",
+              "title": "MO REFER",
+              "line_start": 26028,
+              "line_end": 26269
+            },
+            {
+              "ref": "A.2.11",
+              "title": "MT NOTIFY for refer package",
+              "line_start": 26270,
+              "line_end": 26476
+            },
+            {
+              "ref": "A.2.12",
+              "title": "MT REFER",
+              "line_start": 26477,
+              "line_end": 26664
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            },
+            {
+              "ref": "A.3.3",
+              "title": "202 Accepted",
+              "line_start": 28644,
+              "line_end": 28721
+            },
+            {
+              "ref": "A.5.3",
+              "title": "NOTIFY for conference event package",
+              "line_start": 29854,
+              "line_end": 30102
+            }
+          ]
+        },
+        {
+          "section": "15.21.3-15.21.5",
+          "title": "Joining a conference after being invited to it",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 10925,
+          "body_end_line": 11364,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.8",
+            "A.2.10",
+            "A.2.11",
+            "A.2.12",
+            "A.3.1",
+            "A.3.3",
+            "A.5.3"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.10",
+              "title": "MO REFER",
+              "line_start": 26028,
+              "line_end": 26269
+            },
+            {
+              "ref": "A.2.11",
+              "title": "MT NOTIFY for refer package",
+              "line_start": 26270,
+              "line_end": 26476
+            },
+            {
+              "ref": "A.2.12",
+              "title": "MT REFER",
+              "line_start": 26477,
+              "line_end": 26664
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            },
+            {
+              "ref": "A.3.3",
+              "title": "202 Accepted",
+              "line_start": 28644,
+              "line_end": 28721
+            },
+            {
+              "ref": "A.5.3",
+              "title": "NOTIFY for conference event package",
+              "line_start": 29854,
+              "line_end": 30102
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-022",
+      "name": "音频媒体持续",
+      "module": "03",
+      "officialSpec": "34.229-1 + 26.114",
+      "officialClause": "12.12/12.13 SDP/媒体 TP",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc022_audio_media.py",
+      "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
+      "blocker": "官方 SDP/媒体子例",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)",
+        "34229-1e70-word.txt line 6561-6592 (TP 12.13.3-12.13.5 MT MTSI speech call with preconditions)",
+        "34229-1e70-word.txt line 6622-6744 (TP 12.13a.3-12.13a.5 MT MTSI speech call when remote end reserves resources before INVITE)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "34229-1e70-word.txt line 25668-26027 (Annex A.2.9 INVITE for MT Call)",
+        "26114.txt line 1361-1384 (TS 26.114 5.2.1.1 general codec requirements)",
+        "26114.txt line 1385-1393 (TS 26.114 5.2.1.2 AMR codec requirements)",
+        "26114.txt line 1394-1402 (TS 26.114 5.2.1.3 AMR-WB codec requirements)",
+        "26114.txt line 1577-1616 (TS 26.114 6.2.1a RTP profile negotiation)",
+        "26114.txt line 2559-2645 (TS 26.114 6.2.5.1 bandwidth negotiation general)",
+        "26114.txt line 2650-2807 (TS 26.114 6.2.5.2 bandwidth negotiation for speech)",
+        "26114.txt line 2981-3019 (TS 26.114 7.3.1 RTCP usage general)",
+        "26114.txt line 3020-3083 (TS 26.114 7.3.2 RTCP usage for speech)",
+        "24229.txt line 4027-4074 (TS 24.229 5.1.3.1 originating initial INVITE)",
+        "24229.txt line 4076-4167 (TS 24.229 5.1.4.1 terminating initial INVITE)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)",
+        "34229-1e70-word.txt line 6561-6592 (TP 12.13.3-12.13.5 MT MTSI speech call with preconditions)",
+        "34229-1e70-word.txt line 6622-6744 (TP 12.13a.3-12.13a.5 MT MTSI speech call when remote end reserves resources before INVITE)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "34229-1e70-word.txt line 25668-26027 (Annex A.2.9 INVITE for MT Call)"
+      ],
+      "crossReferenceEvidence": [
+        "26114.txt line 1361-1384 (TS 26.114 5.2.1.1 general codec requirements)",
+        "26114.txt line 1385-1393 (TS 26.114 5.2.1.2 AMR codec requirements)",
+        "26114.txt line 1394-1402 (TS 26.114 5.2.1.3 AMR-WB codec requirements)",
+        "26114.txt line 1577-1616 (TS 26.114 6.2.1a RTP profile negotiation)",
+        "26114.txt line 2559-2645 (TS 26.114 6.2.5.1 bandwidth negotiation general)",
+        "26114.txt line 2650-2807 (TS 26.114 6.2.5.2 bandwidth negotiation for speech)",
+        "26114.txt line 2981-3019 (TS 26.114 7.3.1 RTCP usage general)",
+        "26114.txt line 3020-3083 (TS 26.114 7.3.2 RTCP usage for speech)",
+        "24229.txt line 4027-4074 (TS 24.229 5.1.3.1 originating initial INVITE)",
+        "24229.txt line 4076-4167 (TS 24.229 5.1.4.1 terminating initial INVITE)"
+      ],
+      "officialBoundaries": [
+        {
+          "section": "12.12.3-12.12.5",
+          "title": "MO MTSI Voice Call Successful with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6314,
+          "body_end_line": 6360,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.12a.3-12.12a.5",
+          "title": "MO MTSI Voice Call Successful without preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6390,
+          "body_end_line": 6529,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.13.3-12.13.5",
+          "title": "MT MTSI speech call with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6561,
+          "body_end_line": 6592,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.13a.3-12.13a.5",
+          "title": "MT MTSI speech call when remote end reserves resources before INVITE",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6622,
+          "body_end_line": 6744,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-023",
+      "name": "SDP 编解码协商",
+      "module": "03",
+      "officialSpec": "34.229-1 + 26.114",
+      "officialClause": "12.12/12.13 SDP TP",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc023_sdp_negotiation.py",
+      "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
+      "blocker": "官方 SDP/媒体子例",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)",
+        "34229-1e70-word.txt line 6561-6592 (TP 12.13.3-12.13.5 MT MTSI speech call with preconditions)",
+        "34229-1e70-word.txt line 6622-6744 (TP 12.13a.3-12.13a.5 MT MTSI speech call when remote end reserves resources before INVITE)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "34229-1e70-word.txt line 25668-26027 (Annex A.2.9 INVITE for MT Call)",
+        "26114.txt line 1361-1384 (TS 26.114 5.2.1.1 general codec requirements)",
+        "26114.txt line 1385-1393 (TS 26.114 5.2.1.2 AMR codec requirements)",
+        "26114.txt line 1394-1402 (TS 26.114 5.2.1.3 AMR-WB codec requirements)",
+        "26114.txt line 1577-1616 (TS 26.114 6.2.1a RTP profile negotiation)",
+        "26114.txt line 2559-2645 (TS 26.114 6.2.5.1 bandwidth negotiation general)",
+        "26114.txt line 2650-2807 (TS 26.114 6.2.5.2 bandwidth negotiation for speech)",
+        "26114.txt line 2981-3019 (TS 26.114 7.3.1 RTCP usage general)",
+        "26114.txt line 3020-3083 (TS 26.114 7.3.2 RTCP usage for speech)",
+        "24229.txt line 4027-4074 (TS 24.229 5.1.3.1 originating initial INVITE)",
+        "24229.txt line 4076-4167 (TS 24.229 5.1.4.1 terminating initial INVITE)"
+      ],
+      "primaryEvidence": [
+        "34229-1e70-word.txt line 6314-6360 (TP 12.12.3-12.12.5 MO MTSI Voice Call Successful with preconditions)",
+        "34229-1e70-word.txt line 6390-6529 (TP 12.12a.3-12.12a.5 MO MTSI Voice Call Successful without preconditions)",
+        "34229-1e70-word.txt line 6561-6592 (TP 12.13.3-12.13.5 MT MTSI speech call with preconditions)",
+        "34229-1e70-word.txt line 6622-6744 (TP 12.13a.3-12.13a.5 MT MTSI speech call when remote end reserves resources before INVITE)",
+        "34229-1e70-word.txt line 23435-24112 (Annex A.2.1 INVITE for MO Call Setup)",
+        "34229-1e70-word.txt line 24220-24496 (Annex A.2.3 183 Session Progress for INVITE)",
+        "34229-1e70-word.txt line 24966-25209 (Annex A.2.6 180 Ringing for INVITE)",
+        "34229-1e70-word.txt line 25210-25387 (Annex A.2.7 ACK)",
+        "34229-1e70-word.txt line 25388-25667 (Annex A.2.8 BYE)",
+        "34229-1e70-word.txt line 28196-28522 (Annex A.3.1 200 OK for other requests than REGISTER or SUBSCRIBE)",
+        "34229-1e70-word.txt line 25668-26027 (Annex A.2.9 INVITE for MT Call)"
+      ],
+      "crossReferenceEvidence": [
+        "26114.txt line 1361-1384 (TS 26.114 5.2.1.1 general codec requirements)",
+        "26114.txt line 1385-1393 (TS 26.114 5.2.1.2 AMR codec requirements)",
+        "26114.txt line 1394-1402 (TS 26.114 5.2.1.3 AMR-WB codec requirements)",
+        "26114.txt line 1577-1616 (TS 26.114 6.2.1a RTP profile negotiation)",
+        "26114.txt line 2559-2645 (TS 26.114 6.2.5.1 bandwidth negotiation general)",
+        "26114.txt line 2650-2807 (TS 26.114 6.2.5.2 bandwidth negotiation for speech)",
+        "26114.txt line 2981-3019 (TS 26.114 7.3.1 RTCP usage general)",
+        "26114.txt line 3020-3083 (TS 26.114 7.3.2 RTCP usage for speech)",
+        "24229.txt line 4027-4074 (TS 24.229 5.1.3.1 originating initial INVITE)",
+        "24229.txt line 4076-4167 (TS 24.229 5.1.4.1 terminating initial INVITE)"
+      ],
+      "officialBoundaries": [
+        {
+          "section": "12.12.3-12.12.5",
+          "title": "MO MTSI Voice Call Successful with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6314,
+          "body_end_line": 6360,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.12a.3-12.12a.5",
+          "title": "MO MTSI Voice Call Successful without preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6390,
+          "body_end_line": 6529,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.13.3-12.13.5",
+          "title": "MT MTSI speech call with preconditions",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6561,
+          "body_end_line": 6592,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        },
+        {
+          "section": "12.13a.3-12.13a.5",
+          "title": "MT MTSI speech call when remote end reserves resources before INVITE",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6622,
+          "body_end_line": 6744,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "annex_a_refs": [
+            "A.2.1",
+            "A.2.3",
+            "A.2.6",
+            "A.2.7",
+            "A.2.8",
+            "A.2.9",
+            "A.3.1"
+          ],
+          "annex_a_messages": [
+            {
+              "ref": "A.2.1",
+              "title": "INVITE for MO Call Setup",
+              "line_start": 23435,
+              "line_end": 24112
+            },
+            {
+              "ref": "A.2.3",
+              "title": "183 Session Progress for INVITE",
+              "line_start": 24220,
+              "line_end": 24496
+            },
+            {
+              "ref": "A.2.6",
+              "title": "180 Ringing for INVITE",
+              "line_start": 24966,
+              "line_end": 25209
+            },
+            {
+              "ref": "A.2.7",
+              "title": "ACK",
+              "line_start": 25210,
+              "line_end": 25387
+            },
+            {
+              "ref": "A.2.8",
+              "title": "BYE",
+              "line_start": 25388,
+              "line_end": 25667
+            },
+            {
+              "ref": "A.2.9",
+              "title": "INVITE for MT Call",
+              "line_start": 25668,
+              "line_end": 26027
+            },
+            {
+              "ref": "A.3.1",
+              "title": "200 OK for other requests than REGISTER or SUBSCRIBE",
+              "line_start": 28196,
+              "line_end": 28522
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tc": "TC-024",
+      "name": "媒体长稳 >=120s",
+      "module": "03",
+      "officialSpec": "26.114 + 企标",
+      "officialClause": "长稳",
+      "mappingConfidence": "partial",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc024_long_stability.py",
+      "sourceEvidenceLines": [
+        "26114.txt line 3899-3921 (8.2.3.2.2 JBM delay CDF)",
+        "26114.txt line 3922-3940 (8.2.3.2.3 jitter loss rate)",
+        "26114.txt line 4251-4273 (9.3.4 PLR/FEC/NACK/PLI)",
+        "26114.txt line 6901-6935 (16.2.1 damage conditions)",
+        "26114.txt line 6952-6969 (16.2.4 jitter)",
+        "26114.txt line 6970-6986 (16.2.5 synchronization loss)"
+      ],
+      "primaryEvidence": [
+        "TS 26.114 V14.12.0 8.2.3.2.2 Jitter buffer delay criteria: 26114.txt line 3899-3921",
+        "TS 26.114 V14.12.0 8.2.3.2.3 Jitter induced concealment operations: 26114.txt line 3922-3940",
+        "TS 26.114 V14.12.0 9.3.4 packet loss recovery mechanisms: 26114.txt line 4251-4273",
+        "TS 26.114 V14.12.0 16.2.1/16.2.4/16.2.5 media performance conditions: 26114.txt line 6901-6986"
+      ],
+      "note": "真实长稳 131.221s PASS；偏实测/长稳，非强制一致性独立 TC",
+      "blocker": "非强制官方独立 TC"
+    },
+    {
+      "tc": "TC-025",
+      "name": "VAD/DTX 静音帧",
+      "module": "03",
+      "officialSpec": "26.114 / 26.093 / 26.193 / 26.450 / 26.451",
+      "officialClause": "VAD/DTX",
+      "mappingConfidence": "partial",
+      "evidenceLevel": "LIMITED_PASS",
+      "localScript": "work/tc025_vad_dtx.py",
+      "note": "2026-09-14 长静音抓包经 bandwidth-efficient AMR ToC 复判：AMR speech=218、FT15 NO_DATA=10、SID=4；sid_delta_ts=160000,160000、sid_delta_frames=1000,1000，不符合 26.093 SID_UPDATE 8 帧/1280 ticks；且 NO_DATA 被 RTP 实际传输 10 次。LOCAL_BEHAVIOR=PARTIAL，STANDARD_ASSERTION=FAIL，整体仍为 LIMITED_PASS。",
+      "blocker": "NO_DATA 实际传输=10（TS 26.093 行 229 明确不应在 AN 传输）；SID cadence=1000 帧不符合 8 帧规则；完整 AMR SCR SID_FIRST/SID_UPDATE 时序、真实产品 codec 或一致性仪表仍缺"
+    },
+    {
+      "tc": "TC-026",
+      "name": "SRVCC",
+      "module": "04",
+      "officialSpec": "36.523-1",
+      "officialClause": "13.4.3.1 / 13.4.3.2 / 13.4.3.3",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实 eNB/EPC/SS 或一致性仪表缺；36.508 锚点（V14.3.0）：Table 4.5A.7.3-1: EUTRA/EPS signalling for IMS MT speech call 行 17622；Table 4.8.3-1: UTRA reference radio parameters and combinations 行 35964；Parallel 254537-254560；Parallel 255193-255236、255238-255279；Parallel 254537-254560；Parallel 255193-255236、255238-255279；Parallel 254537-254560；Parallel 255193-255236、255238-255279；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.4.3.1 body 行 254166 / TP 行 254167 / .3.2 行 254385 / Main behaviour 行 254445-254529 / .3.3 行 254562-254761；Parallel 254537-254560；13.4.3.2 body 行 254762 / TP 行 254764 / .3.2 行 255041 / Main behaviour 行 255101-255185 / .3.3 行 255285-255456；Parallel 255193-255236、255238-255279；13.4.3.3 body 行 255457 / TP 行 255458 / .3.2 行 255655 / Main behaviour 行 255687-255740 / .3.3 行 255747-255946",
+      "blocker": "真实 eNB/EPC/SS",
+      "officialBoundaries": [
+        {
+          "section": "13.4.3.1",
+          "body_line": 254166,
+          "tp_line": 254167,
+          "conformance_line": 254176,
+          "test_description_line": 254376,
+          "pre_test_line": 254377,
+          "procedure_line": 254385,
+          "main_behaviour_table": "Table 13.4.3.1.3.2-2: Main behaviour",
+          "main_behaviour_line": 254445,
+          "main_behaviour_end_line": 254529,
+          "parallel_behaviour_tables": [
+            {
+              "table": "Table 13.4.3.1.3.2-5: Parallel behaviour",
+              "table_line": 254537,
+              "table_end_line": 254560
+            }
+          ],
+          "specific_message_line": 254562,
+          "specific_message_end_line": 254761,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.4.3.1.3.3-0: Conditions for specific message contents",
+              "table_line": 254563,
+              "table_end_line": 254566,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-1: ATTACH REQUEST (preamble)",
+              "table_line": 254568,
+              "table_end_line": 254577,
+              "derivation_paths": [
+                "36.508 table 4.7.2-4"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-2: RRCConnectionReconfiguration (step 28, Table 13.4.3.1.3.2-2)",
+              "table_line": 254579,
+              "table_end_line": 254580,
+              "derivation_paths": [
+                "36.508 clause 4.6.1 table 4.6.1-8 with condition MEAS"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-3: MeasConfig (step 28, Table 13.4.3.1.3.2-2)",
+              "table_line": 254586,
+              "table_end_line": 254634,
+              "derivation_paths": [
+                "36.508 clause 4.6.6 table 4.6.6-1 with condition UTRAN"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-4: MeasurementReport (step 31, Table 13.4.3.1.3.2-2)",
+              "table_line": 254640,
+              "table_end_line": 254670,
+              "derivation_paths": [
+                "36.508, table 4.6.1-5"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-5: MobilityFromEUTRACommand (step 32, Table 13.4.3.1.3.2-2)",
+              "table_line": 254672,
+              "table_end_line": 254697,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-6"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-6: HANDOVER TO UTRAN COMMAND (step 32, Table 13.4.3.1.3.3-5)",
+              "table_line": 254699,
+              "table_end_line": 254700,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-1, condition UTRA Speech"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-7: UECapabilityEnquiry (step 31A, Table 13.4.3.1.3.2-2)",
+              "table_line": 254706,
+              "table_end_line": 254722,
+              "derivation_paths": [
+                "36.508 clause 4.6.1 table 4.6.1-22"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-8: SECURITY MODE COMMAND (step 34, Table 13.4.3.1.3.2-2)",
+              "table_line": 254724,
+              "table_end_line": 254727,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-n"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-9: Void",
+              "table_line": 254729,
+              "table_end_line": 254729,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-10: QuantityConfig-DEFAULT-RSCP (Table 13.4.3.1.3.3-3)",
+              "table_line": 254730,
+              "table_end_line": 254737,
+              "derivation_paths": [
+                "36.508, Table 4.6.6-3A"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-11: ROUTING AREA UPDATE ACCEPT (step 2, Table 13.4.3.1.3.2-5)",
+              "table_line": 254739,
+              "table_end_line": 254748,
+              "derivation_paths": [
+                "36.508, Table 4.7B.2-2"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.1.3.3-12: SECURITY MODE COMMAND (step 1A, Table 13.4.3.1.3.2-5)",
+              "table_line": 254751,
+              "table_end_line": 254756,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-n"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "13.4.3.2",
+          "body_line": 254762,
+          "tp_line": 254764,
+          "conformance_line": 254773,
+          "test_description_line": 255032,
+          "pre_test_line": 255033,
+          "procedure_line": 255041,
+          "main_behaviour_table": "Table 13.4.3.2.3.2-2: Main behaviour",
+          "main_behaviour_line": 255101,
+          "main_behaviour_end_line": 255185,
+          "parallel_behaviour_tables": [
+            {
+              "table": "Table 13.4.3.2.3.2-5: Parallel behaviour",
+              "table_line": 255193,
+              "table_end_line": 255236
+            },
+            {
+              "table": "Table 13.4.3.2.3.2-6: Parallel behaviour",
+              "table_line": 255238,
+              "table_end_line": 255279
+            }
+          ],
+          "specific_message_line": 255285,
+          "specific_message_end_line": 255456,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.4.3.2.3.3-0: Conditions for specific message contents",
+              "table_line": 255286,
+              "table_end_line": 255289,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-1: ATTACH REQUEST (preamble)",
+              "table_line": 255291,
+              "table_end_line": 255300,
+              "derivation_paths": [
+                "36.508 table 4.7.2-4"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-2: RRCConnectionReconfiguration (step 28, Table 13.4.3.2.3.2-2)",
+              "table_line": 255302,
+              "table_end_line": 255303,
+              "derivation_paths": [
+                "36.508 clause 4.6.1 table 4.6.1-8 with condition MEAS"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-3: MeasConfig (step 28, Table 13.4.3.2.3.2-2)",
+              "table_line": 255305,
+              "table_end_line": 255353,
+              "derivation_paths": [
+                "36.508 clause 4.6.6 table 4.6.6-1 with condition UTRAN"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-4: MeasurementReport (step 31, Table 13.4.3.2.3.2-2)",
+              "table_line": 255359,
+              "table_end_line": 255389,
+              "derivation_paths": [
+                "36.508, table 4.6.1-5"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-5: MobilityFromEUTRACommand (step 32, Table 13.4.3.2.3.2-2)",
+              "table_line": 255391,
+              "table_end_line": 255416,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-6"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-6: HANDOVER TO UTRAN COMMAND (step 32, Table 13.4.3.2.3.3-5)",
+              "table_line": 255418,
+              "table_end_line": 255420,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-1, condition UTRA Speech + Packet RAB Setup after Speech RAB Setup in CELL_DCH"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-7: UECapabilityEnquiry (step 32A, Table 13.4.3.2.3.2-2)",
+              "table_line": 255426,
+              "table_end_line": 255442,
+              "derivation_paths": [
+                "36.508 clause 4.6.1 table 4.6.1-22"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-8: SECURITY MODE COMMAND (step 34, Table 13.4.3.2.3.2-2)",
+              "table_line": 255444,
+              "table_end_line": 255447,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-n"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-9: Void",
+              "table_line": 255449,
+              "table_end_line": 255449,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-10: Void",
+              "table_line": 255450,
+              "table_end_line": 255450,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.2.3.3-11: ROUTING AREA UPDATE ACCEPT (step 2, Table 13.4.3.2.3.2-5)",
+              "table_line": 255451,
+              "table_end_line": 255455,
+              "derivation_paths": [
+                "36.508, Table 4.7B.2-2"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "13.4.3.3",
+          "body_line": 255457,
+          "tp_line": 255458,
+          "conformance_line": 255467,
+          "test_description_line": 255642,
+          "pre_test_line": 255643,
+          "procedure_line": 255655,
+          "main_behaviour_table": "Table 13.4.3.3.3.2-2: Main behaviour",
+          "main_behaviour_line": 255687,
+          "main_behaviour_end_line": 255740,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 255747,
+          "specific_message_end_line": 255946,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.4.3.3.3.3-1: ATTACH REQUEST (preamble)",
+              "table_line": 255748,
+              "table_end_line": 255757,
+              "derivation_paths": [
+                "36.508 table 4.7.2-4"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.3.3.3-2: RRCConnectionReconfiguration (step 27, Table 13.4.3.3.3.2-2)",
+              "table_line": 255759,
+              "table_end_line": 255760,
+              "derivation_paths": [
+                "36.508 clause 4.6.1 table 4.6.1-8 with condition MEAS"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.3.3.3-3: MeasConfig (step 27, Table 13.4.3.3.3.2-2)",
+              "table_line": 255762,
+              "table_end_line": 255813,
+              "derivation_paths": [
+                "36.508 clause 4.6.6 table 4.6.6-1 with condition GERAN"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.3.3.3-4: MeasurementReport (step 30, Table 13.4.3.3.3.2-2)",
+              "table_line": 255819,
+              "table_end_line": 255852,
+              "derivation_paths": [
+                "36.508, table 4.6.1-5"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.3.3.3-5: MobilityFromEUTRACommand (step 31, Table 13.4.3.3.3.2-2)",
+              "table_line": 255858,
+              "table_end_line": 255893,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-6"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.3.3.3-6: HANDOVER COMMAND (step 31, Table 13.4.3.3.3.2-2)",
+              "table_line": 255899,
+              "table_end_line": 255932,
+              "derivation_paths": [
+                "51.010, Table 40.2.4.33"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.3.3.3-7: ROUTING AREA UPDATE ACCEPT (step 48, Table 13.4.3.3.3.2-2)",
+              "table_line": 255935,
+              "table_end_line": 255944,
+              "derivation_paths": [
+                "36.508, Table 4.7B.2-2"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 254166-254167 (36.523-1 13.4.3.1 title and Test Purpose)",
+        "523-1v14.txt line 254376-254529 (36.523-1 13.4.3.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 254445-254529 (36.523-1 13.4.3.1 Main behaviour)",
+        "523-1v14.txt line 254562-254761 (36.523-1 13.4.3.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 254537-254560 (36.523-1 Table 13.4.3.1.3.2-5: Parallel behaviour)",
+        "523-1v14.txt line 254762-254764 (36.523-1 13.4.3.2 title and Test Purpose)",
+        "523-1v14.txt line 255032-255185 (36.523-1 13.4.3.2 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 255101-255185 (36.523-1 13.4.3.2 Main behaviour)",
+        "523-1v14.txt line 255285-255456 (36.523-1 13.4.3.2 .3.3 Specific message contents)",
+        "523-1v14.txt line 255193-255236 (36.523-1 Table 13.4.3.2.3.2-5: Parallel behaviour)",
+        "523-1v14.txt line 255238-255279 (36.523-1 Table 13.4.3.2.3.2-6: Parallel behaviour)",
+        "523-1v14.txt line 255457-255458 (36.523-1 13.4.3.3 title and Test Purpose)",
+        "523-1v14.txt line 255642-255740 (36.523-1 13.4.3.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 255687-255740 (36.523-1 13.4.3.3 Main behaviour)",
+        "523-1v14.txt line 255747-255946 (36.523-1 13.4.3.3 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 17622-17622 (36.508 Table 4.5A.7.3-1 IMS MT speech call)",
+        "36508.txt line 35964-35964 (36.508 Table 4.8.3-1 UTRA reference radio parameters)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 254166-254167 (36.523-1 13.4.3.1 title and Test Purpose)",
+        "523-1v14.txt line 254376-254529 (36.523-1 13.4.3.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 254445-254529 (36.523-1 13.4.3.1 Main behaviour)",
+        "523-1v14.txt line 254562-254761 (36.523-1 13.4.3.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 254537-254560 (36.523-1 Table 13.4.3.1.3.2-5: Parallel behaviour)",
+        "523-1v14.txt line 254762-254764 (36.523-1 13.4.3.2 title and Test Purpose)",
+        "523-1v14.txt line 255032-255185 (36.523-1 13.4.3.2 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 255101-255185 (36.523-1 13.4.3.2 Main behaviour)",
+        "523-1v14.txt line 255285-255456 (36.523-1 13.4.3.2 .3.3 Specific message contents)",
+        "523-1v14.txt line 255193-255236 (36.523-1 Table 13.4.3.2.3.2-5: Parallel behaviour)",
+        "523-1v14.txt line 255238-255279 (36.523-1 Table 13.4.3.2.3.2-6: Parallel behaviour)",
+        "523-1v14.txt line 255457-255458 (36.523-1 13.4.3.3 title and Test Purpose)",
+        "523-1v14.txt line 255642-255740 (36.523-1 13.4.3.3 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 255687-255740 (36.523-1 13.4.3.3 Main behaviour)",
+        "523-1v14.txt line 255747-255946 (36.523-1 13.4.3.3 .3.3 Specific message contents)",
+        "36508.txt line 17622-17622 (36.508 Table 4.5A.7.3-1 IMS MT speech call)",
+        "36508.txt line 35964-35964 (36.508 Table 4.8.3-1 UTRA reference radio parameters)"
+      ]
+    },
+    {
+      "tc": "TC-027",
+      "name": "aSRVCC",
+      "module": "04",
+      "officialSpec": "36.523-1",
+      "officialClause": "13.4.3.7 / 13.4.3.10",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实 aSRVCC/SS 注入缺；36.508 锚点（V14.3.0）：Table 4.5A.6.3-1: EUTRA/EPS signalling for IMS MO speech call 行 17476；Table 4.5A.7.3-1: EUTRA/EPS signalling for IMS MT speech call 行 17622；Table 4.8.3-1: UTRA reference radio parameters and combinations 行 35964；Parallel 258035-258042、258044-258068；Parallel 260063-260087；Parallel 258035-258042、258044-258068；Parallel 260063-260087；Parallel 258035-258042、258044-258068；Parallel 260063-260087；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.4.3.7 body 行 257651 / TP 行 257652 / .3.2 行 257860 / Main behaviour 行 257924-258033 / .3.3 行 258070-258314；Parallel 258035-258042、258044-258068；13.4.3.10 body 行 259691 / TP 行 259692 / .3.2 行 259903 / Main behaviour 行 259967-260057 / .3.3 行 260089-260333；Parallel 260063-260087",
+      "blocker": "真实 aSRVCC/SS",
+      "officialBoundaries": [
+        {
+          "section": "13.4.3.7",
+          "body_line": 257651,
+          "tp_line": 257652,
+          "conformance_line": 257672,
+          "test_description_line": 257851,
+          "pre_test_line": 257852,
+          "procedure_line": 257860,
+          "main_behaviour_table": "Table 13.4.3.7.3.2-2: Main behaviour",
+          "main_behaviour_line": 257924,
+          "main_behaviour_end_line": 258033,
+          "parallel_behaviour_tables": [
+            {
+              "table": "Table 13.4.3.7.3.2-3: Parallel behaviour",
+              "table_line": 258035,
+              "table_end_line": 258042
+            },
+            {
+              "table": "Table 13.4.3.7.3.2-4: Parallel behaviour",
+              "table_line": 258044,
+              "table_end_line": 258068
+            }
+          ],
+          "specific_message_line": 258070,
+          "specific_message_end_line": 258314,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.4.3.7.3.3-0: Conditions for specific message contents",
+              "table_line": 258071,
+              "table_end_line": 258074,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-1: ATTACH REQUEST (preamble)",
+              "table_line": 258076,
+              "table_end_line": 258085,
+              "derivation_paths": [
+                "36.508 Table 4.7.2-4"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-2: RRCConnectionReconfiguration (step 16, Table 13.4.3.7.3.2-2)",
+              "table_line": 258087,
+              "table_end_line": 258088,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-8, condition MEAS"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-3: MeasConfig (Table 13.4.3.7.3.3-2)",
+              "table_line": 258094,
+              "table_end_line": 258136,
+              "derivation_paths": [
+                "36.508, Table 4.6.6-1, condition UTRAN"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-4: MeasObjectUTRA-f8 (Table 13.4.3.7.3.3-3)",
+              "table_line": 258138,
+              "table_end_line": 258172,
+              "derivation_paths": [
+                "36.508, Table 4.6.6-3"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-5: MeasurementReport (step 19, Table 13.4.3.7.3.2-2)",
+              "table_line": 258174,
+              "table_end_line": 258218,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-5"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-6: UECapabilityEnquiry (step 20, Table 13.4.3.7.3.2-2)",
+              "table_line": 258224,
+              "table_end_line": 258240,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-22"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-7: MobilityFromEUTRACommand (step 22, Table 13.4.3.7.3.2-2)",
+              "table_line": 258242,
+              "table_end_line": 258267,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-6"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-8: HANDOVER TO UTRAN COMMAND (Table 13.4.3.7.3.3-7)",
+              "table_line": 258269,
+              "table_end_line": 258270,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-1, condition UTRA Speech"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-9: SECURITY MODE COMMAND (step 24, Table 13.4.3.7.3.2-2)",
+              "table_line": 258272,
+              "table_end_line": 258275,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-n"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-10: CONNECT (step 30, Table 13.4.3.7.3.2-2)",
+              "table_line": 258277,
+              "table_end_line": 258290,
+              "derivation_paths": [
+                "TS 24.008 Table 9.59"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-11: CONNECT ACKNOWLEDGE (step 31, Table 13.4.3.7.3.2-2)",
+              "table_line": 258292,
+              "table_end_line": 258301,
+              "derivation_paths": [
+                "TS 24.008 Table 9.60"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.7.3.3-12: ROUTING AREA UPDATE ACCEPT (step 4, Table 13.4.3.7.3.2-4)",
+              "table_line": 258303,
+              "table_end_line": 258312,
+              "derivation_paths": [
+                "36.508, Table 4.7B.2-2"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "13.4.3.10",
+          "body_line": 259691,
+          "tp_line": 259692,
+          "conformance_line": 259711,
+          "test_description_line": 259894,
+          "pre_test_line": 259895,
+          "procedure_line": 259903,
+          "main_behaviour_table": "Table 13.4.3.10.3.2-2: Main behaviour",
+          "main_behaviour_line": 259967,
+          "main_behaviour_end_line": 260057,
+          "parallel_behaviour_tables": [
+            {
+              "table": "Table 13.4.3.10.3.2-3: Parallel behaviour",
+              "table_line": 260063,
+              "table_end_line": 260087
+            }
+          ],
+          "specific_message_line": 260089,
+          "specific_message_end_line": 260333,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.4.3.10.3.3-0: Conditions for specific message contents",
+              "table_line": 260090,
+              "table_end_line": 260093,
+              "derivation_paths": []
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-1: ATTACH REQUEST (preamble)",
+              "table_line": 260095,
+              "table_end_line": 260104,
+              "derivation_paths": [
+                "36.508 Table 4.7.2-4"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-2: RRCConnectionReconfiguration (step 24, Table 13.4.3.10.3.2-2)",
+              "table_line": 260106,
+              "table_end_line": 260107,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-8, condition MEAS"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-3: MeasConfig (Table 13.4.3.10.3.3-2)",
+              "table_line": 260113,
+              "table_end_line": 260155,
+              "derivation_paths": [
+                "36.508, Table 4.6.6-1, condition UTRAN"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-4: MeasObjectUTRA-f8 (Table 13.4.3.10.3.3-3)",
+              "table_line": 260157,
+              "table_end_line": 260191,
+              "derivation_paths": [
+                "36.508, Table 4.6.6-3"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-5: MeasurementReport (step 27, Table 13.4.3.10.3.2-2)",
+              "table_line": 260193,
+              "table_end_line": 260237,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-5"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-6: UECapabilityEnquiry (step 28, Table 13.4.3.10.3.2-2)",
+              "table_line": 260243,
+              "table_end_line": 260259,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-22"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-7: MobilityFromEUTRACommand (step 30, Table 13.4.3.10.3.2-2)",
+              "table_line": 260261,
+              "table_end_line": 260286,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-6"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-8: HANDOVER TO UTRAN COMMAND (Table 13.4.3.10.3.3-7)",
+              "table_line": 260288,
+              "table_end_line": 260289,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-1, condition UTRA Speech"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-9: SECURITY MODE COMMAND (step 32 Table 13.4.3.10.3.2-2)",
+              "table_line": 260291,
+              "table_end_line": 260294,
+              "derivation_paths": [
+                "36.508, Table 4.7B.1-n"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-10: CONNECT (step 39, Table 13.4.3.10.3.2-2)",
+              "table_line": 260296,
+              "table_end_line": 260309,
+              "derivation_paths": [
+                "TS 24.008 Table 9.59a"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-11: CONNECT ACKNOWLEDGE (step 40, Table 13.4.3.10.3.2-2)",
+              "table_line": 260311,
+              "table_end_line": 260320,
+              "derivation_paths": [
+                "TS 24.008 Table 9.60"
+              ]
+            },
+            {
+              "table": "Table 13.4.3.10.3.3-12: ROUTING AREA UPDATE ACCEPT (step 4, Table 13.4.3.10.3.2-3)",
+              "table_line": 260322,
+              "table_end_line": 260331,
+              "derivation_paths": [
+                "36.508, Table 4.7B.2-2"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 257651-257652 (36.523-1 13.4.3.7 title and Test Purpose)",
+        "523-1v14.txt line 257851-258033 (36.523-1 13.4.3.7 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 257924-258033 (36.523-1 13.4.3.7 Main behaviour)",
+        "523-1v14.txt line 258070-258314 (36.523-1 13.4.3.7 .3.3 Specific message contents)",
+        "523-1v14.txt line 258035-258042 (36.523-1 Table 13.4.3.7.3.2-3: Parallel behaviour)",
+        "523-1v14.txt line 258044-258068 (36.523-1 Table 13.4.3.7.3.2-4: Parallel behaviour)",
+        "523-1v14.txt line 259691-259692 (36.523-1 13.4.3.10 title and Test Purpose)",
+        "523-1v14.txt line 259894-260057 (36.523-1 13.4.3.10 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 259967-260057 (36.523-1 13.4.3.10 Main behaviour)",
+        "523-1v14.txt line 260089-260333 (36.523-1 13.4.3.10 .3.3 Specific message contents)",
+        "523-1v14.txt line 260063-260087 (36.523-1 Table 13.4.3.10.3.2-3: Parallel behaviour)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 17476-17476 (36.508 Table 4.5A.6.3-1 IMS MO speech call)",
+        "36508.txt line 17622-17622 (36.508 Table 4.5A.7.3-1 IMS MT speech call)",
+        "36508.txt line 35964-35964 (36.508 Table 4.8.3-1 UTRA reference radio parameters)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 257651-257652 (36.523-1 13.4.3.7 title and Test Purpose)",
+        "523-1v14.txt line 257851-258033 (36.523-1 13.4.3.7 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 257924-258033 (36.523-1 13.4.3.7 Main behaviour)",
+        "523-1v14.txt line 258070-258314 (36.523-1 13.4.3.7 .3.3 Specific message contents)",
+        "523-1v14.txt line 258035-258042 (36.523-1 Table 13.4.3.7.3.2-3: Parallel behaviour)",
+        "523-1v14.txt line 258044-258068 (36.523-1 Table 13.4.3.7.3.2-4: Parallel behaviour)",
+        "523-1v14.txt line 259691-259692 (36.523-1 13.4.3.10 title and Test Purpose)",
+        "523-1v14.txt line 259894-260057 (36.523-1 13.4.3.10 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 259967-260057 (36.523-1 13.4.3.10 Main behaviour)",
+        "523-1v14.txt line 260089-260333 (36.523-1 13.4.3.10 .3.3 Specific message contents)",
+        "523-1v14.txt line 260063-260087 (36.523-1 Table 13.4.3.10.3.2-3: Parallel behaviour)",
+        "36508.txt line 17476-17476 (36.508 Table 4.5A.6.3-1 IMS MO speech call)",
+        "36508.txt line 17622-17622 (36.508 Table 4.5A.7.3-1 IMS MT speech call)",
+        "36508.txt line 35964-35964 (36.508 Table 4.8.3-1 UTRA reference radio parameters)"
+      ]
+    },
+    {
+      "tc": "TC-028",
+      "name": "SSAC 接入控制",
+      "module": "05",
+      "officialSpec": "36.523-1",
+      "officialClause": "13.5.1 / 13.5.1a",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实 SIB2 SSAC/RRC 行为观测缺；36.508 锚点（V14.3.0）：Table 4.5A.6.3-1: EUTRA/EPS signalling for IMS MO speech call 行 17476；Table 4.4.3.3-1: SystemInformationBlockType2 行 10026；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.5.1 body 行 275624 / TP 行 275626 / .3.2 行 275716 / Main behaviour 行 275717-275752 / .3.3 行 275754-275777；13.5.1a body 行 275778 / TP 行 275780 / .3.2 行 275880 / Main behaviour 行 275881-275931 / .3.3 行 275937-275950",
+      "blocker": "真实 SIB2/RRC",
+      "officialBoundaries": [
+        {
+          "section": "13.5.1",
+          "body_line": 275624,
+          "tp_line": 275626,
+          "conformance_line": 275644,
+          "test_description_line": 275704,
+          "pre_test_line": 275705,
+          "procedure_line": 275716,
+          "main_behaviour_table": "Table 13.5.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 275717,
+          "main_behaviour_end_line": 275752,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 275754,
+          "specific_message_end_line": 275777,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.5.1.3.3-1: SystemInformationBlockType2 for Cell 1 (preamble and step 1, Table 13.5.1.3.2-1)",
+              "table_line": 275755,
+              "table_end_line": 275764,
+              "derivation_paths": [
+                "36.508, Table 4.4.3.3-1"
+              ]
+            },
+            {
+              "table": "Table 13.5.1.3.3-2: Paging (step3, Table 13.5.1.3.2-1)",
+              "table_line": 275766,
+              "table_end_line": 275772,
+              "derivation_paths": [
+                "36.508 Table 4.6.1-7"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "13.5.1a",
+          "body_line": 275778,
+          "tp_line": 275780,
+          "conformance_line": 275808,
+          "test_description_line": 275871,
+          "pre_test_line": 275872,
+          "procedure_line": 275880,
+          "main_behaviour_table": "Table 13.5.1a.3.2-1: Main behaviour",
+          "main_behaviour_line": 275881,
+          "main_behaviour_end_line": 275931,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 275937,
+          "specific_message_end_line": 275950,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.5.1a.3.3-1: SystemInformationBlockType2 for Cell 1 (preamble,)",
+              "table_line": 275938,
+              "table_end_line": 275947,
+              "derivation_paths": [
+                "36.508, Table 4.4.3.3-1"
+              ]
+            },
+            {
+              "table": "Table 13.5.1a.3.3-2: Void",
+              "table_line": 275949,
+              "table_end_line": 275949,
+              "derivation_paths": []
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 275624-275626 (36.523-1 13.5.1 title and Test Purpose)",
+        "523-1v14.txt line 275704-275752 (36.523-1 13.5.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 275717-275752 (36.523-1 13.5.1 Main behaviour)",
+        "523-1v14.txt line 275754-275777 (36.523-1 13.5.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 275778-275780 (36.523-1 13.5.1a title and Test Purpose)",
+        "523-1v14.txt line 275871-275931 (36.523-1 13.5.1a .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 275881-275931 (36.523-1 13.5.1a Main behaviour)",
+        "523-1v14.txt line 275937-275950 (36.523-1 13.5.1a .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 17476-17476 (36.508 Table 4.5A.6.3-1 IMS MO speech call)",
+        "36508.txt line 10026-10026 (36.508 Table 4.4.3.3-1 SystemInformationBlockType2)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 275624-275626 (36.523-1 13.5.1 title and Test Purpose)",
+        "523-1v14.txt line 275704-275752 (36.523-1 13.5.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 275717-275752 (36.523-1 13.5.1 Main behaviour)",
+        "523-1v14.txt line 275754-275777 (36.523-1 13.5.1 .3.3 Specific message contents)",
+        "523-1v14.txt line 275778-275780 (36.523-1 13.5.1a title and Test Purpose)",
+        "523-1v14.txt line 275871-275931 (36.523-1 13.5.1a .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 275881-275931 (36.523-1 13.5.1a Main behaviour)",
+        "523-1v14.txt line 275937-275950 (36.523-1 13.5.1a .3.3 Specific message contents)",
+        "36508.txt line 17476-17476 (36.508 Table 4.5A.6.3-1 IMS MO speech call)",
+        "36508.txt line 10026-10026 (36.508 Table 4.4.3.3-1 SystemInformationBlockType2)"
+      ]
+    },
+    {
+      "tc": "TC-029",
+      "name": "SCM 接入控制",
+      "module": "05",
+      "officialSpec": "36.523-1",
+      "officialClause": "13.5.4",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "真实 SIB2 SCM skip/RRC 行为观测缺；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.5.4 body 行 276534 / TP 行 276536 / .3.2 行 276827 / Main behaviour 行 276828-276861 / .3.3 行 276863-276893",
+      "blocker": "真实 SIB2/RRC",
+      "officialBoundaries": [
+        {
+          "section": "13.5.4",
+          "body_line": 276534,
+          "tp_line": 276536,
+          "conformance_line": 276547,
+          "test_description_line": 276815,
+          "pre_test_line": 276816,
+          "procedure_line": 276827,
+          "main_behaviour_table": "Table 13.5.4.3.2-1: Main behaviour",
+          "main_behaviour_line": 276828,
+          "main_behaviour_end_line": 276861,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 276863,
+          "specific_message_end_line": 276893,
+          "specific_message_tables": [
+            {
+              "table": "Table 13.5.4.3.3-1: SystemInformationBlockType2 (preamble, Table 13.5.4.3.2-1)",
+              "table_line": 276864,
+              "table_end_line": 276873,
+              "derivation_paths": [
+                "36.508, Table 4.4.3.3-1"
+              ]
+            },
+            {
+              "table": "Table 13.5.4.3.3-2: SystemInformationBlockType2 for Cell 1 (step 3, Table 13.5.4.3.2-1)",
+              "table_line": 276875,
+              "table_end_line": 276888,
+              "derivation_paths": [
+                "36.508, Table 4.4.3.3-1"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 276534-276536 (36.523-1 13.5.4 title and Test Purpose)",
+        "523-1v14.txt line 276815-276861 (36.523-1 13.5.4 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 276828-276861 (36.523-1 13.5.4 Main behaviour)",
+        "523-1v14.txt line 276863-276893 (36.523-1 13.5.4 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 17476-17476 (36.508 Table 4.5A.6.3-1 IMS MO speech call)",
+        "36508.txt line 10026-10026 (36.508 Table 4.4.3.3-1 SystemInformationBlockType2)",
+        "36508.txt line 40682-40682 (36.508 Table 6.4.2.3-1 test procedure sequence)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 276534-276536 (36.523-1 13.5.4 title and Test Purpose)",
+        "523-1v14.txt line 276815-276861 (36.523-1 13.5.4 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 276828-276861 (36.523-1 13.5.4 Main behaviour)",
+        "523-1v14.txt line 276863-276893 (36.523-1 13.5.4 .3.3 Specific message contents)",
+        "36508.txt line 17476-17476 (36.508 Table 4.5A.6.3-1 IMS MO speech call)",
+        "36508.txt line 10026-10026 (36.508 Table 4.4.3.3-1 SystemInformationBlockType2)",
+        "36508.txt line 40682-40682 (36.508 Table 6.4.2.3-1 test procedure sequence)"
+      ]
+    },
+    {
+      "tc": "TC-030",
+      "name": "IMS 紧急呼叫",
+      "module": "06",
+      "officialSpec": "36.523-1 + 34.229-1",
+      "officialClause": "11.2.1 + 紧急流程",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS | 20260911_RERUN_REPRODUCED",
+      "localScript": "work/run_tc030_emergency_lab.sh",
+      "note": "co1750 历史 112/110/119/120 功能级 PASS；2026-09-11 phase5 命名空间 fifo 复跑 tc030-emergency-112-20260911-155404 复现 PASS（REGISTER 401->200、INVITE->100->200、ACK、CONFIRMED、RTP 0丢包、BYE 200；S-CSCF EMERGENCY-RULE-HIT + ROUTE-REWRITE；call_rc=124 为 timeout 包装返回，非呼叫失败）；官方一致性、紧急 PDN、emergency registration 仍受限；36.508 锚点（V14.3.0）：Table 4.5A.4.3-1: EUTRA/EPS signalling for IMS Emergency Call 行 16909；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：11.2.1 body 行 235227 / TP 行 235231 / .3.2 行 235399 / Main behaviour 行 235400-235467 / .3.3 行 235473-235482",
+      "blocker": "官方一致性/紧急 PDN",
+      "officialBoundaries": [
+        {
+          "section": "11.2.1",
+          "body_line": 235227,
+          "tp_line": 235231,
+          "conformance_line": 235276,
+          "test_description_line": 235385,
+          "pre_test_line": 235386,
+          "procedure_line": 235399,
+          "main_behaviour_table": "Table 11.2.1.3.2-1: Main behaviour",
+          "main_behaviour_line": 235400,
+          "main_behaviour_end_line": 235467,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 235473,
+          "specific_message_end_line": 235482,
+          "specific_message_tables": [
+            {
+              "table": "Table 11.2.1.3.3-1: ATTACH ACCEPT (Preamble)",
+              "table_line": 235474,
+              "table_end_line": 235482,
+              "derivation_paths": [
+                "36.508 table 4.7.2-1"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 235227-235231 (36.523-1 11.2.1 title and Test Purpose)",
+        "523-1v14.txt line 235385-235467 (36.523-1 11.2.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 235400-235467 (36.523-1 11.2.1 Main behaviour)",
+        "523-1v14.txt line 235473-235482 (36.523-1 11.2.1 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 16909-16909 (36.508 Table 4.5A.4.3-1 IMS Emergency Call)",
+        "34229-1e70-word.txt line 38998-39033 (34.229-1 C.32 EPS MO release of IMS call)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 235227-235231 (36.523-1 11.2.1 title and Test Purpose)",
+        "523-1v14.txt line 235385-235467 (36.523-1 11.2.1 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 235400-235467 (36.523-1 11.2.1 Main behaviour)",
+        "523-1v14.txt line 235473-235482 (36.523-1 11.2.1 .3.3 Specific message contents)",
+        "36508.txt line 16909-16909 (36.508 Table 4.5A.4.3-1 IMS Emergency Call)",
+        "34229-1e70-word.txt line 38998-39033 (34.229-1 C.32 EPS MO release of IMS call)"
+      ]
+    },
+    {
+      "tc": "TC-031",
+      "name": "eCall over IMS",
+      "module": "06",
+      "officialSpec": "36.523-1",
+      "officialClause": "11.3.5 / 11.3.8",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "STANDARD_ALIGNED",
+      "localScript": "null",
+      "note": "缺 eCall/MSD/SLR/PSAP 或一致性仪表；36.508 锚点（V14.3.0）：Table 4.5A.26.3-1: EUTRA/EPS signalling for eCall over IMS 行 19224；36.508 V18.6.0 已终核 4.5A.27 eCall Only Support：章节行 22184-22185，初始状态行 22186-22191，Main behaviour 表 4.5A.27.3-1 行 22197-22300，Parallel behaviour 行 22302-22319，Specific message contents 行 22322-22370（PDN request type 0100B 行 22324-22328、SOS APN/默认承载 #2 行 22330-22347、专用承载 linked EBId-2 行 22349-22369）；Parallel 240822-240833；Parallel 240822-240833；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：11.3.5 body 行 240601 / TP 行 240604 / .3.2 行 240685 / Main behaviour 行 240686-240820 / .3.3 行 240835-240859；Parallel 240822-240833；11.3.8 body 行 240975 / TP 行 240977 / .3.2 行 241108 / Main behaviour 行 241142-241207 / .3.3 行 241209-241391",
+      "blocker": "eCall/MSD/SLR/PSAP；TS 36.508 4.5A.27 已于 V18.6.0 终核（22184-22370），真实 eCall/MSD/SLR/PSAP 与 L2 仪表 Verdict 仍缺",
+      "officialBoundaries": [
+        {
+          "section": "11.3.5",
+          "body_line": 240601,
+          "tp_line": 240604,
+          "conformance_line": 240613,
+          "test_description_line": 240646,
+          "pre_test_line": 240647,
+          "procedure_line": 240685,
+          "main_behaviour_table": "Table 11.3.5.3.2-1: Main behaviour",
+          "main_behaviour_line": 240686,
+          "main_behaviour_end_line": 240820,
+          "parallel_behaviour_tables": [
+            {
+              "table": "Table 11.3.5.3.2-2: Parallel behaviour",
+              "table_line": 240822,
+              "table_end_line": 240833
+            }
+          ],
+          "specific_message_line": 240835,
+          "specific_message_end_line": 240859,
+          "specific_message_tables": [
+            {
+              "table": "Table 11.3.5.3.3-1: Message SystemInformationBlockType1 (Preamble)",
+              "table_line": 240836,
+              "table_end_line": 240837,
+              "derivation_paths": [
+                "36.508 table 4.4.3.2-3 Condition eCalloverIMS"
+              ]
+            },
+            {
+              "table": "Table 11.3.5.3.3-2: RRC CONNECTION REQUEST (Step 4a2, Table 11.3.5.3.2-1)",
+              "table_line": 240839,
+              "table_end_line": 240842,
+              "derivation_paths": [
+                "TS 34.108 clause 9.1.1"
+              ]
+            },
+            {
+              "table": "Table 11.3.5.3.3-3: CM SERVICE REQUEST (Steps 4a5 and 5b4, Table 11.3.5.3.2-1)",
+              "table_line": 240844,
+              "table_end_line": 240848,
+              "derivation_paths": [
+                "TS 24.008 Table 9.2.11"
+              ]
+            },
+            {
+              "table": "Table 11.3.5.3.3-4: CHANNEL REQUEST (Step 5b2, Table 11.3.5.3.2-1)",
+              "table_line": 240851,
+              "table_end_line": 240854,
+              "derivation_paths": [
+                "TS 44.018 Table 9.1.8.1"
+              ]
+            }
+          ]
+        },
+        {
+          "section": "11.3.8",
+          "body_line": 240975,
+          "tp_line": 240977,
+          "conformance_line": 240986,
+          "test_description_line": 241082,
+          "pre_test_line": 241083,
+          "procedure_line": 241108,
+          "main_behaviour_table": "Table 11.3.8.3.2-2: Main behaviour",
+          "main_behaviour_line": 241142,
+          "main_behaviour_end_line": 241207,
+          "parallel_behaviour_tables": [],
+          "specific_message_line": 241209,
+          "specific_message_end_line": 241391,
+          "specific_message_tables": [
+            {
+              "table": "Table 11.3.8.3.3-1: Message SystemInformationBlockType1 (Preamble)",
+              "table_line": 241210,
+              "table_end_line": 241211,
+              "derivation_paths": [
+                "36.508 table 4.4.3.2-3 Condition eCalloverIMS"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-2: ATTACH REQUEST (preamble)",
+              "table_line": 241213,
+              "table_end_line": 241222,
+              "derivation_paths": [
+                "36.508 Table 4.7.2-4"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-3: RRCConnectionReconfiguration (step 27, Table 11.3.8.3.2-2)",
+              "table_line": 241228,
+              "table_end_line": 241229,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-8, condition MEAS"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-4: MeasConfig (Table 11.3.8.3.3-3)",
+              "table_line": 241231,
+              "table_end_line": 241266,
+              "derivation_paths": [
+                "36.508 clause 4.6.6 table 4.6.6-1 with condition GERAN"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-5: MeasurementReport (step 30, Table 11.3.8.3.2-2)",
+              "table_line": 241272,
+              "table_end_line": 241305,
+              "derivation_paths": [
+                "36.508, table 4.6.1-5"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-6: MobilityFromEUTRACommand (step 31, Table 11.3.8.3.2-2)",
+              "table_line": 241307,
+              "table_end_line": 241333,
+              "derivation_paths": [
+                "36.508, Table 4.6.1-6"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-7: HANDOVER COMMAND (Table 11.3.8.3.3-6)",
+              "table_line": 241339,
+              "table_end_line": 241372,
+              "derivation_paths": [
+                "51.010, Table 40.2.4.33"
+              ]
+            },
+            {
+              "table": "Table 11.3.8.3.3-10: ROUTING AREA UPDATE ACCEPT (step 51, Table 11.3.8.3.2-2)",
+              "table_line": 241375,
+              "table_end_line": 241391,
+              "derivation_paths": [
+                "36.508, Table 4.7B.2-2"
+              ]
+            }
+          ]
+        }
+      ],
+      "primaryEvidence": [
+        "523-1v14.txt line 240601-240604 (36.523-1 11.3.5 title and Test Purpose)",
+        "523-1v14.txt line 240646-240820 (36.523-1 11.3.5 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 240686-240820 (36.523-1 11.3.5 Main behaviour)",
+        "523-1v14.txt line 240835-240859 (36.523-1 11.3.5 .3.3 Specific message contents)",
+        "523-1v14.txt line 240822-240833 (36.523-1 Table 11.3.5.3.2-2: Parallel behaviour)",
+        "523-1v14.txt line 240975-240977 (36.523-1 11.3.8 title and Test Purpose)",
+        "523-1v14.txt line 241082-241207 (36.523-1 11.3.8 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 241142-241207 (36.523-1 11.3.8 Main behaviour)",
+        "523-1v14.txt line 241209-241391 (36.523-1 11.3.8 .3.3 Specific message contents)"
+      ],
+      "crossReferenceEvidence": [
+        "36508.txt line 19224-19224 (36.508 Table 4.5A.26.3-1 eCall over IMS Normal Service)"
+      ],
+      "sourceEvidenceLines": [
+        "523-1v14.txt line 240601-240604 (36.523-1 11.3.5 title and Test Purpose)",
+        "523-1v14.txt line 240646-240820 (36.523-1 11.3.5 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 240686-240820 (36.523-1 11.3.5 Main behaviour)",
+        "523-1v14.txt line 240835-240859 (36.523-1 11.3.5 .3.3 Specific message contents)",
+        "523-1v14.txt line 240822-240833 (36.523-1 Table 11.3.5.3.2-2: Parallel behaviour)",
+        "523-1v14.txt line 240975-240977 (36.523-1 11.3.8 title and Test Purpose)",
+        "523-1v14.txt line 241082-241207 (36.523-1 11.3.8 .3.1-.3.2 procedure and Main behaviour verdicts)",
+        "523-1v14.txt line 241142-241207 (36.523-1 11.3.8 Main behaviour)",
+        "523-1v14.txt line 241209-241391 (36.523-1 11.3.8 .3.3 Specific message contents)",
+        "36508.txt line 19224-19224 (36.508 Table 4.5A.26.3-1 eCall over IMS Normal Service)"
+      ]
+    },
+    {
+      "tc": "TC-032",
+      "name": "错误码 503/504",
+      "module": "07",
+      "officialSpec": "34.229-1",
+      "officialClause": "10.1 / 12.2 (503), 12.2a (504)",
+      "mappingConfidence": "exact_line_ref",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc032_error_codes.py",
+      "sourceEvidenceLines": [
+        "34229-1e70-word.txt line 5741-5809 (10.1 503 Service Unavailable)",
+        "34229-1e70-word.txt line 6060-6118 (12.2 MO Call 503 Service Unavailable)",
+        "34229-1e70-word.txt line 6119-6186 (12.2a MO Call 504 Server Time-out)"
+      ],
+      "primaryEvidence": [
+        "TS 34.229-1 V14.7.0 10.1 Invalid Behaviour - 503 Service Unavailable: 34229-1e70-word.txt line 5741-5809",
+        "TS 34.229-1 V14.7.0 12.2 MO Call - 503 Service Unavailable: 34229-1e70-word.txt line 6060-6118",
+        "TS 34.229-1 V14.7.0 12.2a MO Call - 504 Server Time-out: 34229-1e70-word.txt line 6119-6186"
+      ],
+      "crossReferenceEvidence": [
+        "34229-1e70_ascii.txt line 4535/4564/19773/20004/20085 (ASCII extraction cross-check only)"
+      ],
+      "note": "本地 responder 503/504 PASS；401/403/488 不硬挂 503/504 ID",
+      "blocker": "官方 .3.2 子例/真实 IMS",
+      "officialBoundaries": [
+        {
+          "section": "10.1",
+          "title": "Invalid Behaviour - 503 Service Unavailable",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 5741,
+          "body_end_line": 5809,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "10.1.1",
+              "title": "Definition",
+              "line": 5742
+            },
+            {
+              "number": "10.1.2",
+              "title": "Conformance requirement",
+              "line": 5744
+            },
+            {
+              "number": "10.1.3",
+              "title": "Test purpose",
+              "line": 5749
+            },
+            {
+              "number": "10.1.4",
+              "title": "Method of test",
+              "line": 5751
+            },
+            {
+              "number": "",
+              "title": "Specific Message Contents",
+              "line": 5793
+            },
+            {
+              "number": "10.1.5",
+              "title": "Test requirements",
+              "line": 5807
+            }
+          ],
+          "definition_line": 5742,
+          "conformance_line": 5744,
+          "test_purpose_line": 5749,
+          "method_of_test_line": 5751,
+          "test_requirements_line": 5807
+        },
+        {
+          "section": "12.2",
+          "title": "MO Call - 503 Service Unavailable",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6060,
+          "body_end_line": 6118,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "12.2.1",
+              "title": "Definition",
+              "line": 6061
+            },
+            {
+              "number": "12.2.2",
+              "title": "Conformance requirement",
+              "line": 6063
+            },
+            {
+              "number": "12.2.3",
+              "title": "Test purpose",
+              "line": 6067
+            },
+            {
+              "number": "12.2.4",
+              "title": "Method of test",
+              "line": 6069
+            },
+            {
+              "number": "",
+              "title": "Specific Message Contents",
+              "line": 6113
+            },
+            {
+              "number": "12.2.5",
+              "title": "Test requirements",
+              "line": 6117
+            }
+          ],
+          "definition_line": 6061,
+          "conformance_line": 6063,
+          "test_purpose_line": 6067,
+          "method_of_test_line": 6069,
+          "test_requirements_line": 6117
+        },
+        {
+          "section": "12.2a",
+          "title": "MO Call - 504 Server Time-out",
+          "source_spec": "34.229-1",
+          "source_version": "V14.7.0 (2019-06)",
+          "body_line": 6119,
+          "body_end_line": 6186,
+          "line_reference_convention": "Python str.splitlines() 1-based",
+          "subsections": [
+            {
+              "number": "12.2a.1",
+              "title": "Definition",
+              "line": 6120
+            },
+            {
+              "number": "12.2a.2",
+              "title": "Conformance requirement",
+              "line": 6122
+            },
+            {
+              "number": "12.2a.3",
+              "title": "Test purpose",
+              "line": 6136
+            },
+            {
+              "number": "12.2a.4",
+              "title": "Method of test",
+              "line": 6138
+            },
+            {
+              "number": "",
+              "title": "Specific Message Contents",
+              "line": 6176
+            },
+            {
+              "number": "12.2a.5",
+              "title": "Test requirements",
+              "line": 6185
+            }
+          ],
+          "definition_line": 6120,
+          "conformance_line": 6122,
+          "test_purpose_line": 6136,
+          "method_of_test_line": 6138,
+          "test_requirements_line": 6185
+        }
+      ]
+    },
+    {
+      "tc": "TC-033",
+      "name": "SIP 定时器超时",
+      "module": "07",
+      "officialSpec": "24.229 / RFC 3261",
+      "officialClause": "定时器",
+      "mappingConfidence": "partial",
+      "evidenceLevel": "LOCAL_PASS",
+      "localScript": "work/tc033_timer_timeout.py",
+      "sourceEvidenceLines": [
+        "24229.txt line 10691-10813 (7.7 SIP timers)",
+        "24229.txt line 10698-10813 (Table 7.7.1)"
+      ],
+      "primaryEvidence": [
+        "TS 24.229 V14.17.0 7.7 SIP timers: 24229.txt line 10691-10813",
+        "TS 24.229 V14.17.0 Table 7.7.1 SIP timers: 24229.txt line 10698-10813"
+      ],
+      "note": "本地黑盒超时 PASS；34.229-1 无独立定时器 TC",
+      "blocker": "无独立官方 ID"
+    },
+    {
+      "tc": "TC-034",
+      "name": "YD/T + 运营商入库",
+      "module": "08",
+      "officialSpec": "YD/T + 运营商企标",
+      "officialClause": "待提供",
+      "mappingConfidence": "none",
+      "evidenceLevel": "RESTRICTED",
+      "localScript": "null",
+      "note": "缺具体 YD/T 编号和运营商清单；不编造",
+      "blocker": "YD/T 编号/运营商清单"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+# TC-024 媒体长稳：TS 26.114 QoE/JBM/PLR 判据
+
+来源：`3GPP TS 26.114` V14.12.0 (2021-04)，逐行抽取自 `C:\Users\co1750\Documents\Codex\2026-09-02\i\_extract\26114.txt`；行号口径 `Python str.splitlines()` 1-based。
+
+这些条款是本地长稳/行为证据的支撑判据，不是独立官方一致性 TC，也不把本地 PASS 升级为官方 Verdict。
+
+## 8.2.3.2.2 Jitter buffer delay criteria（行 3899-3921；used_by: TC-024）
+
+关键官方标记：`Cumulative Distribution Function`、`60 ms`、`90 %`
+
+```text
+3899: 8.2.3.2.2 Jitter buffer delay criteria 
+3900: The reference delay computation algorithm in Annex D defines the performance requirements for the set of delay and 
+3901: error profiles described in clause 8.2.3.3. The JBM algorithm under test shall meet these performance requirements. The 
+3902: performance requirements shall be a threshold for the Cumulative Distribution Function (CDF) of the speech-frame 
+3903: delay introduced by the reference delay computation algorithm. A CDF threshold is set by shifting the reference delay 
+3904: computation algorithm CDF 60 ms. The speech-frame delay CDF is defined as: 
+3905: ===== PAGE 78 =====
+3907: 3GPP 
+3908: 3GPP TS 26.114 V14.12.0 (2021-04) 78 Release 14 
+3909:  P(x) = Probability (delay_compensation_by_JBM ≤ x) 
+3910: The relation between the reference delay computation algorithm and the CDF threshold is outlined in figure 8.2.  
+3912: Figure 8.2: Example showing the relation between the reference delay algorithm  
+3913: and the CDF threshold - the delay and error profile 4 in table 8.1 has been used 
+3914: The JBM algorithm under test shall achieve lower or same delay than that set by the CDF threshold for at least 90 % of 
+3915: the speech frames. The values for the CDF shall be collected for the full length of each d elay and error profile. The 
+3916: delay measure in the criteria is measured as the time each speech frame spends in the JBM; i.e. the difference between 
+3917: the decoder consumption time and the arrival time of the speech frame to the JBM.  
+3918: The parameter settings for the reference delay computation algorithm are: 
+3919: - adaptation_lookback = 200; 
+3920: - delay_delta_max = 20; 
+3921: - target_loss= 0.5. 
+```
+
+## 8.2.3.2.3 Jitter induced concealment operations（行 3922-3940；used_by: TC-024）
+
+关键官方标记：`Jitter loss rate`、`below 1%`、`SID_FIRST`、`SID_UPDATE`
+
+```text
+3922: 8.2.3.2.3 Jitter induced concealment operations 
+3923: The jitter induced concealment operations include: 
+3924: - JBM induced removal of a speech frame, i.e. buffer overflow or intentional frame dropping when reducing the 
+3925: buffer depth during adaptation. 
+3926: - Deletion of a speech frame because it arrived at the JBM too late. 
+3927: - Modification of the output timeline due to link loss. 
+3928: - Jitter-induced insertion of a speech frame controlled by the JBM (e.g. buffer underflow).  
+3929: Link losses handled as error concealment and not changing the output timeline shall not be counted in the jitter induced 
+3930: concealment operations. 
+3931: ===== PAGE 79 =====
+3933: 3GPP 
+3934: 3GPP TS 26.114 V14.12.0 (2021-04) 79 Release 14 
+3935: Jitter loss rate = JBM triggered concealed frames / Number of transmitted frames 
+3936: The jitter loss rate shall be calculated for active speech frames only. 
+3937: NOTE: SID_FIRST and SID_UPDATE frames belong to the non-active speech period, hence concealment for 
+3938: losses of such frames should not be included in the statistics. 
+3939: The jitter loss rate shall be below 1% for every channel measured over the full length of the respective channel. The 
+3940: value of 1 % was chosen because such a loss rate will usually not significantly reduce the speech quality.  
+```
+
+## 9.3.4 Recommendations for packet loss recovery mechanisms usage（行 4251-4273；used_by: TC-024）
+
+关键官方标记：`FEC`、`retransmission`、`Generic NACK`、`PLI`
+
+```text
+4251: 9.3.4 Recommendations for packet loss recovery mechanisms usage 
+4252: FEC should be used to provide robustness against moderate packet loss rates at high delay scenario. FEC can especially 
+4253: handle random losses and short burst losses and be beneficial in environments with high packet loss rates and/or high 
+4254: delay (RTT). The use of FEC may not be appropriate when packet losses are caused by insufficient throughput (over 
+4255: radio access or due to congestions in network) since it introduces some bit rate overhead. In order to compensate for bit 
+4256: rate overhead, FEC should be used with efficient rate adaptation mechanisms to reduce the source bit rate according to 
+4257: channel conditions and not increase the total RTP bitrate. When error cases cannot be recovered by FEC, other 
+4258: mechanisms are needed in combination with FEC.  
+4259: - Retransmission in combination with FEC should be used for the low RTT case with relatively high packet loss 
+4260: since retransmission can efficiently handle the FEC failure case. 
+4261: - Generic NACK based recovery in combination with FEC should be used for high RTT, relatively high packet 
+4262: loss conditions since generic NACK based recovery does not introduce additional delay. 
+4263: Selective retransmission should be used under low delay (RTT) and low failure (loss) rate conditions. Retransmission 
+4264: needs to ensure that retransmitted packets arrive in time to meet delay requirements of the end-to-end system. Higher 
+4265: packet loss rates may cause loss of retransmitted packets, hence leading to larger end -to-end delay. 
+4266: Generic NACK and PLI based error correction mechanism should be used in combination with FEC or selective 
+4267: retransmission or under low packet loss rates with high RTT conditions. Generic NACK message can be used for 
+4268: indication of packets to be retransmitted as well as informing the sender of loss of particular RTP packets for sender to 
+4269: take necessary actions to recover from errors. 
+4271: NOTE:  Under unknown and varying conditions the MTSI client should dynamically select & adapt the propoer 
+4272: mechanisms. 
+4273: Additional information on the usage of these mechanisms is provided in [142]. 
+```
+
+## 16.2.1 Corruption duration metric（行 6901-6935；used_by: TC-024）
+
+关键官方标记：`Corruption_Duration`、`TotalCorruptionDuration`、`NumberOfCorruptionEvents`
+
+```text
+6901: 16.2.1 Corruption duration metric 
+6902: Corruption duration, M, is the time period from the NPT time of the last good frame (since the NPT time for the first 
+6903: corrupted frame cannot always be determined) before the corruption, to the NPT time of the first subsequent good  
+6904: frame. A corrupted frame may either be an entirely lost frame, or a media frame that has quality degradation and the 
+6905: decoded frame is not the same as in error-free decoding.  
+6906: A good frame is a completely received frame: 
+6907: - where all parts of the image are guaranteed to contain the correct content; or 
+6908: - that is a refresh frame, that is, does not reference any previously decoded frames; or  
+6909: ===== PAGE 140 =====
+6911: 3GPP 
+6912: 3GPP TS 26.114 V14.12.0 (2021-04) 140 Release 14 
+6913: - which only references previously decoded good frames 
+6914: Completely received means that all the bits are received and no bit error has occurred. 
+6915: Corruption duration, M, in milliseconds can be calculated as below: 
+6916: a) M can be derived by the client using the codec layer, in which case the codec layer signals the decoding of a 
+6917: good frame to the client. A good frame could also be derived by error tracking methods, but decoding quality 
+6918: evaluation methods shall not be used. 
+6919: b) Alternatively, the corruption is considered as ended after N milliseconds with consecutively completely received 
+6920: frames, or when a refresh frame has been completely received, whichever comes first.. 
+6922: The optional configuration parameter N can be set to define the average characteristics of the codec. If N has not 
+6923: been configured it shall default to the length of one measurement interval for video media, and to o ne frame 
+6924: duration for non-video media. 
+6925: The syntax for the metrics "Corruption_Duration" is as defined in sub-clause 16.3.2. 
+6926: The N parameter is specified in milliseconds and is used with the "Corruption_Duration" parameter in the "3GPP -QoE-
+6927: Metrics" definition. The value of N may be set by the server. The syntax for N to be included in the "att -measure-spec" 
+6928: (sub-clause 16.3.2) is as follows: 
+6929: - N = "N" "=" 1*DIGIT 
+6930: All the occurred corruption durations within each resolution period are summed and store d in the vector 
+6931: TotalCorruptionDuration. The unit of this metrics is expressed in milliseconds. Within each resolution period the 
+6932: number of individual corruption events are summed up and stored in the vector NumberOfCorruptionEvents. These two 
+6933: vectors are reported by the MTSI client as part of the reception report (sub-clause 16.4). 
+6934: The parameter CorruptionAlternative indicates how the metric has been calculated, and shall be sent by the client via 
+6935: reception reporting (sub-clause 16.3.2) as "a", or "b".  
+```
+
+## 16.2.4 Jitter duration（行 6952-6969；used_by: TC-024）
+
+关键官方标记：`Jitter_Duration`、`TotalJitterDuration`、`NumberOfJitterEvents`、`100 ms`
+
+```text
+6952: 16.2.4 Jitter duration 
+6953: Jitter happens when the absolute difference between the actual playback time and the expected playback time is larger 
+6954: than JitterThreshold milliseconds. The expected time of a frame is equal to the actual playback time of the last played 
+6955: frame plus the difference between the NPT time of the frame and the NPT time of the last played frame.  
+6956: The syntax for the metric "Jitter_Duration" is defined in sub-clause 16.3.2. 
+6957: ===== PAGE 141 =====
+6959: 3GPP 
+6960: 3GPP TS 26.114 V14.12.0 (2021-04) 141 Release 14 
+6961: The optional configuration parameter JT can be set to control the amount of allowed j itter. If the parameter has not been 
+6962: set, it defaults to 100 ms. The JT parameter is specified in ms and is used with the "Jitter_Duration" parameter in the 
+6963: "3GPP-QoE-Metrics" definition. The value of JT may be set by the server. The syntax for JT to be included in the "att-
+6964: measure-spec" (sub-clause 16.3.2) is as follows: 
+6965: - JT = "JT" "=" 1*DIGIT 
+6966: All the jitter durations are summed up within each measurement resolution period and stored in the vector 
+6967: TotalJitterDuration. The unit of this metric is expressed in seconds, and can be a fractional value. The number of 
+6968: individual events within the measurement resolution period are summed up and stored in the vector 
+6969: NumberOfJitterEvents. These two vectors are reported by the MTSI client as part of the QoE report (su b-clause 16.4). 
+```
+
+## 16.2.5 Sync loss duration（行 6970-6986；used_by: TC-024）
+
+关键官方标记：`SyncLoss_Duration`、`TotalSyncLossDuration`、`NumberOfSyncLossEvents`、`100 ms`
+
+```text
+6970: 16.2.5 Sync loss duration 
+6971: Sync loss happens when the absolute difference between value A and value B is larger than SyncThreshold 
+6972: milliseconds. Value A represents the difference between the playback time of the last played frame of the vide o stream 
+6973: and the playback time of the last played frame of the speech/audio stream. Value B represents the difference between 
+6974: the expected playback time of the last played frame of the video stream and the expected playback time of the last 
+6975: played frame of the speech/audio stream.  
+6976: The syntax for the metric "SyncLoss_Duration" is defined in sub-clause 16.3.2. 
+6977: The optional configuration parameter ST can be set to control the amount of allowed sync mismatch. If the parameter 
+6978: has not been set, it defaults to 100 ms. The ST parameter is specified in ms and is used with the "SyncLoss_Duration" 
+6979: parameter in the "3GPP-QoE-Metrics" definition. The value of ST may be set by the server. The syntax for ST to be 
+6980: included in the "att-measure-spec" (sub-clause 16.3.2) is as follows: 
+6981: - ST = "ST" "=" 1*DIGIT 
+6982: All the sync loss durations are summed up within each measurement resolution period and stored in the vector 
+6983: TotalSyncLossDuration. The unit of this metric is expressed in seconds, and can be a fractional value. The numb er of 
+6984: individual events within the measurement resolution period are summed up and stored in the vector 
+6985: NumberOfSyncLossEvents. These two vectors are reported by the MTSI client as part of the QoE report (sub -clause 
+6986: 16.4). 
+```
+

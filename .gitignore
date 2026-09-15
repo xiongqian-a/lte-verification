@@ -1,0 +1,37 @@
+# Local runtime and editor state
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Secrets and local configuration
+.env
+.env.*
+*.pem
+*.key
+*.p12
+id_rsa*
+known_hosts
+
+# Standards source material is not redistributed in this repository
+_extract/
+standards/
+*.pdf
+*.doc
+*.docx
+
+# Temporary/debug output; generated reports are intentionally tracked
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# Misplaced raw log; superseded by conference-20260904-full/
+evidence/external/conference-20260904

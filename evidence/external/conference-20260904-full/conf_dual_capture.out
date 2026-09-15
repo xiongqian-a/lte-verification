@@ -1,0 +1,318 @@
+=== conf dual capture start 2026-09-04 11:25:55 ===
+--- conference list ---
++OK Conference 888 (2 members rate: 8000 flags: running|answered|enforce_min|dynamic|exit_sound|enter_sound|json_status)
+3;sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org;40bbe223-fae8-4e46-b3d1-6515462a4dd5;001010123456780;001010123456780;hear|speak|floor;0;0;100
+2;sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org;ad88ee18-3da4-4377-a4c9-3ca006269830;001010123456780;001010123456780;hear|speak;0;0;100
+
+
+--- UA1 status tail ---
+11:25:55.920             ims_client  .......call state: CALLING
+11:25:55.931             ims_client  .....call state: CONNECTING
+11:25:55.931          pjsua_media.c  .......Media stream call00:0 is destroyed
+11:25:55.931           conference.c  ........Add port 1 (sip:888@ims.mnc001.mcc001.3gppnetwork.org) queued
+11:25:55.931             ims_client  .....call state: CONFIRMED
+11:25:56.439             ims_client  ....reg state: status=200 (OK)
+
+--- UA2 status tail ---
+11:25:55.919             ims_client  .......call state: CALLING
+11:25:55.931             ims_client  .....call state: CONNECTING
+11:25:55.931          pjsua_media.c  .......Media stream call00:0 is destroyed
+11:25:55.932           conference.c  ........Add port 1 (sip:888@ims.mnc001.mcc001.3gppnetwork.org) queued
+11:25:55.932             ims_client  .....call state: CONFIRMED
+11:25:56.301             ims_client  ....reg state: status=200 (OK)
+--- FS log conference-related head ---
+itch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org parsing [public->conference-888] continue=false
+eswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Regex (PASS) [conference-888] destination_number(888) =~ /^888$/ break=on-false
+[mfreeswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Action conference(888@default) 
+itch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org parsing [public->conference-888] continue=false
+eswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Regex (PASS) [conference-888] destination_number(888) =~ /^888$/ break=on-false
+[mfreeswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Action conference(888@default) 
+[mfreeswitch@CSPDSWUser01> 
+[K[32mEXECUTE [depth=0] sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org conference(888@default)
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] mod_conference.c:3458 using channel sound prefix: /home/co1750/freeswitch/root/sounds
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1804 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1851 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] mod_conference.c:229 Setup timer success interval: 20  samples: 160
+[mfreeswitch@CSPDSWUser01> 
+[K[32mEXECUTE [depth=0] sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org conference(888@default)
+5m2026-09-04 11:25:55.927203 83.33% [WARNING] mod_sndfile.c:281 Error Opening File [/home/co1750/freeswitch/root/sounds/conference/conf-alone.wav] [System error : No such file or directory.]
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '0' to 'mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:25:55.927203 83.33% [INFO] switch_ivr_async.c:221 Digit parser mod_conference: Setting realm to 'conf'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 0/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011de0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '*' to 'deaf mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding */conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011e10
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '9' to 'energy up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 9/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011e40
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '8' to 'energy equ'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 8/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011e70
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '7' to 'energy dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 7/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011ea0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '3' to 'vol talk up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 3/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011ed0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '2' to 'vol talk zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 2/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f00
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '1' to 'vol talk dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 1/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f30
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '6' to 'vol listen up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 6/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f60
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '5' to 'vol listen zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 5/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f90
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '4' to 'vol listen dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 4/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011fc0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '#' to 'hangup'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding #/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011ff0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1804 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1851 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_loop.c:1347 Setup timer soft success interval: 20  samples: 160 from codec PCMU
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '0' to 'mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:25:55.927203 83.33% [INFO] switch_ivr_async.c:221 Digit parser mod_conference: Setting realm to 'conf'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 0/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033210
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '*' to 'deaf mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding */conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033240
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '9' to 'energy up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 9/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033270
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '8' to 'energy equ'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 8/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680332a0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '7' to 'energy dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 7/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680332d0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '3' to 'vol talk up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 3/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033300
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '2' to 'vol talk zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 2/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033330
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '1' to 'vol talk dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 1/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033360
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '6' to 'vol listen up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 6/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033390
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '5' to 'vol listen zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 5/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680333c0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '4' to 'vol listen dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 4/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680333f0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '#' to 'hangup'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding #/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033420
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_loop.c:1347 Setup timer soft success interval: 20  samples: 160 from codec PCMU
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:26:25.946932 82.67% [INFO] conference_loop.c:1668 Channel leaving conference, cause: NORMAL_CLEARING
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.946932 82.67% [DEBUG] mod_conference.c:2521 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org skip receive message [UNBRIDGE] (channel is hungup already)
+5m2026-09-04 11:26:25.946932 82.67% [WARNING] mod_sndfile.c:281 Error Opening File [/home/co1750/freeswitch/root/sounds/conference/conf-alone.wav] [System error : No such file or directory.]
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:26:25.946932 82.67% [INFO] conference_loop.c:1668 Channel leaving conference, cause: NORMAL_CLEARING
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.946932 82.67% [DEBUG] mod_conference.c:2521 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org skip receive message [UNBRIDGE] (channel is hungup already)
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.966924 82.67% [DEBUG] mod_conference.c:846 Write Lock ON
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.966924 82.67% [DEBUG] mod_conference.c:849 Write Lock OFF
+
+--- FS log conference-related tail ---
+itch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org parsing [public->conference-888] continue=false
+eswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Regex (PASS) [conference-888] destination_number(888) =~ /^888$/ break=on-false
+[mfreeswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Action conference(888@default) 
+itch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org parsing [public->conference-888] continue=false
+eswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Regex (PASS) [conference-888] destination_number(888) =~ /^888$/ break=on-false
+[mfreeswitch@CSPDSWUser01> 
+[K[33mDialplan: sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org Action conference(888@default) 
+[mfreeswitch@CSPDSWUser01> 
+[K[32mEXECUTE [depth=0] sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org conference(888@default)
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] mod_conference.c:3458 using channel sound prefix: /home/co1750/freeswitch/root/sounds
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1804 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1851 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] mod_conference.c:229 Setup timer success interval: 20  samples: 160
+[mfreeswitch@CSPDSWUser01> 
+[K[32mEXECUTE [depth=0] sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org conference(888@default)
+5m2026-09-04 11:25:55.927203 83.33% [WARNING] mod_sndfile.c:281 Error Opening File [/home/co1750/freeswitch/root/sounds/conference/conf-alone.wav] [System error : No such file or directory.]
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '0' to 'mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:25:55.927203 83.33% [INFO] switch_ivr_async.c:221 Digit parser mod_conference: Setting realm to 'conf'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 0/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011de0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '*' to 'deaf mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding */conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011e10
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '9' to 'energy up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 9/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011e40
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '8' to 'energy equ'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 8/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011e70
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '7' to 'energy dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 7/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011ea0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '3' to 'vol talk up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 3/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011ed0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '2' to 'vol talk zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 2/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f00
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '1' to 'vol talk dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 1/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f30
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '6' to 'vol listen up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 6/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f60
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '5' to 'vol listen zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 5/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011f90
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '4' to 'vol listen dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 4/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011fc0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '#' to 'hangup'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding #/conf/0 callback: 0x7fc6b1275230 data: 0x7fc664011ff0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1804 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:1851 Raw Codec Activation Success L16@8000hz 1 channel 20ms
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_loop.c:1347 Setup timer soft success interval: 20  samples: 160 from codec PCMU
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '0' to 'mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:25:55.927203 83.33% [INFO] switch_ivr_async.c:221 Digit parser mod_conference: Setting realm to 'conf'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 0/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033210
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '*' to 'deaf mute'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding */conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033240
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '9' to 'energy up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 9/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033270
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '8' to 'energy equ'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 8/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680332a0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '7' to 'energy dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 7/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680332d0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '3' to 'vol talk up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 3/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033300
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '2' to 'vol talk zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 2/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033330
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '1' to 'vol talk dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 1/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033360
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '6' to 'vol listen up'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 6/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033390
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '5' to 'vol listen zero'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 5/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680333c0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '4' to 'vol listen dn'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding 4/conf/0 callback: 0x7fc6b1275230 data: 0x7fc6680333f0
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_member.c:106 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org binding '#' to 'hangup'
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] switch_ivr_async.c:346 Digit parser mod_conference: binding #/conf/0 callback: 0x7fc6b1275230 data: 0x7fc668033420
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:25:55.927203 83.33% [DEBUG] conference_loop.c:1347 Setup timer soft success interval: 20  samples: 160 from codec PCMU
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:26:25.946932 82.67% [INFO] conference_loop.c:1668 Channel leaving conference, cause: NORMAL_CLEARING
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.946932 82.67% [DEBUG] mod_conference.c:2521 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org skip receive message [UNBRIDGE] (channel is hungup already)
+5m2026-09-04 11:26:25.946932 82.67% [WARNING] mod_sndfile.c:281 Error Opening File [/home/co1750/freeswitch/root/sounds/conference/conf-alone.wav] [System error : No such file or directory.]
+[mfreeswitch@CSPDSWUser01> 
+[K[32m2026-09-04 11:26:25.946932 82.67% [INFO] conference_loop.c:1668 Channel leaving conference, cause: NORMAL_CLEARING
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.946932 82.67% [DEBUG] mod_conference.c:2521 sofia/external/001010123456780@ims.mnc001.mcc001.3gppnetwork.org skip receive message [UNBRIDGE] (channel is hungup already)
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.966924 82.67% [DEBUG] mod_conference.c:846 Write Lock ON
+[mfreeswitch@CSPDSWUser01> 
+[K[33m2026-09-04 11:26:25.966924 82.67% [DEBUG] mod_conference.c:849 Write Lock OFF
+=== conf dual capture done 2026-09-04 11:26:41 ===

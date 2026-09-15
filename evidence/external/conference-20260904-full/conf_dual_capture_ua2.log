@@ -1,0 +1,290 @@
+11:25:55.909         os_core_unix.c !pjlib 2.15-dev for POSIX initialized
+11:25:55.910         sip_endpoint.c  .Creating endpoint instance...
+11:25:55.910                  pjlib  .select() I/O Queue created (0x55a2d140b578)
+11:25:55.910         sip_endpoint.c  .Module "mod-msg-print" registered
+11:25:55.910        sip_transport.c  .Transport manager created.
+11:25:55.910           pjsua_core.c  .PJSUA state changed: NULL --> CREATED
+11:25:55.910         sip_endpoint.c  .Module "mod-pjsua-log" registered
+11:25:55.911         sip_endpoint.c  .Module "mod-tsx-layer" registered
+11:25:55.911         sip_endpoint.c  .Module "mod-stateful-util" registered
+11:25:55.911         sip_endpoint.c  .Module "mod-ua" registered
+11:25:55.911         sip_endpoint.c  .Module "mod-100rel" registered
+11:25:55.911         sip_endpoint.c  .Module "mod-pjsua" registered
+11:25:55.911         sip_endpoint.c  .Module "mod-invite" registered
+11:25:55.911                  pjlib  ..select() I/O Queue created (0x55a2d141b330)
+11:25:55.918         sip_endpoint.c  .Module "mod-evsub" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-presence" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-dlg_even" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-mwi" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-refer" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-pjsua-im" registered
+11:25:55.918         sip_endpoint.c  .Module "mod-pjsua-options" registered
+11:25:55.918           pjsua_core.c  .No SIP worker threads created
+11:25:55.918           pjsua_core.c  .pjsua version 2.15-dev for Linux-5.15.0.139/x86_64/glibc-2.31 initialized
+11:25:55.918           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+11:25:55.918            pjsua_aud.c  Setting null sound device..
+11:25:55.918            pjsua_aud.c  .Opening null sound device..
+11:25:55.919           pjsua_core.c  SIP UDP socket reachable at 10.45.0.1:5074
+11:25:55.919      udp0x55a2d14303d0  SIP UDP transport started, published address is 10.45.0.1:5074
+11:25:55.919           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+11:25:55.919         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+11:25:55.919           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+11:25:55.919            pjsua_acc.c  Adding account: id=sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org
+11:25:55.919            pjsua_acc.c  .Account sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org added with id 0
+11:25:55.919            pjsua_acc.c  .Acc 0: setting registration..
+11:25:55.919            pjsua_acc.c  ..Contact for acc 0 updated: <sip:001010123456780@10.45.0.1:5074;ob>
+11:25:55.919           pjsua_core.c  ...TX 598 bytes Request msg REGISTER/cseq=6372 (tdta0x55a2d1435ee0) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport;branch=z9hG4bKPjs1OK7xU.W0qO.adkOgKiy5vKz5AOE6v-
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=TXvGAP4Io29afhV2YVwyBfNTDXeBG.1a
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: RgeGQFtYxEDZCTEOXc5W4Bhh6I-JsB8H
+CSeq: 6372 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5074;ob>
+Expires: 300
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Content-Length:  0
+
+
+--end msg--
+11:25:55.919            pjsua_acc.c  ..Acc 0: Registration sent
+11:25:55.919           pjsua_call.c  Making call with acc #0 to sip:888@ims.mnc001.mcc001.3gppnetwork.org
+11:25:55.919          pjsua_media.c  .Call 0: initializing media..
+11:25:55.919          pjsua_media.c  ..RTP socket reachable at 10.45.0.2:4000
+11:25:55.919          pjsua_media.c  ..RTCP socket reachable at 10.45.0.2:4001
+11:25:55.919     srtp0x55a2d143ff90  ..SRTP transport created
+11:25:55.919          pjsua_media.c  ..Media index 0 selected for audio call 0
+11:25:55.919      udp0x55a2d143cd50  ..UDP media transport created
+11:25:55.919      tsx0x55a2d1447e80  ....Temporary failure in sending Request msg INVITE/cseq=3445 (tdta0x55a2d1444f10), will try next server: Unsupported transport (PJSIP_EUNSUPTRANSPORT)
+11:25:55.919           pjsua_core.c  ....TX 1405 bytes Request msg INVITE/cseq=3445 (tdta0x55a2d1444f10) to UDP 10.45.0.1:5060:
+INVITE sip:888@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport;branch=z9hG4bKPjjg4x-w20EYdqghWjkFC6pFJc9PTW21Vn
+Max-Forwards: 70
+From: sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org;tag=l7VjpZZa817wu08P.z-Fw2SFXXYpwZPz
+To: sip:888@ims.mnc001.mcc001.3gppnetwork.org
+Contact: <sip:001010123456780@10.45.0.1:5074;ob>
+Call-ID: lCI3T3JjueAIUFC1w1T7cP0dgQ7WcEhR
+CSeq: 3445 INVITE
+Route: <sip:10.45.0.1;lr>
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Supported: replaces, 100rel, timer, siprec, norefersub
+Require: 100rel
+Session-Expires: 1800
+Min-SE: 90
+P-Access-Network-Info: 3GPP-E-UTRAN-FDD;utra-cell-id-3gpp=00101D00001F1234
+Content-Type: application/sdp
+Content-Length:   619
+
+v=0
+o=- 3997481155 3997481155 IN IP4 10.45.0.2
+s=pjmedia
+b=AS:84
+t=0 0
+a=X-nat:0
+m=audio 4000 RTP/AVP 0 8 96 97 3 98 99 9 120 121 122
+c=IN IP4 10.45.0.2
+b=TIAS:64000
+a=rtcp:4001 IN IP4 10.45.0.2
+a=sendrecv
+a=rtpmap:0 PCMU/8000
+a=rtpmap:8 PCMA/8000
+a=rtpmap:96 speex/16000
+a=rtpmap:97 speex/8000
+a=rtpmap:3 GSM/8000
+a=rtpmap:98 speex/32000
+a=rtpmap:99 iLBC/8000
+a=fmtp:99 mode=30
+a=rtpmap:9 G722/8000
+a=rtpmap:120 telephone-event/8000
+a=fmtp:120 0-16
+a=rtpmap:121 telephone-event/16000
+a=fmtp:121 0-16
+a=rtpmap:122 telephone-event/32000
+a=fmtp:122 0-16
+a=ssrc:722747077 cname:500647ec4462acfa
+
+--end msg--
+11:25:55.919             ims_client  .......call state: CALLING
+11:25:55.921           pjsua_core.c  .RX 433 bytes Response msg 100/INVITE/cseq=3445 (rdata0x55a2d1431e58) from UDP 10.45.0.1:5060:
+SIP/2.0 100 trying -- your call is important to us
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport=5074;branch=z9hG4bKPjjg4x-w20EYdqghWjkFC6pFJc9PTW21Vn;received=10.45.0.1
+From: sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org;tag=l7VjpZZa817wu08P.z-Fw2SFXXYpwZPz
+To: sip:888@ims.mnc001.mcc001.3gppnetwork.org
+Call-ID: lCI3T3JjueAIUFC1w1T7cP0dgQ7WcEhR
+CSeq: 3445 INVITE
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+11:25:55.931           pjsua_core.c  .RX 1184 bytes Response msg 200/INVITE/cseq=3445 (rdata0x55a2d1431e58) from UDP 10.45.0.1:5060:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5074;received=10.45.0.1;rport=5074;branch=z9hG4bKPjjg4x-w20EYdqghWjkFC6pFJc9PTW21Vn
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=l7VjpZZa817wu08P.z-Fw2SFXXYpwZPz
+To: <sip:888@ims.mnc001.mcc001.3gppnetwork.org>;tag=F5cUHr65y008F
+Call-ID: lCI3T3JjueAIUFC1w1T7cP0dgQ7WcEhR
+CSeq: 3445 INVITE
+Contact: <sip:888@10.45.0.1:5081;transport=udp>
+User-Agent: FreeSWITCH-mod_sofia/1.11.2-dev+git~20260802T173359Z~1d77a57750~64bit
+Accept: application/sdp
+Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, PRACK, NOTIFY
+Require: timer
+Supported: 100rel, timer, path, replaces
+Allow-Events: talk, hold, conference, refer
+Session-Expires: 1800;refresher=uac
+Content-Type: application/sdp
+Content-Disposition: session
+Content-Length: 245
+Remote-Party-ID: "888" <sip:888@ims.mnc001.mcc001.3gppnetwork.org>;party=calling;privacy=off;screen=no
+
+v=0
+o=FreeSWITCH 1788474763 1788474764 IN IP4 10.45.0.1
+s=FreeSWITCH
+c=IN IP4 10.45.0.1
+t=0 0
+m=audio 17592 RTP/AVP 0 120
+a=rtpmap:0 PCMU/8000
+a=rtpmap:120 telephone-event/8000
+a=fmtp:120 0-15
+a=ptime:20
+a=rtcp:17593 IN IP4 10.45.0.1
+
+--end msg--
+11:25:55.931             ims_client  .....call state: CONNECTING
+11:25:55.931      inv0x55a2d143aa20  ....SDP negotiation done: Success
+11:25:55.931          pjsua_media.c  .....Call 0: updating media..
+11:25:55.931          pjsua_media.c  .......Media stream call00:0 is destroyed
+11:25:55.931      udp0x55a2d143cd50  ......UDP media transport started
+11:25:55.931            pjsua_aud.c  ......Audio channel update for index 0 for call 0...
+11:25:55.931      udp0x55a2d143cd50  .......UDP media transport attached
+11:25:55.931     strm0x55a2d144e8b8  .......Encoder stream started
+11:25:55.931     strm0x55a2d144e8b8  .......Decoder stream started
+11:25:55.932           conference.c  ........Add port 1 (sip:888@ims.mnc001.mcc001.3gppnetwork.org) queued
+11:25:55.932          pjsua_media.c  ......audio updated, stream #0: PCMU (sendrecv)
+11:25:55.932             ims_client  .....call media state: 1
+11:25:55.932           pjsua_core.c  .....TX 400 bytes Request msg ACK/cseq=3445 (tdta0x55a2d1455950) to UDP 10.45.0.1:5081:
+ACK sip:888@10.45.0.1:5081;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport;branch=z9hG4bKPjGdxzDhtmt.J6.Bw7Hixhm0NS-aVjCjOs
+Max-Forwards: 70
+From: sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org;tag=l7VjpZZa817wu08P.z-Fw2SFXXYpwZPz
+To: sip:888@ims.mnc001.mcc001.3gppnetwork.org;tag=F5cUHr65y008F
+Call-ID: lCI3T3JjueAIUFC1w1T7cP0dgQ7WcEhR
+CSeq: 3445 ACK
+Content-Length:  0
+
+
+--end msg--
+11:25:55.932             ims_client  .....call state: CONFIRMED
+11:25:55.937           conference.c !.Added port 1 (sip:888@ims.mnc001.mcc001.3gppnetwork.org), port count=2
+11:25:56.123           pjsua_core.c !.RX 760 bytes Response msg 401/REGISTER/cseq=6372 (rdata0x55a2d1431e58) from UDP 10.45.0.1:5060:
+SIP/2.0 401 Unauthorized - Challenging the UE
+Via: SIP/2.0/UDP 10.45.0.1:5074;received=10.45.0.1;rport=5074;branch=z9hG4bKPjs1OK7xU.W0qO.adkOgKiy5vKz5AOE6v-
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=TXvGAP4Io29afhV2YVwyBfNTDXeBG.1a
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: RgeGQFtYxEDZCTEOXc5W4Bhh6I-JsB8H
+CSeq: 6372 REGISTER
+WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="a80l+bFX0yd/TY23EawjWZmcsuah14AAlZk9tv2YH4E=", algorithm=AKAv1-MD5, ck="0c20d6bc108461724bb629650212089e", ik="f8156ee5407efe0fc4631e67a39443d9", qop="auth,auth-int"
+Path: <sip:10.45.0.1;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+11:25:56.123             ims_client  ...AKA ???????? realm=ims.mnc001.mcc001.3gppnetwork.org algorithm=AKAv1-MD5 nonce=a80l+bFX0yd/TY23EawjWZmcsuah14AAlZk9tv2YH4E=
+11:25:56.123             ims_client  ...RAND=k�%��W�'M���#Y RES=a6bbb647ef02a705
+11:25:56.123             ims_client  ...username=001010123456780 HA1=7fb07a111390f411da5570529676fdab HA2=df94ff42c4e05afeddd46c372e8208b4 response=7ad753ff61a04a12176b3b822e3f17ac qop=auth nc=00000001 cnonce=IyLhv8kh4qOMY9ZINAzVwZu.SKbJjBRz
+11:25:56.123           pjsua_core.c  ....TX 922 bytes Request msg REGISTER/cseq=6373 (tdta0x55a2d1435ee0) to UDP 10.45.0.1:5060:
+REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport;branch=z9hG4bKPj4oUC5afFqL5PLzW831gF-JgfWFSNLgoI
+Route: <sip:10.45.0.1;lr>
+Max-Forwards: 70
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=TXvGAP4Io29afhV2YVwyBfNTDXeBG.1a
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Call-ID: RgeGQFtYxEDZCTEOXc5W4Bhh6I-JsB8H
+CSeq: 6373 REGISTER
+Contact: <sip:001010123456780@10.45.0.1:5074;ob>
+Expires: 300
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="a80l+bFX0yd/TY23EawjWZmcsuah14AAlZk9tv2YH4E=", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="7ad753ff61a04a12176b3b822e3f17ac", algorithm=AKAv1-MD5, cnonce="IyLhv8kh4qOMY9ZINAzVwZu.SKbJjBRz", qop=auth, nc=00000001
+Content-Length:  0
+
+
+--end msg--
+11:25:56.301           pjsua_core.c  .RX 661 bytes Response msg 200/REGISTER/cseq=6373 (rdata0x55a2d1431e58) from UDP 10.45.0.1:5060:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5074;received=10.45.0.1;rport=5074;branch=z9hG4bKPj4oUC5afFqL5PLzW831gF-JgfWFSNLgoI
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=TXvGAP4Io29afhV2YVwyBfNTDXeBG.1a
+To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=af57a26d9b60b6f40a89a262119aa73f-66c5d064
+Call-ID: RgeGQFtYxEDZCTEOXc5W4Bhh6I-JsB8H
+CSeq: 6373 REGISTER
+P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>, <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
+Service-Route: <sip:orig@10.45.0.1:6060;lr>
+Server: kamailio (5.3.2 (x86_64/linux))
+Content-Length: 0
+
+
+--end msg--
+11:25:56.301            pjsua_acc.c  ....SIP outbound status for acc 0 is not active
+11:25:56.301            pjsua_acc.c  ....Service-Route updated for acc 0 with 1 URI(s)
+11:25:56.301            pjsua_acc.c  ....sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org: registration success, status=200 (OK), will re-register in 300 seconds
+11:25:56.301            pjsua_acc.c  ....Keep-alive timer started for acc 0, destination:10.45.0.1:5060, interval:14s
+11:25:56.301             ims_client  ....reg state: status=200 (OK)
+11:25:56.929            pjsua_aud.c  Closing sound device after idle for 1 second(s)
+11:25:56.929            pjsua_aud.c  .Closing null sound device..
+11:26:25.937             ims_client  auto hangup after 30 s
+11:26:25.937           pjsua_call.c  Call 0 hanging up: code=0..
+11:26:25.937          pjsua_media.c  .Call 0: deinitializing media..
+11:26:25.937          pjsua_media.c  ..
+  [CONFIRMED] To: sip:888@ims.mnc001.mcc001.3gppnetwork.org;tag=F5cUHr65y008F
+    Call time: 00h:00m:30s, 1st res in 12 ms, conn in 13ms
+    #0 audio PCMU @8kHz, sendrecv, peer=10.45.0.1:17592
+       SRTP status: Not active Crypto-suite: 
+       RX pt=0, last update:00h:00m:29.768s ago
+          total 1.5Kpkt 240.0KB (300.0KB +IP hdr) @avg=63.9Kbps/79.9Kbps
+          pkt loss=0 (0.0%), discrd=0 (0.0%), dup=0 (0.0%), reord=0 (0.0%)
+                (msec)    min     avg     max     last    dev
+          loss period:   0.000   0.000   0.000   0.000   0.000
+          jitter     :   0.000   0.000   0.000   0.000   0.000
+       TX pt=0, ptime=20, last update:never
+          total 50pkt 8.0KB (10.0KB +IP hdr) @avg=2.1Kbps/2.6Kbps
+          pkt loss=0 (0.0%), dup=0 (0.0%), reorder=0 (0.0%)
+                (msec)    min     avg     max     last    dev 
+          loss period:   0.000   0.000   0.000   0.000   0.000
+          jitter     :   0.000   0.000   0.000   0.000   0.000
+       RTT msec      :   0.000   0.000   0.000   0.000   0.000
+11:26:25.937           conference.c  ....Remove port 1 queued
+11:26:25.937     strm0x55a2d144e8b8  ...Stream destroying
+11:26:25.937      udp0x55a2d143cd50  ...UDP media transport detached
+11:26:25.937          pjsua_media.c  ...Media stream call00:0 is destroyed
+11:26:25.937     srtp0x55a2d143ff90  ..Destroying SRTP transport
+11:26:25.937      udp0x55a2d143cd50  ..UDP media transport destroying
+11:26:25.937             ims_client  .call state: DISCONNECTED
+11:26:25.937           pjsua_core.c  ....TX 400 bytes Request msg BYE/cseq=3446 (tdta0x55a2d142f470) to UDP 10.45.0.1:5081:
+BYE sip:888@10.45.0.1:5081;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport;branch=z9hG4bKPjPzjUq7E9y3PkxV4k1Gb6Aji1pVmn0N2B
+Max-Forwards: 70
+From: sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org;tag=l7VjpZZa817wu08P.z-Fw2SFXXYpwZPz
+To: sip:888@ims.mnc001.mcc001.3gppnetwork.org;tag=F5cUHr65y008F
+Call-ID: lCI3T3JjueAIUFC1w1T7cP0dgQ7WcEhR
+CSeq: 3446 BYE
+Content-Length:  0
+
+
+--end msg--
+11:26:25.957           pjsua_core.c  .RX 578 bytes Response msg 200/BYE/cseq=3446 (rdata0x55a2d1431e58) from UDP 10.45.0.1:5081:
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 10.45.0.1:5074;rport=5074;branch=z9hG4bKPjPzjUq7E9y3PkxV4k1Gb6Aji1pVmn0N2B
+From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=l7VjpZZa817wu08P.z-Fw2SFXXYpwZPz
+To: <sip:888@ims.mnc001.mcc001.3gppnetwork.org>;tag=F5cUHr65y008F
+Call-ID: lCI3T3JjueAIUFC1w1T7cP0dgQ7WcEhR
+CSeq: 3446 BYE
+User-Agent: FreeSWITCH-mod_sofia/1.11.2-dev+git~20260802T173359Z~1d77a57750~64bit
+Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, PRACK, NOTIFY
+Supported: 100rel, timer, path, replaces
+Content-Length: 0
+
+
+--end msg--

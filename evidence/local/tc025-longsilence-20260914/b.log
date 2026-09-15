@@ -1,0 +1,291 @@
+13:30:17.582         sip_endpoint.c !.Module "mod-pjsua-log" registered
+13:30:17.582         sip_endpoint.c  .Module "mod-tsx-layer" registered
+13:30:17.582         sip_endpoint.c  .Module "mod-stateful-util" registered
+13:30:17.582         sip_endpoint.c  .Module "mod-ua" registered
+13:30:17.582         sip_endpoint.c  .Module "mod-100rel" registered
+13:30:17.582         sip_endpoint.c  .Module "mod-pjsua" registered
+13:30:17.582         sip_endpoint.c  .Module "mod-invite" registered
+13:30:17.582                  pjlib  ..select() I/O Queue created (0x5558798d16f8)
+13:30:17.587         sip_endpoint.c  .Module "mod-evsub" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-presence" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-dlg_even" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-mwi" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-refer" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-pjsua-pres" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-unsolicited-mwi" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-pjsua-im" registered
+13:30:17.587         sip_endpoint.c  .Module "mod-pjsua-options" registered
+13:30:17.587           pjsua_core.c  .1 SIP worker threads created
+13:30:17.587           pjsua_core.c  .pjsua version 2.17-dev for Linux-5.15.0.139/x86_64/glibc-2.31 initialized
+13:30:17.587           pjsua_core.c  .PJSUA state changed: CREATED --> INIT
+13:30:17.587         sip_endpoint.c  Module "mod-default-handler" registered
+13:30:17.587            pjsua_aud.c  Creating file player: /home/co1750/verification-evidence/tc025-vad-20260914-longsilence/input.wav..
+13:30:17.587           wav_player.c  .File player '/home/co1750/verification-evidence/tc025-vad-20260914-longsilence/input.wav' created: samp.rate=8000, ch=1, bufsize=4KB, filesize=720KB
+13:30:17.587           conference.c  ..Add port 1 (/home/co1750/verification-evidence/tc025-vad-20260914-longsilence/input.wav) queued
+13:30:17.587            pjsua_aud.c  .Player created, id=0, slot=1
+13:30:17.587           conference.c  .Add port 2 (ringback) queued
+13:30:17.587           conference.c  .Add port 3 (ring) queued
+13:30:17.587           pjsua_core.c  SIP UDP socket reachable at 127.0.0.1:5080
+13:30:17.587      udp0x5558798f2ff0  SIP UDP transport started, published address is 127.0.0.1:5080
+13:30:17.587            pjsua_acc.c  Adding account: id=<sip:127.0.0.1:5080>
+13:30:17.588            pjsua_acc.c  .Account <sip:127.0.0.1:5080> added with id 0
+13:30:17.588            pjsua_acc.c  Modifying account 0
+13:30:17.588            pjsua_acc.c  Acc 0: setting online status to 1..
+13:30:17.588             tcptp:5080  SIP TCP listener ready for incoming connections at 127.0.0.1:5080
+13:30:17.588            pjsua_acc.c  Adding account: id=<sip:127.0.0.1:5080;transport=TCP>
+13:30:17.588            pjsua_acc.c  .Account <sip:127.0.0.1:5080;transport=TCP> added with id 1
+13:30:17.588            pjsua_acc.c  Modifying account 1
+13:30:17.588            pjsua_acc.c  Acc 1: setting online status to 1..
+13:30:17.588            pjsua_aud.c  Setting null sound device..
+13:30:17.588            pjsua_app.c  .Turning sound device -99 -99 ON
+13:30:17.588            pjsua_aud.c  .Opening null sound device..
+13:30:17.588           pjsua_core.c  PJSUA state changed: INIT --> STARTING
+13:30:17.588           pjsua_core.c  .PJSUA state changed: STARTING --> RUNNING
+13:30:17.588                 main.c  Ready: Success
+>>>>
+Account list:
+  [ 0] <sip:127.0.0.1:5080>: does not register
+       Online status: Online
+ *[ 1] <sip:127.0.0.1:5080;transport=TCP>: does not register
+       Online status: Online
+Buddy list:
+ -none-
+
++=============================================================================+
+|       Call Commands:         |   Buddy, IM & Presence:  |     Account:      |
+|                              |                          |                   |
+|  m  Make new call            | +b  Add new buddy        | +a  Add new accnt.|
+|  M  Make multiple calls      | -b  Delete buddy         | -a  Delete accnt. |
+|  a  Answer call              |  i  Send IM              | !a  Modify accnt. |
+|  h  Hangup call  (ha=all)    |  s  Subscribe presence   | rr  (Re-)register |
+|  H  Hold call                |  u  Unsubscribe presence | ru  Unregister    |
+|  o  Toggle call SDP offer    |  D  Subscribe dlg event  |                   |
+|                              |  Du Unsub dlg event      |                   |
+|  v  re-inVite (release hold) |  t  Toggle online status |  >  Cycle next ac.|
+|  U  send UPDATE              |  T  Set online status    |  <  Cycle prev ac.|
+| ],[ Select next/prev call    +--------------------------+-------------------+
+|  x  Xfer call                |      Media Commands:     |  Status & Config: |
+|  X  Xfer with Replaces       |                          |                   |
+|  #  Send RFC 2833 DTMF       | cl  List ports           |  d  Dump status   |
+|  *  Send DTMF with INFO      | cc  Connect port         | dd  Dump detailed |
+| rt  Send real-time text      | cd  Disconnect port      | dc  Dump config   |
+| dq  Dump curr. call quality  |  V  Adjust audio Volume  |  f  Save config   |
+|  S  Send arbitrary REQUEST   | Cp  Codec priorities     |                   |
++-----------------------------------------------------------------------------+
+|  q  QUIT      L  ReLoad       I  IP change     n  detect NAT type           |
+|  sleep MS     echo [0|1|txt]                                                |
++=============================================================================+
+You have 0 active call
+>>> 13:30:17.607           conference.c !.Added port 1 (/home/co1750/verification-evidence/tc025-vad-20260914-longsilence/input.wav), port count=2
+13:30:17.607           conference.c  .Added port 2 (ringback), port count=3
+13:30:17.607           conference.c  .Added port 3 (ring), port count=4
+13:30:18.588            pjsua_aud.c !Closing sound device after idle for 1 second(s)
+13:30:18.588            pjsua_app.c  .Turning sound device -99 -99 OFF
+13:30:18.588            pjsua_aud.c  .Closing null sound device..
+13:30:20.075             tcptp:5080  TCP listener 127.0.0.1:5080: got incoming TCP connection from 127.0.0.1:51293, sock=6
+13:30:20.075     tcps0x7f7f54000b88  TCP server transport created
+13:30:20.075            pjsua_app.c  SIP TCP transport is connected to 127.0.0.1:51293
+13:30:20.076           pjsua_core.c  .RX 968 bytes Request msg INVITE/cseq=11781 (rdata0x7f7f54000fa0) from TCP 127.0.0.1:51293:
+INVITE sip:1000@127.0.0.1:5080 SIP/2.0
+Via: SIP/2.0/TCP 127.0.0.1:5060;rport;branch=z9hG4bKPjkCj1zMfDhV2un9ggq052KQY3sh-0kshh;alias
+Max-Forwards: 70
+From: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+To: sip:1000@127.0.0.1
+Contact: <sip:127.0.0.1:5060;ob>
+Call-ID: VOxQmqJ9xmGCAGMBnWpuPeKZRwRtkzfs
+CSeq: 11781 INVITE
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Supported: replaces, 100rel, timer, norefersub
+Session-Expires: 1800
+Min-SE: 90
+User-Agent: PJSUA/v2.17-dev Linux-5.15.0.139 x86_64 glibc-2.31
+Content-Type: application/sdp
+Content-Length:  335
+
+v=0
+o=- 3998352620 3998352620 IN IP4 127.0.0.1
+s=pjmedia
+b=AS:42
+t=0 0
+a=X-nat:0
+m=audio 4000 RTP/AVP 96 97 120
+c=IN IP4 127.0.0.1
+b=TIAS:24600
+a=rtcp:4001 IN IP4 127.0.0.1
+a=sendrecv
+a=rtpmap:96 AMR/8000
+a=rtpmap:97 speex/8000
+a=rtpmap:120 telephone-event/8000
+a=fmtp:120 0-16
+a=ssrc:1758153794 cname:1ded177e52400e73
+
+--end msg--
+13:30:20.076           pjsua_call.c  .Incoming Request msg INVITE/cseq=11781 (rdata0x7f7f54000fa0)
+13:30:20.076          pjsua_media.c  ..Call 0: initializing media..
+13:30:20.076          pjsua_media.c  ...RTP socket reachable at 127.0.0.1:4010
+13:30:20.076          pjsua_media.c  ...RTCP socket reachable at 127.0.0.1:4011
+13:30:20.077     srtp0x7f7f54015710  ...SRTP transport created
+13:30:20.077          pjsua_media.c  ...Media index 0 selected for audio call 0
+13:30:20.077      udp0x7f7f54011f80  ...UDP media transport created
+13:30:20.077           pjsua_core.c  .....TX 310 bytes Response msg 100/INVITE/cseq=11781 (tdta0x7f7f5401d5b0) to TCP 127.0.0.1:51293:
+SIP/2.0 100 Trying
+Via: SIP/2.0/TCP 127.0.0.1:5060;rport=51293;received=127.0.0.1;branch=z9hG4bKPjkCj1zMfDhV2un9ggq052KQY3sh-0kshh;alias
+Call-ID: VOxQmqJ9xmGCAGMBnWpuPeKZRwRtkzfs
+From: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+To: <sip:1000@127.0.0.1>
+CSeq: 11781 INVITE
+Content-Length:  0
+
+
+--end msg--
+13:30:20.077            pjsua_aud.c  ..Conf connect: 3 --> 0
+13:30:20.077            pjsua_aud.c  ...Set sound device: capture=-99, playback=-99, mode=0, use_default_settings=0
+13:30:20.077            pjsua_aud.c  ....Null sound device, mode setting is ignored
+13:30:20.077            pjsua_aud.c  ....Setting null sound device..
+13:30:20.077            pjsua_app.c  .....Turning sound device -99 -99 ON
+13:30:20.077            pjsua_aud.c  .....Opening null sound device..
+13:30:20.077           conference.c  ....Connect ports 3->0 queued
+13:30:20.077           pjsua_call.c  ..Answering call 0: code=200
+13:30:20.077      inv0x7f7f54007b80  ....SDP negotiation done: Success
+13:30:20.077          pjsua_media.c  .....Call 0: updating media..
+13:30:20.077          pjsua_media.c  .......Media stream call00:0 is destroyed
+13:30:20.077      udp0x7f7f54011f80  ......UDP media transport started
+13:30:20.077            pjsua_aud.c  ......Audio channel update for index 0 for call 0...
+13:30:20.077     strm0x7f7f54026208  .......VAD temporarily disabled
+13:30:20.077      udp0x7f7f54011f80  .......UDP media transport attached
+13:30:20.077     strm0x7f7f54026208  .......Encoder stream started
+13:30:20.077     strm0x7f7f54026208  .......Decoder stream started
+13:30:20.077           conference.c  ........Add port 4 (sip:127.0.0.1) queued
+13:30:20.077          pjsua_media.c  ......audio updated, stream #0: AMR (sendrecv)
+13:30:20.077            pjsua_app.c  .....Call 0 media 0 [type=audio], status is Active
+13:30:20.077            pjsua_aud.c  .....Conf disconnect: 3 -x- 0
+13:30:20.077           conference.c  .......Disconnect ports 3->0 queued
+13:30:20.077            pjsua_aud.c  .....Conf connect: 1 --> 4
+13:30:20.077           conference.c  .......Connect ports 1->4 queued
+13:30:20.077           pjsua_core.c  ......TX 914 bytes Response msg 200/INVITE/cseq=11781 (tdta0x7f7f54021730) to TCP 127.0.0.1:51293:
+SIP/2.0 200 OK
+Via: SIP/2.0/TCP 127.0.0.1:5060;rport=51293;received=127.0.0.1;branch=z9hG4bKPjkCj1zMfDhV2un9ggq052KQY3sh-0kshh;alias
+Call-ID: VOxQmqJ9xmGCAGMBnWpuPeKZRwRtkzfs
+From: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+To: <sip:1000@127.0.0.1>;tag=r9kwqyyUiw-44KV3w7DT5ZHs5NtT4-cI
+CSeq: 11781 INVITE
+Contact: <sip:127.0.0.1:5080>
+Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+Supported: replaces, 100rel, timer, norefersub
+Session-Expires: 1800;refresher=uac
+Require: timer
+Content-Type: application/sdp
+Content-Length:  308
+
+v=0
+o=- 3998352620 3998352621 IN IP4 127.0.0.1
+s=pjmedia
+b=AS:42
+t=0 0
+a=X-nat:0
+m=audio 4010 RTP/AVP 96 120
+c=IN IP4 127.0.0.1
+b=TIAS:24600
+a=rtcp:4011 IN IP4 127.0.0.1
+a=sendrecv
+a=rtpmap:96 AMR/8000
+a=rtpmap:120 telephone-event/8000
+a=fmtp:120 0-16
+a=ssrc:1341999343 cname:13b3a1451afdad15
+
+--end msg--
+13:30:20.077            pjsua_app.c  .........Call 0 state changed to CONNECTING
+13:30:20.078           pjsua_core.c  .RX 347 bytes Request msg ACK/cseq=11781 (rdata0x7f7f54000fa0) from TCP 127.0.0.1:51293:
+ACK sip:127.0.0.1:5080 SIP/2.0
+Via: SIP/2.0/TCP 127.0.0.1:5060;rport;branch=z9hG4bKPjAWikohaN-wfWyzNGV0vQ5lA75kkbMkQL;alias
+Max-Forwards: 70
+From: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+To: sip:1000@127.0.0.1;tag=r9kwqyyUiw-44KV3w7DT5ZHs5NtT4-cI
+Call-ID: VOxQmqJ9xmGCAGMBnWpuPeKZRwRtkzfs
+CSeq: 11781 ACK
+Content-Length:  0
+
+
+--end msg--
+13:30:20.078            pjsua_app.c  ...Call 0 state changed to CONFIRMED
+13:30:20.096           conference.c !.Port 3 (ring) transmitting to port 0 (Master/sound)
+13:30:20.096           conference.c  .Added port 4 (sip:127.0.0.1), port count=5
+13:30:20.096           conference.c  .Port 3 (ring) stop transmitting to port 0 (Master/sound)
+13:30:20.096           conference.c  .Port 1 (/home/co1750/verification-evidence/tc025-vad-20260914-longsilence/input.wav) transmitting to port 4 (sip:127.0.0.1)
+13:30:20.717     strm0x7f7f54026208 !VAD re-enabled
+13:30:53.078     tcps0x7f7f54000b88 !TCP connection closed
+13:30:53.078            pjsua_app.c  SIP TCP transport is disconnected from 127.0.0.1:51293: End of file (PJ_EEOF) [status=70016]
+13:30:53.078            pjsua_acc.c  Disconnected notification for transport tcps0x7f7f54000b88
+13:30:53.078        sip_transport.c  .Transport tcps0x7f7f54000b88 shutting down, force=0
+13:30:53.078        sip_transport.c  Transport tcps0x7f7f54000b88 is being destroyed due to timeout in idle timer
+13:30:53.078     tcps0x7f7f54000b88  TCP transport destroyed with reason 70016: End of file (PJ_EEOF)
+13:31:01.080             tcptp:5080 !TCP listener 127.0.0.1:5080: got incoming TCP connection from 127.0.0.1:51841, sock=6
+13:31:01.080     tcps0x7f7f54000b88  TCP server transport created
+13:31:01.080            pjsua_app.c  SIP TCP transport is connected to 127.0.0.1:51841
+13:31:01.084           pjsua_core.c  .RX 411 bytes Request msg BYE/cseq=11782 (rdata0x7f7f54000fa0) from TCP 127.0.0.1:51841:
+BYE sip:127.0.0.1:5080 SIP/2.0
+Via: SIP/2.0/TCP 127.0.0.1:5060;rport;branch=z9hG4bKPjacyDY6Gx598Q3TDL6JY5P0tJr3TkUfPV;alias
+Max-Forwards: 70
+From: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+To: sip:1000@127.0.0.1;tag=r9kwqyyUiw-44KV3w7DT5ZHs5NtT4-cI
+Call-ID: VOxQmqJ9xmGCAGMBnWpuPeKZRwRtkzfs
+CSeq: 11782 BYE
+User-Agent: PJSUA/v2.17-dev Linux-5.15.0.139 x86_64 glibc-2.31
+Content-Length:  0
+
+
+--end msg--
+13:31:01.084           pjsua_core.c  .......TX 340 bytes Response msg 200/BYE/cseq=11782 (tdta0x7f7f54021730) to TCP 127.0.0.1:51841:
+SIP/2.0 200 OK
+Via: SIP/2.0/TCP 127.0.0.1:5060;rport=51841;received=127.0.0.1;branch=z9hG4bKPjacyDY6Gx598Q3TDL6JY5P0tJr3TkUfPV;alias
+Call-ID: VOxQmqJ9xmGCAGMBnWpuPeKZRwRtkzfs
+From: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+To: <sip:1000@127.0.0.1>;tag=r9kwqyyUiw-44KV3w7DT5ZHs5NtT4-cI
+CSeq: 11782 BYE
+Content-Length:  0
+
+
+--end msg--
+13:31:01.084          pjsua_media.c  ......Call 0: deinitializing media..
+13:31:01.084          pjsua_media.c  .......  [DISCONNECTED] To: <sip:127.0.0.1>;tag=rszXODCTPAf7s5AXCpP67PWCALxvsJWV
+    Call time: 00h:00m:41s, 1st res in 1 ms, conn in 2ms
+    #0 audio AMR @8kHz, sendrecv, peer=127.0.0.1:4000
+       SRTP status: Not active Crypto-suite: 
+       RX pt=96, last update:00h:00m:03.048s ago
+          total 116pkt 1.7KB (6.4KB +IP hdr) @avg=344bps/1.2Kbps
+          pkt loss=0 (0.0%), discrd=0 (0.0%), dup=0 (0.0%), reord=0 (0.0%)
+                (msec)    min     avg     max     last    dev
+          loss period:   0.000   0.000   0.000   0.000   0.000
+          jitter     :   0.000   0.296   0.375   0.375   0.109
+       TX pt=96, ptime=20, last update:00h:00m:00.005s ago
+          total 116pkt 1.7KB (6.4KB +IP hdr) @avg=344bps/1.2Kbps
+          pkt loss=0 (0.0%), dup=0 (0.0%), reorder=0 (0.0%)
+                (msec)    min     avg     max     last    dev 
+          loss period:   0.000   0.000   0.000   0.000   0.000
+          jitter     :   0.000   0.288   0.375   0.375   0.157
+       RTT msec      :   0.076   0.098   0.122   0.091   0.013
+13:31:01.084           conference.c  .........Remove port 4 queued
+13:31:01.084     strm0x7f7f54026208  ........Stream destroying
+13:31:01.085      udp0x7f7f54011f80  ........UDP media transport detached
+13:31:01.085          pjsua_media.c  ........Media stream call00:0 is destroyed
+13:31:01.085     srtp0x7f7f54015710  .......Destroying SRTP transport
+13:31:01.085      udp0x7f7f54011f80  .......UDP media transport destroying
+13:31:01.085            pjsua_app.c  ......Call 0 is DISCONNECTED [reason=200 (Normal call clearing)]
+13:31:01.096           conference.c !.Stop any transmission to port 4 (sip:127.0.0.1)
+13:31:01.096           conference.c  .Port 1 (/home/co1750/verification-evidence/tc025-vad-20260914-longsilence/input.wav) stop transmitting to port 4 (sip:127.0.0.1)
+13:31:01.096           conference.c  .Stop any transmission from port 4 (sip:127.0.0.1)
+13:31:01.096           conference.c  .Removing port 4 (sip:127.0.0.1)
+13:31:01.096           conference.c  .Removed port 4, port count=4
+13:31:01.096      udp0x7f7f54011f80  .UDP media transport destroyed
+13:31:01.096     srtp0x7f7f54015710  .SRTP transport destroyed
+13:31:01.096     strm0x7f7f54026208  .Stream destroyed
+13:31:02.085            pjsua_aud.c !Closing sound device after idle for 1 second(s)
+13:31:02.085            pjsua_app.c  .Turning sound device -99 -99 OFF
+13:31:02.085            pjsua_aud.c  .Closing null sound device..
+13:31:02.119     tcps0x7f7f54000b88  TCP connection closed
+13:31:02.119            pjsua_app.c  SIP TCP transport is disconnected from 127.0.0.1:51841: End of file (PJ_EEOF) [status=70016]
+13:31:02.119            pjsua_acc.c  Disconnected notification for transport tcps0x7f7f54000b88
+13:31:02.119        sip_transport.c  .Transport tcps0x7f7f54000b88 shutting down, force=0
+13:31:02.119        sip_transport.c  Transport tcps0x7f7f54000b88 is being destroyed due to timeout in idle timer
+13:31:02.119     tcps0x7f7f54000b88  TCP transport destroyed with reason 70016: End of file (PJ_EEOF)
+>>> 
