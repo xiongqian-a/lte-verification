@@ -75,6 +75,7 @@ optional TC-026..031 L2 manifest, and writes reports under `generated/`.
 | `suites/official_tp_suites/` | One Markdown suite document per internal TC |
 | `suites/official_tp_suites/_substeps/` | Official procedure, Annex A, message, and verdict extracts |
 | `suites/official_tp_suites/_evidence/` | L2 evidence schema and manifest template |
+| `suites/official_tp_suites/_templates/TC-TEMPLATE.md` | Reusable template for a new standard suite document |
 | `runners/` | Local checkers, evidence replay, report generation, and adapters |
 | `evidence/local/` | Selected local reproduction evidence |
 | `evidence/external/` | Selected testbed, pjsua, core-network, and packet-capture evidence |
@@ -152,6 +153,7 @@ repository-relative paths.
 | `docs/89-最终交付与汇报口径-20260915.md` | Delivery scope, limitations, and reporting language |
 | `docs/91-最终冻结清单与复核日志-20260915.md` | Freeze record and verification log |
 | `docs/THREE_LAYER_STATUS.md` | L0/L1/L2 implementation status by TC |
+| `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
 
 ## Adding or Changing a Case
 
@@ -161,3 +163,8 @@ repository-relative paths.
 4. Add or update an executable checker only when it has a real evidence source.
 5. Preserve `RESTRICTED` or `NOT_EXECUTED` when qualified evidence is absent.
 6. Run `python -X utf8 run_official_suite.py` before committing.
+
+Start a new case from
+`suites/official_tp_suites/_templates/TC-TEMPLATE.md`. The reusable template is
+kept outside the top-level suite glob so it cannot be mistaken for a formal
+`TC-xxx` case.

@@ -32,6 +32,7 @@ temp/
 *.bak
 *.orig
 *.rej
+gcm-diagnose.log
 
 # Misplaced raw log; superseded by conference-20260904-full/
 evidence/external/conference-20260904
