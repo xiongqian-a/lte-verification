@@ -155,6 +155,7 @@ repository-relative paths.
 | `docs/THREE_LAYER_STATUS.md` | L0/L1/L2 implementation status by TC |
 | `docs/93-TC011-L1-IPsec-SUBSCRIBE-NOTIFY-证据-20260916.md` | TC-011 local Annex C.2 Steps 4-11 evidence and boundaries |
 | `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
+| `docs/97-独立验证交接与复核流程-20260916.md` | Independent-agent handoff, fresh-checkout procedure, and review prompt |
 
 ## Adding or Changing a Case
 

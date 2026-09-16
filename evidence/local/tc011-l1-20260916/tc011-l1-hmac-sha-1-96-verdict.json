@@ -8,8 +8,8 @@
     "px_IMS_IpSecAlgorithm": "hmac-sha-1-96"
   },
   "algorithm": "hmac-sha-1-96",
-  "bind": "127.0.0.1:63103",
-  "started_epoch": 1789535331,
+  "bind": "127.0.0.1:51623",
+  "started_epoch": 1789535891,
   "steps": {
     "4": {
       "direction": "UE -> SS",
@@ -45,19 +45,19 @@
           "step": 4,
           "check": "Contact present",
           "ok": true,
-          "detail": "<sip:001010123456780@127.0.0.1:63104;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+          "detail": "<sip:001010123456780@127.0.0.1:51624;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
         },
         {
           "step": 4,
           "check": "initial Contact uses an unprotected UE port",
           "ok": true,
-          "detail": "contact_port=63104 source_port=63104"
+          "detail": "contact_port=51624 source_port=51624"
         },
         {
           "step": 4,
           "check": "Contact advertises MTSI ICSI and instance ID",
           "ok": true,
-          "detail": "<sip:001010123456780@127.0.0.1:63104;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+          "detail": "<sip:001010123456780@127.0.0.1:51624;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
         },
         {
           "step": 4,
@@ -75,7 +75,7 @@
           "step": 4,
           "check": "Via has rport and a z9hG4bK branch",
           "ok": true,
-          "detail": "SIP/2.0/UDP 127.0.0.1:63104;rport;branch=z9hG4bK-ue-1"
+          "detail": "SIP/2.0/UDP 127.0.0.1:51624;rport;branch=z9hG4bK-ue-1"
         },
         {
           "step": 4,
@@ -111,7 +111,7 @@
           "step": 4,
           "check": "Security-Client present",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=63105; port-s=63106"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626"
         },
         {
           "step": 4,
@@ -123,13 +123,13 @@
           "step": 4,
           "check": "Security-Client uses ipsec-3gpp/ESP transport/null cipher",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=63105; port-s=63106"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626"
         },
         {
           "step": 4,
           "check": "Security-Client carries spi-c/spi-s/port-c/port-s",
           "ok": true,
-          "detail": "{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"63105\", \"port-s\": \"63106\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}"
+          "detail": "{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51625\", \"port-s\": \"51626\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}"
         },
         {
           "step": 4,
@@ -167,13 +167,13 @@
           "step": 5,
           "check": "Security-Server offers selected algorithm with q=0.9",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=63103; port-s=63104; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=63103; port-s=63104; q=0.7"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7"
         },
         {
           "step": 5,
           "check": "Security-Server offers alternate algorithm with q=0.7",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=63103; port-s=63104; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=63103; port-s=63104; q=0.7"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7"
         }
       ]
     },
@@ -199,19 +199,19 @@
           "step": 6,
           "check": "second REGISTER arrives on the announced temporary SA port",
           "ok": true,
-          "detail": "src_port=63105 announced_port-c=63105"
+          "detail": "src_port=51625 announced_port-c=51625"
         },
         {
           "step": 6,
           "check": "second REGISTER Contact uses the protected UE port",
           "ok": true,
-          "detail": "contact='sip:001010123456780@127.0.0.1:63105;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=63105"
+          "detail": "contact='sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=51625"
         },
         {
           "step": 6,
           "check": "second REGISTER Via uses the protected UE port",
           "ok": true,
-          "detail": "SIP/2.0/UDP 127.0.0.1:63105;rport;branch=z9hG4bK-ue-2"
+          "detail": "SIP/2.0/UDP 127.0.0.1:51625;rport;branch=z9hG4bK-ue-2"
         },
         {
           "step": 6,
@@ -271,43 +271,43 @@
           "step": 6,
           "check": "second REGISTER Contact advertises MTSI ICSI and instance ID",
           "ok": true,
-          "detail": "<sip:001010123456780@127.0.0.1:63105;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+          "detail": "<sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
         },
         {
           "step": 6,
           "check": "Security-Client present on protected REGISTER",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=63105; port-s=63106"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626"
         },
         {
           "step": 6,
           "check": "Security-Client is unchanged from the initial REGISTER",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=63105; port-s=63106"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626"
         },
         {
           "step": 6,
           "check": "Security-Verify present on protected REGISTER",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=63103; port-s=63104; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=63103; port-s=63104; q=0.7"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7"
         },
         {
           "step": 6,
           "check": "Security-Verify echoes the complete Security-Server",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=63103; port-s=63104; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=63103; port-s=63104; q=0.7"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7"
         },
         {
           "step": 6,
           "check": "Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s",
           "ok": true,
-          "detail": "{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"63103\", \"port-s\": \"63104\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}"
+          "detail": "{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51623\", \"port-s\": \"51624\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}"
         },
         {
           "step": 6,
           "check": "Security-Verify carries both PIXIT algorithm candidates",
           "ok": true,
-          "detail": "[{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"63103\", \"port-s\": \"63104\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"63103\", \"port-s\": \"63104\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]"
+          "detail": "[{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51623\", \"port-s\": \"51624\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51623\", \"port-s\": \"51624\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]"
         }
       ]
     },
@@ -321,7 +321,7 @@
           "step": 7,
           "check": "200 OK sent to the temporary SA port",
           "ok": true,
-          "detail": "dst_port=63105"
+          "detail": "dst_port=51625"
         },
         {
           "step": 7,
@@ -345,7 +345,7 @@
           "step": 7,
           "check": "200 OK Contact matches the registered protected contact",
           "ok": true,
-          "detail": "sip:001010123456780@127.0.0.1:63105;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\""
+          "detail": "sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\""
         }
       ]
     },
@@ -371,25 +371,25 @@
           "step": 8,
           "check": "SUBSCRIBE arrives on the new SA port",
           "ok": true,
-          "detail": "src_port=63105 expected=63105"
+          "detail": "src_port=51625 expected=51625"
         },
         {
           "step": 8,
           "check": "SUBSCRIBE Contact uses the protected UE port",
           "ok": true,
-          "detail": "<sip:001010123456780@127.0.0.1:63105;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+          "detail": "<sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
         },
         {
           "step": 8,
           "check": "SUBSCRIBE Via uses the protected UE port",
           "ok": true,
-          "detail": "SIP/2.0/UDP 127.0.0.1:63105;rport;branch=z9hG4bK-ue-3"
+          "detail": "SIP/2.0/UDP 127.0.0.1:51625;rport;branch=z9hG4bK-ue-3"
         },
         {
           "step": 8,
           "check": "SUBSCRIBE follows the stored Service-Route",
           "ok": true,
-          "detail": "route='<sip:orig@127.0.0.1:63103;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:63103;lr>, <sip:scscf.3gpp.org;lr>'"
+          "detail": "route='<sip:orig@127.0.0.1:51623;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:51623;lr>, <sip:scscf.3gpp.org;lr>'"
         },
         {
           "step": 8,
@@ -401,7 +401,7 @@
           "step": 8,
           "check": "SUBSCRIBE carries the echoed Security-Verify value",
           "ok": true,
-          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=63103; port-s=63104; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=63103; port-s=63104; q=0.7"
+          "detail": "ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7"
         },
         {
           "step": 8,
@@ -519,7 +519,7 @@
           "step": 10,
           "check": "NOTIFY Request-URI is the registered protected contact",
           "ok": true,
-          "detail": "sip:001010123456780@127.0.0.1:63105;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\""
+          "detail": "sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\""
         },
         {
           "step": 10,
@@ -557,7 +557,7 @@
           "step": 11,
           "check": "NOTIFY 200 OK keeps the top Via",
           "ok": true,
-          "detail": "SIP/2.0/UDP 127.0.0.1:63103;branch=z9hG4bK-ss-ntf"
+          "detail": "SIP/2.0/UDP 127.0.0.1:51623;branch=z9hG4bK-ss-ntf"
         }
       ]
     }
