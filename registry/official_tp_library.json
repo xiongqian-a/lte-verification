@@ -1917,9 +1917,9 @@
           ]
         }
       ],
-      "evidence_level": "LOCAL_PASS",
+      "evidence_level": "LIMITED_PASS",
       "local_script": "runners/tc011_ipsec_ss_sim.py",
-      "phase": "L0",
+      "phase": "L1_LOCAL_SIMULATED",
       "limitation": "官方 SS/一致性仪表；真实内核 xfrm/ESP",
       "note": "L1_LOCAL_SIMULATED PASS：TC-011 Annex C.2 Steps 4-11 在端口/SPI/Security Header 级仿真通过，HMAC-MD5-96 与 HMAC-SHA-1-96 两轮均 8/8 PASS；official_verdict=null，NO_OFFICIAL_VERDICT；真实内核 xfrm/ESP 与真实 UE/SS 仍受限。",
       "evidence_scope": "L1_LOCAL_SIMULATED",

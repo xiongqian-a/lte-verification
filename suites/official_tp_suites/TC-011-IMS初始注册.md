@@ -6,7 +6,8 @@
 - 官方主规范：`34.229-1`
 - 官方章节/TP：`8.1 Initial registration`
 - 映射等级：`exact_line_ref`
-- 当前证据层级：`LOCAL_PASS`
+- 当前证据层级：`LIMITED_PASS`
+- 证据范围：`L1_LOCAL_SIMULATED`
 <!-- OFFICIAL_TP_METADATA:END -->
 
 ## 0. 执行卡
@@ -65,9 +66,9 @@
   `Step 3: SS shall check that ... the UE sends another REGISTER request as follows: the UE sets up the temporary set of security associations between the ports announced in Security-Client header (UE) in the REGISTER request and Security-Server header (SS) in the 401 Unauthorized response; ... the UE sends the second REGISTER over the temporary set of security associations;`
   `Step 5: SS shall check that ... the UE sends a SUBSCRIBE request for registration event package over the newly established set of security associations.`
 - `8.1.5 Test requirements`（Word L4140-L4151）：核对 ISIM 参数读取、临时 SA 建立、RAND 派生 IK、通过临时 SA 发送二次 REGISTER、通过新 SA 发送 SUBSCRIBE，以及 FQDN 反向解析要求。
-- 完整官方 TP 区块机器可读证据：`official_tp_suites/_substeps/TC-011-015-032-official-tp-blocks.json` / `.md`，本用例对应 `8.1 Initial registration`，源文件 `34229-1e70-word.txt` 行 3875-4151；逐行核对脚本：`runners/verify_34229_reg_auth_err_tp.py`。
+- 完整官方 TP 区块机器可读证据：`official_tp_suites/_substeps/TC-011-015-032-official-tp-blocks.json` / `.md`，本用例对应 `8.1 Initial registration`，源文件 `34229-1e70-word.txt` 行 3875-4151；逐行核对脚本为原始抽取工作区的 `work/verify_34229_reg_auth_err_tp.py`，该脚本和规范源材料不随 Git 发布仓库分发。
 - 具体消息内容：8.1 的 Expected Sequence 直接引用 Annex C.2，且 C.2 明确 `The default message contents in annex A are used`。因此本用例的逐消息骨架取 C.2 的准确步骤表，字段细节再引用 Annex A 默认消息，不把本地日志字段冒充 Annex A 终核结果。
-- Annex A 默认消息内容（本用例的 `.3.3` 等价物）：`official_tp_suites/_substeps/TC-011-014-annexA-message-contents.json` / `.md`；含 `A.1.1 REGISTER`（行 21415-22020，含 A1/A2/A17 条件词表）、`A.1.2 401`（22021-22255）、`A.1.3 200 OK`（22256-22497）、`A.1.4 SUBSCRIBE`（22498-22771）、`A.1.5 200 OK`（22772-22918）、`A.1.6 NOTIFY`（22919-23238）。逐行核对脚本：`runners/verify_34229_annexA.py`。
+- Annex A 默认消息内容（本用例的 `.3.3` 等价物）：`official_tp_suites/_substeps/TC-011-014-annexA-message-contents.json` / `.md`；含 `A.1.1 REGISTER`（行 21415-22020，含 A1/A2/A17 条件词表）、`A.1.2 401`（22021-22255）、`A.1.3 200 OK`（22256-22497）、`A.1.4 SUBSCRIBE`（22498-22771）、`A.1.5 200 OK`（22772-22918）、`A.1.6 NOTIFY`（22919-23238）。逐行核对脚本为原始抽取工作区的 `work/verify_34229_annexA.py`，该脚本和规范源材料不随 Git 发布仓库分发。
 
 ### Annex C.2 官方步骤逐项映射
 
@@ -138,7 +139,7 @@
 ```text
 python runners/tc011_register_flow.py --log evidence/external/tc12-tc13-calls-raw.log
 输入：outputs/co1750-20260904/ims_register_test.log
-结果：LOCAL_PASS（字段级）
+结果：原始 pjsua 子集的字段级 PASS（不是 TC-011 总体状态）
 观察：REGISTER -> 401 -> REGISTER -> 200 OK
 限制：该真实日志只覆盖 C.2 Steps 4-7 的明文 SIP 字段子集。
 ```
@@ -181,9 +182,11 @@ UE/SS 行为模型覆盖 C.2 Steps 4-11，不能证明真实 DUT 或内核 IPsec
 
 ## 8. 执行命令
 
+以下命令从 Git checkout 根目录运行：
+
 ```text
-python runners/tc011_register_flow.py --log evidence/external/tc12-tc13-calls-raw.log
-python runners/tc011_ipsec_ss_sim.py --selftest --out-dir evidence/local/tc011-l1-20260916
-python runners/tc011_ipsec_ss_sim.py --selfcheck
-python runners/run_tc_evidence.py
+python -X utf8 runners/tc011_register_flow.py --log evidence/external/tc12-tc13-calls-raw.log
+python -X utf8 runners/tc011_ipsec_ss_sim.py --selftest --out-dir evidence/local/tc011-l1-20260916
+python -X utf8 runners/tc011_ipsec_ss_sim.py --selfcheck
+python -X utf8 runners/run_tc_evidence.py
 ```

@@ -1406,7 +1406,7 @@
       "officialSpec": "34.229-1",
       "officialClause": "8.1 Initial registration",
       "mappingConfidence": "exact_line_ref",
-      "evidenceLevel": "LOCAL_PASS",
+      "evidenceLevel": "LIMITED_PASS",
       "localScript": "runners/tc011_ipsec_ss_sim.py",
       "sourceEvidenceLines": [
         "34229-1e70-word.txt line 3875-4151 (TP 8.1)",

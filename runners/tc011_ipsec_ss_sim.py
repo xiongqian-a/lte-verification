@@ -4,11 +4,11 @@
 Why this exists
 ---------------
 TC-011 maps to 3GPP TS 34.229-1 clause 8.1, which executes the generic
-procedure in Annex C.2.  The local pjsua evidence only covers C.2 Steps 4-7 at
-field level.  Steps 6-11 (temporary IPsec SA, Security-Client/Security-Verify,
-SUBSCRIBE/NOTIFY registration state) were never executed, and the official TP
-also requires two PIXIT rounds (px_IMS_IpSecAlgorithm = HMAC-MD5-96 and
-HMAC-SHA-1-96).
+procedure in Annex C.2.  The original local pjsua evidence only covered C.2
+Steps 4-7 at field level.  Before this harness, Steps 6-11 (temporary IPsec SA,
+Security-Client/Security-Verify, SUBSCRIBE/NOTIFY registration state) had not
+been covered.  The official TP also requires two PIXIT rounds
+(px_IMS_IpSecAlgorithm = HMAC-MD5-96 and HMAC-SHA-1-96).
 
 This script implements the SS/P-CSCF side of Annex C.2 as a real UDP endpoint
 that judges a UE message by message, plus a reference UE emulator used only to
@@ -27,7 +27,7 @@ that ESP/ah was applied, and the verdict JSON says so explicitly.
 
 Usage
 -----
-  # harness self-test, both PIXIT algorithms, write evidence bundle
+  # harness self-test: both PIXIT algorithms, C.2 Steps 4-11, evidence bundle
   python3 tc011_ipsec_ss_sim.py --selftest --out-dir /tmp/tc011-l1
 
   # point the SS side at a real DUT (passive): waits for the first REGISTER
@@ -129,7 +129,10 @@ class Transcript:
                 f"[{e['t']:7.3f}] {e['direction']:10s} step={e['step']:<2d} "
                 f"peer={e['peer']} bytes={e['bytes']}"
             )
-            out.extend("    " + ln for ln in e["payload"].rstrip("\n").splitlines())
+            out.extend(
+                ("    " + ln).rstrip()
+                for ln in e["payload"].rstrip("\n").splitlines()
+            )
         out.append(LINE)
         for c in self.checks:
             out.append(

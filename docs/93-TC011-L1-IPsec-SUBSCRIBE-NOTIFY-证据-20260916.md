@@ -33,6 +33,8 @@ python work/verify_34229_annexA.py
 python work/verify_34229_version_boundary.py
 ```
 
+上述三个脚本属于原始抽取工作区，不在 Git 发布仓库中；Git 发布仓库的复跑入口是下一节的 `runners/tc011_ipsec_ss_sim.py`。
+
 ## 3. 执行命令
 
 ```text

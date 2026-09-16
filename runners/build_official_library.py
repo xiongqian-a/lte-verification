@@ -117,10 +117,12 @@ def main() -> None:
             if all_refs:
                 evidence_refs = all_refs
         evidence_level = item.get("evidenceLevel", "RESTRICTED")
-        phase = "L0"
-        if evidence_level in ("RESTRICTED", "STANDARD_ALIGNED"):
+        evidence_scope = item.get("evidenceScope")
+        if evidence_scope:
+            phase = evidence_scope
+        elif evidence_level in ("RESTRICTED", "STANDARD_ALIGNED"):
             phase = "L2_PENDING"
-        elif evidence_level in ("LOCAL_PASS", "SELFCHECK_PASS", "LIMITED_PASS"):
+        else:
             phase = "L0"
 
         prev = previous.get(tc, {})
@@ -147,7 +149,7 @@ def main() -> None:
                 # Registry is the source of truth for current status notes.
                 # Keeping a previous note can silently preserve stale evidence.
                 "note": item.get("note", ""),
-                "evidence_scope": item.get("evidenceScope") or prev.get("evidence_scope"),
+                "evidence_scope": evidence_scope or prev.get("evidence_scope"),
                 "evidence_dir": item.get("evidenceDir") or prev.get("evidence_dir"),
                 "last_updated": prev.get("last_updated"),
             }

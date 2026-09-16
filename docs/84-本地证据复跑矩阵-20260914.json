@@ -1,5 +1,10 @@
 {
   "generated_at": "2026-09-16T11:02:22+08:00",
+  "historical_snapshot": true,
+  "superseded_by": [
+    "docs/93-TC011-L1-IPsec-SUBSCRIBE-NOTIFY-证据-20260916.md",
+    "evidence/local/tc011-l1-20260916/"
+  ],
   "results": [
     {
       "name": "tc001_ims_pdn",
