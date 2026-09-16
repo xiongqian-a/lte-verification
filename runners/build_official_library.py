@@ -147,7 +147,8 @@ def main() -> None:
                 # Registry is the source of truth for current status notes.
                 # Keeping a previous note can silently preserve stale evidence.
                 "note": item.get("note", ""),
-                "evidence_dir": prev.get("evidence_dir"),
+                "evidence_scope": item.get("evidenceScope") or prev.get("evidence_scope"),
+                "evidence_dir": item.get("evidenceDir") or prev.get("evidence_dir"),
                 "last_updated": prev.get("last_updated"),
             }
         )

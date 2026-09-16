@@ -28,6 +28,7 @@ standards/
 # Temporary/debug output; generated reports are intentionally tracked
 tmp/
 temp/
+runners/outputs/tc011-l1-selfcheck/
 *.tmp
 *.bak
 *.orig

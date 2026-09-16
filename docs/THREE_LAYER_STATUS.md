@@ -31,7 +31,7 @@
 | TC-008 | Y：official_tp_suites/TC-008 | no | RESTRICTED：真实 eNB/EPC |
 | TC-009 | Y：official_tp_suites/TC-009 | no | RESTRICTED：真实多承载 + UL TFT |
 | TC-010 | Y：official_tp_suites/TC-010 | no | RESTRICTED：真实 RAN/EPC |
-| TC-011 | Y：套件文档已生成 | Y：tc011_register_flow | RESTRICTED：官方 SS `.3.2` 未跑 |
+| TC-011 | Y：套件文档已生成，Annex C.2 Steps 4-11 已锚定 | Y：`runners/tc011_ipsec_ss_sim.py --selftest`；`L1_LOCAL_SIMULATED` PASS，HMAC-MD5-96 与 HMAC-SHA-1-96 两轮均 8/8；端口/SPI/Security Header 仿真 | RESTRICTED：真实内核 `xfrm`/ESP、真实 UE/SS、官方 Verdict |
 | TC-012 | Y：套件文档已生成 | Y：tc012_mo_call | RESTRICTED：官方 SS/一致性仪表 |
 | TC-013 | Y：套件文档已生成 | Y：tc013_invalid_auth 自检；真实 bad-key EXPECTED_FAIL | RESTRICTED：真实 IMS/HSS 注入无效挑战 |
 | TC-014 | Y：套件文档已生成 | Y：tc014_rereg / LIMITED_PASS | RESTRICTED：1200/1800s 序列、IPSEC、PANI |

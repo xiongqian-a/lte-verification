@@ -145,6 +145,7 @@
       "phase": "L0",
       "limitation": "真实 eNB/EPC 端到端",
       "note": "UE 侧 nas_test 重跑：IMS APN PDN 请求/PTI/dedicated accept 已复现；端到端真实 eNB/EPC 仍缺",
+      "evidence_scope": null,
       "evidence_dir": "local:C:/标准例程/verification-evidence/tc004-nas-test-20260914/nas_test_rerun_20260914.log",
       "last_updated": "2026-09-14T10:02:00+0800"
     },
@@ -259,6 +260,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 EPC 触发",
       "note": "UE 单测注入/字段证据；缺真实 EPC 触发专用承载",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -482,6 +484,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 EPC 触发",
       "note": "4 子例；UE 单测注入/字段证据；缺真实 EPC 触发释放",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -695,6 +698,7 @@
       "phase": "L0",
       "limitation": "真实核心网注入",
       "note": "UE 侧 nas_test 重跑：PDN REJECT cause=0x20、state=INACTIVE、T3482 停止、backoff 720s 已复现；真实核心网注入仍缺",
+      "evidence_scope": null,
       "evidence_dir": "local:C:/标准例程/verification-evidence/tc004-nas-test-20260914/nas_test_rerun_20260914.log",
       "last_updated": "2026-09-14T10:02:00+0800"
     },
@@ -802,6 +806,7 @@
       "phase": "L0",
       "limitation": "L2: 一致性 SS/仪表；IPv6/IPv4v6 双栈分配、method II P-CSCF discovery 逐字段检查、additional PDN 网络侧释放/E1 结束态尚未由官方环境验证",
       "note": "2026-09-14 co1750 srsRAN 4G + 补丁版 Open5GS 观察到 internet EBI=5、第二个 ims 默认承载 EBI=6、IMS 专用承载 EBI=7 且 linked_bearer_id=6；MME 维持 2 个 session，SGW-C 完成 Create Bearer Response。LOCAL_BEHAVIOR=PASS；IPv4v6/IPv6、method II P-CSCF discovery 逐字段、网络侧 additional PDN 释放/E1 和官方 Verdict 仍 RESTRICTED。",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -909,6 +914,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 RRC/eNB/SS 或合格一致性仪表缺失；静态能力/字段检查不能替代官方 TP Verdict",
       "note": "官方 TP 8.2.1.8 已逐行锚定；关键判据为 headerCompression=rohc 以及 profile0x0001/profile0x0002；真实 RRC/eNB/SS 或一致性仪表执行仍缺",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -1173,6 +1179,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 RRC/eNB/SS 或合格一致性仪表缺失；SPS 独立官方 LTE 一致性 TP 尚未核到",
       "note": "官方 DRX/eDRX 6 条 TP 已逐行锚定；7.1.6.5 的 .3.2 明确继承 7.1.6.1.3.2；SPS 无已核到的独立 LTE 一致性 TP，仅作行为补充",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -1264,6 +1271,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 eNB/EPC",
       "note": "真实 eNB/EPC 端到端缺",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -1527,6 +1535,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实多承载 + UL TFT",
       "note": "真实多承载+UL TFT 环境缺",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -1754,6 +1763,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 RAN/EPC",
       "note": "真实 RAN/EPC 触发缺",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -1908,11 +1918,12 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc011_register_flow.py",
+      "local_script": "runners/tc011_ipsec_ss_sim.py",
       "phase": "L0",
-      "limitation": "官方 SS/一致性仪表",
-      "note": "co1750 真实 401->200 字段 PASS；未按官方 SS .3.2 跑 P/F",
-      "evidence_dir": null,
+      "limitation": "官方 SS/一致性仪表；真实内核 xfrm/ESP",
+      "note": "L1_LOCAL_SIMULATED PASS：TC-011 Annex C.2 Steps 4-11 在端口/SPI/Security Header 级仿真通过，HMAC-MD5-96 与 HMAC-SHA-1-96 两轮均 8/8 PASS；official_verdict=null，NO_OFFICIAL_VERDICT；真实内核 xfrm/ESP 与真实 UE/SS 仍受限。",
+      "evidence_scope": "L1_LOCAL_SIMULATED",
+      "evidence_dir": "evidence/local/tc011-l1-20260916",
       "last_updated": null
     },
     {
@@ -2092,6 +2103,7 @@
       "phase": "L0",
       "limitation": "官方 SS/一致性仪表",
       "note": "co1750 真实 pjsua 呼叫 PASS；未按官方 .3.2 子例跑",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": "2026-09-14T09:38:07+0800"
     },
@@ -2242,6 +2254,7 @@
       "phase": "L0",
       "limitation": "HSS 可注入错误向量，但当前 pjsua/ims_client_fix 缺 Security-Client/Security-Verify/auts/resync 与临时 SA 行为；需 UE 新栈实现或一致性仪表",
       "note": "判定引擎自检 PASS；真实 bad-key 日志 EXPECTED_FAIL，不等同官方无效挑战处理；官方一致性 RESTRICTED/L2_REQUIRED；本轮只读侦察见 outputs/86-TC013-真实环境无效AKA注入可行性-20260914.md",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -2397,6 +2410,7 @@
       "phase": "L0",
       "limitation": "官方 SS 定时窗口 / IPSEC / PANI",
       "note": "2026-09-14 co1750 真实日志：8 次 REGISTER、4x401/4x200、CSeq 51261-51268 严格递增、Expires=1800、3 次手动重注册均到 200；官方到期时间窗、IPSEC SA 更新、P-Access-Network-Info 仍为 N/A",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -2499,6 +2513,7 @@
       "phase": "L0",
       "limitation": "真实 S-CSCF 重启/504",
       "note": "本地 504 alternative-service responder PASS；真实 S-CSCF 504 端到端缺",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -2545,6 +2560,7 @@
       "phase": "L0",
       "limitation": "无官方独立 ID；需真实 IMS/SS 才能补端到端行为证据",
       "note": "真实同 Call-ID 顺序重复 REGISTER 复判 PASS；24.229 行 3251/3468-3486 仅作行为支撑，无官方独立一致性 TC",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -2701,6 +2717,7 @@
       "phase": "L0",
       "limitation": "官方子例完整执行",
       "note": "真实双呼叫 PASS；属 12.12 重复/长稳变体",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -2741,6 +2758,7 @@
       "phase": "L0",
       "limitation": "无官方一致性 ID；只作本地鲁棒性证据",
       "note": "本地注入/自检 PASS；当前已核 24.229/34.229-1 无独立畸形 REGISTER 一致性 TC，归自研健壮性",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -2916,6 +2934,7 @@
       "phase": "L0",
       "limitation": "真实被叫/IMS 呼叫台",
       "note": "co1750 pjsua MT 日志 PASS；缺真实 IMS 呼叫台端到端",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -3069,6 +3088,7 @@
       "phase": "L0",
       "limitation": "真实 MMTel/IMS",
       "note": "co1750 pjsua hold/resume 日志 PASS；缺真实 MMTel/IMS end-to-end",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -3436,6 +3456,7 @@
       "phase": "L0",
       "limitation": "真实 MMTel/IMS/一致性仪表",
       "note": "双 UA REFER + conference join 字段级 PASS；官方 .3.2 子例未跑",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -3779,6 +3800,7 @@
       "phase": "L0",
       "limitation": "官方 SDP/媒体子例",
       "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -4127,6 +4149,7 @@
       "phase": "L0",
       "limitation": "官方 SDP/媒体子例",
       "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -4175,6 +4198,7 @@
       "phase": "L0",
       "limitation": "非强制官方独立 TC",
       "note": "真实长稳 131.221s PASS；偏实测/长稳，非强制一致性独立 TC",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -4242,6 +4266,7 @@
       "phase": "L0",
       "limitation": "NO_DATA 实际传输=10（TS 26.093 行 229 明确不应在 AN 传输）；SID cadence=1000 帧不符合 8 帧规则；完整 AMR SCR SID_FIRST/SID_UPDATE 时序、真实产品 codec 或一致性仪表仍缺",
       "note": "2026-09-14 长静音抓包经 bandwidth-efficient AMR ToC 复判：AMR speech=218、FT15 NO_DATA=10、SID=4；sid_delta_ts=160000,160000、sid_delta_frames=1000,1000，不符合 26.093 SID_UPDATE 8 帧/1280 ticks；且 NO_DATA 被 RTP 实际传输 10 次。LOCAL_BEHAVIOR=PARTIAL，STANDARD_ASSERTION=FAIL，整体仍为 LIMITED_PASS。",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -5598,6 +5623,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 eNB/EPC/SS",
       "note": "真实 eNB/EPC/SS 或一致性仪表缺；36.508 锚点（V14.3.0）：Table 4.5A.7.3-1: EUTRA/EPS signalling for IMS MT speech call 行 17622；Table 4.8.3-1: UTRA reference radio parameters and combinations 行 35964；Parallel 254537-254560；Parallel 255193-255236、255238-255279；Parallel 254537-254560；Parallel 255193-255236、255238-255279；Parallel 254537-254560；Parallel 255193-255236、255238-255279；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.4.3.1 body 行 254166 / TP 行 254167 / .3.2 行 254385 / Main behaviour 行 254445-254529 / .3.3 行 254562-254761；Parallel 254537-254560；13.4.3.2 body 行 254762 / TP 行 254764 / .3.2 行 255041 / Main behaviour 行 255101-255185 / .3.3 行 255285-255456；Parallel 255193-255236、255238-255279；13.4.3.3 body 行 255457 / TP 行 255458 / .3.2 行 255655 / Main behaviour 行 255687-255740 / .3.3 行 255747-255946",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -6715,6 +6741,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 aSRVCC/SS",
       "note": "真实 aSRVCC/SS 注入缺；36.508 锚点（V14.3.0）：Table 4.5A.6.3-1: EUTRA/EPS signalling for IMS MO speech call 行 17476；Table 4.5A.7.3-1: EUTRA/EPS signalling for IMS MT speech call 行 17622；Table 4.8.3-1: UTRA reference radio parameters and combinations 行 35964；Parallel 258035-258042、258044-258068；Parallel 260063-260087；Parallel 258035-258042、258044-258068；Parallel 260063-260087；Parallel 258035-258042、258044-258068；Parallel 260063-260087；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.4.3.7 body 行 257651 / TP 行 257652 / .3.2 行 257860 / Main behaviour 行 257924-258033 / .3.3 行 258070-258314；Parallel 258035-258042、258044-258068；13.4.3.10 body 行 259691 / TP 行 259692 / .3.2 行 259903 / Main behaviour 行 259967-260057 / .3.3 行 260089-260333；Parallel 260063-260087",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -7008,6 +7035,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 SIB2/RRC",
       "note": "真实 SIB2 SSAC/RRC 行为观测缺；36.508 锚点（V14.3.0）：Table 4.5A.6.3-1: EUTRA/EPS signalling for IMS MO speech call 行 17476；Table 4.4.3.3-1: SystemInformationBlockType2 行 10026；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.5.1 body 行 275624 / TP 行 275626 / .3.2 行 275716 / Main behaviour 行 275717-275752 / .3.3 行 275754-275777；13.5.1a body 行 275778 / TP 行 275780 / .3.2 行 275880 / Main behaviour 行 275881-275931 / .3.3 行 275937-275950",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -7191,6 +7219,7 @@
       "phase": "L2_PENDING",
       "limitation": "真实 SIB2/RRC",
       "note": "真实 SIB2 SCM skip/RRC 行为观测缺；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：13.5.4 body 行 276534 / TP 行 276536 / .3.2 行 276827 / Main behaviour 行 276828-276861 / .3.3 行 276863-276893",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -7386,6 +7415,7 @@
       "phase": "L0",
       "limitation": "官方一致性/紧急 PDN",
       "note": "co1750 历史 112/110/119/120 功能级 PASS；2026-09-11 phase5 命名空间 fifo 复跑 tc030-emergency-112-20260911-155404 复现 PASS（REGISTER 401->200、INVITE->100->200、ACK、CONFIRMED、RTP 0丢包、BYE 200；S-CSCF EMERGENCY-RULE-HIT + ROUTE-REWRITE；call_rc=124 为 timeout 包装返回，非呼叫失败）；官方一致性、紧急 PDN、emergency registration 仍受限；36.508 锚点（V14.3.0）：Table 4.5A.4.3-1: EUTRA/EPS signalling for IMS Emergency Call 行 16909；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：11.2.1 body 行 235227 / TP 行 235231 / .3.2 行 235399 / Main behaviour 行 235400-235467 / .3.3 行 235473-235482",
+      "evidence_scope": null,
       "evidence_dir": "server:/home/co1750/verification-evidence/tc030-emergency-112-20260911-155404",
       "last_updated": "2026-09-11T16:01:36+0800"
     },
@@ -8059,6 +8089,7 @@
       "phase": "L2_PENDING",
       "limitation": "eCall/MSD/SLR/PSAP；TS 36.508 4.5A.27 已于 V18.6.0 终核（22184-22370），真实 eCall/MSD/SLR/PSAP 与 L2 仪表 Verdict 仍缺",
       "note": "缺 eCall/MSD/SLR/PSAP 或一致性仪表；36.508 锚点（V14.3.0）：Table 4.5A.26.3-1: EUTRA/EPS signalling for eCall over IMS 行 19224；36.508 V18.6.0 已终核 4.5A.27 eCall Only Support：章节行 22184-22185，初始状态行 22186-22191，Main behaviour 表 4.5A.27.3-1 行 22197-22300，Parallel behaviour 行 22302-22319，Specific message contents 行 22322-22370（PDN request type 0100B 行 22324-22328、SOS APN/默认承载 #2 行 22330-22347、专用承载 linked EBId-2 行 22349-22369）；Parallel 240822-240833；Parallel 240822-240833；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：11.3.5 body 行 240601 / TP 行 240604 / .3.2 行 240685 / Main behaviour 行 240686-240820 / .3.3 行 240835-240859；Parallel 240822-240833；11.3.8 body 行 240975 / TP 行 240977 / .3.2 行 241108 / Main behaviour 行 241142-241207 / .3.3 行 241209-241391",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -8260,6 +8291,7 @@
       "phase": "L0",
       "limitation": "官方 .3.2 子例/真实 IMS",
       "note": "本地 responder 503/504 PASS；401/403/488 不硬挂 503/504 ID",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -8306,6 +8338,7 @@
       "phase": "L0",
       "limitation": "无独立官方 ID",
       "note": "本地黑盒超时 PASS；34.229-1 无独立定时器 TC",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     },
@@ -8340,6 +8373,7 @@
       "phase": "L2_PENDING",
       "limitation": "YD/T 编号/运营商清单",
       "note": "缺具体 YD/T 编号和运营商清单；不编造",
+      "evidence_scope": null,
       "evidence_dir": null,
       "last_updated": null
     }

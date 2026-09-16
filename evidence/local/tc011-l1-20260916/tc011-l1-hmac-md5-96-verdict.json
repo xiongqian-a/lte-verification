@@ -1,0 +1,582 @@
+{
+  "tc_id": "TC-011",
+  "official_spec": "3GPP TS 34.229-1 clause 8.1 + Annex C.2",
+  "layer": "L1_LOCAL_SIMULATED",
+  "official_verdict": null,
+  "dut": "reference_ue_emulator",
+  "pixit": {
+    "px_IMS_IpSecAlgorithm": "hmac-md5-96"
+  },
+  "algorithm": "hmac-md5-96",
+  "bind": "127.0.0.1:57098",
+  "started_epoch": 1789530565,
+  "steps": {
+    "4": {
+      "direction": "UE -> SS",
+      "title": "initial unprotected REGISTER",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 4,
+          "check": "request line is REGISTER",
+          "ok": true,
+          "detail": "REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0"
+        },
+        {
+          "step": 4,
+          "check": "Request-URI is the home domain",
+          "ok": true,
+          "detail": "REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0"
+        },
+        {
+          "step": 4,
+          "check": "initial REGISTER is unprotected (no Authorization)",
+          "ok": true,
+          "detail": "authorization_present=False"
+        },
+        {
+          "step": 4,
+          "check": "From and To carry the same public user identity",
+          "ok": true,
+          "detail": "From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'"
+        },
+        {
+          "step": 4,
+          "check": "Contact present",
+          "ok": true,
+          "detail": "<sip:001010123456780@127.0.0.1:57099;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+        },
+        {
+          "step": 4,
+          "check": "initial Contact uses an unprotected UE port",
+          "ok": true,
+          "detail": "contact_port=57099 source_port=57099"
+        },
+        {
+          "step": 4,
+          "check": "Contact advertises MTSI ICSI and instance ID",
+          "ok": true,
+          "detail": "<sip:001010123456780@127.0.0.1:57099;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+        },
+        {
+          "step": 4,
+          "check": "Expires is the official 600000 seconds",
+          "ok": true,
+          "detail": "600000"
+        },
+        {
+          "step": 4,
+          "check": "Supported contains path",
+          "ok": true,
+          "detail": "path, gruu, outbound"
+        },
+        {
+          "step": 4,
+          "check": "Via has rport and a z9hG4bK branch",
+          "ok": true,
+          "detail": "SIP/2.0/UDP 127.0.0.1:57099;rport;branch=z9hG4bK-ue-1"
+        },
+        {
+          "step": 4,
+          "check": "Route is not present in initial REGISTER",
+          "ok": true,
+          "detail": "route_present=False"
+        },
+        {
+          "step": 4,
+          "check": "Require contains sec-agree",
+          "ok": true,
+          "detail": "sec-agree"
+        },
+        {
+          "step": 4,
+          "check": "Proxy-Require contains sec-agree",
+          "ok": true,
+          "detail": "sec-agree"
+        },
+        {
+          "step": 4,
+          "check": "Max-Forwards is a non-zero value",
+          "ok": true,
+          "detail": "70"
+        },
+        {
+          "step": 4,
+          "check": "P-Access-Network-Info identifies E-UTRAN",
+          "ok": true,
+          "detail": "3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001"
+        },
+        {
+          "step": 4,
+          "check": "Security-Client present",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57100; port-s=57101"
+        },
+        {
+          "step": 4,
+          "check": "Security-Client announces the negotiated algorithm",
+          "ok": true,
+          "detail": "alg='hmac-md5-96' expected='hmac-md5-96'"
+        },
+        {
+          "step": 4,
+          "check": "Security-Client uses ipsec-3gpp/ESP transport/null cipher",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57100; port-s=57101"
+        },
+        {
+          "step": 4,
+          "check": "Security-Client carries spi-c/spi-s/port-c/port-s",
+          "ok": true,
+          "detail": "{\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"57100\", \"port-s\": \"57101\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}"
+        },
+        {
+          "step": 4,
+          "check": "Security-Client has exactly one mechanism entry",
+          "ok": true,
+          "detail": "entries=1"
+        },
+        {
+          "step": 4,
+          "check": "Call-ID captured for the dialog",
+          "ok": true,
+          "detail": "tc011-l1-call-0001"
+        }
+      ]
+    },
+    "5": {
+      "direction": "SS -> UE",
+      "title": "401 Unauthorized with AKAv1-MD5 challenge + Security-Server",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 5,
+          "check": "SS sends 401 with AKAv1-MD5 challenge",
+          "ok": true,
+          "detail": "WWW-Authenticate present"
+        },
+        {
+          "step": 5,
+          "check": "401 copies Via/From/To/Call-ID/CSeq from initial REGISTER",
+          "ok": true,
+          "detail": "transaction fields copied"
+        },
+        {
+          "step": 5,
+          "check": "Security-Server offers selected algorithm with q=0.9",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57098; port-s=57099; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57098; port-s=57099; q=0.7"
+        },
+        {
+          "step": 5,
+          "check": "Security-Server offers alternate algorithm with q=0.7",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57098; port-s=57099; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57098; port-s=57099; q=0.7"
+        }
+      ]
+    },
+    "6": {
+      "direction": "UE -> SS",
+      "title": "second REGISTER over temporary SA (+Security-Client/Verify)",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 6,
+          "check": "second REGISTER is a REGISTER request",
+          "ok": true,
+          "detail": "REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0"
+        },
+        {
+          "step": 6,
+          "check": "same Call-ID reused",
+          "ok": true,
+          "detail": "first='tc011-l1-call-0001' second='tc011-l1-call-0001'"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER arrives on the announced temporary SA port",
+          "ok": true,
+          "detail": "src_port=57100 announced_port-c=57100"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER Contact uses the protected UE port",
+          "ok": true,
+          "detail": "contact='sip:001010123456780@127.0.0.1:57100;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=57100"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER Via uses the protected UE port",
+          "ok": true,
+          "detail": "SIP/2.0/UDP 127.0.0.1:57100;rport;branch=z9hG4bK-ue-2"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER still has Require: sec-agree",
+          "ok": true,
+          "detail": "sec-agree"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER still has Proxy-Require: sec-agree",
+          "ok": true,
+          "detail": "sec-agree"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER has no Route header",
+          "ok": true,
+          "detail": "route_present=False"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER Max-Forwards is non-zero",
+          "ok": true,
+          "detail": "70"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER P-Access-Network-Info identifies E-UTRAN",
+          "ok": true,
+          "detail": "3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001"
+        },
+        {
+          "step": 6,
+          "check": "Authorization present",
+          "ok": true,
+          "detail": "Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001"
+        },
+        {
+          "step": 6,
+          "check": "Authorization response is non-empty",
+          "ok": true,
+          "detail": "Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001"
+        },
+        {
+          "step": 6,
+          "check": "Authorization contains the complete AKA Digest tuple",
+          "ok": true,
+          "detail": "Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,"
+        },
+        {
+          "step": 6,
+          "check": "Authorization nonce/opaque are server values",
+          "ok": true,
+          "detail": "Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,"
+        },
+        {
+          "step": 6,
+          "check": "second REGISTER Contact advertises MTSI ICSI and instance ID",
+          "ok": true,
+          "detail": "<sip:001010123456780@127.0.0.1:57100;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+        },
+        {
+          "step": 6,
+          "check": "Security-Client present on protected REGISTER",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57100; port-s=57101"
+        },
+        {
+          "step": 6,
+          "check": "Security-Client is unchanged from the initial REGISTER",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57100; port-s=57101"
+        },
+        {
+          "step": 6,
+          "check": "Security-Verify present on protected REGISTER",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57098; port-s=57099; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57098; port-s=57099; q=0.7"
+        },
+        {
+          "step": 6,
+          "check": "Security-Verify echoes the complete Security-Server",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57098; port-s=57099; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57098; port-s=57099; q=0.7"
+        },
+        {
+          "step": 6,
+          "check": "Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s",
+          "ok": true,
+          "detail": "{\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"57098\", \"port-s\": \"57099\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}"
+        },
+        {
+          "step": 6,
+          "check": "Security-Verify carries both PIXIT algorithm candidates",
+          "ok": true,
+          "detail": "[{\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"57098\", \"port-s\": \"57099\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"57098\", \"port-s\": \"57099\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]"
+        }
+      ]
+    },
+    "7": {
+      "direction": "SS -> UE",
+      "title": "200 OK over the same temporary SA",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 7,
+          "check": "200 OK sent to the temporary SA port",
+          "ok": true,
+          "detail": "dst_port=57100"
+        },
+        {
+          "step": 7,
+          "check": "200 OK carries P-Associated-URI",
+          "ok": true,
+          "detail": "<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>"
+        },
+        {
+          "step": 7,
+          "check": "200 OK carries Service-Route",
+          "ok": true,
+          "detail": "orig route present"
+        },
+        {
+          "step": 7,
+          "check": "200 OK copies the second REGISTER transaction fields",
+          "ok": true,
+          "detail": "transaction fields copied"
+        },
+        {
+          "step": 7,
+          "check": "200 OK Contact matches the registered protected contact",
+          "ok": true,
+          "detail": "sip:001010123456780@127.0.0.1:57100;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\""
+        }
+      ]
+    },
+    "8": {
+      "direction": "UE -> SS",
+      "title": "SUBSCRIBE reg event package over new SA",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 8,
+          "check": "SUBSCRIBE request received",
+          "ok": true,
+          "detail": "SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Request-URI is exactly the public user identity",
+          "ok": true,
+          "detail": "SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE arrives on the new SA port",
+          "ok": true,
+          "detail": "src_port=57100 expected=57100"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Contact uses the protected UE port",
+          "ok": true,
+          "detail": "<sip:001010123456780@127.0.0.1:57100;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Via uses the protected UE port",
+          "ok": true,
+          "detail": "SIP/2.0/UDP 127.0.0.1:57100;rport;branch=z9hG4bK-ue-3"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE follows the stored Service-Route",
+          "ok": true,
+          "detail": "route='<sip:orig@127.0.0.1:57098;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:57098;lr>, <sip:scscf.3gpp.org;lr>'"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE From has a tag and To is untagged",
+          "ok": true,
+          "detail": "From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE carries the echoed Security-Verify value",
+          "ok": true,
+          "detail": "ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57098; port-s=57099; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57098; port-s=57099; q=0.7"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Require contains sec-agree",
+          "ok": true,
+          "detail": "sec-agree"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Proxy-Require contains sec-agree",
+          "ok": true,
+          "detail": "sec-agree"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Expires is 600000",
+          "ok": true,
+          "detail": "600000"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Max-Forwards is non-zero",
+          "ok": true,
+          "detail": "70"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE P-Access-Network-Info identifies E-UTRAN",
+          "ok": true,
+          "detail": "3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE targets the registration event package",
+          "ok": true,
+          "detail": "reg"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE Accept allows application/reginfo+xml",
+          "ok": true,
+          "detail": "application/reginfo+xml"
+        },
+        {
+          "step": 8,
+          "check": "SUBSCRIBE uses the default public user identity",
+          "ok": true,
+          "detail": "SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0"
+        }
+      ]
+    },
+    "9": {
+      "direction": "SS -> UE",
+      "title": "200 OK for SUBSCRIBE",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 9,
+          "check": "SS accepts SUBSCRIBE with 200 OK",
+          "ok": true,
+          "detail": "200 OK"
+        },
+        {
+          "step": 9,
+          "check": "SUBSCRIBE 200 OK keeps Call-ID and CSeq",
+          "ok": true,
+          "detail": "response correlation"
+        },
+        {
+          "step": 9,
+          "check": "SUBSCRIBE 200 OK adds the server To-tag",
+          "ok": true,
+          "detail": "<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1"
+        },
+        {
+          "step": 9,
+          "check": "SUBSCRIBE 200 OK carries Contact/Expires/Record-Route",
+          "ok": true,
+          "detail": "required response headers"
+        }
+      ]
+    },
+    "10": {
+      "direction": "SS -> UE",
+      "title": "NOTIFY with full registration state XML",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 10,
+          "check": "NOTIFY carries full registration state XML",
+          "ok": true,
+          "detail": "reginfo body present"
+        },
+        {
+          "step": 10,
+          "check": "NOTIFY Subscription-State is active",
+          "ok": true,
+          "detail": "active"
+        },
+        {
+          "step": 10,
+          "check": "NOTIFY swaps SUBSCRIBE dialog tags correctly",
+          "ok": true,
+          "detail": "From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1'"
+        },
+        {
+          "step": 10,
+          "check": "NOTIFY Call-ID/CSeq correlate to SUBSCRIBE",
+          "ok": true,
+          "detail": "dialog correlation"
+        },
+        {
+          "step": 10,
+          "check": "NOTIFY Request-URI is the registered protected contact",
+          "ok": true,
+          "detail": "sip:001010123456780@127.0.0.1:57100;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\""
+        },
+        {
+          "step": 10,
+          "check": "NOTIFY reginfo aors match P-Associated-URI",
+          "ok": true,
+          "detail": "aors=['sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org', 'tel:001010123456780']"
+        }
+      ]
+    },
+    "11": {
+      "direction": "UE -> SS",
+      "title": "200 OK for NOTIFY",
+      "executed": true,
+      "passed": true,
+      "checks": [
+        {
+          "step": 11,
+          "check": "UE answers NOTIFY with 200 OK",
+          "ok": true,
+          "detail": "SIP/2.0 200 OK"
+        },
+        {
+          "step": 11,
+          "check": "NOTIFY 200 OK keeps the Call-ID",
+          "ok": true,
+          "detail": "tc011-l1-sub-call-0001"
+        },
+        {
+          "step": 11,
+          "check": "NOTIFY 200 OK keeps the CSeq method",
+          "ok": true,
+          "detail": "1 NOTIFY"
+        },
+        {
+          "step": 11,
+          "check": "NOTIFY 200 OK keeps the top Via",
+          "ok": true,
+          "detail": "SIP/2.0/UDP 127.0.0.1:57098;branch=z9hG4bK-ss-ntf"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "official_steps": 8,
+    "executed": 8,
+    "passed": 8,
+    "local_l1_verdict": "PASS"
+  },
+  "ipsec_realization": "port_pair_emulation_no_kernel_xfrm",
+  "error": null,
+  "artifacts": {
+    "transcript": "C:\\标准例程-github\\evidence\\local\\tc011-l1-20260916\\tc011-l1-hmac-md5-96-transcript.txt",
+    "verdict": "C:\\标准例程-github\\evidence\\local\\tc011-l1-20260916\\tc011-l1-hmac-md5-96-verdict.json"
+  },
+  "notes": [
+    "Real SIP messages over a real UDP socket; per-message checks follow TS 34.229-1 Annex C.2 Steps 4-11.",
+    "IPsec is emulated at the Security-Client/Security-Verify port and SPI level. No kernel xfrm state/policy is created, so this is not proof that ESP/AH protected the SIP exchange.",
+    "This is not a 36.523-1 / 34.229-1 conformance verdict. Only a qualified SS or accredited laboratory can produce that."
+  ]
+}

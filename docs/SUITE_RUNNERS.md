@@ -72,7 +72,7 @@ python work/gen_detailed_progress.py
 | TC-008 | 无 | STANDARD_ALIGNED | 真实 eNB/EPC |
 | TC-009 | 无 | STANDARD_ALIGNED | 真实多承载 + UL TFT |
 | TC-010 | 无 | STANDARD_ALIGNED | 真实 RAN/EPC |
-| TC-011 | `python work/tc011_register_flow.py` | PASS（字段级） | 官方 SS `.3.2` |
+| TC-011 | `python runners/tc011_register_flow.py --selfcheck` / `--log evidence/external/tc12-tc13-calls-raw.log`；`python runners/tc011_ipsec_ss_sim.py --selftest --out-dir evidence/local/tc011-l1-20260916` | 基础 SIP：LIMITED_PASS；L1 仿真：`L1_LOCAL_SIMULATED` PASS（Annex C.2 Steps 4-11，HMAC-MD5-96 + HMAC-SHA-1-96 各 8/8）；OFFICIAL_VERDICT=INCONCLUSIVE | 真实内核 `xfrm`/ESP、真实 UE/SS、官方 SS Verdict |
 | TC-012 | `python work/tc012_mo_call.py` | PASS（字段级） | 官方 SS/一致性仪表 |
 | TC-013 | `python work/tc013_invalid_auth.py --selfcheck` | SELFCHECK PASS；真实 bad-key EXPECTED_FAIL | 真实 IMS/HSS 注入无效 AKA 挑战 |
 | TC-014 | `python work/tc014_rereg.py --raw --log ...` | PASS/LIMITED_PASS | 1200/1800s 序列、IPSEC、PANI |

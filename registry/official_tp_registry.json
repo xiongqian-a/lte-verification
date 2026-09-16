@@ -1407,7 +1407,7 @@
       "officialClause": "8.1 Initial registration",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc011_register_flow.py",
+      "localScript": "runners/tc011_ipsec_ss_sim.py",
       "sourceEvidenceLines": [
         "34229-1e70-word.txt line 3875-4151 (TP 8.1)",
         "34229-1e70-word.txt line 32380-32448 (Annex C.2)",
@@ -1421,8 +1421,10 @@
       "crossReferenceEvidence": [
         "34229-1e70_ascii.txt line 3253-3502 (ASCII extraction cross-check only)"
       ],
-      "note": "co1750 真实 401->200 字段 PASS；未按官方 SS .3.2 跑 P/F",
-      "blocker": "官方 SS/一致性仪表",
+      "note": "L1_LOCAL_SIMULATED PASS：TC-011 Annex C.2 Steps 4-11 在端口/SPI/Security Header 级仿真通过，HMAC-MD5-96 与 HMAC-SHA-1-96 两轮均 8/8 PASS；official_verdict=null，NO_OFFICIAL_VERDICT；真实内核 xfrm/ESP 与真实 UE/SS 仍受限。",
+      "blocker": "官方 SS/一致性仪表；真实内核 xfrm/ESP",
+      "evidenceScope": "L1_LOCAL_SIMULATED",
+      "evidenceDir": "evidence/local/tc011-l1-20260916",
       "officialBoundaries": [
         {
           "section": "8.1",

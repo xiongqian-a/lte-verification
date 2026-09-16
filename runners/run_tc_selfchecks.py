@@ -101,7 +101,10 @@ def render_markdown(results, generated_at):
             "```",
             "",
         ]
-    return "\n".join(lines)
+    # Strip trailing whitespace per physical line (embedded script output can
+    # carry trailing spaces) so regenerated reports stay clean for git diff.
+    text = "\n".join(lines)
+    return "\n".join(part.rstrip() for part in text.split("\n"))
 
 
 def main():

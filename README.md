@@ -106,7 +106,7 @@ The default run validates:
 
 - registry and suite metadata consistency;
 - completeness of all 34 suite documents;
-- 23 verdict-checker self-checks;
+- all verdict-checker self-checks;
 - replay of the included local evidence matrix;
 - the TC-026..031 evidence schema and L2 adapter semantics;
 - generation of the detailed progress and official-style reports.
@@ -153,6 +153,7 @@ repository-relative paths.
 | `docs/89-最终交付与汇报口径-20260915.md` | Delivery scope, limitations, and reporting language |
 | `docs/91-最终冻结清单与复核日志-20260915.md` | Freeze record and verification log |
 | `docs/THREE_LAYER_STATUS.md` | L0/L1/L2 implementation status by TC |
+| `docs/93-TC011-L1-IPsec-SUBSCRIBE-NOTIFY-证据-20260916.md` | TC-011 local Annex C.2 Steps 4-11 evidence and boundaries |
 | `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
 
 ## Adding or Changing a Case

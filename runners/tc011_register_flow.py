@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""TC-011 IMS registration flow field-level judgement engine.
+"""TC-011 IMS registration flow judgement engine.
 
 Internal TC-011 is "IMS APN PDN connection / initial REGISTER 401 -> 200".
-This script checks the SIP-layer registration evidence from a real pjsua/demo
-log or an already normalized SIP log:
+The script separates the local SIP registration checks from the official
+34.229-1 8.1 / Annex C.2 requirements:
 
+  LOCAL_BASE
   - initial REGISTER sent
   - 401 Unauthorized challenge from the network
   - WWW-Authenticate is Digest with algorithm AKAv1-MD5
@@ -13,7 +14,17 @@ log or an already normalized SIP log:
   - network answers 200 OK
   - 200 OK carries P-Associated-URI and Service-Route
 
-This is field/behaviour evidence, not a 36.523-1 conformance verdict.
+  OFFICIAL_GATES
+  - Security-Client / Security-Server / Security-Verify negotiation
+  - evidence of established IPsec SA state
+  - SUBSCRIBE Event: reg and its matching 200 OK
+  - NOTIFY Event: reg and the UE's matching 200 OK
+  - both HMAC-MD5-96 and HMAC-SHA-1-96 PIXIT rounds
+  - a qualified SS/instrument verdict marker
+
+Without every official gate and a qualified SS verdict, the overall result is
+LIMITED_PASS or FAIL. A SIP log must never be reported as an official
+34.229-1 verdict merely because the plain 401 -> 200 sequence was observed.
 """
 
 from __future__ import annotations
@@ -74,11 +85,111 @@ def is_response_status(msg: str, status: int) -> bool:
     return bool(re.match(r"(?i)^SIP/2\.0\s+" + str(status) + r"\b", line))
 
 
-def assert_true(results: list[dict], check: str, ok: bool, detail: str = "") -> None:
-    results.append({"check": check, "ok": bool(ok), "detail": detail})
+def assert_true(
+    results: list[dict],
+    check: str,
+    ok: bool,
+    detail: str = "",
+    scope: str = "LOCAL_BASE",
+) -> None:
+    results.append({"check": check, "ok": bool(ok), "detail": detail, "scope": scope})
 
 
-def check_tc011(text: str) -> tuple[bool, list[dict], list[str]]:
+def is_request(msg: str, method: str) -> bool:
+    line = msg.strip().splitlines()[0] if msg.strip() else ""
+    return bool(re.match(r"(?i)^" + re.escape(method) + r"\s+\S+\s+SIP/2\.0", line))
+
+
+def response_for_request(messages: list[str], request_idx: int, status: int) -> bool:
+    request = messages[request_idx]
+    call_id = header(request, "Call-ID")
+    cseq = header(request, "CSeq") or ""
+    method = cseq.split()[-1].upper() if cseq else ""
+    for message in messages[request_idx + 1:]:
+        if not is_response_status(message, status):
+            continue
+        if call_id and header(message, "Call-ID") != call_id:
+            continue
+        response_cseq = header(message, "CSeq") or ""
+        if method and not re.search(r"(?i)\b" + re.escape(method) + r"\s*$", response_cseq):
+            continue
+        return True
+    return False
+
+
+def has_secure_headers(messages: list[str]) -> dict[str, bool]:
+    initial_register = next((m for m in messages if is_request_register(m)), "")
+    second_register = ""
+    registers = [i for i, m in enumerate(messages) if is_request_register(m)]
+    unauthorized = [i for i, m in enumerate(messages) if is_response_status(m, 401)]
+    if unauthorized and len(registers) >= 2:
+        idx = next((i for i in registers if i > unauthorized[0]), -1)
+        if idx >= 0:
+            second_register = messages[idx]
+    security_server = ""
+    if unauthorized:
+        security_server = header(messages[unauthorized[0]], "Security-Server") or ""
+    return {
+        "initial_security_client": bool(header(initial_register, "Security-Client")),
+        "security_server": bool(security_server and "ipsec-3gpp" in security_server.lower()),
+        "second_security_client": bool(header(second_register, "Security-Client")),
+        "security_verify": bool(header(second_register, "Security-Verify")),
+    }
+
+
+def has_established_sa(text: str) -> tuple[bool, str]:
+    """Recognize real XFRM/SA evidence, not the Security-* headers alone."""
+    markers = re.findall(r"(?im)^\s*IPSEC_SA_ESTABLISHED\s*=\s*(?:true|1|yes)\s*$", text)
+    xfrm_esp = re.search(r"(?im)^.*\bproto\s+esp\b.*$", text)
+    xfrm_auth = re.search(r"(?im)^.*\b(?:hmac\((?:md5|sha1)\)|auth-trunc)\b.*$", text)
+    if markers:
+        return True, "explicit IPSEC_SA_ESTABLISHED marker"
+    if xfrm_esp and xfrm_auth:
+        return True, "XFRM ESP state with authentication algorithm"
+    return False, "no XFRM/SA state evidence; Security-Client alone is not an SA"
+
+
+def has_reg_event_flow(messages: list[str]) -> dict[str, bool]:
+    subscribe_ok = False
+    notify_ok = False
+    for i, message in enumerate(messages):
+        if is_request(message, "SUBSCRIBE") and (header(message, "Event") or "").lower().startswith("reg"):
+            if response_for_request(messages, i, 200):
+                subscribe_ok = True
+        if is_request(message, "NOTIFY") and (header(message, "Event") or "").lower().startswith("reg"):
+            if response_for_request(messages, i, 200):
+                notify_ok = True
+    return {"subscribe_200": subscribe_ok, "notify_200": notify_ok}
+
+
+def has_pixit_round(text: str, algorithm: str) -> bool:
+    marker = re.search(
+        r"(?im)^\s*(?:PIXIT|px_IMS_IpSecAlgorithm)\s*[:=]\s*"
+        + re.escape(algorithm)
+        + r"\s*$",
+        text,
+    )
+    if not marker:
+        return False
+    # A PIXIT label alone is not execution evidence. The selected algorithm
+    # must also occur in Security negotiation or XFRM/SA evidence.
+    security = re.search(
+        r"(?im)^\s*Security-(?:Client|Server|Verify)\s*:.*\balg\s*=\s*"
+        + re.escape(algorithm),
+        text,
+    )
+    xfrm = re.search(
+        r"(?im)^.*\b(?:hmac\("
+        + re.escape(algorithm.replace("HMAC-", "").replace("-96", "").lower())
+        + r"\)|alg\s*=\s*"
+        + re.escape(algorithm)
+        + r")\b.*$",
+        text,
+    )
+    return bool(security or xfrm)
+
+
+def check_tc011(text: str) -> tuple[str, list[dict], list[str], str]:
     messages = split_messages(text)
     results: list[dict] = []
 
@@ -144,16 +255,113 @@ def check_tc011(text: str) -> tuple[bool, list[dict], list[str]]:
         assert_true(results, "200 OK has Service-Route", bool(header(ok200_msg, "Service-Route")),
                     header(ok200_msg, "Service-Route") or "")
 
-    ok = all(r["ok"] for r in results)
-    return ok, results, messages
+    security = has_secure_headers(messages)
+    assert_true(
+        results,
+        "official: initial REGISTER Security-Client",
+        security["initial_security_client"],
+        "present" if security["initial_security_client"] else "missing",
+        "OFFICIAL_GATE",
+    )
+    assert_true(
+        results,
+        "official: 401 Security-Server ipsec-3gpp",
+        security["security_server"],
+        "present" if security["security_server"] else "missing",
+        "OFFICIAL_GATE",
+    )
+    assert_true(
+        results,
+        "official: second REGISTER Security-Client",
+        security["second_security_client"],
+        "present" if security["second_security_client"] else "missing",
+        "OFFICIAL_GATE",
+    )
+    assert_true(
+        results,
+        "official: second REGISTER Security-Verify",
+        security["security_verify"],
+        "present" if security["security_verify"] else "missing",
+        "OFFICIAL_GATE",
+    )
+
+    sa_ok, sa_detail = has_established_sa(text)
+    assert_true(results, "official: temporary IPsec SA established", sa_ok, sa_detail, "OFFICIAL_GATE")
+
+    reg_event = has_reg_event_flow(messages)
+    assert_true(
+        results,
+        "official: SUBSCRIBE Event reg with 200 OK",
+        reg_event["subscribe_200"],
+        "present" if reg_event["subscribe_200"] else "NOT_EXECUTED",
+        "OFFICIAL_GATE",
+    )
+    assert_true(
+        results,
+        "official: NOTIFY Event reg with UE 200 OK",
+        reg_event["notify_200"],
+        "present" if reg_event["notify_200"] else "NOT_EXECUTED",
+        "OFFICIAL_GATE",
+    )
+
+    for algorithm in ("HMAC-MD5-96", "HMAC-SHA-1-96"):
+        pixit_ok = has_pixit_round(text, algorithm)
+        assert_true(
+            results,
+            "official: PIXIT round %s" % algorithm,
+            pixit_ok,
+            "present" if pixit_ok else "RESTRICTED: no configured execution evidence",
+            "OFFICIAL_GATE",
+        )
+
+    qualified_ss = bool(re.search(
+        r"(?im)^\s*(?:QUALIFIED_SYSTEM_SIMULATOR|OFFICIAL_SS)\s*[:=]\s*(?:true|yes|pass)\s*$",
+        text,
+    ))
+    assert_true(
+        results,
+        "official: qualified SS/instrument verdict",
+        qualified_ss,
+        "present" if qualified_ss else "INCONCLUSIVE: no qualified SS verdict",
+        "OFFICIAL_GATE",
+    )
+
+    base_ok = all(r["ok"] for r in results if r["scope"] == "LOCAL_BASE")
+    official_ok = all(r["ok"] for r in results if r["scope"] == "OFFICIAL_GATE")
+    if not base_ok:
+        result = "FAIL"
+    elif official_ok:
+        result = "PASS"
+    else:
+        result = "LIMITED_PASS"
+    official_verdict = "PASS" if official_ok else "INCONCLUSIVE"
+    return result, results, messages, official_verdict
 
 
-def print_checks(path: str, ok: bool, results: list[dict], messages: list[str]) -> None:
+def print_checks(path: str, result: str, results: list[dict], messages: list[str], official_verdict: str) -> None:
     print(LINE)
-    print(f"LOG: {path} messages={len(messages)} verdict={'PASS' if ok else 'FAIL'}")
+    print(f"LOG: {path} messages={len(messages)} result={result}")
     for r in results:
         mark = "OK " if r["ok"] else "BAD"
-        print(f"  [{mark}] {r['check']} :: {r['detail']}")
+        print(f"  [{mark}] {r['scope']:<13} {r['check']} :: {r['detail']}")
+    print(f"OFFICIAL_VERDICT: {official_verdict}")
+    if result == "LIMITED_PASS":
+        print("LIMITATION: plain SIP registration evidence is incomplete for 34.229-1 8.1 / Annex C.2")
+    print(f"RESULT: {result}")
+
+
+def run_selfcheck_scenario(name: str, text: str, expected: str) -> bool:
+    result, results, messages, official_verdict = check_tc011(text)
+    print(LINE)
+    print(f"SCENARIO: {name} expected={expected} actual={result}")
+    for r in results:
+        mark = "OK " if r["ok"] else "BAD"
+        print(f"  [{mark}] {r['scope']:<13} {r['check']} :: {r['detail']}")
+    print(f"OFFICIAL_VERDICT: {official_verdict}")
+    if result != expected:
+        print(f"  expected={expected} actual={result}")
+        return False
+    return True
 
 
 GOOD_FIXTURE = """REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
@@ -207,25 +415,19 @@ def fail_fixture_no_authorization() -> str:
 
 def cmd_selfcheck() -> int:
     scenarios = [
-        ("TC-011 conformant registration", GOOD_FIXTURE, True),
-        ("TC-011 fail missing Service-Route", fail_fixture_missing_service_route(), False),
-        ("TC-011 fail missing Authorization", fail_fixture_no_authorization(), False),
+        ("TC-011 base registration only", GOOD_FIXTURE, "LIMITED_PASS"),
+        ("TC-011 fail missing Service-Route", fail_fixture_missing_service_route(), "FAIL"),
+        ("TC-011 fail missing Authorization", fail_fixture_no_authorization(), "FAIL"),
     ]
     failures = 0
     for name, text, expected in scenarios:
-        ok, results, messages = check_tc011(text)
-        print(LINE)
-        print(f"SCENARIO: {name} expected={'PASS' if expected else 'FAIL'} actual={'PASS' if ok else 'FAIL'}")
-        for r in results:
-            mark = "OK " if r["ok"] else "BAD"
-            print(f"  [{mark}] {r['check']} :: {r['detail']}")
-        if ok != expected:
+        if not run_selfcheck_scenario(name, text, expected):
             failures += 1
     print(LINE)
     if failures:
         print(f"SELFCHECK FAIL: {failures} scenario(s) did not behave as expected")
         return 1
-    print("SELFCHECK PASS: harness matches expected pass/fail behavior")
+    print("SELFCHECK PASS: base SIP checks are separated from official gates")
     return 0
 
 
@@ -241,9 +443,9 @@ def main() -> int:
 
     with open(args.log, "r", encoding="utf-8", errors="replace") as fh:
         text = fh.read()
-    ok, results, messages = check_tc011(text)
-    print_checks(args.log, ok, results, messages)
-    return 0 if ok else 1
+    result, results, messages, official_verdict = check_tc011(text)
+    print_checks(args.log, result, results, messages, official_verdict)
+    return 1 if result == "FAIL" else 0
 
 
 if __name__ == "__main__":

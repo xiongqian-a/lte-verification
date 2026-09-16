@@ -65,9 +65,9 @@
   `Step 3: SS shall check that ... the UE sends another REGISTER request as follows: the UE sets up the temporary set of security associations between the ports announced in Security-Client header (UE) in the REGISTER request and Security-Server header (SS) in the 401 Unauthorized response; ... the UE sends the second REGISTER over the temporary set of security associations;`
   `Step 5: SS shall check that ... the UE sends a SUBSCRIBE request for registration event package over the newly established set of security associations.`
 - `8.1.5 Test requirements`（Word L4140-L4151）：核对 ISIM 参数读取、临时 SA 建立、RAND 派生 IK、通过临时 SA 发送二次 REGISTER、通过新 SA 发送 SUBSCRIBE，以及 FQDN 反向解析要求。
-- 完整官方 TP 区块机器可读证据：`official_tp_suites/_substeps/TC-011-015-032-official-tp-blocks.json` / `.md`，本用例对应 `8.1 Initial registration`，源文件 `34229-1e70-word.txt` 行 3875-4151；逐行核对脚本：`work/verify_34229_reg_auth_err_tp.py`。
+- 完整官方 TP 区块机器可读证据：`official_tp_suites/_substeps/TC-011-015-032-official-tp-blocks.json` / `.md`，本用例对应 `8.1 Initial registration`，源文件 `34229-1e70-word.txt` 行 3875-4151；逐行核对脚本：`runners/verify_34229_reg_auth_err_tp.py`。
 - 具体消息内容：8.1 的 Expected Sequence 直接引用 Annex C.2，且 C.2 明确 `The default message contents in annex A are used`。因此本用例的逐消息骨架取 C.2 的准确步骤表，字段细节再引用 Annex A 默认消息，不把本地日志字段冒充 Annex A 终核结果。
-- Annex A 默认消息内容（本用例的 `.3.3` 等价物）：`official_tp_suites/_substeps/TC-011-014-annexA-message-contents.json` / `.md`；含 `A.1.1 REGISTER`（行 21415-22020，含 A1/A2/A17 条件词表）、`A.1.2 401`（22021-22255）、`A.1.3 200 OK`（22256-22497）、`A.1.4 SUBSCRIBE`（22498-22771）、`A.1.5 200 OK`（22772-22918）、`A.1.6 NOTIFY`（22919-23238）。逐行核对脚本：`work/verify_34229_annexA.py`。
+- Annex A 默认消息内容（本用例的 `.3.3` 等价物）：`official_tp_suites/_substeps/TC-011-014-annexA-message-contents.json` / `.md`；含 `A.1.1 REGISTER`（行 21415-22020，含 A1/A2/A17 条件词表）、`A.1.2 401`（22021-22255）、`A.1.3 200 OK`（22256-22497）、`A.1.4 SUBSCRIBE`（22498-22771）、`A.1.5 200 OK`（22772-22918）、`A.1.6 NOTIFY`（22919-23238）。逐行核对脚本：`runners/verify_34229_annexA.py`。
 
 ### Annex C.2 官方步骤逐项映射
 
@@ -78,18 +78,18 @@
 | 1 | 前置 | EPS bearer / PDP context activation | E-UTRA 按 Annex C.18，UTRA 按 Annex C.17 | `RESTRICTED`：需要真实 eNB/EPC 或等效 SS |
 | 2 | 前置 | Void | 官方无动作 | `N/A` |
 | 3 | 前置 | 可选 P-CSCF discovery | DHCP IPv6 按 C.3；DHCP IPv4 按 C.4 | `RESTRICTED`：需要 DHCP/P-CSCF 测试环境 |
-| 4 | UE -> SS | `REGISTER` | UE 发起 IMS 初始注册，发送未保护 REGISTER | 本地有真实 `REGISTER` 原始日志 |
-| 5 | SS -> UE | `401 Unauthorized` | 有效 AKAv1-MD5 challenge 和网络支持的安全机制 | 本地有 401，但未见完整 Security-Server/临时 SA 证据 |
-| 6 | UE -> SS | `REGISTER` | 完成安全协商、建立临时 SA，并通过临时 SA 发送带 AKAv1-MD5 credentials 的二次 REGISTER | `RESTRICTED`：本地栈缺 Security-Client/Security-Verify 和临时 SA |
-| 7 | SS -> UE | `200 OK` | 必须通过 UE 发送 REGISTER 的同一临时 SA 集合返回 | 本地有 200，但不是官方临时 SA Verdict |
-| 8 | UE -> SS | `SUBSCRIBE` | UE 通过新建 SA 订阅 registration event package | `NOT_EXECUTED`：本地日志未覆盖 |
-| 9 | SS -> UE | `200 OK` | SS 接受 SUBSCRIBE | `NOT_EXECUTED` |
-| 10 | SS -> UE | `NOTIFY` | 包含已注册 IMPU 的完整 registration state XML | `NOT_EXECUTED` |
-| 11 | UE -> SS | `200 OK` | UE 接受 NOTIFY | `NOT_EXECUTED` |
+| 4 | UE -> SS | `REGISTER` | UE 发起 IMS 初始注册，发送未保护 REGISTER | `L1_LOCAL_SIMULATED` PASS：初始 REGISTER 字段与保护状态检查通过 |
+| 5 | SS -> UE | `401 Unauthorized` | 有效 AKAv1-MD5 challenge 和网络支持的安全机制 | `L1_LOCAL_SIMULATED` PASS：`WWW-Authenticate` + `Security-Server` 检查通过 |
+| 6 | UE -> SS | `REGISTER` | 完成安全协商、建立临时 SA，并通过临时 SA 发送带 AKAv1-MD5 credentials 的二次 REGISTER | `L1_LOCAL_SIMULATED` PASS：`Security-Client`、`Security-Verify`、SPI/端口对和受保护 REGISTER 字段检查通过；非内核 xfrm |
+| 7 | SS -> UE | `200 OK` | 必须通过 UE 发送 REGISTER 的同一临时 SA 集合返回 | `L1_LOCAL_SIMULATED` PASS：200 OK 发往受保护端口，`P-Associated-URI`/`Service-Route` 检查通过 |
+| 8 | UE -> SS | `SUBSCRIBE` | UE 通过新建 SA 订阅 registration event package | `L1_LOCAL_SIMULATED` PASS：reg-event、Service-Route、受保护端口检查通过 |
+| 9 | SS -> UE | `200 OK` | SS 接受 SUBSCRIBE | `L1_LOCAL_SIMULATED` PASS：事务/对话字段检查通过 |
+| 10 | SS -> UE | `NOTIFY` | 包含已注册 IMPU 的完整 registration state XML | `L1_LOCAL_SIMULATED` PASS：reginfo XML、AOR、订阅状态检查通过 |
+| 11 | UE -> SS | `200 OK` | UE 接受 NOTIFY | `L1_LOCAL_SIMULATED` PASS：NOTIFY 对话字段与 200 OK 检查通过 |
 
-> 官方额外要求：本用例须跑两轮，分别配置 `px_IMS_IpSecAlgorithm` 为 HMAC-MD5-96 与 HMAC-SHA-1-96；当前本地证据未覆盖该 PIXIT 双轮要求。
+> 官方额外要求：本用例须跑两轮，分别配置 `px_IMS_IpSecAlgorithm` 为 HMAC-MD5-96 与 HMAC-SHA-1-96；当前本地 L1 仿真已各跑一轮，两轮均 `8/8 PASS`。
 
-> 状态：官方 TP 骨架已锚定，本地真实 `401 -> 200` 字段级 PASS。官方一致性仍需 SS/一致性仪表按 `34.229-1` 判 P/F。
+> 状态：官方 TP 骨架已锚定。Annex C.2 Steps 4-11 已在 `L1_LOCAL_SIMULATED` 范围内通过；这不等同于真实内核 IPsec、真实 UE/SS 或官方一致性 Verdict。官方 P/F 仍须由合格 SS/检测机构按 `34.229-1` 给出。
 
 ## 1. 目的 / 为什么
 
@@ -136,23 +136,54 @@
 ## 6. 当前本地证据
 
 ```text
-python work/tc011_register_flow.py
+python runners/tc011_register_flow.py --log evidence/external/tc12-tc13-calls-raw.log
 输入：outputs/co1750-20260904/ims_register_test.log
-结果：PASS（字段级）
+结果：LOCAL_PASS（字段级）
 观察：REGISTER -> 401 -> REGISTER -> 200 OK
-限制：当前真实日志只覆盖 C.2 Steps 4-7 的字段子集，未证明临时 SA、Security-Client/Verify、Steps 8-11 或 PIXIT 双算法
+限制：该真实日志只覆盖 C.2 Steps 4-7 的明文 SIP 字段子集。
 ```
+
+TC-011 的 L1 仿真补强入口：
+
+```text
+python runners/tc011_ipsec_ss_sim.py --selftest --out-dir evidence/local/tc011-l1-20260916
+```
+
+运行结果：
+
+```text
+PIXIT round: px_IMS_IpSecAlgorithm = hmac-md5-96   -> local L1 verdict PASS (8/8)
+PIXIT round: px_IMS_IpSecAlgorithm = hmac-sha-1-96 -> local L1 verdict PASS (8/8)
+all PIXIT rounds pass: True
+layer: L1_LOCAL_SIMULATED
+official_verdict: null
+ipsec_realization: port_pair_emulation_no_kernel_xfrm
+```
+
+证据文件：
+
+- `evidence/local/tc011-l1-20260916/tc011-l1-selftest-summary.json`
+- `evidence/local/tc011-l1-20260916/tc011-l1-hmac-md5-96-verdict.json`
+- `evidence/local/tc011-l1-20260916/tc011-l1-hmac-md5-96-transcript.txt`
+- `evidence/local/tc011-l1-20260916/tc011-l1-hmac-sha-1-96-verdict.json`
+- `evidence/local/tc011-l1-20260916/tc011-l1-hmac-sha-1-96-transcript.txt`
+
+该仿真的边界：IPsec 在端口、SPI 和 Security Header 层仿真，未创建 Linux
+`xfrm state/policy`，未发送或校验真实 ESP/AH 数据包；因此只能证明本地参考
+UE/SS 行为模型覆盖 C.2 Steps 4-11，不能证明真实 DUT 或内核 IPsec 合规。
 
 ## 7. 受限 / L2_REQUIRED
 
 - 未在官方 SS + 无线接口 + 真实 USIM/ISIM 上按 34.229-1 8.1 + 36.508 前置条件执行。
-- 本地日志缺 C.2 Step 6 的临时 SA 和 Security-Client/Security-Verify 证据，缺 Steps 8-11 的 SUBSCRIBE/NOTIFY 证据。
-- 未完成 HMAC-MD5-96 / HMAC-SHA-1-96 两轮 PIXIT 配置。
-- 本地测试台为 IMS 模拟/简化流程，缺少正式 SS Verdict。
+- L1 已完成 C.2 Steps 4-11 的端口/SPI/Security Header 仿真和两套 PIXIT 算法；
+  但未完成真实 Linux `xfrm` 状态/策略、真实 ESP/AH 或真实 UE/SS 端到端验证。
+- 当前环境缺真实 eNB/EPC、IMS System Simulator 和一致性仪表，无法生成官方 SS Verdict。
 
 ## 8. 执行命令
 
 ```text
-python work/tc011_register_flow.py
-python work/run_tc_evidence.py
+python runners/tc011_register_flow.py --log evidence/external/tc12-tc13-calls-raw.log
+python runners/tc011_ipsec_ss_sim.py --selftest --out-dir evidence/local/tc011-l1-20260916
+python runners/tc011_ipsec_ss_sim.py --selfcheck
+python runners/run_tc_evidence.py
 ```

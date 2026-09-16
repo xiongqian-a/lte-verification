@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-15T10:19:51+08:00",
+  "generated_at": "2026-09-16T11:02:23+08:00",
   "total": 23,
   "pass": 23,
   "fail": 0,
   "results": [
     {
       "name": "tc001_ims_pdn_evidence.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc001_ims_pdn_evidence.py",
+      "path": "C:\\标准例程-github\\runners\\tc001_ims_pdn_evidence.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -15,7 +15,7 @@
     },
     {
       "name": "tc004_pdn_reject_evidence.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc004_pdn_reject_evidence.py",
+      "path": "C:\\标准例程-github\\runners\\tc004_pdn_reject_evidence.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -24,7 +24,7 @@
     },
     {
       "name": "tc004_state_patch.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc004_state_patch.py",
+      "path": "C:\\标准例程-github\\runners\\tc004_state_patch.py",
       "category": "srsUE source patch helper; selfcheck is dry-run readiness only",
       "returncode": 0,
       "status": "PASS",
@@ -33,7 +33,7 @@
     },
     {
       "name": "tc005_dual_pdn.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc005_dual_pdn.py",
+      "path": "C:\\标准例程-github\\runners\\tc005_dual_pdn.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -42,16 +42,16 @@
     },
     {
       "name": "tc011_register_flow.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc011_register_flow.py",
+      "path": "C:\\标准例程-github\\runners\\tc011_register_flow.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
-      "last_line": "SELFCHECK PASS: harness matches expected pass/fail behavior",
-      "output": "==============================================================================\nSCENARIO: TC-011 conformant registration expected=PASS actual=PASS\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 challenge present :: n_401=1\n  [OK ] second REGISTER present :: n_registers=2\n  [OK ] second REGISTER after 401 present :: idx=2\n  [OK ] initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] initial REGISTER has Expires :: 300\n  [OK ] 401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] 401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] 401 challenge carries nonce :: nonce_present=True\n  [OK ] second REGISTER has Authorization :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", no\n  [OK ] second REGISTER response non-empty :: response_len=7\n  [OK ] same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] 200 OK after second REGISTER :: 200_messages=1\n  [OK ] 200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [OK ] 200 OK has Service-Route :: <sip:orig@10.45.0.1:6060;lr>\n==============================================================================\nSCENARIO: TC-011 fail missing Service-Route expected=FAIL actual=FAIL\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 challenge present :: n_401=1\n  [OK ] second REGISTER present :: n_registers=2\n  [OK ] second REGISTER after 401 present :: idx=2\n  [OK ] initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] initial REGISTER has Expires :: 300\n  [OK ] 401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] 401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] 401 challenge carries nonce :: nonce_present=True\n  [OK ] second REGISTER has Authorization :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", no\n  [OK ] second REGISTER response non-empty :: response_len=7\n  [OK ] same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] 200 OK after second REGISTER :: 200_messages=1\n  [OK ] 200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [BAD] 200 OK has Service-Route :: \n==============================================================================\nSCENARIO: TC-011 fail missing Authorization expected=FAIL actual=FAIL\n  [OK ] initial REGISTER present :: n_registers=2\n  [OK ] 401 challenge present :: n_401=1\n  [OK ] second REGISTER present :: n_registers=2\n  [OK ] second REGISTER after 401 present :: idx=2\n  [OK ] initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] initial REGISTER has Expires :: 300\n  [OK ] 401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] 401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] 401 challenge carries nonce :: nonce_present=True\n  [BAD] second REGISTER has Authorization :: \n  [BAD] second REGISTER response non-empty :: response_len=0\n  [OK ] same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] 200 OK after second REGISTER :: 200_messages=1\n  [OK ] 200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [OK ] 200 OK has Service-Route :: <sip:orig@10.45.0.1:6060;lr>\n==============================================================================\nSELFCHECK PASS: harness matches expected pass/fail behavior"
+      "last_line": "SELFCHECK PASS: base SIP checks are separated from official gates",
+      "output": "==============================================================================\nSCENARIO: TC-011 base registration only expected=LIMITED_PASS actual=LIMITED_PASS\n  [OK ] LOCAL_BASE    initial REGISTER present :: n_registers=2\n  [OK ] LOCAL_BASE    401 challenge present :: n_401=1\n  [OK ] LOCAL_BASE    second REGISTER present :: n_registers=2\n  [OK ] LOCAL_BASE    second REGISTER after 401 present :: idx=2\n  [OK ] LOCAL_BASE    initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] LOCAL_BASE    initial REGISTER has Expires :: 300\n  [OK ] LOCAL_BASE    401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] LOCAL_BASE    401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] LOCAL_BASE    401 challenge carries nonce :: nonce_present=True\n  [OK ] LOCAL_BASE    second REGISTER has Authorization :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", no\n  [OK ] LOCAL_BASE    second REGISTER response non-empty :: response_len=7\n  [OK ] LOCAL_BASE    same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] LOCAL_BASE    200 OK after second REGISTER :: 200_messages=1\n  [OK ] LOCAL_BASE    200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [OK ] LOCAL_BASE    200 OK has Service-Route :: <sip:orig@10.45.0.1:6060;lr>\n  [BAD] OFFICIAL_GATE official: initial REGISTER Security-Client :: missing\n  [BAD] OFFICIAL_GATE official: 401 Security-Server ipsec-3gpp :: missing\n  [BAD] OFFICIAL_GATE official: second REGISTER Security-Client :: missing\n  [BAD] OFFICIAL_GATE official: second REGISTER Security-Verify :: missing\n  [BAD] OFFICIAL_GATE official: temporary IPsec SA established :: no XFRM/SA state evidence; Security-Client alone is not an SA\n  [BAD] OFFICIAL_GATE official: SUBSCRIBE Event reg with 200 OK :: NOT_EXECUTED\n  [BAD] OFFICIAL_GATE official: NOTIFY Event reg with UE 200 OK :: NOT_EXECUTED\n  [BAD] OFFICIAL_GATE official: PIXIT round HMAC-MD5-96 :: RESTRICTED: no configured execution evidence\n  [BAD] OFFICIAL_GATE official: PIXIT round HMAC-SHA-1-96 :: RESTRICTED: no configured execution evidence\n  [BAD] OFFICIAL_GATE official: qualified SS/instrument verdict :: INCONCLUSIVE: no qualified SS verdict\nOFFICIAL_VERDICT: INCONCLUSIVE\n==============================================================================\nSCENARIO: TC-011 fail missing Service-Route expected=FAIL actual=FAIL\n  [OK ] LOCAL_BASE    initial REGISTER present :: n_registers=2\n  [OK ] LOCAL_BASE    401 challenge present :: n_401=1\n  [OK ] LOCAL_BASE    second REGISTER present :: n_registers=2\n  [OK ] LOCAL_BASE    second REGISTER after 401 present :: idx=2\n  [OK ] LOCAL_BASE    initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] LOCAL_BASE    initial REGISTER has Expires :: 300\n  [OK ] LOCAL_BASE    401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] LOCAL_BASE    401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] LOCAL_BASE    401 challenge carries nonce :: nonce_present=True\n  [OK ] LOCAL_BASE    second REGISTER has Authorization :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", no\n  [OK ] LOCAL_BASE    second REGISTER response non-empty :: response_len=7\n  [OK ] LOCAL_BASE    same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] LOCAL_BASE    200 OK after second REGISTER :: 200_messages=1\n  [OK ] LOCAL_BASE    200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [BAD] LOCAL_BASE    200 OK has Service-Route :: \n  [BAD] OFFICIAL_GATE official: initial REGISTER Security-Client :: missing\n  [BAD] OFFICIAL_GATE official: 401 Security-Server ipsec-3gpp :: missing\n  [BAD] OFFICIAL_GATE official: second REGISTER Security-Client :: missing\n  [BAD] OFFICIAL_GATE official: second REGISTER Security-Verify :: missing\n  [BAD] OFFICIAL_GATE official: temporary IPsec SA established :: no XFRM/SA state evidence; Security-Client alone is not an SA\n  [BAD] OFFICIAL_GATE official: SUBSCRIBE Event reg with 200 OK :: NOT_EXECUTED\n  [BAD] OFFICIAL_GATE official: NOTIFY Event reg with UE 200 OK :: NOT_EXECUTED\n  [BAD] OFFICIAL_GATE official: PIXIT round HMAC-MD5-96 :: RESTRICTED: no configured execution evidence\n  [BAD] OFFICIAL_GATE official: PIXIT round HMAC-SHA-1-96 :: RESTRICTED: no configured execution evidence\n  [BAD] OFFICIAL_GATE official: qualified SS/instrument verdict :: INCONCLUSIVE: no qualified SS verdict\nOFFICIAL_VERDICT: INCONCLUSIVE\n==============================================================================\nSCENARIO: TC-011 fail missing Authorization expected=FAIL actual=FAIL\n  [OK ] LOCAL_BASE    initial REGISTER present :: n_registers=2\n  [OK ] LOCAL_BASE    401 challenge present :: n_401=1\n  [OK ] LOCAL_BASE    second REGISTER present :: n_registers=2\n  [OK ] LOCAL_BASE    second REGISTER after 401 present :: idx=2\n  [OK ] LOCAL_BASE    initial REGISTER has Contact :: <sip:001010123456780@10.45.0.1:5062;ob>\n  [OK ] LOCAL_BASE    initial REGISTER has Expires :: 300\n  [OK ] LOCAL_BASE    401 has WWW-Authenticate Digest :: Digest realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"nonce-abc\", algorithm=A\n  [OK ] LOCAL_BASE    401 uses algorithm AKAv1-MD5 :: algorithm='AKAv1-MD5'\n  [OK ] LOCAL_BASE    401 challenge carries nonce :: nonce_present=True\n  [BAD] LOCAL_BASE    second REGISTER has Authorization :: \n  [BAD] LOCAL_BASE    second REGISTER response non-empty :: response_len=0\n  [OK ] LOCAL_BASE    same Call-ID reused :: first='call-id-reg-1' second='call-id-reg-1'\n  [OK ] LOCAL_BASE    200 OK after second REGISTER :: 200_messages=1\n  [OK ] LOCAL_BASE    200 OK has P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>\n  [OK ] LOCAL_BASE    200 OK has Service-Route :: <sip:orig@10.45.0.1:6060;lr>\n  [BAD] OFFICIAL_GATE official: initial REGISTER Security-Client :: missing\n  [BAD] OFFICIAL_GATE official: 401 Security-Server ipsec-3gpp :: missing\n  [BAD] OFFICIAL_GATE official: second REGISTER Security-Client :: missing\n  [BAD] OFFICIAL_GATE official: second REGISTER Security-Verify :: missing\n  [BAD] OFFICIAL_GATE official: temporary IPsec SA established :: no XFRM/SA state evidence; Security-Client alone is not an SA\n  [BAD] OFFICIAL_GATE official: SUBSCRIBE Event reg with 200 OK :: NOT_EXECUTED\n  [BAD] OFFICIAL_GATE official: NOTIFY Event reg with UE 200 OK :: NOT_EXECUTED\n  [BAD] OFFICIAL_GATE official: PIXIT round HMAC-MD5-96 :: RESTRICTED: no configured execution evidence\n  [BAD] OFFICIAL_GATE official: PIXIT round HMAC-SHA-1-96 :: RESTRICTED: no configured execution evidence\n  [BAD] OFFICIAL_GATE official: qualified SS/instrument verdict :: INCONCLUSIVE: no qualified SS verdict\nOFFICIAL_VERDICT: INCONCLUSIVE\n==============================================================================\nSELFCHECK PASS: base SIP checks are separated from official gates"
     },
     {
       "name": "tc012_mo_call.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc012_mo_call.py",
+      "path": "C:\\标准例程-github\\runners\\tc012_mo_call.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -60,7 +60,7 @@
     },
     {
       "name": "tc013_invalid_auth.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc013_invalid_auth.py",
+      "path": "C:\\标准例程-github\\runners\\tc013_invalid_auth.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -69,7 +69,7 @@
     },
     {
       "name": "tc014_rereg.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc014_rereg.py",
+      "path": "C:\\标准例程-github\\runners\\tc014_rereg.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -78,7 +78,7 @@
     },
     {
       "name": "tc015_restoration.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc015_restoration.py",
+      "path": "C:\\标准例程-github\\runners\\tc015_restoration.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -87,7 +87,7 @@
     },
     {
       "name": "tc016_duplicate_register.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc016_duplicate_register.py",
+      "path": "C:\\标准例程-github\\runners\\tc016_duplicate_register.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -96,7 +96,7 @@
     },
     {
       "name": "tc017_two_calls.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc017_two_calls.py",
+      "path": "C:\\标准例程-github\\runners\\tc017_two_calls.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -105,7 +105,7 @@
     },
     {
       "name": "tc018_malformed_register.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc018_malformed_register.py",
+      "path": "C:\\标准例程-github\\runners\\tc018_malformed_register.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -114,7 +114,7 @@
     },
     {
       "name": "tc019_mt_call.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc019_mt_call.py",
+      "path": "C:\\标准例程-github\\runners\\tc019_mt_call.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -123,7 +123,7 @@
     },
     {
       "name": "tc020_hold_retrieve.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc020_hold_retrieve.py",
+      "path": "C:\\标准例程-github\\runners\\tc020_hold_retrieve.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -132,7 +132,7 @@
     },
     {
       "name": "tc021_conference_join_remote.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc021_conference_join_remote.py",
+      "path": "C:\\标准例程-github\\runners\\tc021_conference_join_remote.py",
       "category": "remote log checker; selfcheck uses a synthetic PASS fixture",
       "returncode": 0,
       "status": "PASS",
@@ -141,7 +141,7 @@
     },
     {
       "name": "tc021_conference_refer.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc021_conference_refer.py",
+      "path": "C:\\标准例程-github\\runners\\tc021_conference_refer.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -150,7 +150,7 @@
     },
     {
       "name": "tc022_audio_media.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc022_audio_media.py",
+      "path": "C:\\标准例程-github\\runners\\tc022_audio_media.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -159,7 +159,7 @@
     },
     {
       "name": "tc023_sdp_negotiation.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc023_sdp_negotiation.py",
+      "path": "C:\\标准例程-github\\runners\\tc023_sdp_negotiation.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -168,7 +168,7 @@
     },
     {
       "name": "tc024_long_stability.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc024_long_stability.py",
+      "path": "C:\\标准例程-github\\runners\\tc024_long_stability.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -177,7 +177,7 @@
     },
     {
       "name": "tc025_rtp_capture.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc025_rtp_capture.py",
+      "path": "C:\\标准例程-github\\runners\\tc025_rtp_capture.py",
       "category": "AF_PACKET capture helper; selfcheck exercises the parser with a synthetic RTP frame",
       "returncode": 0,
       "status": "PASS",
@@ -186,7 +186,7 @@
     },
     {
       "name": "tc025_vad_dtx.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc025_vad_dtx.py",
+      "path": "C:\\标准例程-github\\runners\\tc025_vad_dtx.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -195,7 +195,7 @@
     },
     {
       "name": "tc032_error_codes.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc032_error_codes.py",
+      "path": "C:\\标准例程-github\\runners\\tc032_error_codes.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -204,7 +204,7 @@
     },
     {
       "name": "tc033_timer_timeout.py",
-      "path": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\work\\tc033_timer_timeout.py",
+      "path": "C:\\标准例程-github\\runners\\tc033_timer_timeout.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",

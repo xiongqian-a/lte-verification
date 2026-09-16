@@ -1,0 +1,23 @@
+{
+  "tc_id": "TC-011",
+  "layer": "L1_LOCAL_SIMULATED",
+  "official_verdict": null,
+  "rounds": [
+    {
+      "algorithm": "hmac-md5-96",
+      "executed": 8,
+      "passed": 8,
+      "verdict": "PASS",
+      "verdict_json": "tc011-l1-hmac-md5-96-verdict.json"
+    },
+    {
+      "algorithm": "hmac-sha-1-96",
+      "executed": 8,
+      "passed": 8,
+      "verdict": "PASS",
+      "verdict_json": "tc011-l1-hmac-sha-1-96-verdict.json"
+    }
+  ],
+  "all_rounds_pass": true,
+  "ipsec_realization": "port_pair_emulation_no_kernel_xfrm"
+}
