@@ -1,136 +1,136 @@
 algorithm=hmac-sha-1-96
 ==============================================================================
-[  0.000] NOTE step=0 selftest/reference UE: client_port=57102 sa_port=57103
-[  0.001] UE -> SS   step=4  peer=127.0.0.1:57102 bytes=819
+[  0.000] NOTE step=0 selftest/reference UE: client_port=55677 sa_port=55678
+[  0.001] UE -> SS   step=4  peer=127.0.0.1:55677 bytes=819
     REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57102;rport;branch=z9hG4bK-ue-1
+    Via: SIP/2.0/UDP 127.0.0.1:55677;rport;branch=z9hG4bK-ue-1
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
     Call-ID: tc011-l1-call-0001
     CSeq: 1 REGISTER
-    Contact: <sip:001010123456780@127.0.0.1:57102;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+    Contact: <sip:001010123456780@127.0.0.1:55677;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
     Expires: 600000
     Supported: path, gruu, outbound
     Require: sec-agree
     Proxy-Require: sec-agree
     Max-Forwards: 70
     P-Access-Network-Info: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001
-    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
+    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
     Content-Length: 0
     
-[  0.001] UE -> SS   step=4  peer=127.0.0.1:57102 bytes=819
+[  0.001] UE -> SS   step=4  peer=127.0.0.1:55677 bytes=819
     REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57102;rport;branch=z9hG4bK-ue-1
+    Via: SIP/2.0/UDP 127.0.0.1:55677;rport;branch=z9hG4bK-ue-1
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
     Call-ID: tc011-l1-call-0001
     CSeq: 1 REGISTER
-    Contact: <sip:001010123456780@127.0.0.1:57102;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+    Contact: <sip:001010123456780@127.0.0.1:55677;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
     Expires: 600000
     Supported: path, gruu, outbound
     Require: sec-agree
     Proxy-Require: sec-agree
     Max-Forwards: 70
     P-Access-Network-Info: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001
-    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
+    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
     Content-Length: 0
     
-[  0.001] SS -> UE   step=5  peer=127.0.0.1:57102 bytes=829
+[  0.001] SS -> UE   step=5  peer=127.0.0.1:55677 bytes=829
     SIP/2.0 401 Unauthorized
-    Via: SIP/2.0/UDP 127.0.0.1:57102;rport;branch=z9hG4bK-ue-1
+    Via: SIP/2.0/UDP 127.0.0.1:55677;rport;branch=z9hG4bK-ue-1
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-reg-to-1
     Call-ID: tc011-l1-call-0001
     CSeq: 1 REGISTER
     WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", algorithm=AKAv1-MD5, qop="auth", opaque="ss-opaque-0001", ck="84a711db79eebc337b09c8768dfb2ba2", ik="37e25fda40185767116d30c1b5c0b64a"
-    Security-Server: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+    Security-Server: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
     Content-Length: 0
     
-[  0.001] SS -> UE   step=5  peer=127.0.0.1:57101 bytes=829
+[  0.002] SS -> UE   step=5  peer=127.0.0.1:55676 bytes=829
     SIP/2.0 401 Unauthorized
-    Via: SIP/2.0/UDP 127.0.0.1:57102;rport;branch=z9hG4bK-ue-1
+    Via: SIP/2.0/UDP 127.0.0.1:55677;rport;branch=z9hG4bK-ue-1
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-reg-to-1
     Call-ID: tc011-l1-call-0001
     CSeq: 1 REGISTER
     WWW-Authenticate: Digest realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", algorithm=AKAv1-MD5, qop="auth", opaque="ss-opaque-0001", ck="84a711db79eebc337b09c8768dfb2ba2", ik="37e25fda40185767116d30c1b5c0b64a"
-    Security-Server: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+    Security-Server: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
     Content-Length: 0
     
-[  0.002] UE -> SS   step=6  peer=127.0.0.1:57103 bytes=1395
+[  0.002] UE -> SS   step=6  peer=127.0.0.1:55678 bytes=1395
     REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-2
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
     Call-ID: tc011-l1-call-0001
     CSeq: 2 REGISTER
-    Contact: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+    Contact: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
     Expires: 600000
     Supported: path, gruu, outbound
     Require: sec-agree
     Proxy-Require: sec-agree
     Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="d0f1e2a3b4c5d6e7", algorithm=AKAv1-MD5, cnonce="ue-cnonce-1", qop=auth, nc=00000001, opaque="ss-opaque-0001"
-    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
-    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
+    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
     Max-Forwards: 70
     P-Access-Network-Info: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001
     Content-Length: 0
     
-[  0.002] UE -> SS   step=6  peer=127.0.0.1:57103 bytes=1395
+[  0.002] UE -> SS   step=6  peer=127.0.0.1:55678 bytes=1395
     REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-2
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
     Call-ID: tc011-l1-call-0001
     CSeq: 2 REGISTER
-    Contact: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+    Contact: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
     Expires: 600000
     Supported: path, gruu, outbound
     Require: sec-agree
     Proxy-Require: sec-agree
     Authorization: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="d0f1e2a3b4c5d6e7", algorithm=AKAv1-MD5, cnonce="ue-cnonce-1", qop=auth, nc=00000001, opaque="ss-opaque-0001"
-    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
-    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+    Security-Client: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
+    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
     Max-Forwards: 70
     P-Access-Network-Info: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001
     Content-Length: 0
     
-[  0.002] SS -> UE   step=7  peer=127.0.0.1:57103 bytes=655
+[  0.002] SS -> UE   step=7  peer=127.0.0.1:55678 bytes=655
     SIP/2.0 200 OK
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-2
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-reg-to-1
     Call-ID: tc011-l1-call-0001
     CSeq: 2 REGISTER
-    Contact: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">;expires=600000
+    Contact: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">;expires=600000
     P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>
-    Service-Route: <sip:orig@127.0.0.1:57101;lr>, <sip:scscf.3gpp.org;lr>
+    Service-Route: <sip:orig@127.0.0.1:55676;lr>, <sip:scscf.3gpp.org;lr>
     Expires: 600000
     Content-Length: 0
     
-[  0.002] SS -> UE   step=7  peer=127.0.0.1:57101 bytes=655
+[  0.002] SS -> UE   step=7  peer=127.0.0.1:55676 bytes=655
     SIP/2.0 200 OK
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-2
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-reg-to-1
     Call-ID: tc011-l1-call-0001
     CSeq: 2 REGISTER
-    Contact: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">;expires=600000
+    Contact: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">;expires=600000
     P-Associated-URI: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>, <tel:001010123456780>
-    Service-Route: <sip:orig@127.0.0.1:57101;lr>, <sip:scscf.3gpp.org;lr>
+    Service-Route: <sip:orig@127.0.0.1:55676;lr>, <sip:scscf.3gpp.org;lr>
     Expires: 600000
     Content-Length: 0
     
-[  0.002] UE -> SS   step=8  peer=127.0.0.1:57103 bytes=1065
+[  0.002] UE -> SS   step=8  peer=127.0.0.1:55678 bytes=1065
     SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-3
-    Route: <sip:orig@127.0.0.1:57101;lr>, <sip:scscf.3gpp.org;lr>
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-3
+    Route: <sip:orig@127.0.0.1:55676;lr>, <sip:scscf.3gpp.org;lr>
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
     Call-ID: tc011-l1-sub-call-0001
     CSeq: 3 SUBSCRIBE
-    Contact: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
-    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+    Contact: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
     Require: sec-agree
     Proxy-Require: sec-agree
     Max-Forwards: 70
@@ -140,16 +140,16 @@ algorithm=hmac-sha-1-96
     Expires: 600000
     Content-Length: 0
     
-[  0.002] UE -> SS   step=8  peer=127.0.0.1:57103 bytes=1065
+[  0.002] UE -> SS   step=8  peer=127.0.0.1:55678 bytes=1065
     SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-3
-    Route: <sip:orig@127.0.0.1:57101;lr>, <sip:scscf.3gpp.org;lr>
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-3
+    Route: <sip:orig@127.0.0.1:55676;lr>, <sip:scscf.3gpp.org;lr>
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
     Call-ID: tc011-l1-sub-call-0001
     CSeq: 3 SUBSCRIBE
-    Contact: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
-    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+    Contact: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+    Security-Verify: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
     Require: sec-agree
     Proxy-Require: sec-agree
     Max-Forwards: 70
@@ -159,33 +159,33 @@ algorithm=hmac-sha-1-96
     Expires: 600000
     Content-Length: 0
     
-[  0.002] SS -> UE   step=9  peer=127.0.0.1:57103 bytes=394
+[  0.002] SS -> UE   step=9  peer=127.0.0.1:55678 bytes=394
     SIP/2.0 200 OK
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-3
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-3
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1
     Call-ID: tc011-l1-sub-call-0001
     CSeq: 3 SUBSCRIBE
     Contact: <sip:scscf.3gpp.org>
     Expires: 600000
-    Record-Route: <sip:127.0.0.1:57101;lr>
+    Record-Route: <sip:127.0.0.1:55676;lr>
     Content-Length: 0
     
-[  0.002] SS -> UE   step=9  peer=127.0.0.1:57101 bytes=394
+[  0.003] SS -> UE   step=9  peer=127.0.0.1:55676 bytes=394
     SIP/2.0 200 OK
-    Via: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-3
+    Via: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-3
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1
     Call-ID: tc011-l1-sub-call-0001
     CSeq: 3 SUBSCRIBE
     Contact: <sip:scscf.3gpp.org>
     Expires: 600000
-    Record-Route: <sip:127.0.0.1:57101;lr>
+    Record-Route: <sip:127.0.0.1:55676;lr>
     Content-Length: 0
     
-[  0.002] SS -> UE   step=10 peer=127.0.0.1:57103 bytes=1453
-    NOTIFY sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel" SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57101;branch=z9hG4bK-ss-ntf
+[  0.003] SS -> UE   step=10 peer=127.0.0.1:55678 bytes=1453
+    NOTIFY sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel" SIP/2.0
+    Via: SIP/2.0/UDP 127.0.0.1:55676;branch=z9hG4bK-ss-ntf
     Via: SIP/2.0/UDP scscf.3gpp.org;branch=z9hG4bK-ss-ntf-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
@@ -202,18 +202,18 @@ algorithm=hmac-sha-1-96
     <reginfo xmlns="urn:ietf:params:xml:ns:reginfo" version="0" state="full">
       <registration aor="sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org" id="reg-1" state="active">
         <contact id="c1" state="active" event="registered">
-          <uri>sip:001010123456780@127.0.0.1:57103;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
+          <uri>sip:001010123456780@127.0.0.1:55678;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
         </contact>
       </registration>
       <registration aor="tel:001010123456780" id="reg-2" state="active">
         <contact id="c2" state="active" event="created">
-          <uri>sip:001010123456780@127.0.0.1:57103;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
+          <uri>sip:001010123456780@127.0.0.1:55678;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
         </contact>
       </registration>
     </reginfo>
-[  0.002] SS -> UE   step=10 peer=127.0.0.1:57101 bytes=1453
-    NOTIFY sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel" SIP/2.0
-    Via: SIP/2.0/UDP 127.0.0.1:57101;branch=z9hG4bK-ss-ntf
+[  0.003] SS -> UE   step=10 peer=127.0.0.1:55676 bytes=1453
+    NOTIFY sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel" SIP/2.0
+    Via: SIP/2.0/UDP 127.0.0.1:55676;branch=z9hG4bK-ss-ntf
     Via: SIP/2.0/UDP scscf.3gpp.org;branch=z9hG4bK-ss-ntf-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
@@ -230,18 +230,18 @@ algorithm=hmac-sha-1-96
     <reginfo xmlns="urn:ietf:params:xml:ns:reginfo" version="0" state="full">
       <registration aor="sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org" id="reg-1" state="active">
         <contact id="c1" state="active" event="registered">
-          <uri>sip:001010123456780@127.0.0.1:57103;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
+          <uri>sip:001010123456780@127.0.0.1:55678;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
         </contact>
       </registration>
       <registration aor="tel:001010123456780" id="reg-2" state="active">
         <contact id="c2" state="active" event="created">
-          <uri>sip:001010123456780@127.0.0.1:57103;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
+          <uri>sip:001010123456780@127.0.0.1:55678;+sip.instance="&lt;urn:gsma:imei:123456789012345&gt;";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"</uri>
         </contact>
       </registration>
     </reginfo>
-[  0.003] UE -> SS   step=11 peer=127.0.0.1:57103 bytes=356
+[  0.003] UE -> SS   step=11 peer=127.0.0.1:55678 bytes=356
     SIP/2.0 200 OK
-    Via: SIP/2.0/UDP 127.0.0.1:57101;branch=z9hG4bK-ss-ntf
+    Via: SIP/2.0/UDP 127.0.0.1:55676;branch=z9hG4bK-ss-ntf
     Via: SIP/2.0/UDP scscf.3gpp.org;branch=z9hG4bK-ss-ntf-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
@@ -249,9 +249,9 @@ algorithm=hmac-sha-1-96
     CSeq: 1 NOTIFY
     Content-Length: 0
     
-[  0.003] UE -> SS   step=11 peer=127.0.0.1:57103 bytes=356
+[  0.003] UE -> SS   step=11 peer=127.0.0.1:55678 bytes=356
     SIP/2.0 200 OK
-    Via: SIP/2.0/UDP 127.0.0.1:57101;branch=z9hG4bK-ss-ntf
+    Via: SIP/2.0/UDP 127.0.0.1:55676;branch=z9hG4bK-ss-ntf
     Via: SIP/2.0/UDP scscf.3gpp.org;branch=z9hG4bK-ss-ntf-2
     From: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1
     To: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1
@@ -264,32 +264,32 @@ algorithm=hmac-sha-1-96
 [OK ] step 4: Request-URI is the home domain :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
 [OK ] step 4: initial REGISTER is unprotected (no Authorization) :: authorization_present=False
 [OK ] step 4: From and To carry the same public user identity :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'
-[OK ] step 4: Contact present :: <sip:001010123456780@127.0.0.1:57102;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
-[OK ] step 4: initial Contact uses an unprotected UE port :: contact_port=57102 source_port=57102
-[OK ] step 4: Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:57102;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+[OK ] step 4: Contact present :: <sip:001010123456780@127.0.0.1:55677;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+[OK ] step 4: initial Contact uses an unprotected UE port :: contact_port=55677 source_port=55677
+[OK ] step 4: Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:55677;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
 [OK ] step 4: Expires is the official 600000 seconds :: 600000
 [OK ] step 4: Supported contains path :: path, gruu, outbound
-[OK ] step 4: Via has rport and a z9hG4bK branch :: SIP/2.0/UDP 127.0.0.1:57102;rport;branch=z9hG4bK-ue-1
+[OK ] step 4: Via has rport and a z9hG4bK branch :: SIP/2.0/UDP 127.0.0.1:55677;rport;branch=z9hG4bK-ue-1
 [OK ] step 4: Route is not present in initial REGISTER :: route_present=False
 [OK ] step 4: Require contains sec-agree :: sec-agree
 [OK ] step 4: Proxy-Require contains sec-agree :: sec-agree
 [OK ] step 4: Max-Forwards is a non-zero value :: 70
 [OK ] step 4: P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001
-[OK ] step 4: Security-Client present :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
+[OK ] step 4: Security-Client present :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
 [OK ] step 4: Security-Client announces the negotiated algorithm :: alg='hmac-sha-1-96' expected='hmac-sha-1-96'
-[OK ] step 4: Security-Client uses ipsec-3gpp/ESP transport/null cipher :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
-[OK ] step 4: Security-Client carries spi-c/spi-s/port-c/port-s :: {"alg": "hmac-sha-1-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "57103", "port-s": "57104", "protocol": "esp", "spi-c": "1000", "spi-s": "1001"}
+[OK ] step 4: Security-Client uses ipsec-3gpp/ESP transport/null cipher :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
+[OK ] step 4: Security-Client carries spi-c/spi-s/port-c/port-s :: {"alg": "hmac-sha-1-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "55678", "port-s": "55679", "protocol": "esp", "spi-c": "1000", "spi-s": "1001"}
 [OK ] step 4: Security-Client has exactly one mechanism entry :: entries=1
 [OK ] step 4: Call-ID captured for the dialog :: tc011-l1-call-0001
 [OK ] step 5: SS sends 401 with AKAv1-MD5 challenge :: WWW-Authenticate present
 [OK ] step 5: 401 copies Via/From/To/Call-ID/CSeq from initial REGISTER :: transaction fields copied
-[OK ] step 5: Security-Server offers selected algorithm with q=0.9 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
-[OK ] step 5: Security-Server offers alternate algorithm with q=0.7 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+[OK ] step 5: Security-Server offers selected algorithm with q=0.9 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
+[OK ] step 5: Security-Server offers alternate algorithm with q=0.7 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
 [OK ] step 6: second REGISTER is a REGISTER request :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
 [OK ] step 6: same Call-ID reused :: first='tc011-l1-call-0001' second='tc011-l1-call-0001'
-[OK ] step 6: second REGISTER arrives on the announced temporary SA port :: src_port=57103 announced_port-c=57103
-[OK ] step 6: second REGISTER Contact uses the protected UE port :: contact='sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"' port-c=57103
-[OK ] step 6: second REGISTER Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-2
+[OK ] step 6: second REGISTER arrives on the announced temporary SA port :: src_port=55678 announced_port-c=55678
+[OK ] step 6: second REGISTER Contact uses the protected UE port :: contact='sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"' port-c=55678
+[OK ] step 6: second REGISTER Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-2
 [OK ] step 6: second REGISTER still has Require: sec-agree :: sec-agree
 [OK ] step 6: second REGISTER still has Proxy-Require: sec-agree :: sec-agree
 [OK ] step 6: second REGISTER has no Route header :: route_present=False
@@ -299,26 +299,26 @@ algorithm=hmac-sha-1-96
 [OK ] step 6: Authorization response is non-empty :: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", uri="sip:ims.mnc001
 [OK ] step 6: Authorization contains the complete AKA Digest tuple :: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="d0f1e2a3b4c5d6e7", algorithm=AKAv1-MD5, cnonce="ue-cnonce-1", qop=auth, nc=00000001,
 [OK ] step 6: Authorization nonce/opaque are server values :: Digest username="001010123456780", realm="ims.mnc001.mcc001.3gppnetwork.org", nonce="ss-nonce-0001", uri="sip:ims.mnc001.mcc001.3gppnetwork.org", response="d0f1e2a3b4c5d6e7", algorithm=AKAv1-MD5, cnonce="ue-cnonce-1", qop=auth, nc=00000001,
-[OK ] step 6: second REGISTER Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
-[OK ] step 6: Security-Client present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
-[OK ] step 6: Security-Client is unchanged from the initial REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=57103; port-s=57104
-[OK ] step 6: Security-Verify present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
-[OK ] step 6: Security-Verify echoes the complete Security-Server :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
-[OK ] step 6: Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s :: {"alg": "hmac-sha-1-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "57101", "port-s": "57102", "protocol": "esp", "q": "0.9", "spi-c": "2000", "spi-s": "2001"}
-[OK ] step 6: Security-Verify carries both PIXIT algorithm candidates :: [{"alg": "hmac-sha-1-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "57101", "port-s": "57102", "protocol": "esp", "q": "0.9", "spi-c": "2000", "spi-s": "2001"}, {"alg": "hmac-md5-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "57101", "port-s": "57102", "protocol": "esp", "q": "0.7", "spi-c": "2100", "spi-s": "2101"}]
-[OK ] step 7: 200 OK sent to the temporary SA port :: dst_port=57103
+[OK ] step 6: second REGISTER Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+[OK ] step 6: Security-Client present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
+[OK ] step 6: Security-Client is unchanged from the initial REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=55678; port-s=55679
+[OK ] step 6: Security-Verify present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
+[OK ] step 6: Security-Verify echoes the complete Security-Server :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
+[OK ] step 6: Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s :: {"alg": "hmac-sha-1-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "55676", "port-s": "55677", "protocol": "esp", "q": "0.9", "spi-c": "2000", "spi-s": "2001"}
+[OK ] step 6: Security-Verify carries both PIXIT algorithm candidates :: [{"alg": "hmac-sha-1-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "55676", "port-s": "55677", "protocol": "esp", "q": "0.9", "spi-c": "2000", "spi-s": "2001"}, {"alg": "hmac-md5-96", "encrypt-algorithm": "null", "mode": "trans", "port-c": "55676", "port-s": "55677", "protocol": "esp", "q": "0.7", "spi-c": "2100", "spi-s": "2101"}]
+[OK ] step 7: 200 OK sent to the temporary SA port :: dst_port=55678
 [OK ] step 7: 200 OK carries P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>
 [OK ] step 7: 200 OK carries Service-Route :: orig route present
 [OK ] step 7: 200 OK copies the second REGISTER transaction fields :: transaction fields copied
-[OK ] step 7: 200 OK Contact matches the registered protected contact :: sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"
+[OK ] step 7: 200 OK Contact matches the registered protected contact :: sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"
 [OK ] step 8: SUBSCRIBE request received :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
 [OK ] step 8: SUBSCRIBE Request-URI is exactly the public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0
-[OK ] step 8: SUBSCRIBE arrives on the new SA port :: src_port=57103 expected=57103
-[OK ] step 8: SUBSCRIBE Contact uses the protected UE port :: <sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
-[OK ] step 8: SUBSCRIBE Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:57103;rport;branch=z9hG4bK-ue-3
-[OK ] step 8: SUBSCRIBE follows the stored Service-Route :: route='<sip:orig@127.0.0.1:57101;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:57101;lr>, <sip:scscf.3gpp.org;lr>'
+[OK ] step 8: SUBSCRIBE arrives on the new SA port :: src_port=55678 expected=55678
+[OK ] step 8: SUBSCRIBE Contact uses the protected UE port :: <sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel">
+[OK ] step 8: SUBSCRIBE Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:55678;rport;branch=z9hG4bK-ue-3
+[OK ] step 8: SUBSCRIBE follows the stored Service-Route :: route='<sip:orig@127.0.0.1:55676;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:55676;lr>, <sip:scscf.3gpp.org;lr>'
 [OK ] step 8: SUBSCRIBE From has a tag and To is untagged :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'
-[OK ] step 8: SUBSCRIBE carries the echoed Security-Verify value :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=57101; port-s=57102; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=57101; port-s=57102; q=0.7
+[OK ] step 8: SUBSCRIBE carries the echoed Security-Verify value :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=55676; port-s=55677; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=55676; port-s=55677; q=0.7
 [OK ] step 8: SUBSCRIBE Require contains sec-agree :: sec-agree
 [OK ] step 8: SUBSCRIBE Proxy-Require contains sec-agree :: sec-agree
 [OK ] step 8: SUBSCRIBE Expires is 600000 :: 600000
@@ -335,9 +335,9 @@ algorithm=hmac-sha-1-96
 [OK ] step 10: NOTIFY Subscription-State is active :: active
 [OK ] step 10: NOTIFY swaps SUBSCRIBE dialog tags correctly :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1'
 [OK ] step 10: NOTIFY Call-ID/CSeq correlate to SUBSCRIBE :: dialog correlation
-[OK ] step 10: NOTIFY Request-URI is the registered protected contact :: sip:001010123456780@127.0.0.1:57103;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"
+[OK ] step 10: NOTIFY Request-URI is the registered protected contact :: sip:001010123456780@127.0.0.1:55678;+sip.instance="<urn:gsma:imei:123456789012345>";+g.3gpp.icsi-ref="urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel"
 [OK ] step 10: NOTIFY reginfo aors match P-Associated-URI :: aors=['sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org', 'tel:001010123456780']
 [OK ] step 11: UE answers NOTIFY with 200 OK :: SIP/2.0 200 OK
 [OK ] step 11: NOTIFY 200 OK keeps the Call-ID :: tc011-l1-sub-call-0001
 [OK ] step 11: NOTIFY 200 OK keeps the CSeq method :: 1 NOTIFY
-[OK ] step 11: NOTIFY 200 OK keeps the top Via :: SIP/2.0/UDP 127.0.0.1:57101;branch=z9hG4bK-ss-ntf
+[OK ] step 11: NOTIFY 200 OK keeps the top Via :: SIP/2.0/UDP 127.0.0.1:55676;branch=z9hG4bK-ss-ntf
