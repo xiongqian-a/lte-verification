@@ -251,6 +251,7 @@ evidence is supplied.
 | `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
 | `docs/97-同事拉取复跑与结果验收流程-20260916.md` | Colleague handoff, fresh-checkout replay procedure, and result acceptance |
 | `docs/98-仓库目录与文件说明-20260917.md` | Repository directories, files, evidence types, and handoff boundaries |
+| `docs/99-全新克隆交接实测-20260917.md` | Measured clean-clone and colleague replay acceptance record |
 
 ## Adding or Changing a Case
 
