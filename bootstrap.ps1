@@ -109,6 +109,12 @@ if (-not $python) {
 }
 
 Write-Host "Using $($python.Version)"
-$launchArgs = @($python.LaunchArgs) + @("-X", "utf8", ".\run_official_suite.py") + @($args)
+$entryPoint = ".\run_official_suite.py"
+$runnerArgs = @($args)
+if ($runnerArgs.Count -gt 0 -and $runnerArgs[0] -eq "--colleague-replay") {
+    $entryPoint = ".\runners\colleague_replay_verification.py"
+    $runnerArgs = @($runnerArgs | Select-Object -Skip 1)
+}
+$launchArgs = @($python.LaunchArgs) + @("-X", "utf8", $entryPoint) + $runnerArgs
 & $python.Command @launchArgs
 exit $LASTEXITCODE

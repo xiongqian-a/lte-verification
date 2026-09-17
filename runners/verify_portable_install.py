@@ -27,6 +27,7 @@ REQUIRED_FILES = [
     "bootstrap.cmd",
     "bootstrap.ps1",
     "run.ps1",
+    "runners/colleague_replay_verification.py",
     "registry/official_tp_registry.json",
     "registry/official_tp_library.json",
     "suites/official_tp_suites/_templates/TC-TEMPLATE.md",
@@ -147,6 +148,8 @@ def static_checks() -> list[str]:
             failures.append("bootstrap.sh does not have the POSIX sh shebang")
         if "run_official_suite.py" not in text:
             failures.append("bootstrap.sh does not invoke run_official_suite.py")
+        if "--colleague-replay" not in text:
+            failures.append("bootstrap.sh does not expose colleague replay mode")
         if os.name != "nt" and not os.access(bootstrap, os.X_OK):
             failures.append("bootstrap.sh is not executable on this checkout")
 
@@ -155,6 +158,12 @@ def static_checks() -> list[str]:
         text = windows_bootstrap.read_text(encoding="utf-8", errors="replace")
         if "bootstrap.ps1" not in text:
             failures.append("bootstrap.cmd does not invoke bootstrap.ps1")
+
+    powershell_bootstrap = ROOT / "bootstrap.ps1"
+    if powershell_bootstrap.is_file():
+        text = powershell_bootstrap.read_text(encoding="utf-8")
+        if "--colleague-replay" not in text:
+            failures.append("bootstrap.ps1 does not expose colleague replay mode")
 
     workflow = ROOT / ".github" / "workflows" / "verify.yml"
     if workflow.is_file():

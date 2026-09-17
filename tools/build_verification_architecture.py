@@ -144,8 +144,8 @@ RUNNERS = [
         "layer": "报告",
     },
     {
-        "path": "runners/independent_verification.py",
-        "role": "面向独立复核者的新鲜环境复跑、证据哈希和交接检查。",
+        "path": "runners/colleague_replay_verification.py",
+        "role": "面向同事的全新目录复跑、已提交证据哈希和结果验收检查。",
         "layer": "审计",
     },
 ]

@@ -15,7 +15,7 @@ IMS verification cases. It combines:
 
 For a step-by-step Chinese guide that starts with a fresh checkout and covers
 one-command execution, single-case execution, evidence interpretation,
-environment differences, and independent review, see
+environment differences, and colleague replay verification, see
 [`START-HERE.md`](START-HERE.md).
 
 ## Important Scope Statement
@@ -34,7 +34,13 @@ accredited conformance laboratory using the applicable official test procedure.
 Local checker results remain implementation evidence and must not be relabeled
 as `OFFICIAL_PASS`.
 
-## Quick Start
+## Colleague Quick Start
+
+For a colleague who only needs to pull the repository, run the verification
+baseline, and compare the result with this snapshot, no project path edit,
+`pip install`, core-network setup, or IMS setup is required. The machine needs
+Git and read access to the repository; the bootstrap scripts handle the Python
+launch and invoke the unified runner.
 
 Requirements:
 
@@ -48,6 +54,13 @@ Windows PowerShell (clone, bootstrap, and run):
 git clone https://github.com/xiongqian-a/lte-verification.git
 cd lte-verification
 .\bootstrap.cmd
+```
+
+To generate the colleague replay acceptance report in the same one-command
+flow:
+
+```powershell
+.\bootstrap.cmd --colleague-replay
 ```
 
 `bootstrap.cmd` invokes the PowerShell bootstrap with an execution-policy
@@ -236,7 +249,7 @@ evidence is supplied.
 | `docs/THREE_LAYER_STATUS.md` | L0/L1/L2 implementation status by TC |
 | `docs/93-TC011-L1-IPsec-SUBSCRIBE-NOTIFY-证据-20260916.md` | TC-011 local Annex C.2 Steps 4-11 evidence and boundaries |
 | `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
-| `docs/97-独立验证交接与复核流程-20260916.md` | Independent-agent handoff, fresh-checkout procedure, and review prompt |
+| `docs/97-同事拉取复跑与结果验收流程-20260916.md` | Colleague handoff, fresh-checkout replay procedure, and result acceptance |
 
 ## Adding or Changing a Case
 

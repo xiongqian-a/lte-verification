@@ -1,6 +1,6 @@
 # 拿到仓库后怎么使用
 
-> 适用对象：第一次拿到本仓库的同事、测试人员或独立验证 Agent。
+> 适用对象：第一次拿到本仓库的同事、测试人员和复核人。
 >
 > 目标：在不猜测、不伪造证据的前提下，先跑通仓库本地基线，再决定是否进入
 > L1 测试床或 L2 一致性仪表环境。
@@ -64,9 +64,9 @@ git clone git@github.com:xiongqian-a/lte-verification.git
 cd lte-verification
 ```
 
-### 2.3 固定复核提交
+### 2.3 记录本次复跑提交
 
-如果这次是为了独立复核，不要只说“拉 main 最新”，要固定提交：
+同事复跑时先记录本次使用的提交，确保大家得到的是同一版结果：
 
 ```sh
 git checkout <完整 commit hash>
@@ -251,58 +251,79 @@ python -X utf8 runners/tc011_ipsec_ss_sim.py --selftest --out-dir evidence/local
 这些命令对应的是 L1 本地/仿真证据。TC-011 仍不能给出官方 SS Verdict；
 真实 IPsec SA、真实 UE/SS 和正式一致性结论仍需合格环境。
 
-## 7. 用另一个 Agent 做独立复核
+## 7. 同事拉取后如何复跑并确认结果
 
-独立复核使用专用入口：
+同事拿到仓库后，不需要配置服务器、核心网、项目路径或 Python 依赖。只要本机有
+Git 和仓库读取权限，按下面的命令复跑即可。一条命令会先准备 Python（如果本机
+缺失），然后直接生成同事复跑报告。
 
 ### Windows PowerShell
 
 ```powershell
-$commit = git rev-parse HEAD
-python -X utf8 runners/independent_verification.py `
-  --expected-commit $commit `
-  --out-dir outputs/independent-verification
+.\bootstrap.cmd --colleague-replay
 ```
 
 ### Linux/macOS
 
 ```sh
+chmod +x bootstrap.sh
+./bootstrap.sh --colleague-replay
+```
+
+如果本机已经有 Python 3.10+，也可以直接运行下面的等价命令。
+
+### Windows PowerShell（已装 Python）
+
+```powershell
+$commit = git rev-parse HEAD
+python -X utf8 runners/colleague_replay_verification.py `
+  --expected-commit $commit `
+  --out-dir outputs/colleague-replay
+```
+
+### Linux/macOS（已装 Python）
+
+```sh
 COMMIT=$(git rev-parse HEAD)
-python3 -X utf8 runners/independent_verification.py \
+python3 -X utf8 runners/colleague_replay_verification.py \
   --expected-commit "$COMMIT" \
-  --out-dir outputs/independent-verification
+  --out-dir outputs/colleague-replay
 ```
 
 成功输出必须包含：
 
 ```text
-INDEPENDENT VERIFICATION: PASS
+COLLEAGUE REPLAY: PASS
 TC011_INVARIANTS: PASS
 OFFICIAL_VERDICT: null
 ```
 
-这里的 `PASS` 表示“独立复跑和仓库内部一致性检查通过”，仍然不是官方一致性
-结论。
+这里的 `PASS` 表示“同事复跑成功、固定提交匹配、仓库内部一致性检查通过”，
+仍然不是官方一致性结论。
 
-复核报告会写入：
+复跑报告会写入：
 
 ```text
-outputs/independent-verification/
+outputs/colleague-replay/
 ```
 
-复核结果建议按以下格式反馈：
+这条路径会复跑仓库中已经提交的本地日志、抓包和 checker。它不会重新连接
+eNB/EPC/IMS，也不会生成一份新的现场日志。因此同事得到的是“与你这版仓库
+一致的复现结果”，不是“同事重新做了一遍端到端测试”。
+
+复跑结果建议按以下格式反馈：
 
 ```text
 仓库可复现性：PASS / FAIL
 标准映射一致性：PASS / PARTIAL / FAIL
 本地证据可信度：PASS / PARTIAL / FAIL
 官方一致性：NO_OFFICIAL_VERDICT
-复核提交：
+复跑提交：
 操作系统和 Python 版本：
 执行命令：
 报告路径：
 发现的问题：
-不能复核的项目：
+不能复现或不能核对的项目：
 ```
 
 ## 8. 核心网、IMS 和仪表怎么使用
@@ -417,7 +438,7 @@ python -X utf8 run_official_suite.py
 
 ## 11. 最小交付检查清单
 
-复核完成前至少确认：
+同事复跑完成前至少确认：
 
 - [ ] checkout 的完整 commit 已记录。
 - [ ] `git status --short` 没有未解释的改动。
@@ -428,18 +449,24 @@ python -X utf8 run_official_suite.py
 - [ ] 本地证据复跑结果和受限状态已记录。
 - [ ] 没有错误出现 `OFFICIAL_PASS`。
 - [ ] 所有缺环境的项目仍标为 `RESTRICTED` 或 `NOT_EXECUTED`。
-- [ ] 独立复核报告、原始日志和命令已保存。
+- [ ] 复跑验证报告、原始日志和命令已保存。
 
-## 12. 最短交接命令
+## 12. 发给同事的最短说明
 
-把下面内容带给下一位执行者即可：
+把下面内容直接发给同事即可：
 
 ```text
 仓库：https://github.com/xiongqian-a/lte-verification
-固定提交：<填写完整 commit hash>
-第一步：clone 后 checkout 该提交
-第二步：Python 3.10+ 环境执行 python -X utf8 run_official_suite.py
-第三步：确认输出 UNIFIED RUNNER RESULT: OK 和 git diff --exit-code 无差异
-第四步：运行 runners/independent_verification.py 生成独立复核报告
-边界：本地 PASS 不等于官方一致性，L2 必须接合格 SS/仪表/检测机构
+适用环境：本机有 Git，能读取该仓库
+第一步：git clone https://github.com/xiongqian-a/lte-verification.git
+第二步：cd lte-verification
+第三步（Windows）：.\bootstrap.cmd --colleague-replay
+第三步（Linux/macOS）：chmod +x bootstrap.sh && ./bootstrap.sh --colleague-replay
+第四步：python -X utf8 runners/verify_portable_install.py --full
+通过标记：UNIFIED RUNNER RESULT: OK、PORTABLE INSTALL: PASS (FULL)、
+          COLLEAGUE REPLAY: PASS、TC011_INVARIANTS: PASS、
+          OFFICIAL_VERDICT: null
+结果位置：outputs/colleague-replay/
+边界：本流程复跑仓库已提交证据，不会自动产生新的 eNB/EPC/IMS 现场日志；
+      本地 PASS 不等于官方一致性，L2 必须接合格 SS/仪表/检测机构
 ```

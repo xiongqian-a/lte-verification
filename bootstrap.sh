@@ -75,4 +75,12 @@ if [ -z "$python_cmd" ]; then
     exit 1
 fi
 
-exec "$python_cmd" -X utf8 ./run_official_suite.py "$@"
+entry_point="./run_official_suite.py"
+case "${1:-}" in
+    --colleague-replay)
+        entry_point="./runners/colleague_replay_verification.py"
+        shift
+        ;;
+esac
+
+exec "$python_cmd" -X utf8 "$entry_point" "$@"
