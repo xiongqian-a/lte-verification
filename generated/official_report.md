@@ -1,6 +1,6 @@
 # 官方 TP 映射与本地执行报告
 
-> 生成时间：2026-09-16T13:18:17+08:00
+> 生成时间：1970-01-01T00:00:00Z
 > 口径：本报告不产出官方一致性 Verdict。`LOCAL_PASS`/`SELFCHECK_PASS`/`STANDARD_ALIGNED`/`RESTRICTED` 均不等于一致性测试仪 P/F。
 
 | TC | 名称 | 模块 | 官方规范 | 官方章节 | 映射置信 | 当前证据 | 阶段 | 行号证据 | 主要受限 |
@@ -47,5 +47,5 @@
 - 仅条款级/待补齐行号锚：2
 
 > 说明：`mappingConfidence=exact` 表示已定位到具体规范条款；是否逐行核对正文、是否覆盖 `.3.2` 子例，以“行号证据”和受限项为准。
-- 已生成机器可读库：C:\标准例程-github\registry\official_tp_library.json
+- 已生成机器可读库：`registry/official_tp_library.json`
 - 官方一致性 Verdict：需要 R&S / Anritsu / Keysight / 检测机构按官方 TP 执行。

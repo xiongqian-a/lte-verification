@@ -14,17 +14,17 @@
     "L2_REQUIRED": "需要一致性测试仪或正式实验室"
   },
   "sources": {
-    "36523": "C:/11/523协议/523-1v14.pdf",
-    "34229": "C:/11/523协议/34229-1-e80.pdf; workspace extraction C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34229-1e70-word.txt",
-    "24229": "C:/Users/co1750/Downloads/24229-eh0/24229-eh0.doc 与 _extract/24229.txt",
-    "26114": "C:/11/523协议/26114-ec0.pdf 与 _extract/26114.txt",
-    "24301": "C:/11/523协议/ts_124301v180600p.pdf 与 _extract/24301.txt",
-    "24628": "C:/Users/co1750/Downloads/download (3)/24628-e10/24628-e10.doc 与 _extract/24628.txt",
-    "36508": "C:/Users/co1750/Downloads/ts_136508v140300p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt",
-    "24173": "C:/Users/co1750/Downloads/ts_124173v140300p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/24173.txt",
-    "36509": "C:/Users/co1750/Downloads/ts_136509v140000p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36509.txt",
-    "3652302": "C:/Users/co1750/Downloads/ts_13652302v140300p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/3652302.txt",
-    "34108": "C:/Users/co1750/Downloads/ts_134108v140200p.pdf 与 C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34108.txt"
+    "36523": "ETSI TS 136 523-1 (project-supplied standard source)",
+    "34229": "ETSI TS 134 229-1 (project-supplied standard source)",
+    "24229": "ETSI TS 124 229 (project-supplied standard source)",
+    "26114": "ETSI TS 126 114 (project-supplied standard source)",
+    "24301": "ETSI TS 124 301 (project-supplied standard source)",
+    "24628": "ETSI TS 124 628 (project-supplied standard source)",
+    "36508": "ETSI TS 136 508 (project-supplied standard source)",
+    "24173": "ETSI TS 124 173 (project-supplied standard source)",
+    "36509": "ETSI TS 136 509 (project-supplied standard source)",
+    "3652302": "ETSI TS 136 523-2 (project-supplied standard source)",
+    "34108": "ETSI TS 134 108 (project-supplied standard source)"
   },
   "entries": [
     {
@@ -35,7 +35,7 @@
       "officialClause": "10.5.1",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS | 20260914_NAS_TEST_RERUN",
-      "localScript": "work/run_tc_evidence.py",
+      "localScript": "runners/run_tc_evidence.py",
       "note": "UE 侧 nas_test 重跑：IMS APN PDN 请求/PTI/dedicated accept 已复现；端到端真实 eNB/EPC 仍缺",
       "blocker": "真实 eNB/EPC 端到端",
       "officialBoundaries": [
@@ -143,7 +143,7 @@
       "officialClause": "10.2.1",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "STANDARD_ALIGNED",
-      "localScript": "work/run_tc_evidence.py",
+      "localScript": "runners/run_tc_evidence.py",
       "note": "UE 单测注入/字段证据；缺真实 EPC 触发专用承载",
       "blocker": "真实 EPC 触发",
       "officialBoundaries": [
@@ -220,7 +220,7 @@
       "officialClause": "10.4.1",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "STANDARD_ALIGNED",
-      "localScript": "work/run_tc_evidence.py",
+      "localScript": "runners/run_tc_evidence.py",
       "note": "4 子例；UE 单测注入/字段证据；缺真实 EPC 触发释放",
       "blocker": "真实 EPC 触发",
       "officialBoundaries": [
@@ -407,7 +407,7 @@
       "officialClause": "10.5.3 / 10.5.4",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS | 20260914_NAS_TEST_RERUN",
-      "localScript": "work/tc004_state_patch.py",
+      "localScript": "runners/tc004_state_patch.py",
       "note": "UE 侧 nas_test 重跑：PDN REJECT cause=0x20、state=INACTIVE、T3482 停止、backoff 720s 已复现；真实核心网注入仍缺",
       "blocker": "真实核心网注入",
       "officialBoundaries": [
@@ -571,7 +571,7 @@
       "officialClause": "9.2.1.1.28a",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LIMITED_PASS",
-      "localScript": "work/tc005_dual_pdn.py",
+      "localScript": "runners/tc005_dual_pdn.py",
       "note": "2026-09-14 co1750 srsRAN 4G + 补丁版 Open5GS 观察到 internet EBI=5、第二个 ims 默认承载 EBI=6、IMS 专用承载 EBI=7 且 linked_bearer_id=6；MME 维持 2 个 session，SGW-C 完成 Create Bearer Response。LOCAL_BEHAVIOR=PASS；IPv4v6/IPv6、method II P-CSCF discovery 逐字段、网络侧 additional PDN 释放/E1 和官方 Verdict 仍 RESTRICTED。",
       "blocker": "L2: 一致性 SS/仪表；IPv6/IPv4v6 双栈分配、method II P-CSCF discovery 逐字段检查、additional PDN 网络侧释放/E1 结束态尚未由官方环境验证",
       "officialBoundaries": [
@@ -1530,7 +1530,7 @@
       "officialClause": "12.12 家族",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc012_mo_call.py",
+      "localScript": "runners/tc012_mo_call.py",
       "note": "co1750 真实 pjsua 呼叫 PASS；未按官方 .3.2 子例跑",
       "blocker": "官方 SS/一致性仪表",
       "sourceEvidenceLines": [
@@ -1675,7 +1675,7 @@
       "officialClause": "Invalid Behaviour - MAC Parameter Invalid / SQN out of range",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "SELFCHECK_PASS",
-      "localScript": "work/tc013_invalid_auth.py",
+      "localScript": "runners/tc013_invalid_auth.py",
       "sourceEvidenceLines": [
         "34229-1e70-word.txt line 5452-5602 (9.1 MAC Parameter Invalid)",
         "34229-1e70-word.txt line 5603-5739 (9.2 SQN out of range)"
@@ -1782,7 +1782,7 @@
       "officialClause": "8.2 User Initiated Re-Registration",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS | 20260914_1800S_REREG_HEADERS",
-      "localScript": "work/tc014_rereg.py",
+      "localScript": "runners/tc014_rereg.py",
       "sourceEvidenceLines": [
         "34229-1e70-word.txt line 4152-4344 (TP 8.2)",
         "34229-1e70-word.txt line 32380-32448 (Annex C.2)",
@@ -1908,7 +1908,7 @@
       "officialClause": "MO Call 504 Server Time-out restoration",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc015_restoration.py",
+      "localScript": "runners/tc015_restoration.py",
       "sourceEvidenceLines": [
         "34229-1e70-word.txt line 6119-6186 (TP 12.2a 504 restoration)"
       ],
@@ -1977,7 +1977,7 @@
       "officialClause": "5.1.1.2.1 / 5.1.1.4.1（行为级）",
       "mappingConfidence": "behavior",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc016_duplicate_register.py",
+      "localScript": "runners/tc016_duplicate_register.py",
       "note": "真实同 Call-ID 顺序重复 REGISTER 复判 PASS；24.229 行 3251/3468-3486 仅作行为支撑，无官方独立一致性 TC",
       "blocker": "无官方独立 ID；需真实 IMS/SS 才能补端到端行为证据",
       "sourceEvidenceLines": [
@@ -2000,7 +2000,7 @@
       "officialClause": "12.12 重复执行",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc017_two_calls.py",
+      "localScript": "runners/tc017_two_calls.py",
       "note": "真实双呼叫 PASS；属 12.12 重复/长稳变体",
       "blocker": "官方子例完整执行",
       "sourceEvidenceLines": [
@@ -2133,7 +2133,7 @@
       "officialClause": "自研健壮性（无官方 TP）",
       "mappingConfidence": "behavior",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc018_malformed_register.py",
+      "localScript": "runners/tc018_malformed_register.py",
       "note": "本地注入/自检 PASS；当前已核 24.229/34.229-1 无独立畸形 REGISTER 一致性 TC，归自研健壮性",
       "blocker": "无官方一致性 ID；只作本地鲁棒性证据",
       "sourceEvidenceLines": [],
@@ -2152,7 +2152,7 @@
       "officialClause": "12.13 / 12.13a",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc019_mt_call.py",
+      "localScript": "runners/tc019_mt_call.py",
       "note": "co1750 pjsua MT 日志 PASS；缺真实 IMS 呼叫台端到端",
       "blocker": "真实被叫/IMS 呼叫台",
       "sourceEvidenceLines": [
@@ -2297,7 +2297,7 @@
       "officialClause": "15.11 / 15.12",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc020_hold_retrieve.py",
+      "localScript": "runners/tc020_hold_retrieve.py",
       "note": "co1750 pjsua hold/resume 日志 PASS；缺真实 MMTel/IMS end-to-end",
       "blocker": "真实 MMTel/IMS",
       "sourceEvidenceLines": [
@@ -2413,7 +2413,7 @@
       "officialClause": "15.17 / 15.18 / 15.19 / 15.21",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc021_conference_refer.py",
+      "localScript": "runners/tc021_conference_refer.py",
       "note": "双 UA REFER + conference join 字段级 PASS；官方 .3.2 子例未跑",
       "blocker": "真实 MMTel/IMS/一致性仪表",
       "sourceEvidenceLines": [
@@ -2741,7 +2741,7 @@
       "officialClause": "12.12/12.13 SDP/媒体 TP",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc022_audio_media.py",
+      "localScript": "runners/tc022_audio_media.py",
       "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
       "blocker": "官方 SDP/媒体子例",
       "sourceEvidenceLines": [
@@ -3051,7 +3051,7 @@
       "officialClause": "12.12/12.13 SDP TP",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc023_sdp_negotiation.py",
+      "localScript": "runners/tc023_sdp_negotiation.py",
       "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
       "blocker": "官方 SDP/媒体子例",
       "sourceEvidenceLines": [
@@ -3361,7 +3361,7 @@
       "officialClause": "长稳",
       "mappingConfidence": "partial",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc024_long_stability.py",
+      "localScript": "runners/tc024_long_stability.py",
       "sourceEvidenceLines": [
         "26114.txt line 3899-3921 (8.2.3.2.2 JBM delay CDF)",
         "26114.txt line 3922-3940 (8.2.3.2.3 jitter loss rate)",
@@ -3387,7 +3387,7 @@
       "officialClause": "VAD/DTX",
       "mappingConfidence": "partial",
       "evidenceLevel": "LIMITED_PASS",
-      "localScript": "work/tc025_vad_dtx.py",
+      "localScript": "runners/tc025_vad_dtx.py",
       "note": "2026-09-14 长静音抓包经 bandwidth-efficient AMR ToC 复判：AMR speech=218、FT15 NO_DATA=10、SID=4；sid_delta_ts=160000,160000、sid_delta_frames=1000,1000，不符合 26.093 SID_UPDATE 8 帧/1280 ticks；且 NO_DATA 被 RTP 实际传输 10 次。LOCAL_BEHAVIOR=PARTIAL，STANDARD_ASSERTION=FAIL，整体仍为 LIMITED_PASS。",
       "blocker": "NO_DATA 实际传输=10（TS 26.093 行 229 明确不应在 AN 传输）；SID cadence=1000 帧不符合 8 帧规则；完整 AMR SCR SID_FIRST/SID_UPDATE 时序、真实产品 codec 或一致性仪表仍缺"
     },
@@ -4241,7 +4241,7 @@
       "officialClause": "11.2.1 + 紧急流程",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS | 20260911_RERUN_REPRODUCED",
-      "localScript": "work/run_tc030_emergency_lab.sh",
+      "localScript": "null",
       "note": "co1750 历史 112/110/119/120 功能级 PASS；2026-09-11 phase5 命名空间 fifo 复跑 tc030-emergency-112-20260911-155404 复现 PASS（REGISTER 401->200、INVITE->100->200、ACK、CONFIRMED、RTP 0丢包、BYE 200；S-CSCF EMERGENCY-RULE-HIT + ROUTE-REWRITE；call_rc=124 为 timeout 包装返回，非呼叫失败）；官方一致性、紧急 PDN、emergency registration 仍受限；36.508 锚点（V14.3.0）：Table 4.5A.4.3-1: EUTRA/EPS signalling for IMS Emergency Call 行 16909；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：11.2.1 body 行 235227 / TP 行 235231 / .3.2 行 235399 / Main behaviour 行 235400-235467 / .3.3 行 235473-235482",
       "blocker": "官方一致性/紧急 PDN",
       "officialBoundaries": [
@@ -4474,7 +4474,7 @@
       "officialClause": "10.1 / 12.2 (503), 12.2a (504)",
       "mappingConfidence": "exact_line_ref",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc032_error_codes.py",
+      "localScript": "runners/tc032_error_codes.py",
       "sourceEvidenceLines": [
         "34229-1e70-word.txt line 5741-5809 (10.1 503 Service Unavailable)",
         "34229-1e70-word.txt line 6060-6118 (12.2 MO Call 503 Service Unavailable)",
@@ -4639,7 +4639,7 @@
       "officialClause": "定时器",
       "mappingConfidence": "partial",
       "evidenceLevel": "LOCAL_PASS",
-      "localScript": "work/tc033_timer_timeout.py",
+      "localScript": "runners/tc033_timer_timeout.py",
       "sourceEvidenceLines": [
         "24229.txt line 10691-10813 (7.7 SIP timers)",
         "24229.txt line 10698-10813 (Table 7.7.1)"

@@ -62,6 +62,28 @@ def sha256(path: Path) -> str:
     return digest.hexdigest().upper()
 
 
+def portable_text(value: str) -> str:
+    return value.replace(str(ROOT), "<repository-root>").replace("\\", "/")
+
+
+def portable_command(args: list[str]) -> list[str]:
+    command: list[str] = []
+    for item in args:
+        if Path(item).resolve() == Path(sys.executable).resolve():
+            command.append("python")
+            continue
+        candidate = Path(item)
+        try:
+            resolved = candidate.resolve()
+            if resolved.is_relative_to(ROOT):
+                command.append(str(resolved.relative_to(ROOT)).replace("\\", "/"))
+                continue
+        except (OSError, ValueError):
+            pass
+        command.append(portable_text(item))
+    return command
+
+
 def run_command(
     label: str,
     args: list[str],
@@ -80,12 +102,14 @@ def run_command(
         output = ((proc.stdout or b"") + (proc.stderr or b"")).decode(
             "utf-8", errors="replace"
         )
+        output = portable_text(output)
         returncode: int | None = proc.returncode
         timed_out = False
     except subprocess.TimeoutExpired as exc:
         stdout = exc.stdout or b""
         stderr = exc.stderr or b""
         output = (stdout + stderr).decode("utf-8", errors="replace")
+        output = portable_text(output)
         returncode = None
         timed_out = True
 
@@ -93,7 +117,7 @@ def run_command(
     passed = returncode == 0 and not timed_out and not missing_markers
     return {
         "label": label,
-        "command": command,
+        "command": portable_command(command),
         "returncode": returncode,
         "timed_out": timed_out,
         "expected_markers": list(expected_markers),
@@ -403,7 +427,7 @@ def main() -> int:
 
     report = {
         "generated_at": generated_at,
-        "repository_root": str(ROOT),
+        "repository_root": "<repository-root>",
         "head": head,
         "expected_commit": expected,
         "commit_match": commit_match,
@@ -443,8 +467,8 @@ def main() -> int:
             f"rc={item['returncode']}"
         )
     print(f"TC011_INVARIANTS: {'PASS' if all_tc011_pass else 'FAIL'}")
-    print(f"JSON_REPORT: {json_path}")
-    print(f"MARKDOWN_REPORT: {markdown_path}")
+    print(f"JSON_REPORT: {portable_text(str(json_path))}")
+    print(f"MARKDOWN_REPORT: {portable_text(str(markdown_path))}")
     print("OFFICIAL_VERDICT: null")
     return 0 if automated_status == "PASS" else 1
 

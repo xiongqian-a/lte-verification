@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import re
 from _paths import GENERATED, LIBRARY, REGISTRY, SUITES, ensure_output_dirs
+from _repro import write_text_lf
 
 
 OUT = LIBRARY
@@ -155,7 +156,18 @@ def main() -> None:
             }
         )
 
-    OUT.write_text(json.dumps({"schema": "official_tp_library", "version": reg.get("version"), "entries": entries}, ensure_ascii=False, indent=2), encoding="utf-8")
+    write_text_lf(
+        OUT,
+        json.dumps(
+            {
+                "schema": "official_tp_library",
+                "version": reg.get("version"),
+                "entries": entries,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ) + "\n",
+    )
     print(f"WROTE {OUT} entries={len(entries)}")
 
 

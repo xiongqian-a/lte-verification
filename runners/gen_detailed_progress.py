@@ -11,8 +11,8 @@ from __future__ import annotations
 import re
 import json
 from collections import Counter
-from datetime import datetime
 from _paths import GENERATED, LIBRARY, REGISTRY, SUITES
+from _repro import generated_timestamp, write_text_lf
 
 
 EVIDENCE_MATRIX = GENERATED / "84-本地证据复跑矩阵-20260914.json"
@@ -202,7 +202,7 @@ def main() -> None:
     lines = [
         f"# 标准验证例程-详细进度总表（{REPORT_DATE}）",
         "",
-        f"生成时间：{datetime.now().astimezone().isoformat(timespec='seconds')}",
+        f"生成时间：{generated_timestamp()}",
         "",
         "> 口径：本表是当前验证例程完整快照。`LOCAL_PASS`/`SELFCHECK_PASS`/`STANDARD_ALIGNED`/`RESTRICTED` 均不等于 `36.523-1` 或 `34.229-1` 一致性 Verdict；官方一致性 PASS 只能来自一致性测试仪/检测机构按官方 TP 执行。",
         "",
@@ -265,7 +265,7 @@ def main() -> None:
 
     text = "\n".join(lines) + "\n"
     for output in (OUT, LEGACY_OUT):
-        output.write_text(text, encoding="utf-8", newline="\n")
+        write_text_lf(output, text)
     print(f"WROTE {OUT} rows={len(rows)}")
     print(f"WROTE {LEGACY_OUT} rows={len(rows)}")
 

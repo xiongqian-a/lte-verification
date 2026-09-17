@@ -141,7 +141,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS | 20260914_NAS_TEST_RERUN",
-      "local_script": "work/run_tc_evidence.py",
+      "local_script": "runners/run_tc_evidence.py",
       "phase": "L0",
       "limitation": "真实 eNB/EPC 端到端",
       "note": "UE 侧 nas_test 重跑：IMS APN PDN 请求/PTI/dedicated accept 已复现；端到端真实 eNB/EPC 仍缺",
@@ -256,7 +256,7 @@
         }
       ],
       "evidence_level": "STANDARD_ALIGNED",
-      "local_script": "work/run_tc_evidence.py",
+      "local_script": "runners/run_tc_evidence.py",
       "phase": "L2_PENDING",
       "limitation": "真实 EPC 触发",
       "note": "UE 单测注入/字段证据；缺真实 EPC 触发专用承载",
@@ -480,7 +480,7 @@
         }
       ],
       "evidence_level": "STANDARD_ALIGNED",
-      "local_script": "work/run_tc_evidence.py",
+      "local_script": "runners/run_tc_evidence.py",
       "phase": "L2_PENDING",
       "limitation": "真实 EPC 触发",
       "note": "4 子例；UE 单测注入/字段证据；缺真实 EPC 触发释放",
@@ -694,7 +694,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS | 20260914_NAS_TEST_RERUN",
-      "local_script": "work/tc004_state_patch.py",
+      "local_script": "runners/tc004_state_patch.py",
       "phase": "L0",
       "limitation": "真实核心网注入",
       "note": "UE 侧 nas_test 重跑：PDN REJECT cause=0x20、state=INACTIVE、T3482 停止、backoff 720s 已复现；真实核心网注入仍缺",
@@ -802,7 +802,7 @@
         }
       ],
       "evidence_level": "LIMITED_PASS",
-      "local_script": "work/tc005_dual_pdn.py",
+      "local_script": "runners/tc005_dual_pdn.py",
       "phase": "L0",
       "limitation": "L2: 一致性 SS/仪表；IPv6/IPv4v6 双栈分配、method II P-CSCF discovery 逐字段检查、additional PDN 网络侧释放/E1 结束态尚未由官方环境验证",
       "note": "2026-09-14 co1750 srsRAN 4G + 补丁版 Open5GS 观察到 internet EBI=5、第二个 ims 默认承载 EBI=6、IMS 专用承载 EBI=7 且 linked_bearer_id=6；MME 维持 2 个 session，SGW-C 完成 Create Bearer Response。LOCAL_BEHAVIOR=PASS；IPv4v6/IPv6、method II P-CSCF discovery 逐字段、网络侧 additional PDN 释放/E1 和官方 Verdict 仍 RESTRICTED。",
@@ -2099,7 +2099,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc012_mo_call.py",
+      "local_script": "runners/tc012_mo_call.py",
       "phase": "L0",
       "limitation": "官方 SS/一致性仪表",
       "note": "co1750 真实 pjsua 呼叫 PASS；未按官方 .3.2 子例跑",
@@ -2250,7 +2250,7 @@
         }
       ],
       "evidence_level": "SELFCHECK_PASS",
-      "local_script": "work/tc013_invalid_auth.py",
+      "local_script": "runners/tc013_invalid_auth.py",
       "phase": "L0",
       "limitation": "HSS 可注入错误向量，但当前 pjsua/ims_client_fix 缺 Security-Client/Security-Verify/auts/resync 与临时 SA 行为；需 UE 新栈实现或一致性仪表",
       "note": "判定引擎自检 PASS；真实 bad-key 日志 EXPECTED_FAIL，不等同官方无效挑战处理；官方一致性 RESTRICTED/L2_REQUIRED；本轮只读侦察见 outputs/86-TC013-真实环境无效AKA注入可行性-20260914.md",
@@ -2406,7 +2406,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS | 20260914_1800S_REREG_HEADERS",
-      "local_script": "work/tc014_rereg.py",
+      "local_script": "runners/tc014_rereg.py",
       "phase": "L0",
       "limitation": "官方 SS 定时窗口 / IPSEC / PANI",
       "note": "2026-09-14 co1750 真实日志：8 次 REGISTER、4x401/4x200、CSeq 51261-51268 严格递增、Expires=1800、3 次手动重注册均到 200；官方到期时间窗、IPSEC SA 更新、P-Access-Network-Info 仍为 N/A",
@@ -2509,7 +2509,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc015_restoration.py",
+      "local_script": "runners/tc015_restoration.py",
       "phase": "L0",
       "limitation": "真实 S-CSCF 重启/504",
       "note": "本地 504 alternative-service responder PASS；真实 S-CSCF 504 端到端缺",
@@ -2556,7 +2556,7 @@
       ],
       "official_boundaries": [],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc016_duplicate_register.py",
+      "local_script": "runners/tc016_duplicate_register.py",
       "phase": "L0",
       "limitation": "无官方独立 ID；需真实 IMS/SS 才能补端到端行为证据",
       "note": "真实同 Call-ID 顺序重复 REGISTER 复判 PASS；24.229 行 3251/3468-3486 仅作行为支撑，无官方独立一致性 TC",
@@ -2713,7 +2713,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc017_two_calls.py",
+      "local_script": "runners/tc017_two_calls.py",
       "phase": "L0",
       "limitation": "官方子例完整执行",
       "note": "真实双呼叫 PASS；属 12.12 重复/长稳变体",
@@ -2754,7 +2754,7 @@
       ],
       "official_boundaries": [],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc018_malformed_register.py",
+      "local_script": "runners/tc018_malformed_register.py",
       "phase": "L0",
       "limitation": "无官方一致性 ID；只作本地鲁棒性证据",
       "note": "本地注入/自检 PASS；当前已核 24.229/34.229-1 无独立畸形 REGISTER 一致性 TC，归自研健壮性",
@@ -2930,7 +2930,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc019_mt_call.py",
+      "local_script": "runners/tc019_mt_call.py",
       "phase": "L0",
       "limitation": "真实被叫/IMS 呼叫台",
       "note": "co1750 pjsua MT 日志 PASS；缺真实 IMS 呼叫台端到端",
@@ -3084,7 +3084,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc020_hold_retrieve.py",
+      "local_script": "runners/tc020_hold_retrieve.py",
       "phase": "L0",
       "limitation": "真实 MMTel/IMS",
       "note": "co1750 pjsua hold/resume 日志 PASS；缺真实 MMTel/IMS end-to-end",
@@ -3452,7 +3452,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc021_conference_refer.py",
+      "local_script": "runners/tc021_conference_refer.py",
       "phase": "L0",
       "limitation": "真实 MMTel/IMS/一致性仪表",
       "note": "双 UA REFER + conference join 字段级 PASS；官方 .3.2 子例未跑",
@@ -3796,7 +3796,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc022_audio_media.py",
+      "local_script": "runners/tc022_audio_media.py",
       "phase": "L0",
       "limitation": "官方 SDP/媒体子例",
       "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
@@ -4145,7 +4145,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc023_sdp_negotiation.py",
+      "local_script": "runners/tc023_sdp_negotiation.py",
       "phase": "L0",
       "limitation": "官方 SDP/媒体子例",
       "note": "真实日志字段 PASS；未按官方 .3.2 子例跑",
@@ -4194,7 +4194,7 @@
       ],
       "official_boundaries": [],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc024_long_stability.py",
+      "local_script": "runners/tc024_long_stability.py",
       "phase": "L0",
       "limitation": "非强制官方独立 TC",
       "note": "真实长稳 131.221s PASS；偏实测/长稳，非强制一致性独立 TC",
@@ -4262,7 +4262,7 @@
       ],
       "official_boundaries": [],
       "evidence_level": "LIMITED_PASS",
-      "local_script": "work/tc025_vad_dtx.py",
+      "local_script": "runners/tc025_vad_dtx.py",
       "phase": "L0",
       "limitation": "NO_DATA 实际传输=10（TS 26.093 行 229 明确不应在 AN 传输）；SID cadence=1000 帧不符合 8 帧规则；完整 AMR SCR SID_FIRST/SID_UPDATE 时序、真实产品 codec 或一致性仪表仍缺",
       "note": "2026-09-14 长静音抓包经 bandwidth-efficient AMR ToC 复判：AMR speech=218、FT15 NO_DATA=10、SID=4；sid_delta_ts=160000,160000、sid_delta_frames=1000,1000，不符合 26.093 SID_UPDATE 8 帧/1280 ticks；且 NO_DATA 被 RTP 实际传输 10 次。LOCAL_BEHAVIOR=PARTIAL，STANDARD_ASSERTION=FAIL，整体仍为 LIMITED_PASS。",
@@ -7411,7 +7411,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS | 20260911_RERUN_REPRODUCED",
-      "local_script": "work/run_tc030_emergency_lab.sh",
+      "local_script": "null",
       "phase": "L0",
       "limitation": "官方一致性/紧急 PDN",
       "note": "co1750 历史 112/110/119/120 功能级 PASS；2026-09-11 phase5 命名空间 fifo 复跑 tc030-emergency-112-20260911-155404 复现 PASS（REGISTER 401->200、INVITE->100->200、ACK、CONFIRMED、RTP 0丢包、BYE 200；S-CSCF EMERGENCY-RULE-HIT + ROUTE-REWRITE；call_rc=124 为 timeout 包装返回，非呼叫失败）；官方一致性、紧急 PDN、emergency registration 仍受限；36.508 锚点（V14.3.0）：Table 4.5A.4.3-1: EUTRA/EPS signalling for IMS Emergency Call 行 16909；正文行锚（2026-09-14 依据 ETSI TS 136 523-1 V14.3.0 提取文本重新核对）：11.2.1 body 行 235227 / TP 行 235231 / .3.2 行 235399 / Main behaviour 行 235400-235467 / .3.3 行 235473-235482",
@@ -8287,7 +8287,7 @@
         }
       ],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc032_error_codes.py",
+      "local_script": "runners/tc032_error_codes.py",
       "phase": "L0",
       "limitation": "官方 .3.2 子例/真实 IMS",
       "note": "本地 responder 503/504 PASS；401/403/488 不硬挂 503/504 ID",
@@ -8334,7 +8334,7 @@
       ],
       "official_boundaries": [],
       "evidence_level": "LOCAL_PASS",
-      "local_script": "work/tc033_timer_timeout.py",
+      "local_script": "runners/tc033_timer_timeout.py",
       "phase": "L0",
       "limitation": "无独立官方 ID",
       "note": "本地黑盒超时 PASS；34.229-1 无独立定时器 TC",

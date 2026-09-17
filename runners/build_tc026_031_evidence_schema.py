@@ -11,11 +11,11 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import time
 from pathlib import Path
 
 from l1_skeleton_026_031 import TC_META
-from _paths import SUBSTEPS, SUITE_EVIDENCE, ensure_output_dirs
+from _paths import ROOT, SUBSTEPS, SUITE_EVIDENCE, ensure_output_dirs
+from _repro import generated_epoch, portable_path, write_text_lf
 
 
 SOURCE = SUBSTEPS / "TC-026-031-3.2-main-behaviour.json"
@@ -263,9 +263,9 @@ def main() -> None:
     cases = [build_case(tc_id, extracted[tc_id]) for tc_id in TC_META]
     schema = {
         "schema_version": "1.0",
-        "generated_at_epoch": int(time.time()),
+        "generated_at_epoch": generated_epoch(),
         "source_spec": "ETSI TS 136 523-1 V14.3.0",
-        "source_extraction": str(SOURCE),
+        "source_extraction": portable_path(SOURCE, ROOT),
         "source_extraction_sha256": sha256(SOURCE),
         "layer_policy": {
             "L0": "official 3.2 step and 3.3 message-content anchors",
@@ -280,13 +280,13 @@ def main() -> None:
         "cases": cases,
     }
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    SCHEMA_OUT.write_text(
+    write_text_lf(
+        SCHEMA_OUT,
         json.dumps(schema, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
-    TEMPLATE_OUT.write_text(
+    write_text_lf(
+        TEMPLATE_OUT,
         json.dumps(build_template(schema), ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
 
     checkpoint_count = sum(

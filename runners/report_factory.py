@@ -8,10 +8,10 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime
 from pathlib import Path
 
-from _paths import GENERATED, LIBRARY, ensure_output_dirs
+from _paths import GENERATED, LIBRARY, ROOT, ensure_output_dirs
+from _repro import generated_timestamp, portable_path, write_text_lf
 
 
 def main() -> None:
@@ -26,7 +26,7 @@ def main() -> None:
     lines = [
         "# 官方 TP 映射与本地执行报告",
         "",
-        f"> 生成时间：{datetime.now().astimezone().isoformat(timespec='seconds')}",
+        f"> 生成时间：{generated_timestamp()}",
         "> 口径：本报告不产出官方一致性 Verdict。`LOCAL_PASS`/`SELFCHECK_PASS`/`STANDARD_ALIGNED`/`RESTRICTED` 均不等于一致性测试仪 P/F。",
         "",
         "| TC | 名称 | 模块 | 官方规范 | 官方章节 | 映射置信 | 当前证据 | 阶段 | 行号证据 | 主要受限 |",
@@ -57,9 +57,11 @@ def main() -> None:
     lines.append(f"- 仅条款级/待补齐行号锚：{len(without_refs)}")
     lines.append("")
     lines.append("> 说明：`mappingConfidence=exact` 表示已定位到具体规范条款；是否逐行核对正文、是否覆盖 `.3.2` 子例，以“行号证据”和受限项为准。")
-    lines.append(f"- 已生成机器可读库：{Path(args.library)}")
+    lines.append(
+        f"- 已生成机器可读库：`{portable_path(Path(args.library), ROOT)}`"
+    )
     lines.append(f"- 官方一致性 Verdict：需要 R&S / Anritsu / Keysight / 检测机构按官方 TP 执行。")
-    Path(args.out).write_text("\n".join(lines), encoding="utf-8")
+    write_text_lf(Path(args.out), "\n".join(lines) + "\n")
     print(f"WROTE {args.out} rows={len(entries)}")
 
 

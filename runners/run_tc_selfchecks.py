@@ -5,8 +5,16 @@ import argparse
 import json
 import subprocess
 import sys
-from datetime import datetime
 from pathlib import Path
+
+from _paths import ROOT
+from _repro import (
+    generated_timestamp,
+    normalize_tc011_ports,
+    portable_path,
+    portable_text,
+    write_text_lf,
+)
 
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -43,13 +51,15 @@ def run_one(script):
         encoding="utf-8",
         errors="replace",
     )
-    output = (proc.stdout + proc.stderr).strip()
+    output = portable_text((proc.stdout + proc.stderr).strip(), ROOT)
+    if script.name == "tc011_ipsec_ss_sim.py":
+        output = normalize_tc011_ports(output)
     lines = output.splitlines()
     selfcheck_pass = "SELFCHECK PASS" in output
     ok = proc.returncode == 0 and selfcheck_pass
     return {
         "name": script.name,
-        "path": str(script),
+        "path": portable_path(script, ROOT),
         "category": classify(script.name),
         "returncode": proc.returncode,
         "status": "PASS" if ok else "FAIL",
@@ -116,7 +126,7 @@ def main():
     work_dir = Path(__file__).resolve().parent
     scripts = sorted(work_dir.glob("tc*.py"))
     results = [run_one(script) for script in scripts]
-    generated_at = datetime.now().astimezone().isoformat(timespec="seconds")
+    generated_at = generated_timestamp()
 
     for r in results:
         print("%-36s %s rc=%d  %s" % (r["name"], r["status"], r["returncode"], r["last_line"]))
@@ -127,19 +137,22 @@ def main():
     if args.report:
         report_path = Path(args.report)
         report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(render_markdown(results, generated_at), encoding="utf-8")
+        write_text_lf(report_path, render_markdown(results, generated_at))
         print("REPORT_WRITTEN %s" % report_path)
 
     if args.json:
         json_path = Path(args.json)
         json_path.parent.mkdir(parents=True, exist_ok=True)
-        json_path.write_text(json.dumps({
-            "generated_at": generated_at,
-            "total": len(results),
-            "pass": len(results) - len(failures),
-            "fail": len(failures),
-            "results": results,
-        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        write_text_lf(
+            json_path,
+            json.dumps({
+                "generated_at": generated_at,
+                "total": len(results),
+                "pass": len(results) - len(failures),
+                "fail": len(failures),
+                "results": results,
+            }, ensure_ascii=False, indent=2) + "\n",
+        )
         print("JSON_WRITTEN %s" % json_path)
 
     return 1 if failures else 0

@@ -1,14 +1,16 @@
 {
-  "generated_at": "2026-09-16T13:18:16+08:00",
+  "generated_at": "1970-01-01T00:00:00Z",
   "results": [
     {
       "name": "tc001_ims_pdn",
       "script": "tc001_ims_pdn_evidence.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc001_ims_pdn_evidence.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc001_ims_pdn_evidence.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\local\\tc004-nas-test-20260914\\nas_test_rerun_20260914.log"
+        "evidence/local/tc004-nas-test-20260914/nas_test_rerun_20260914.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -21,10 +23,12 @@
       "name": "tc004_pdn_reject",
       "script": "tc004_pdn_reject_evidence.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc004_pdn_reject_evidence.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc004_pdn_reject_evidence.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\local\\tc004-nas-test-20260914\\nas_test_rerun_20260914.log"
+        "evidence/local/tc004-nas-test-20260914/nas_test_rerun_20260914.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -37,16 +41,18 @@
       "name": "tc005_dual_pdn",
       "script": "tc005_dual_pdn.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc005_dual_pdn.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc005_dual_pdn.py",
         "--ue",
-        "C:\\标准例程-github\\evidence\\external\\TC005-dual-pdn-20260914\\log\\ue.log",
+        "evidence/external/TC005-dual-pdn-20260914/log/ue.log",
         "--mme",
-        "C:\\标准例程-github\\evidence\\external\\TC005-dual-pdn-20260914\\log\\mme.log",
+        "evidence/external/TC005-dual-pdn-20260914/log/mme.log",
         "--smf",
-        "C:\\标准例程-github\\evidence\\external\\TC005-dual-pdn-20260914\\log\\smf.log",
+        "evidence/external/TC005-dual-pdn-20260914/log/smf.log",
         "--sgwc",
-        "C:\\标准例程-github\\evidence\\external\\TC005-dual-pdn-20260914\\log\\sgwc.log",
+        "evidence/external/TC005-dual-pdn-20260914/log/sgwc.log",
         "--ue-since",
         "2026-09-14T10:47:29",
         "--core-since",
@@ -63,10 +69,12 @@
       "name": "tc011_register_flow",
       "script": "tc011_register_flow.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc011_register_flow.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc011_register_flow.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc12-tc13-calls-raw.log"
+        "evidence/external/tc12-tc13-calls-raw.log"
       ],
       "expected": "LIMITED_PASS",
       "status": "LIMITED_PASS",
@@ -79,27 +87,31 @@
       "name": "tc011_ipsec_ss_sim",
       "script": "tc011_ipsec_ss_sim.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc011_ipsec_ss_sim.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc011_ipsec_ss_sim.py",
         "--selftest",
         "--out-dir",
-        "C:\\标准例程-github\\evidence\\local\\tc011-l1-20260916"
+        "outputs/tc011-l1-selfcheck"
       ],
       "expected": "PASS",
       "status": "PASS",
       "returncode": 0,
       "last_line": "SELFCHECK PASS",
       "note": "L1_LOCAL_SIMULATED: Annex C.2 Steps 4-11 over real UDP sockets with Security-Client/Security-Verify, SUBSCRIBE/NOTIFY, and both HMAC PIXIT rounds; no kernel xfrm and no official SS verdict",
-      "output": "==============================================================================\nPIXIT round: px_IMS_IpSecAlgorithm = hmac-md5-96\n  [OK ] C.2 step 4  UE -> SS  initial unprotected REGISTER\n         ok  request line is REGISTER :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  Request-URI is the home domain :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  initial REGISTER is unprotected (no Authorization) :: authorization_present=False\n         ok  From and To carry the same public user identity :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  Contact present :: <sip:001010123456780@127.0.0.1:51621;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  initial Contact uses an unprotected UE port :: contact_port=51621 source_port=51621\n         ok  Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:51621;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Expires is the official 600000 seconds :: 600000\n         ok  Supported contains path :: path, gruu, outbound\n         ok  Via has rport and a z9hG4bK branch :: SIP/2.0/UDP 127.0.0.1:51621;rport;branch=z9hG4bK-ue-1\n         ok  Route is not present in initial REGISTER :: route_present=False\n         ok  Require contains sec-agree :: sec-agree\n         ok  Proxy-Require contains sec-agree :: sec-agree\n         ok  Max-Forwards is a non-zero value :: 70\n         ok  P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Security-Client present :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51622; port-s=51623\n         ok  Security-Client announces the negotiated algorithm :: alg='hmac-md5-96' expected='hmac-md5-96'\n         ok  Security-Client uses ipsec-3gpp/ESP transport/null cipher :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51622; port-s=51623\n         ok  Security-Client carries spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51622\", \"port-s\": \"51623\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}\n         ok  Security-Client has exactly one mechanism entry :: entries=1\n         ok  Call-ID captured for the dialog :: tc011-l1-call-0001\n  [OK ] C.2 step 5  SS -> UE  401 Unauthorized with AKAv1-MD5 challenge + Security-Server\n         ok  SS sends 401 with AKAv1-MD5 challenge :: WWW-Authenticate present\n         ok  401 copies Via/From/To/Call-ID/CSeq from initial REGISTER :: transaction fields copied\n         ok  Security-Server offers selected algorithm with q=0.9 :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51620; port-s=51621; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51620; port-s=51621; q=0.7\n         ok  Security-Server offers alternate algorithm with q=0.7 :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51620; port-s=51621; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51620; port-s=51621; q=0.7\n  [OK ] C.2 step 6  UE -> SS  second REGISTER over temporary SA (+Security-Client/Verify)\n         ok  second REGISTER is a REGISTER request :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  same Call-ID reused :: first='tc011-l1-call-0001' second='tc011-l1-call-0001'\n         ok  second REGISTER arrives on the announced temporary SA port :: src_port=51622 announced_port-c=51622\n         ok  second REGISTER Contact uses the protected UE port :: contact='sip:001010123456780@127.0.0.1:51622;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=51622\n         ok  second REGISTER Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:51622;rport;branch=z9hG4bK-ue-2\n         ok  second REGISTER still has Require: sec-agree :: sec-agree\n         ok  second REGISTER still has Proxy-Require: sec-agree :: sec-agree\n         ok  second REGISTER has no Route header :: route_present=False\n         ok  second REGISTER Max-Forwards is non-zero :: 70\n         ok  second REGISTER P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Authorization present :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization response is non-empty :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization contains the complete AKA Digest tuple :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  Authorization nonce/opaque are server values :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  second REGISTER Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:51622;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Security-Client present on protected REGISTER :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51622; port-s=51623\n         ok  Security-Client is unchanged from the initial REGISTER :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51622; port-s=51623\n         ok  Security-Verify present on protected REGISTER :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51620; port-s=51621; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51620; port-s=51621; q=0.7\n         ok  Security-Verify echoes the complete Security-Server :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51620; port-s=51621; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51620; port-s=51621; q=0.7\n         ok  Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51620\", \"port-s\": \"51621\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}\n         ok  Security-Verify carries both PIXIT algorithm candidates :: [{\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51620\", \"port-s\": \"51621\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51620\", \"port-s\": \"51621\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]\n  [OK ] C.2 step 7  SS -> UE  200 OK over the same temporary SA\n         ok  200 OK sent to the temporary SA port :: dst_port=51622\n         ok  200 OK carries P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>\n         ok  200 OK carries Service-Route :: orig route present\n         ok  200 OK copies the second REGISTER transaction fields :: transaction fields copied\n         ok  200 OK Contact matches the registered protected contact :: sip:001010123456780@127.0.0.1:51622;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n  [OK ] C.2 step 8  UE -> SS  SUBSCRIBE reg event package over new SA\n         ok  SUBSCRIBE request received :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE Request-URI is exactly the public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE arrives on the new SA port :: src_port=51622 expected=51622\n         ok  SUBSCRIBE Contact uses the protected UE port :: <sip:001010123456780@127.0.0.1:51622;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  SUBSCRIBE Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:51622;rport;branch=z9hG4bK-ue-3\n         ok  SUBSCRIBE follows the stored Service-Route :: route='<sip:orig@127.0.0.1:51620;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:51620;lr>, <sip:scscf.3gpp.org;lr>'\n         ok  SUBSCRIBE From has a tag and To is untagged :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  SUBSCRIBE carries the echoed Security-Verify value :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51620; port-s=51621; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51620; port-s=51621; q=0.7\n         ok  SUBSCRIBE Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Proxy-Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Expires is 600000 :: 600000\n         ok  SUBSCRIBE Max-Forwards is non-zero :: 70\n         ok  SUBSCRIBE P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  SUBSCRIBE targets the registration event package :: reg\n         ok  SUBSCRIBE Accept allows application/reginfo+xml :: application/reginfo+xml\n         ok  SUBSCRIBE uses the default public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n  [OK ] C.2 step 9  SS -> UE  200 OK for SUBSCRIBE\n         ok  SS accepts SUBSCRIBE with 200 OK :: 200 OK\n         ok  SUBSCRIBE 200 OK keeps Call-ID and CSeq :: response correlation\n         ok  SUBSCRIBE 200 OK adds the server To-tag :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1\n         ok  SUBSCRIBE 200 OK carries Contact/Expires/Record-Route :: required response headers\n  [OK ] C.2 step 10 SS -> UE  NOTIFY with full registration state XML\n         ok  NOTIFY carries full registration state XML :: reginfo body present\n         ok  NOTIFY Subscription-State is active :: active\n         ok  NOTIFY swaps SUBSCRIBE dialog tags correctly :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1'\n         ok  NOTIFY Call-ID/CSeq correlate to SUBSCRIBE :: dialog correlation\n         ok  NOTIFY Request-URI is the registered protected contact :: sip:001010123456780@127.0.0.1:51622;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n         ok  NOTIFY reginfo aors match P-Associated-URI :: aors=['sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org', 'tel:001010123456780']\n  [OK ] C.2 step 11 UE -> SS  200 OK for NOTIFY\n         ok  UE answers NOTIFY with 200 OK :: SIP/2.0 200 OK\n         ok  NOTIFY 200 OK keeps the Call-ID :: tc011-l1-sub-call-0001\n         ok  NOTIFY 200 OK keeps the CSeq method :: 1 NOTIFY\n         ok  NOTIFY 200 OK keeps the top Via :: SIP/2.0/UDP 127.0.0.1:51620;branch=z9hG4bK-ss-ntf\n  local L1 verdict: PASS (8/8)\n==============================================================================\nPIXIT round: px_IMS_IpSecAlgorithm = hmac-sha-1-96\n  [OK ] C.2 step 4  UE -> SS  initial unprotected REGISTER\n         ok  request line is REGISTER :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  Request-URI is the home domain :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  initial REGISTER is unprotected (no Authorization) :: authorization_present=False\n         ok  From and To carry the same public user identity :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  Contact present :: <sip:001010123456780@127.0.0.1:51624;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  initial Contact uses an unprotected UE port :: contact_port=51624 source_port=51624\n         ok  Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:51624;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Expires is the official 600000 seconds :: 600000\n         ok  Supported contains path :: path, gruu, outbound\n         ok  Via has rport and a z9hG4bK branch :: SIP/2.0/UDP 127.0.0.1:51624;rport;branch=z9hG4bK-ue-1\n         ok  Route is not present in initial REGISTER :: route_present=False\n         ok  Require contains sec-agree :: sec-agree\n         ok  Proxy-Require contains sec-agree :: sec-agree\n         ok  Max-Forwards is a non-zero value :: 70\n         ok  P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Security-Client present :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626\n         ok  Security-Client announces the negotiated algorithm :: alg='hmac-sha-1-96' expected='hmac-sha-1-96'\n         ok  Security-Client uses ipsec-3gpp/ESP transport/null cipher :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626\n         ok  Security-Client carries spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51625\", \"port-s\": \"51626\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}\n         ok  Security-Client has exactly one mechanism entry :: entries=1\n         ok  Call-ID captured for the dialog :: tc011-l1-call-0001\n  [OK ] C.2 step 5  SS -> UE  401 Unauthorized with AKAv1-MD5 challenge + Security-Server\n         ok  SS sends 401 with AKAv1-MD5 challenge :: WWW-Authenticate present\n         ok  401 copies Via/From/To/Call-ID/CSeq from initial REGISTER :: transaction fields copied\n         ok  Security-Server offers selected algorithm with q=0.9 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7\n         ok  Security-Server offers alternate algorithm with q=0.7 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7\n  [OK ] C.2 step 6  UE -> SS  second REGISTER over temporary SA (+Security-Client/Verify)\n         ok  second REGISTER is a REGISTER request :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  same Call-ID reused :: first='tc011-l1-call-0001' second='tc011-l1-call-0001'\n         ok  second REGISTER arrives on the announced temporary SA port :: src_port=51625 announced_port-c=51625\n         ok  second REGISTER Contact uses the protected UE port :: contact='sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=51625\n         ok  second REGISTER Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:51625;rport;branch=z9hG4bK-ue-2\n         ok  second REGISTER still has Require: sec-agree :: sec-agree\n         ok  second REGISTER still has Proxy-Require: sec-agree :: sec-agree\n         ok  second REGISTER has no Route header :: route_present=False\n         ok  second REGISTER Max-Forwards is non-zero :: 70\n         ok  second REGISTER P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Authorization present :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization response is non-empty :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization contains the complete AKA Digest tuple :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  Authorization nonce/opaque are server values :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  second REGISTER Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Security-Client present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626\n         ok  Security-Client is unchanged from the initial REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=51625; port-s=51626\n         ok  Security-Verify present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7\n         ok  Security-Verify echoes the complete Security-Server :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7\n         ok  Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51623\", \"port-s\": \"51624\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}\n         ok  Security-Verify carries both PIXIT algorithm candidates :: [{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51623\", \"port-s\": \"51624\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"51623\", \"port-s\": \"51624\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]\n  [OK ] C.2 step 7  SS -> UE  200 OK over the same temporary SA\n         ok  200 OK sent to the temporary SA port :: dst_port=51625\n         ok  200 OK carries P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>\n         ok  200 OK carries Service-Route :: orig route present\n         ok  200 OK copies the second REGISTER transaction fields :: transaction fields copied\n         ok  200 OK Contact matches the registered protected contact :: sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n  [OK ] C.2 step 8  UE -> SS  SUBSCRIBE reg event package over new SA\n         ok  SUBSCRIBE request received :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE Request-URI is exactly the public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE arrives on the new SA port :: src_port=51625 expected=51625\n         ok  SUBSCRIBE Contact uses the protected UE port :: <sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  SUBSCRIBE Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:51625;rport;branch=z9hG4bK-ue-3\n         ok  SUBSCRIBE follows the stored Service-Route :: route='<sip:orig@127.0.0.1:51623;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:51623;lr>, <sip:scscf.3gpp.org;lr>'\n         ok  SUBSCRIBE From has a tag and To is untagged :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  SUBSCRIBE carries the echoed Security-Verify value :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=51623; port-s=51624; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=51623; port-s=51624; q=0.7\n         ok  SUBSCRIBE Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Proxy-Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Expires is 600000 :: 600000\n         ok  SUBSCRIBE Max-Forwards is non-zero :: 70\n         ok  SUBSCRIBE P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  SUBSCRIBE targets the registration event package :: reg\n         ok  SUBSCRIBE Accept allows application/reginfo+xml :: application/reginfo+xml\n         ok  SUBSCRIBE uses the default public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n  [OK ] C.2 step 9  SS -> UE  200 OK for SUBSCRIBE\n         ok  SS accepts SUBSCRIBE with 200 OK :: 200 OK\n         ok  SUBSCRIBE 200 OK keeps Call-ID and CSeq :: response correlation\n         ok  SUBSCRIBE 200 OK adds the server To-tag :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1\n         ok  SUBSCRIBE 200 OK carries Contact/Expires/Record-Route :: required response headers\n  [OK ] C.2 step 10 SS -> UE  NOTIFY with full registration state XML\n         ok  NOTIFY carries full registration state XML :: reginfo body present\n         ok  NOTIFY Subscription-State is active :: active\n         ok  NOTIFY swaps SUBSCRIBE dialog tags correctly :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1'\n         ok  NOTIFY Call-ID/CSeq correlate to SUBSCRIBE :: dialog correlation\n         ok  NOTIFY Request-URI is the registered protected contact :: sip:001010123456780@127.0.0.1:51625;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n         ok  NOTIFY reginfo aors match P-Associated-URI :: aors=['sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org', 'tel:001010123456780']\n  [OK ] C.2 step 11 UE -> SS  200 OK for NOTIFY\n         ok  UE answers NOTIFY with 200 OK :: SIP/2.0 200 OK\n         ok  NOTIFY 200 OK keeps the Call-ID :: tc011-l1-sub-call-0001\n         ok  NOTIFY 200 OK keeps the CSeq method :: 1 NOTIFY\n         ok  NOTIFY 200 OK keeps the top Via :: SIP/2.0/UDP 127.0.0.1:51623;branch=z9hG4bK-ss-ntf\n  local L1 verdict: PASS (8/8)\n==============================================================================\nsummary: C:\\��׼����-github\\evidence\\local\\tc011-l1-20260916\\tc011-l1-selftest-summary.json\nall PIXIT rounds pass: True\nSELFCHECK PASS"
+      "output": "==============================================================================\nPIXIT round: px_IMS_IpSecAlgorithm = hmac-md5-96\n  [OK ] C.2 step 4  UE -> SS  initial unprotected REGISTER\n         ok  request line is REGISTER :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  Request-URI is the home domain :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  initial REGISTER is unprotected (no Authorization) :: authorization_present=False\n         ok  From and To carry the same public user identity :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  Contact present :: <sip:001010123456780@127.0.0.1:<PORT_UE_PLAIN>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  initial Contact uses an unprotected UE port :: contact_port=<PORT_UE_PLAIN> source_port=<PORT_UE_PLAIN>\n         ok  Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:<PORT_UE_PLAIN>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Expires is the official 600000 seconds :: 600000\n         ok  Supported contains path :: path, gruu, outbound\n         ok  Via has rport and a z9hG4bK branch :: SIP/2.0/UDP 127.0.0.1:<PORT_UE_PLAIN>;rport;branch=z9hG4bK-ue-1\n         ok  Route is not present in initial REGISTER :: route_present=False\n         ok  Require contains sec-agree :: sec-agree\n         ok  Proxy-Require contains sec-agree :: sec-agree\n         ok  Max-Forwards is a non-zero value :: 70\n         ok  P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Security-Client present :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Client announces the negotiated algorithm :: alg='hmac-md5-96' expected='hmac-md5-96'\n         ok  Security-Client uses ipsec-3gpp/ESP transport/null cipher :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Client carries spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_UE_SA_C>\", \"port-s\": \"<PORT_UE_SA_S>\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}\n         ok  Security-Client has exactly one mechanism entry :: entries=1\n         ok  Call-ID captured for the dialog :: tc011-l1-call-0001\n  [OK ] C.2 step 5  SS -> UE  401 Unauthorized with AKAv1-MD5 challenge + Security-Server\n         ok  SS sends 401 with AKAv1-MD5 challenge :: WWW-Authenticate present\n         ok  401 copies Via/From/To/Call-ID/CSeq from initial REGISTER :: transaction fields copied\n         ok  Security-Server offers selected algorithm with q=0.9 :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  Security-Server offers alternate algorithm with q=0.7 :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n  [OK ] C.2 step 6  UE -> SS  second REGISTER over temporary SA (+Security-Client/Verify)\n         ok  second REGISTER is a REGISTER request :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  same Call-ID reused :: first='tc011-l1-call-0001' second='tc011-l1-call-0001'\n         ok  second REGISTER arrives on the announced temporary SA port :: src_port=<PORT_UE_SA_C> announced_port-c=<PORT_UE_SA_C>\n         ok  second REGISTER Contact uses the protected UE port :: contact='sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=<PORT_UE_SA_C>\n         ok  second REGISTER Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:<PORT_UE_SA_C>;rport;branch=z9hG4bK-ue-2\n         ok  second REGISTER still has Require: sec-agree :: sec-agree\n         ok  second REGISTER still has Proxy-Require: sec-agree :: sec-agree\n         ok  second REGISTER has no Route header :: route_present=False\n         ok  second REGISTER Max-Forwards is non-zero :: 70\n         ok  second REGISTER P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Authorization present :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization response is non-empty :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization contains the complete AKA Digest tuple :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  Authorization nonce/opaque are server values :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  second REGISTER Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Security-Client present on protected REGISTER :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Client is unchanged from the initial REGISTER :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Verify present on protected REGISTER :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  Security-Verify echoes the complete Security-Server :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_SS_C>\", \"port-s\": \"<PORT_SS_S>\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}\n         ok  Security-Verify carries both PIXIT algorithm candidates :: [{\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_SS_C>\", \"port-s\": \"<PORT_SS_S>\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_SS_C>\", \"port-s\": \"<PORT_SS_S>\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]\n  [OK ] C.2 step 7  SS -> UE  200 OK over the same temporary SA\n         ok  200 OK sent to the temporary SA port :: dst_port=<PORT_UE_SA_C>\n         ok  200 OK carries P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>\n         ok  200 OK carries Service-Route :: orig route present\n         ok  200 OK copies the second REGISTER transaction fields :: transaction fields copied\n         ok  200 OK Contact matches the registered protected contact :: sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n  [OK ] C.2 step 8  UE -> SS  SUBSCRIBE reg event package over new SA\n         ok  SUBSCRIBE request received :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE Request-URI is exactly the public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE arrives on the new SA port :: src_port=<PORT_UE_SA_C> expected=<PORT_UE_SA_C>\n         ok  SUBSCRIBE Contact uses the protected UE port :: <sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  SUBSCRIBE Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:<PORT_UE_SA_C>;rport;branch=z9hG4bK-ue-3\n         ok  SUBSCRIBE follows the stored Service-Route :: route='<sip:orig@127.0.0.1:<PORT_SS_C>;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:<PORT_SS_C>;lr>, <sip:scscf.3gpp.org;lr>'\n         ok  SUBSCRIBE From has a tag and To is untagged :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  SUBSCRIBE carries the echoed Security-Verify value :: ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  SUBSCRIBE Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Proxy-Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Expires is 600000 :: 600000\n         ok  SUBSCRIBE Max-Forwards is non-zero :: 70\n         ok  SUBSCRIBE P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  SUBSCRIBE targets the registration event package :: reg\n         ok  SUBSCRIBE Accept allows application/reginfo+xml :: application/reginfo+xml\n         ok  SUBSCRIBE uses the default public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n  [OK ] C.2 step 9  SS -> UE  200 OK for SUBSCRIBE\n         ok  SS accepts SUBSCRIBE with 200 OK :: 200 OK\n         ok  SUBSCRIBE 200 OK keeps Call-ID and CSeq :: response correlation\n         ok  SUBSCRIBE 200 OK adds the server To-tag :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1\n         ok  SUBSCRIBE 200 OK carries Contact/Expires/Record-Route :: required response headers\n  [OK ] C.2 step 10 SS -> UE  NOTIFY with full registration state XML\n         ok  NOTIFY carries full registration state XML :: reginfo body present\n         ok  NOTIFY Subscription-State is active :: active\n         ok  NOTIFY swaps SUBSCRIBE dialog tags correctly :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1'\n         ok  NOTIFY Call-ID/CSeq correlate to SUBSCRIBE :: dialog correlation\n         ok  NOTIFY Request-URI is the registered protected contact :: sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n         ok  NOTIFY reginfo aors match P-Associated-URI :: aors=['sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org', 'tel:001010123456780']\n  [OK ] C.2 step 11 UE -> SS  200 OK for NOTIFY\n         ok  UE answers NOTIFY with 200 OK :: SIP/2.0 200 OK\n         ok  NOTIFY 200 OK keeps the Call-ID :: tc011-l1-sub-call-0001\n         ok  NOTIFY 200 OK keeps the CSeq method :: 1 NOTIFY\n         ok  NOTIFY 200 OK keeps the top Via :: SIP/2.0/UDP 127.0.0.1:<PORT_SS_C>;branch=z9hG4bK-ss-ntf\n  local L1 verdict: PASS (8/8)\n==============================================================================\nPIXIT round: px_IMS_IpSecAlgorithm = hmac-sha-1-96\n  [OK ] C.2 step 4  UE -> SS  initial unprotected REGISTER\n         ok  request line is REGISTER :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  Request-URI is the home domain :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  initial REGISTER is unprotected (no Authorization) :: authorization_present=False\n         ok  From and To carry the same public user identity :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  Contact present :: <sip:001010123456780@127.0.0.1:<PORT_UE_PLAIN>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  initial Contact uses an unprotected UE port :: contact_port=<PORT_UE_PLAIN> source_port=<PORT_UE_PLAIN>\n         ok  Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:<PORT_UE_PLAIN>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Expires is the official 600000 seconds :: 600000\n         ok  Supported contains path :: path, gruu, outbound\n         ok  Via has rport and a z9hG4bK branch :: SIP/2.0/UDP 127.0.0.1:<PORT_UE_PLAIN>;rport;branch=z9hG4bK-ue-1\n         ok  Route is not present in initial REGISTER :: route_present=False\n         ok  Require contains sec-agree :: sec-agree\n         ok  Proxy-Require contains sec-agree :: sec-agree\n         ok  Max-Forwards is a non-zero value :: 70\n         ok  P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Security-Client present :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Client announces the negotiated algorithm :: alg='hmac-sha-1-96' expected='hmac-sha-1-96'\n         ok  Security-Client uses ipsec-3gpp/ESP transport/null cipher :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Client carries spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_UE_SA_C>\", \"port-s\": \"<PORT_UE_SA_S>\", \"protocol\": \"esp\", \"spi-c\": \"1000\", \"spi-s\": \"1001\"}\n         ok  Security-Client has exactly one mechanism entry :: entries=1\n         ok  Call-ID captured for the dialog :: tc011-l1-call-0001\n  [OK ] C.2 step 5  SS -> UE  401 Unauthorized with AKAv1-MD5 challenge + Security-Server\n         ok  SS sends 401 with AKAv1-MD5 challenge :: WWW-Authenticate present\n         ok  401 copies Via/From/To/Call-ID/CSeq from initial REGISTER :: transaction fields copied\n         ok  Security-Server offers selected algorithm with q=0.9 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  Security-Server offers alternate algorithm with q=0.7 :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n  [OK ] C.2 step 6  UE -> SS  second REGISTER over temporary SA (+Security-Client/Verify)\n         ok  second REGISTER is a REGISTER request :: REGISTER sip:ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  same Call-ID reused :: first='tc011-l1-call-0001' second='tc011-l1-call-0001'\n         ok  second REGISTER arrives on the announced temporary SA port :: src_port=<PORT_UE_SA_C> announced_port-c=<PORT_UE_SA_C>\n         ok  second REGISTER Contact uses the protected UE port :: contact='sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"' port-c=<PORT_UE_SA_C>\n         ok  second REGISTER Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:<PORT_UE_SA_C>;rport;branch=z9hG4bK-ue-2\n         ok  second REGISTER still has Require: sec-agree :: sec-agree\n         ok  second REGISTER still has Proxy-Require: sec-agree :: sec-agree\n         ok  second REGISTER has no Route header :: route_present=False\n         ok  second REGISTER Max-Forwards is non-zero :: 70\n         ok  second REGISTER P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  Authorization present :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization response is non-empty :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001\n         ok  Authorization contains the complete AKA Digest tuple :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  Authorization nonce/opaque are server values :: Digest username=\"001010123456780\", realm=\"ims.mnc001.mcc001.3gppnetwork.org\", nonce=\"ss-nonce-0001\", uri=\"sip:ims.mnc001.mcc001.3gppnetwork.org\", response=\"d0f1e2a3b4c5d6e7\", algorithm=AKAv1-MD5, cnonce=\"ue-cnonce-1\", qop=auth, nc=00000001,\n         ok  second REGISTER Contact advertises MTSI ICSI and instance ID :: <sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  Security-Client present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Client is unchanged from the initial REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=1000; spi-s=1001; port-c=<PORT_UE_SA_C>; port-s=<PORT_UE_SA_S>\n         ok  Security-Verify present on protected REGISTER :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  Security-Verify echoes the complete Security-Server :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  Security-Verify selected entry echoes SS spi-c/spi-s/port-c/port-s :: {\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_SS_C>\", \"port-s\": \"<PORT_SS_S>\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}\n         ok  Security-Verify carries both PIXIT algorithm candidates :: [{\"alg\": \"hmac-sha-1-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_SS_C>\", \"port-s\": \"<PORT_SS_S>\", \"protocol\": \"esp\", \"q\": \"0.9\", \"spi-c\": \"2000\", \"spi-s\": \"2001\"}, {\"alg\": \"hmac-md5-96\", \"encrypt-algorithm\": \"null\", \"mode\": \"trans\", \"port-c\": \"<PORT_SS_C>\", \"port-s\": \"<PORT_SS_S>\", \"protocol\": \"esp\", \"q\": \"0.7\", \"spi-c\": \"2100\", \"spi-s\": \"2101\"}]\n  [OK ] C.2 step 7  SS -> UE  200 OK over the same temporary SA\n         ok  200 OK sent to the temporary SA port :: dst_port=<PORT_UE_SA_C>\n         ok  200 OK carries P-Associated-URI :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>\n         ok  200 OK carries Service-Route :: orig route present\n         ok  200 OK copies the second REGISTER transaction fields :: transaction fields copied\n         ok  200 OK Contact matches the registered protected contact :: sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n  [OK ] C.2 step 8  UE -> SS  SUBSCRIBE reg event package over new SA\n         ok  SUBSCRIBE request received :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE Request-URI is exactly the public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n         ok  SUBSCRIBE arrives on the new SA port :: src_port=<PORT_UE_SA_C> expected=<PORT_UE_SA_C>\n         ok  SUBSCRIBE Contact uses the protected UE port :: <sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\">\n         ok  SUBSCRIBE Via uses the protected UE port :: SIP/2.0/UDP 127.0.0.1:<PORT_UE_SA_C>;rport;branch=z9hG4bK-ue-3\n         ok  SUBSCRIBE follows the stored Service-Route :: route='<sip:orig@127.0.0.1:<PORT_SS_C>;lr>, <sip:scscf.3gpp.org;lr>' expected='<sip:orig@127.0.0.1:<PORT_SS_C>;lr>, <sip:scscf.3gpp.org;lr>'\n         ok  SUBSCRIBE From has a tag and To is untagged :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>'\n         ok  SUBSCRIBE carries the echoed Security-Verify value :: ipsec-3gpp; alg=hmac-sha-1-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2000; spi-s=2001; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.9, ipsec-3gpp; alg=hmac-md5-96; protocol=esp; mode=trans; encrypt-algorithm=null; spi-c=2100; spi-s=2101; port-c=<PORT_SS_C>; port-s=<PORT_SS_S>; q=0.7\n         ok  SUBSCRIBE Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Proxy-Require contains sec-agree :: sec-agree\n         ok  SUBSCRIBE Expires is 600000 :: 600000\n         ok  SUBSCRIBE Max-Forwards is non-zero :: 70\n         ok  SUBSCRIBE P-Access-Network-Info identifies E-UTRAN :: 3GPP-E-UTRAN-FDD; utran-cell-id-3gpp=001010000000001\n         ok  SUBSCRIBE targets the registration event package :: reg\n         ok  SUBSCRIBE Accept allows application/reginfo+xml :: application/reginfo+xml\n         ok  SUBSCRIBE uses the default public user identity :: SUBSCRIBE sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org SIP/2.0\n  [OK ] C.2 step 9  SS -> UE  200 OK for SUBSCRIBE\n         ok  SS accepts SUBSCRIBE with 200 OK :: 200 OK\n         ok  SUBSCRIBE 200 OK keeps Call-ID and CSeq :: response correlation\n         ok  SUBSCRIBE 200 OK adds the server To-tag :: <sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1\n         ok  SUBSCRIBE 200 OK carries Contact/Expires/Record-Route :: required response headers\n  [OK ] C.2 step 10 SS -> UE  NOTIFY with full registration state XML\n         ok  NOTIFY carries full registration state XML :: reginfo body present\n         ok  NOTIFY Subscription-State is active :: active\n         ok  NOTIFY swaps SUBSCRIBE dialog tags correctly :: From='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ss-sub-to-1' To='<sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org>;tag=ue-sub-tag-1'\n         ok  NOTIFY Call-ID/CSeq correlate to SUBSCRIBE :: dialog correlation\n         ok  NOTIFY Request-URI is the registered protected contact :: sip:001010123456780@127.0.0.1:<PORT_UE_SA_C>;+sip.instance=\"<urn:gsma:imei:123456789012345>\";+g.3gpp.icsi-ref=\"urn%3Aurn-7%3A3gpp-service.ims.icsi.mmtel\"\n         ok  NOTIFY reginfo aors match P-Associated-URI :: aors=['sip:001010123456780@ims.mnc001.mcc001.3gppnetwork.org', 'tel:001010123456780']\n  [OK ] C.2 step 11 UE -> SS  200 OK for NOTIFY\n         ok  UE answers NOTIFY with 200 OK :: SIP/2.0 200 OK\n         ok  NOTIFY 200 OK keeps the Call-ID :: tc011-l1-sub-call-0001\n         ok  NOTIFY 200 OK keeps the CSeq method :: 1 NOTIFY\n         ok  NOTIFY 200 OK keeps the top Via :: SIP/2.0/UDP 127.0.0.1:<PORT_SS_C>;branch=z9hG4bK-ss-ntf\n  local L1 verdict: PASS (8/8)\n==============================================================================\nsummary: C:\\��׼����-github\\outputs\\tc011-l1-selfcheck\\tc011-l1-selftest-summary.json\nall PIXIT rounds pass: True\nSELFCHECK PASS"
     },
     {
       "name": "tc012_mo_call",
       "script": "tc012_mo_call.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc012_mo_call.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc012_mo_call.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc12-tc13-calls-raw.log"
+        "evidence/external/tc12-tc13-calls-raw.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -112,10 +124,12 @@
       "name": "tc013_invalid_auth",
       "script": "tc013_invalid_auth.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc013_invalid_auth.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc013_invalid_auth.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\step2-tc013-mac-invalid.msg"
+        "evidence/external/step2-tc013-mac-invalid.msg"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -128,10 +142,12 @@
       "name": "tc013_real_bad_key",
       "script": "tc013_invalid_auth.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc013_invalid_auth.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc013_invalid_auth.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc013-real-invalid-key-pjsua-20260903.log"
+        "evidence/external/tc013-real-invalid-key-pjsua-20260903.log"
       ],
       "expected": "EXPECTED_FAIL",
       "status": "EXPECTED_FAIL",
@@ -144,11 +160,13 @@
       "name": "tc014_rereg",
       "script": "tc014_rereg.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc014_rereg.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc014_rereg.py",
         "--raw",
         "--log",
-        "C:\\标准例程-github\\evidence\\local\\tc014-longexp-20260914\\tc014-longexp-1800-3rereg-20260914.log"
+        "evidence/local/tc014-longexp-20260914/tc014-longexp-1800-3rereg-20260914.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -161,10 +179,12 @@
       "name": "tc015_restoration",
       "script": "tc015_restoration.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc015_restoration.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc015_restoration.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc015-504-local-pty-20260910.log"
+        "evidence/external/tc015-504-local-pty-20260910.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -177,11 +197,13 @@
       "name": "tc016_duplicate_register",
       "script": "tc016_duplicate_register.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc016_duplicate_register.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc016_duplicate_register.py",
         "--raw",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc014-st06-auto-20260828A.log"
+        "evidence/external/tc014-st06-auto-20260828A.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -194,10 +216,12 @@
       "name": "tc017_two_calls",
       "script": "tc017_two_calls.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc017_two_calls.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc017_two_calls.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc12-tc13-calls-raw.log"
+        "evidence/external/tc12-tc13-calls-raw.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -210,10 +234,12 @@
       "name": "tc018_malformed_register",
       "script": "tc018_malformed_register.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc018_malformed_register.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc018_malformed_register.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc018-local-inject-evidence-20260910.log"
+        "evidence/external/tc018-local-inject-evidence-20260910.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -226,10 +252,12 @@
       "name": "tc019_mt_call",
       "script": "tc019_mt_call.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc019_mt_call.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc019_mt_call.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc019-mt-b.log"
+        "evidence/external/tc019-mt-b.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -242,10 +270,12 @@
       "name": "tc020_hold_retrieve",
       "script": "tc020_hold_retrieve.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc020_hold_retrieve.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc020_hold_retrieve.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc020-hold-a.log"
+        "evidence/external/tc020-hold-a.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -258,10 +288,12 @@
       "name": "tc021_conference_refer",
       "script": "tc021_conference_refer.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc021_conference_refer.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc021_conference_refer.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc021-refer-a.log"
+        "evidence/external/tc021-refer-a.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -274,16 +306,18 @@
       "name": "tc021_conference_join",
       "script": "tc021_conference_join_remote.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc021_conference_join_remote.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc021_conference_join_remote.py",
         "--list",
-        "C:\\标准例程-github\\evidence\\external\\conference-20260904-full\\conf_dual_capture_list.txt",
+        "evidence/external/conference-20260904-full/conf_dual_capture_list.txt",
         "--ua1",
-        "C:\\标准例程-github\\evidence\\external\\conference-20260904-full\\conf_dual_capture_ua1.log",
+        "evidence/external/conference-20260904-full/conf_dual_capture_ua1.log",
         "--ua2",
-        "C:\\标准例程-github\\evidence\\external\\conference-20260904-full\\conf_dual_capture_ua2.log",
+        "evidence/external/conference-20260904-full/conf_dual_capture_ua2.log",
         "--console",
-        "C:\\标准例程-github\\evidence\\external\\conference-20260904-full\\conf_dual_capture_console.log"
+        "evidence/external/conference-20260904-full/conf_dual_capture_console.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -296,10 +330,12 @@
       "name": "tc022_audio_media",
       "script": "tc022_audio_media.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc022_audio_media.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc022_audio_media.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc12-tc13-calls-raw.log"
+        "evidence/external/tc12-tc13-calls-raw.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -312,10 +348,12 @@
       "name": "tc023_sdp_negotiation",
       "script": "tc023_sdp_negotiation.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc023_sdp_negotiation.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc023_sdp_negotiation.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc12-tc13-calls-raw.log"
+        "evidence/external/tc12-tc13-calls-raw.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -328,10 +366,12 @@
       "name": "tc024_long_stability",
       "script": "tc024_long_stability.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc024_long_stability.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc024_long_stability.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc024-long-local-pty-20260910.log"
+        "evidence/external/tc024-long-local-pty-20260910.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -344,10 +384,12 @@
       "name": "tc025_vad_dtx",
       "script": "tc025_vad_dtx.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc025_vad_dtx.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc025_vad_dtx.py",
         "--amr-stats",
-        "C:\\标准例程-github\\evidence\\local\\tc025-longsilence-20260914\\amr-stats.txt"
+        "evidence/local/tc025-longsilence-20260914/amr-stats.txt"
       ],
       "expected": "LIMITED_PASS",
       "status": "LIMITED_PASS",
@@ -360,10 +402,12 @@
       "name": "tc032_error_codes",
       "script": "tc032_error_codes.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc032_error_codes.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc032_error_codes.py",
         "--log503",
-        "C:\\标准例程-github\\evidence\\external\\tc032-503-local-20260910-r2.stdout.log"
+        "evidence/external/tc032-503-local-20260910-r2.stdout.log"
       ],
       "expected": "PASS",
       "status": "PASS",
@@ -376,10 +420,12 @@
       "name": "tc033_timer_timeout",
       "script": "tc033_timer_timeout.py",
       "args": [
-        "C:\\Users\\co1750\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\python.exe",
-        "C:\\标准例程-github\\runners\\tc033_timer_timeout.py",
+        "python",
+        "-X",
+        "utf8",
+        "runners/tc033_timer_timeout.py",
         "--log",
-        "C:\\标准例程-github\\evidence\\external\\tc033-blackhole-local-20260910.stdout.log"
+        "evidence/external/tc033-blackhole-local-20260910.stdout.log"
       ],
       "expected": "PASS",
       "status": "PASS",

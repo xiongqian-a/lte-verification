@@ -35,7 +35,7 @@ def emit(text: str) -> None:
 
 
 def run(step: Step) -> int:
-    script = RUNNERS / step.script
+    script = (RUNNERS / step.script).resolve()
     command = [sys.executable, "-X", "utf8", str(script), *step.args]
     print(f"[RUN ] {step.label}: {script.name}")
     proc = subprocess.run(
@@ -58,6 +58,10 @@ def run(step: Step) -> int:
 def build_steps(include_evidence: bool) -> list[Step]:
     steps = [
         Step("build_official_library.py", "build machine-readable official TP library"),
+        Step(
+            "../tools/build_verification_architecture.py",
+            "rebuild verification architecture page",
+        ),
         Step(
             "verify_official_suite_metadata.py",
             "verify suite metadata against the official TP registry",
@@ -121,6 +125,13 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    if sys.version_info < (3, 10):
+        print(
+            "Python 3.10 or later is required; "
+            f"this interpreter is {sys.version.split()[0]}.",
+            file=sys.stderr,
+        )
+        return 2
     if not RUNNERS.exists():
         print("missing runners directory", file=sys.stderr)
         return 2

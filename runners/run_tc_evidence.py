@@ -11,10 +11,16 @@ import json
 import re
 import subprocess
 import sys
-from datetime import datetime
 from pathlib import Path
 
 from _paths import EVIDENCE, ROOT
+from _repro import (
+    generated_timestamp,
+    normalize_tc011_ports,
+    portable_path,
+    portable_text,
+    write_text_lf,
+)
 
 
 LOCAL = EVIDENCE / "local"
@@ -58,7 +64,7 @@ def build_cases():
             note="raw pjsua base registration evidence; Security headers/IPsec SA/reg-event/PIXIT/SS verdict remain restricted"),
         cmd("tc011_ipsec_ss_sim", "tc011_ipsec_ss_sim.py",
             "--selftest",
-            "--out-dir", evidence_path("local", "tc011-l1-20260916"),
+            "--out-dir", str(ROOT / "outputs" / "tc011-l1-selfcheck"),
             note="L1_LOCAL_SIMULATED: Annex C.2 Steps 4-11 over real UDP sockets with Security-Client/Security-Verify, SUBSCRIBE/NOTIFY, and both HMAC PIXIT rounds; no kernel xfrm and no official SS verdict"),
         cmd("tc012_mo_call", "tc012_mo_call.py",
             "--log", evidence_path("external", "tc12-tc13-calls-raw.log"),
@@ -214,7 +220,9 @@ def run_case(case, work_dir):
         encoding="utf-8",
         errors="replace",
     )
-    output = (proc.stdout + proc.stderr).strip()
+    output = portable_text((proc.stdout + proc.stderr).strip(), ROOT)
+    if case["name"] == "tc011_ipsec_ss_sim":
+        output = normalize_tc011_ports(output)
     lines = output.splitlines()
     last = ""
     for line in reversed(lines):
@@ -236,7 +244,16 @@ def run_case(case, work_dir):
     return {
         "name": case["name"],
         "script": Path(case["script"]).name,
-        "args": full_args,
+        "args": [
+            "python",
+            "-X",
+            "utf8",
+            portable_path(Path(full_args[1]), ROOT),
+            *[
+                portable_path(Path(arg), ROOT) if Path(arg).is_absolute() else arg
+                for arg in full_args[2:]
+            ],
+        ],
         "expected": case["expected_status"],
         "status": status,
         "returncode": proc.returncode,
@@ -285,7 +302,7 @@ def main():
     work_dir = ROOT / "runners"
     cases = build_cases()
     results = [run_case(case, work_dir) for case in cases]
-    generated_at = datetime.now().astimezone().isoformat(timespec="seconds")
+    generated_at = generated_timestamp()
 
     for r in results:
         print("%-28s %-14s rc=%d  %s" % (r["name"], r["status"], r["returncode"], r["last_line"]))
@@ -299,25 +316,28 @@ def main():
     if args.report:
         path = Path(args.report)
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(render_markdown(results, generated_at), encoding="utf-8")
+        write_text_lf(path, render_markdown(results, generated_at))
         print("REPORT_WRITTEN %s" % path)
     if args.json:
         path = Path(args.json)
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps({
-            "generated_at": generated_at,
-            "results": results,
-            "not_scripted_cases": [
-                {
-                    "tc": tc,
-                    "module": module,
-                    "evidence": evidence,
-                    "blocker": blocker,
-                    "ref": ref,
-                }
-                for tc, module, evidence, blocker, ref in NOT_SCRIPTED_CASES
-            ],
-        }, ensure_ascii=False, indent=2), encoding="utf-8")
+        write_text_lf(
+            path,
+            json.dumps({
+                "generated_at": generated_at,
+                "results": results,
+                "not_scripted_cases": [
+                    {
+                        "tc": tc,
+                        "module": module,
+                        "evidence": evidence,
+                        "blocker": blocker,
+                        "ref": ref,
+                    }
+                    for tc, module, evidence, blocker, ref in NOT_SCRIPTED_CASES
+                ],
+            }, ensure_ascii=False, indent=2) + "\n",
+        )
         print("JSON_WRITTEN %s" % path)
 
     return 1 if any(r["status"] == "FAIL" for r in results) else 0

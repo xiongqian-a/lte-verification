@@ -35,19 +35,41 @@ Requirements:
 - Git;
 - no third-party Python packages are required.
 
-Windows PowerShell:
+Windows PowerShell (clone, bootstrap, and run):
 
 ```powershell
-git clone <repository-url>
-cd <repository-directory>
-.\run.ps1
+git clone https://github.com/xiongqian-a/lte-verification.git
+cd lte-verification
+.\bootstrap.cmd
 ```
 
-Windows, macOS, or Linux:
+`bootstrap.cmd` invokes the PowerShell bootstrap with an execution-policy
+override, so it also works on systems where local `.ps1` files are blocked.
+It refreshes the current process PATH and searches the standard per-user and
+machine Python install directories after provisioning Python, so no new shell
+is required. If the execution policy already allows local scripts,
+`.\bootstrap.ps1` is equivalent.
+
+Windows, macOS, or Linux with an existing Python 3.10+ installation:
 
 ```text
+git clone https://github.com/xiongqian-a/lte-verification.git
+cd lte-verification
 python -X utf8 run_official_suite.py
 ```
+
+macOS or Linux (bootstrap is optional when Python 3.10+ is already installed):
+
+```sh
+git clone https://github.com/xiongqian-a/lte-verification.git
+cd lte-verification
+./bootstrap.sh
+```
+
+`bootstrap.ps1` and `bootstrap.sh` only provision Python when it is missing,
+then invoke the unified runner. They do not install or pretend to provide an
+eNB, EPC, IMS core, System Simulator, conformance instrument, test subscriber,
+or operator acceptance environment.
 
 Optional: skip replay of the included evidence logs.
 
@@ -65,12 +87,36 @@ The unified runner rebuilds derived data, checks all 34 suite documents,
 executes the checker self-checks, replays included evidence, evaluates the
 optional TC-026..031 L2 manifest, and writes reports under `generated/`.
 
+The executable entry points resolve paths from their own location. A fresh
+checkout can therefore live in any directory; no machine-specific path edit is
+required. The run is deterministic with respect to the tracked artifacts: it
+uses repository-relative paths and stable generated timestamps. Runtime
+scratch files are written under the ignored `outputs/` directory.
+
+## Verification Architecture Explorer
+
+Open [`verification-architecture.html`](verification-architecture.html) directly
+in a browser. It is a self-contained page that presents the eight functional
+modules, all 34 internal TCs, official-specification mappings, validation
+procedure, verdict criteria, scripts, evidence paths, and current blockers.
+
+The page does not claim a conformance result. Its status remains
+`NO_OFFICIAL_VERDICT` until a qualified System Simulator or accredited
+laboratory executes the applicable official test procedure.
+
+Rebuild the page after changing the registry, TP library, or suite documents:
+
+```text
+python -X utf8 tools/build_verification_architecture.py
+```
+
 ## Repository Layout
 
 | Path | Purpose |
 |---|---|
 | `run_official_suite.py` | Cross-platform one-command entry point |
 | `run.ps1` | Windows PowerShell wrapper for the same runner |
+| `bootstrap.cmd` | Windows one-click bootstrap with execution-policy override |
 | `registry/` | Machine-readable TC-to-official-TP registry and library |
 | `suites/official_tp_suites/` | One Markdown suite document per internal TC |
 | `suites/official_tp_suites/_substeps/` | Official procedure, Annex A, message, and verdict extracts |
@@ -83,6 +129,7 @@ optional TC-026..031 L2 manifest, and writes reports under `generated/`.
 | `docs/` | Progress, mapping, audit, freeze, and reporting documents |
 | `config/` | Optional local configuration; no secrets may be committed |
 | `tools/` | Optional extraction or instrument integration helpers |
+| `verification-architecture.html` | Self-contained visual architecture and traceability explorer |
 | `.github/workflows/verify.yml` | CI entry point that runs the unified verification |
 
 ## Result Vocabulary
@@ -128,6 +175,20 @@ The following are intentionally outside this repository:
 Historical documents may contain absolute paths from the machine on which they
 were generated. Those paths are provenance records; the executable runners use
 repository-relative paths.
+
+## What One-Command Run Does Not Claim
+
+The one-command run reproduces the repository's local verification baseline. It
+does not provide the external equipment that a formal conformance campaign
+needs. In particular, it cannot manufacture:
+
+- an official `36.523-1` or `34.229-1` verdict;
+- a real eNB/EPC/IMS end-to-end execution;
+- a qualified SS/Anritsu/R&S/Keysight execution result;
+- YD/T or operator acceptance evidence.
+
+Those items remain `RESTRICTED`, `NOT_EXECUTED`, or `L2_PENDING` until qualified
+evidence is supplied.
 
 ## Evidence and Publication Policy
 

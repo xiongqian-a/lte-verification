@@ -10,6 +10,7 @@ listed the conference with 2 members, and both left with a 200/BYE exchange.
 import argparse
 import re
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -52,33 +53,37 @@ def check(paths):
 
 
 def run_selfcheck():
-    root = Path(__file__).resolve().parent / "outputs" / "tc021-selfcheck-fixture"
-    root.mkdir(parents=True, exist_ok=True)
-    (root / "list.txt").write_text("Conference 888 (2 members)\n", encoding="utf-8")
-    for name in ("ua1.txt", "ua2.txt"):
-        (root / name).write_text(
-            "call state: CONFIRMED\n"
-            "INVITE sip:888@ims.mnc001.mcc001.3gppnetwork.org\n"
-            "BYE\n"
-            "200/BYE\n",
+    with tempfile.TemporaryDirectory(prefix="tc021-selfcheck-") as tmp:
+        root = Path(tmp)
+        (root / "list.txt").write_text(
+            "Conference 888 (2 members)\n", encoding="utf-8"
+        )
+        for name in ("ua1.txt", "ua2.txt"):
+            (root / name).write_text(
+                "call state: CONFIRMED\n"
+                "INVITE sip:888@ims.mnc001.mcc001.3gppnetwork.org\n"
+                "BYE\n"
+                "200/BYE\n",
+                encoding="utf-8",
+            )
+        (root / "console.txt").write_text(
+            "conference(888@default)\n"
+            "conference(888@default)\n"
+            "NORMAL_CLEARING\n",
             encoding="utf-8",
         )
-    (root / "console.txt").write_text(
-        "conference(888@default)\n"
-        "conference(888@default)\n"
-        "NORMAL_CLEARING\n",
-        encoding="utf-8",
-    )
-    args = argparse.Namespace(
-        list=str(root / "list.txt"),
-        ua1=str(root / "ua1.txt"),
-        ua2=str(root / "ua2.txt"),
-        console=str(root / "console.txt"),
-    )
-    rc = check(args)
-    print("SELFCHECK %s: conference log checker exercised with synthetic PASS fixture"
-          % ("PASS" if rc == 0 else "FAIL"))
-    return rc
+        args = argparse.Namespace(
+            list=str(root / "list.txt"),
+            ua1=str(root / "ua1.txt"),
+            ua2=str(root / "ua2.txt"),
+            console=str(root / "console.txt"),
+        )
+        rc = check(args)
+        print(
+            "SELFCHECK %s: conference log checker exercised with synthetic PASS fixture"
+            % ("PASS" if rc == 0 else "FAIL")
+        )
+        return rc
 
 
 def main():

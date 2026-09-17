@@ -10,10 +10,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import time
 from pathlib import Path
 
-from _paths import GENERATED, SUITE_EVIDENCE, ensure_output_dirs
+from _paths import GENERATED, ROOT, SUITE_EVIDENCE, ensure_output_dirs
+from _repro import generated_epoch, portable_path, write_text_lf
 
 SCHEMA = SUITE_EVIDENCE / "TC-026-031-evidence-schema.json"
 DEFAULT_MANIFEST = SUITE_EVIDENCE / "TC-026-031-evidence-manifest.json"
@@ -232,8 +232,8 @@ def build_result(schema: dict, manifest: dict | None, manifest_path: Path) -> di
     ]
     return {
         "schema_version": schema.get("schema_version"),
-        "generated_at_epoch": int(time.time()),
-        "manifest_path": str(manifest_path),
+        "generated_at_epoch": generated_epoch(),
+        "manifest_path": portable_path(manifest_path, ROOT),
         "manifest_found": manifest_path.exists(),
         "source_spec": schema.get("source_spec"),
         "source_extraction_sha256": schema.get("source_extraction_sha256"),
@@ -326,9 +326,8 @@ def write_markdown(result: dict, path: Path) -> None:
         "",
         "5. 只有 L2 合格来源且所有 TP Verdict 行匹配时，报告才会出现 "
         "`OFFICIAL_PASS`；不匹配时出现 `OFFICIAL_FAIL`。",
-        "",
     ]
-    path.write_text("\n".join(lines), encoding="utf-8")
+    write_text_lf(path, "\n".join(lines) + "\n")
 
 
 def main() -> None:
@@ -352,9 +351,9 @@ def main() -> None:
     manifest = load_json(args.manifest) if args.manifest.exists() else None
     result = build_result(schema, manifest, args.manifest)
     args.json.parent.mkdir(parents=True, exist_ok=True)
-    args.json.write_text(
+    write_text_lf(
+        args.json,
         json.dumps(result, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
     write_markdown(result, args.report)
 
