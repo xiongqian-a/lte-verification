@@ -47,5 +47,5 @@
 - 仅条款级/待补齐行号锚：2
 
 > 说明：`mappingConfidence=exact` 表示已定位到具体规范条款；是否逐行核对正文、是否覆盖 `.3.2` 子例，以“行号证据”和受限项为准。
-- 已生成机器可读库：C:\标准例程-github\registry\official_tp_library.json
+- 已生成机器可读库：<repo>\registry\official_tp_library.json
 - 官方一致性 Verdict：需要 R&S / Anritsu / Keysight / 检测机构按官方 TP 执行。

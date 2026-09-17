@@ -38,8 +38,9 @@ python --version
 python3 --version
 ```
 
-Windows 如果没有 Python，可以运行仓库自带的 bootstrap。Linux/macOS 如果
-系统支持 `apt-get` 或 `brew`，bootstrap 也会尝试安装 Python。
+Windows 如果没有 Python，可以运行仓库自带的 bootstrap。Linux/macOS 会按当前
+系统可用的包管理器尝试安装 Python；若自动安装条件不满足，脚本会给出明确错误，
+不会继续用不兼容的解释器运行。
 
 本仓库当前不要求安装第三方 Python 包，不需要先执行 `pip install`。
 
@@ -127,6 +128,17 @@ git diff --exit-code
 - `git diff --exit-code` 返回码为 0
 - 没有把本地结果写成 `OFFICIAL_PASS`
 
+再执行一次专门的便携性检查：
+
+```sh
+python -X utf8 runners/verify_portable_install.py
+python -X utf8 runners/verify_portable_install.py --full
+```
+
+静态检查必须输出 `PORTABLE INSTALL: PASS (STATIC)`；完整检查必须输出
+`PORTABLE INSTALL: PASS (FULL)` 和
+`UNIFIED RUNNER: PASS FROM UNRELATED CWD`。
+
 如果只想检查标准、脚本和报告，不重放历史证据，可以执行：
 
 ```sh
@@ -137,17 +149,19 @@ python -X utf8 run_official_suite.py --skip-evidence
 
 默认 runner 会按顺序执行：
 
-1. 从 registry 和套件文档生成机器可读官方 TP 库。
-2. 重建验证架构页面。
-3. 校验 34 条套件元数据。
-4. 重建详细进度表。
-5. 检查 34 条套件文档必需章节。
-6. 执行判定脚本的正控和负控自检。
-7. 复跑仓库中已固化的本地证据。
-8. 检查 TC-026 到 TC-031 的官方边界保护。
-9. 生成官方步骤和 TP Verdict 的证据 Schema。
-10. 读取可选 L2 证据清单；没有合格证据时保持 `NOT_EXECUTED`。
-11. 生成官方风格状态报告，但明确标注它不是官方证书。
+1. 检查关键入口、执行位、CI 覆盖和机器绝对路径。
+2. 从 registry 和套件文档生成机器可读官方 TP 库。
+3. 重建验证架构页面。
+4. 校验 34 条套件元数据。
+5. 重建详细进度表。
+6. 检查 34 条套件文档必需章节。
+7. 执行判定脚本的正控和负控自检。
+8. 复跑仓库中已固化的本地证据。
+9. 检查 TC-026 到 TC-031 的官方边界保护。
+10. 生成官方步骤和 TP Verdict 的证据 Schema。
+11. 读取可选 L2 证据清单；没有合格证据时保持 `NOT_EXECUTED`。
+12. 校验 L2 adapter 的语义，防止本地证据被误升级成官方判定。
+13. 生成官方风格状态报告，但明确标注它不是官方证书。
 
 主要输出目录：
 

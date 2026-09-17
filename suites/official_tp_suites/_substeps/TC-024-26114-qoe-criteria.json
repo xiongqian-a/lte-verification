@@ -2,7 +2,7 @@
   "schema": "official_support_qoe_criteria",
   "spec": "3GPP TS 26.114",
   "version": "V14.12.0 (2021-04)",
-  "source_file": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\_extract\\26114.txt",
+  "source_file": "<standards-extract>\\26114.txt",
   "source_line_convention": "Python str.splitlines() index (1-based)",
   "note": "These are MTSI QoE/JBM/PLR criteria used as support evidence for TC-024. They are not presented as an independent conformance TC.",
   "blocks": [

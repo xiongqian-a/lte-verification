@@ -22,8 +22,8 @@
 
 ### 2.3 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
+- 源文本：`<legacy-workspace>\523-1v14.txt`
 - 行号方法：CRLF/CR 归一化后按 LF 切分；以下仅建立官方 TP 骨架和可追溯性，不等于官方一致性 Verdict。
 
 已核对的官方边界：

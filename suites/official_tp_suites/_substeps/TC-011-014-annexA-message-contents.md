@@ -1,6 +1,6 @@
 # TC-011 / TC-014 Annex A 默认消息内容（官方 .3.3 等价）
 
-来源：`3GPP TS 34.229-1` V14.7.0 (2019-06) Annex A，逐行抽取自 `C:\Users\co1750\Documents\Codex\2026-09-02\i\_extract\34229-1e70-word.txt`；行号口径 `Python str.splitlines()`（与 `34229-1e70_ascii.txt` 交叉校验一致）。
+来源：`3GPP TS 34.229-1` V14.7.0 (2019-06) Annex A，逐行抽取自 `<standards-extract>\34229-1e70-word.txt`；行号口径 `Python str.splitlines()`（与 `34229-1e70_ascii.txt` 交叉校验一致）。
 
 说明：34.229-1 Annex C.2 明确 `The default message contents in annex A are used`，TC-011（8.1）与 TC-014（8.2）都执行 C.2，因此这些 Annex A 消息表就是两个用例的 `.3.3 Specific message contents` 等价物。
 

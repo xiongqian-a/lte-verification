@@ -3,14 +3,14 @@
 > 本文件只列当前可执行命令和真实环境映射，不是最终一致性执行记录。
 >
 > 相对路径 `work/...` 指
-> `C:\Users\co1750\Documents\Codex\2026-09-02\i\work`。执行前先进入
-> `C:\Users\co1750\Documents\Codex\2026-09-02\i`。
+> `<legacy-workspace>\work`。执行前先进入
+> `<legacy-workspace>`。
 
 ## 本地复跑命令
 
 ```text
 # 一键全链路：生成机器可读库 + 完整性检查 + 自检 + 证据复跑 + 报告
-python C:\标准例程\run_official_suite.py
+python <repo>\run_official_suite.py
 
 # 一键复跑所有判定脚本自检
 python work/run_tc_selfchecks.py
@@ -36,14 +36,14 @@ python work/run_l1_evidence_adapter_026_031.py
 # 验证 TC-026~031 适配器的官方/本地状态语义
 python work/verify_l1_evidence_adapter_026_031.py
 
-# 检查 C:\标准例程 的官方 TP 套件文档是否齐备
+# 检查 <repo> 的官方 TP 套件文档是否齐备
 python work/run_official_suite_checks.py
 
 # 从套件文档重新生成机器可读 official_tp_library.json
 python work/build_official_library.py
 
 # 生成官方风格 markdown 报告（非一致性 Verdict）
-python C:\标准例程\report_factory.py
+python <repo>\report_factory.py
 
 # 从注册表、机器可读用例库和本地证据 JSON 重新生成逐 TC 详细进度表
 python work/gen_detailed_progress.py
@@ -51,12 +51,12 @@ python work/gen_detailed_progress.py
 
 详细进度表输出：
 
-- `C:\标准例程\92-验证例程详细进度总表-20260915.md`
-- `C:\标准例程\进度总表-最详细版-20260914.md`（兼容旧路径，内容同步）
+- `<repo>\92-验证例程详细进度总表-20260915.md`
+- `<repo>\进度总表-最详细版-20260914.md`（兼容旧路径，内容同步）
 
 ## 已生成套件文档的 TC（全量 34）
 
-所有 34 条 TC 均已有 `C:\标准例程\official_tp_suites\TC-xxx.md`。每个文件都包含：目的、官方骨架、前置条件、验证流程、TP Verdict 判据、当前本地证据、受限/L2_REQUIRED、执行命令。
+所有 34 条 TC 均已有 `<repo>\official_tp_suites\TC-xxx.md`。每个文件都包含：目的、官方骨架、前置条件、验证流程、TP Verdict 判据、当前本地证据、受限/L2_REQUIRED、执行命令。
 
 以下表格按“当前有本地执行入口”的 TC 列出可复跑入口；无入口的 TC 表示当前只到标准判据层（STANDARD_ALIGNED / RESTRICTED）。
 
@@ -115,8 +115,8 @@ python work/gen_detailed_progress.py
 ## 冻结清单与快照校验
 
 ```powershell
-python C:\Users\co1750\Documents\Codex\2026-09-02\i\work\build_final_manifest.py
-python C:\Users\co1750\Documents\Codex\2026-09-02\i\work\build_final_manifest.py --verify C:\11\523协议\standard-suite-20260915
+python <legacy-workspace>\work\build_final_manifest.py
+python <legacy-workspace>\work\build_final_manifest.py --verify <standards-source>\standard-suite-20260915
 ```
 
 该校验会检查相对路径、缺失文件、额外文件和 SHA256 差异；`__pycache__` 与 `FINAL_MANIFEST.sha256` 自身不参与清单。

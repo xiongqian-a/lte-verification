@@ -2,7 +2,7 @@
   "schema": "official_support_sip_timers",
   "spec": "3GPP TS 24.229",
   "version": "V14.17.0 (2022-12)",
-  "source_file": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\_extract\\24229.txt",
+  "source_file": "<standards-extract>\\24229.txt",
   "source_line_convention": "Python str.splitlines() index (1-based)",
   "note": "Clause 7.7 and Table 7.7.1 are support evidence for the TC-033 SIP-timer robustness case. There is no independent 34.229-1 conformance TC for this case.",
   "block": {

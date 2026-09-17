@@ -2,7 +2,7 @@
   "schema": "official_tp_call_family_blocks",
   "spec": "3GPP TS 34.229-1",
   "version": "V14.7.0 (2019-06)",
-  "source_file": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\_extract\\34229-1e70-word.txt",
+  "source_file": "<standards-extract>\\34229-1e70-word.txt",
   "source_line_convention": "Python str.splitlines() index (1-based)",
   "note": "Official Test purpose, Method of test, Expected sequence, Specific Message Contents and Test requirements for the IMS call-family TCs.",
   "blocks": [

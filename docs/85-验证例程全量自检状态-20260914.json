@@ -11,7 +11,7 @@
   "results": [
     {
       "name": "tc001_ims_pdn_evidence.py",
-      "path": "C:\\标准例程-github\\runners\\tc001_ims_pdn_evidence.py",
+      "path": "<repo>\\runners\\tc001_ims_pdn_evidence.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -20,7 +20,7 @@
     },
     {
       "name": "tc004_pdn_reject_evidence.py",
-      "path": "C:\\标准例程-github\\runners\\tc004_pdn_reject_evidence.py",
+      "path": "<repo>\\runners\\tc004_pdn_reject_evidence.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -29,7 +29,7 @@
     },
     {
       "name": "tc004_state_patch.py",
-      "path": "C:\\标准例程-github\\runners\\tc004_state_patch.py",
+      "path": "<repo>\\runners\\tc004_state_patch.py",
       "category": "srsUE source patch helper; selfcheck is dry-run readiness only",
       "returncode": 0,
       "status": "PASS",
@@ -38,7 +38,7 @@
     },
     {
       "name": "tc005_dual_pdn.py",
-      "path": "C:\\标准例程-github\\runners\\tc005_dual_pdn.py",
+      "path": "<repo>\\runners\\tc005_dual_pdn.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -47,7 +47,7 @@
     },
     {
       "name": "tc011_register_flow.py",
-      "path": "C:\\标准例程-github\\runners\\tc011_register_flow.py",
+      "path": "<repo>\\runners\\tc011_register_flow.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -56,7 +56,7 @@
     },
     {
       "name": "tc012_mo_call.py",
-      "path": "C:\\标准例程-github\\runners\\tc012_mo_call.py",
+      "path": "<repo>\\runners\\tc012_mo_call.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -65,7 +65,7 @@
     },
     {
       "name": "tc013_invalid_auth.py",
-      "path": "C:\\标准例程-github\\runners\\tc013_invalid_auth.py",
+      "path": "<repo>\\runners\\tc013_invalid_auth.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -74,7 +74,7 @@
     },
     {
       "name": "tc014_rereg.py",
-      "path": "C:\\标准例程-github\\runners\\tc014_rereg.py",
+      "path": "<repo>\\runners\\tc014_rereg.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -83,7 +83,7 @@
     },
     {
       "name": "tc015_restoration.py",
-      "path": "C:\\标准例程-github\\runners\\tc015_restoration.py",
+      "path": "<repo>\\runners\\tc015_restoration.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -92,7 +92,7 @@
     },
     {
       "name": "tc016_duplicate_register.py",
-      "path": "C:\\标准例程-github\\runners\\tc016_duplicate_register.py",
+      "path": "<repo>\\runners\\tc016_duplicate_register.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -101,7 +101,7 @@
     },
     {
       "name": "tc017_two_calls.py",
-      "path": "C:\\标准例程-github\\runners\\tc017_two_calls.py",
+      "path": "<repo>\\runners\\tc017_two_calls.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -110,7 +110,7 @@
     },
     {
       "name": "tc018_malformed_register.py",
-      "path": "C:\\标准例程-github\\runners\\tc018_malformed_register.py",
+      "path": "<repo>\\runners\\tc018_malformed_register.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -119,7 +119,7 @@
     },
     {
       "name": "tc019_mt_call.py",
-      "path": "C:\\标准例程-github\\runners\\tc019_mt_call.py",
+      "path": "<repo>\\runners\\tc019_mt_call.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -128,7 +128,7 @@
     },
     {
       "name": "tc020_hold_retrieve.py",
-      "path": "C:\\标准例程-github\\runners\\tc020_hold_retrieve.py",
+      "path": "<repo>\\runners\\tc020_hold_retrieve.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -137,7 +137,7 @@
     },
     {
       "name": "tc021_conference_join_remote.py",
-      "path": "C:\\标准例程-github\\runners\\tc021_conference_join_remote.py",
+      "path": "<repo>\\runners\\tc021_conference_join_remote.py",
       "category": "remote log checker; selfcheck uses a synthetic PASS fixture",
       "returncode": 0,
       "status": "PASS",
@@ -146,7 +146,7 @@
     },
     {
       "name": "tc021_conference_refer.py",
-      "path": "C:\\标准例程-github\\runners\\tc021_conference_refer.py",
+      "path": "<repo>\\runners\\tc021_conference_refer.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -155,7 +155,7 @@
     },
     {
       "name": "tc022_audio_media.py",
-      "path": "C:\\标准例程-github\\runners\\tc022_audio_media.py",
+      "path": "<repo>\\runners\\tc022_audio_media.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -164,7 +164,7 @@
     },
     {
       "name": "tc023_sdp_negotiation.py",
-      "path": "C:\\标准例程-github\\runners\\tc023_sdp_negotiation.py",
+      "path": "<repo>\\runners\\tc023_sdp_negotiation.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -173,7 +173,7 @@
     },
     {
       "name": "tc024_long_stability.py",
-      "path": "C:\\标准例程-github\\runners\\tc024_long_stability.py",
+      "path": "<repo>\\runners\\tc024_long_stability.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -182,7 +182,7 @@
     },
     {
       "name": "tc025_rtp_capture.py",
-      "path": "C:\\标准例程-github\\runners\\tc025_rtp_capture.py",
+      "path": "<repo>\\runners\\tc025_rtp_capture.py",
       "category": "AF_PACKET capture helper; selfcheck exercises the parser with a synthetic RTP frame",
       "returncode": 0,
       "status": "PASS",
@@ -191,7 +191,7 @@
     },
     {
       "name": "tc025_vad_dtx.py",
-      "path": "C:\\标准例程-github\\runners\\tc025_vad_dtx.py",
+      "path": "<repo>\\runners\\tc025_vad_dtx.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -200,7 +200,7 @@
     },
     {
       "name": "tc032_error_codes.py",
-      "path": "C:\\标准例程-github\\runners\\tc032_error_codes.py",
+      "path": "<repo>\\runners\\tc032_error_codes.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",
@@ -209,7 +209,7 @@
     },
     {
       "name": "tc033_timer_timeout.py",
-      "path": "C:\\标准例程-github\\runners\\tc033_timer_timeout.py",
+      "path": "<repo>\\runners\\tc033_timer_timeout.py",
       "category": "verdict script",
       "returncode": 0,
       "status": "PASS",

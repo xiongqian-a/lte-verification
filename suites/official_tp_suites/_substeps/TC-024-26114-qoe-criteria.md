@@ -1,6 +1,6 @@
 # TC-024 媒体长稳：TS 26.114 QoE/JBM/PLR 判据
 
-来源：`3GPP TS 26.114` V14.12.0 (2021-04)，逐行抽取自 `C:\Users\co1750\Documents\Codex\2026-09-02\i\_extract\26114.txt`；行号口径 `Python str.splitlines()` 1-based。
+来源：`3GPP TS 26.114` V14.12.0 (2021-04)，逐行抽取自 `<standards-extract>\26114.txt`；行号口径 `Python str.splitlines()` 1-based。
 
 这些条款是本地长稳/行为证据的支撑判据，不是独立官方一致性 TC，也不把本地 PASS 升级为官方 Verdict。
 

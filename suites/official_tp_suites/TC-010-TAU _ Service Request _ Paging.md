@@ -25,7 +25,7 @@
 
 ### 2.1 36.508 锚点（通用测试环境）
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt`
+- 源文本：`<standards-extract>/36508.txt`
 - TAU（9.2.3.1.1）：523 正文行 210557 要求 UE 处于 `TS 36.508` `State 2`；行 210586/210601 走 `TS 36.508 subclause 6.4.2.4` Paging/NAS 测试流程；行 210638/210680 引用 `Table 4.7.2-27: TRACKING AREA UPDATE REQUEST` 行 28903；行 210649/210692 引用 `Table 4.7.2-24: TRACKING AREA UPDATE ACCEPT` 行 28658
 - Service Request（9.3.1.1）：523 正文行 229029/230854 引用 `TS 36.508 4.5.3.3-1` 的 Generic Radio Bearer establishment；对应 `Table 4.5.3.3-1: Generic Radio Bearer establishment procedure (state 2 to state 3)` 行 15750；行 229050 引用 `Table 4.6.1-16: RRCConnectionRequest` 行 20856
 - Paging（9.3.2.1）：523 正文行 230861 引用 `Table 4.6.1-16` 行 20856；行 230881 引用 `Table 4.6.1-7: Paging` 行 19862
@@ -34,7 +34,7 @@
 
 ### 2.2 36.509 锚点（Test Loop 相关）
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36509.txt`（TS 36.509 V14.0.0）
+- 源文本：`<standards-extract>/36509.txt`（TS 36.509 V14.0.0）
 - `5.4.4 UE test loop mode B operation` 行 1700；
 - `5.4.4.2 Reception of IP PDUs when UE is in E-UTRA or NB-IoT mode` 行 1702-1703；下行 `PDCP SDU (=IP PDU)` 提交给 `UL TFT handling SAP` 行 1735，对应 523 正文 9.3.1.1 的 Loopback Activated 前置。
 - `5.4.4.10 Establishment of the RRC/RR connection in E-UTRA, NB-IoT, UTRA, GSM/GPRS and CDMA2000 mode` 行 1827-1833：RRC/RR 连接与 EPS bearer 建立后，若 `TEST_LOOP_MODE_B_ACTIVE=TRUE`，按 5.4.4 系列执行。
@@ -42,8 +42,8 @@
 
 ### 2.3 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
+- 源文本：`<local-user>\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
 - 行号方法：CRLF/CR 归一化后按 LF 切分；以下仅建立官方 TP 骨架和可追溯性，不等于官方一致性 Verdict。
 
 已核对的官方边界：

@@ -49,7 +49,7 @@
 
 ### 2.1 24.173 锚点
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/24173.txt`（TS 24.173 V14.3.0）
+- 源文本：`<legacy-workspace>/_extract/24173.txt`（TS 24.173 V14.3.0）
 - CONF 官方语义入口：`6.10 Conference (CONF)` 行 478-479，正文明确 “The CONF service is specified in 3GPP TS 24.605 [4].”
 - ECT 官方语义入口：`6.11 Explicit Communication Transfer (ECT)` 行 480-481，正文明确 “The ECT service is specified in 3GPP TS 24.629 [10].”
 - 补充业务总则：`4.3 Overview of supplementary services part` 行 384-389，说明补充业务用 SIP 作为使能协议。

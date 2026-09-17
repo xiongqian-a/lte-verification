@@ -1,6 +1,6 @@
 # TC-012/017/019/020/021 Annex A 默认消息内容（官方 .3.3 等价）
 
-来源：`3GPP TS 34.229-1` V14.7.0 (2019-06) Annex A，逐行抽取自 `C:\Users\co1750\Documents\Codex\2026-09-02\i\_extract\34229-1e70-word.txt`；行号口径 `Python str.splitlines()`。
+来源：`3GPP TS 34.229-1` V14.7.0 (2019-06) Annex A，逐行抽取自 `<standards-extract>\34229-1e70-word.txt`；行号口径 `Python str.splitlines()`。
 
 说明：MO/MT 呼叫、保持/恢复、会议相关用例的 Expected sequence 均引用 Annex A 默认消息（如 `Use the default message "INVITE" in annex A.2.1 ...`），因此这些表就是对应用例的 `.3.3 Specific message contents` 等价物。
 

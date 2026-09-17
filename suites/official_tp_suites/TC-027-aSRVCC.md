@@ -42,8 +42,8 @@
 
 ### 2.2 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.md`
+- 源文本：`<local-user>\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
 - 源规范：ETSI TS 136 523-1 V14.3.0 (2018-02)。
 - 行号方法：将 CRLF/CR 归一化后按 LF 切分；form-feed 页分隔符不另计一行。
 - 覆盖官方小节：13.4.3.7、13.4.3.10
@@ -984,7 +984,7 @@
 
 ### 2.3 36.508 锚点（通用测试环境）
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt`
+- 源文本：`<standards-extract>/36508.txt`
 - 36.508 `Table 4.5A.6.3-1: EUTRA/EPS signalling for IMS MO speech call` 行 17476
 - 36.508 `Table 4.5A.7.3-1: EUTRA/EPS signalling for IMS MT speech call` 行 17622
 - 36.508 `Table 4.8.3-1: UTRA reference radio parameters and combinations` 行 35964
@@ -993,10 +993,10 @@
 
 ### 2.4 34.108 / 36.523-2 锚点
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34108.txt`（TS 34.108 V14.2.0）
+- 源文本：`<standards-extract>/34108.txt`（TS 34.108 V14.2.0）
 - UTRA/GERAN 测试系统配置入口：行 5246-5258，`Configuration 6` 用于 interRAT E-UTRA-UTRA 测试，`Configuration 7` 用于 EUTRA-UTRA-GERAN 测试。
 - 523 正文对 UTRA cell 功率表的 34.108 引用：aSRVCC 13.4.3.7 附近行 263774、13.4.3.10 附近行 265053（`TS 34.108 Table 6.1.4 / Table 6.1.9`）。
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/3652302.txt`（TS 36.523-2 V14.3.0）
+- 源文本：`<standards-extract>/3652302.txt`（TS 36.523-2 V14.3.0）
 - 36.523-2 ICS proforma 用于正式送测时的适用性声明；当前不把其中条目硬挂为 TC-027 的官方 ID。
 
 ## 3. 前置条件

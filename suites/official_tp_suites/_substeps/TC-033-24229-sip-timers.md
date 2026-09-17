@@ -1,6 +1,6 @@
 # TC-033 SIP 定时器：TS 24.229 Table 7.7.1
 
-来源：`3GPP TS 24.229` V14.17.0 (2022-12)，逐行抽取自 `C:\Users\co1750\Documents\Codex\2026-09-02\i\_extract\24229.txt`；行号口径 `Python str.splitlines()` 1-based。
+来源：`3GPP TS 24.229` V14.17.0 (2022-12)，逐行抽取自 `<standards-extract>\24229.txt`；行号口径 `Python str.splitlines()` 1-based。
 
 该条款是 TC-033 的协议支撑证据，不把 TC-033 声称为独立 `34.229-1` 一致性用例。
 

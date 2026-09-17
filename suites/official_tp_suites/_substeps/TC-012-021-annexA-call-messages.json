@@ -2,7 +2,7 @@
   "schema": "official_tp_annexA_message_contents",
   "spec": "3GPP TS 34.229-1",
   "version": "V14.7.0 (2019-06)",
-  "source_file": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\_extract\\34229-1e70-word.txt",
+  "source_file": "<standards-extract>\\34229-1e70-word.txt",
   "source_line_convention": "Python str.splitlines() index (1-based)",
   "note": "Annex A default messages for the IMS call-setup / hold / conference expected sequences; the .3.3-equivalent for TC-012/TC-017/TC-019/TC-020/TC-021.",
   "messages": [

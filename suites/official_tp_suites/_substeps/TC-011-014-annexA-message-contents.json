@@ -2,7 +2,7 @@
   "schema": "official_tp_annexA_message_contents",
   "spec": "3GPP TS 34.229-1",
   "version": "V14.7.0 (2019-06)",
-  "source_file": "C:\\Users\\co1750\\Documents\\Codex\\2026-09-02\\i\\_extract\\34229-1e70-word.txt",
+  "source_file": "<standards-extract>\\34229-1e70-word.txt",
   "source_line_convention": "Python str.splitlines() index (1-based)",
   "note": "Annex C.2 mandates 'The default message contents in annex A are used.' These are the verbatim Annex A message tables for the C.2 expected sequence; they are the .3.3-equivalent for TC-011/TC-014.",
   "messages": [

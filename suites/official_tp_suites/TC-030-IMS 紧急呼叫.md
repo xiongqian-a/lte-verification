@@ -42,8 +42,8 @@
 
 ### 2.2 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.md`
+- 源文本：`<legacy-workspace>\523-1v14.txt`
 - 源规范：ETSI TS 136 523-1 V14.3.0 (2018-02)。
 - 行号方法：将 CRLF/CR 归一化后按 LF 切分；form-feed 页分隔符不另计一行。
 - 覆盖官方小节：11.2.1
@@ -161,14 +161,14 @@
 
 ### 2.3 36.508 锚点（通用测试环境）
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt`
+- 源文本：`<legacy-workspace>/_extract/36508.txt`
 - 36.508 `Table 4.5A.4.3-1: EUTRA/EPS signalling for IMS Emergency Call` 行 16909
 - 来源规范：ETSI TS 136 508 V14.3.0 (2017-11)，3GPP TS 36.508 version 14.3.0 Release 14
 - 核对脚本：`work/verify_ts36508_refs.py`
 
 ### 2.4 34.108 锚点
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34108.txt`（TS 34.108 V14.2.0）
+- 源文本：`<legacy-workspace>/_extract/34108.txt`（TS 34.108 V14.2.0）
 - 34.108 `7.2.5 IMS Emergency Call setup` 行 53980-53982 与 `7.2.5.1.3 Procedure` 行 53991-54016：Normal Service 下 emergency 建立流程含 RRC establishmentCause=emergency、SERVICE REQUEST、ACTIVATE PDP CONTEXT REQUEST（Request Type=Emergency）等。
 - 说明：34.108 是 UTRA/通用测试环境正文，不作为 E-UTRA 一致性 Verdict 替代；用于明确 IMS 紧急呼叫的通用 SS 流程来源。
 
@@ -197,7 +197,7 @@
 ### 6.1 2026-09-11 phase5 命名空间 fifo 复跑（REPRODUCED PASS）
 
 - 复跑时间：2026-09-11 15:54:04（`tc030-emergency-112-20260911-155404`）。
-- 服务器证据目录：`/home/co1750/verification-evidence/tc030-emergency-112-20260911-155404`。
+- 服务器证据目录：`<server-home>/verification-evidence/tc030-emergency-112-20260911-155404`。
 - 环境：先前在默认主机命名空间看不到 `tun_srsue`/`srs_spgw_sgi` 与 SIP 端口；本次通过 `run-baseline20-20260831-175026/cmd.fifo` 在 phase5 命名空间内执行，确认 `tun_srsue=10.45.0.2/24`、`srs_spgw_sgi=10.45.0.1/24`、`10.45.0.1:5060/6060`、`127.0.0.1:8022` 均可见。
 - `ims-client.log` 关键步骤：
   - REGISTER 401 Challenging the UE -> 200 OK（含 `P-Associated-URI`、`Service-Route`）。

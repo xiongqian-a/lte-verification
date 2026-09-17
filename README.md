@@ -100,6 +100,18 @@ required. The run is deterministic with respect to the tracked artifacts: it
 uses repository-relative paths and stable generated timestamps. Runtime
 scratch files are written under the ignored `outputs/` directory.
 
+For a deliberate fresh-checkout portability check, run:
+
+```text
+python -X utf8 runners/verify_portable_install.py
+python -X utf8 runners/verify_portable_install.py --full
+```
+
+The static mode checks required entry points, executable flags, CI coverage,
+and forbidden machine-specific paths. The full mode additionally runs the
+unified suite from an unrelated working directory and verifies that tracked
+generated artifacts do not change.
+
 ## Verification Architecture Explorer
 
 Open [`verification-architecture.html`](verification-architecture.html) directly
@@ -179,9 +191,10 @@ The following are intentionally outside this repository:
 - an IMS System Simulator or accredited test laboratory;
 - YD/T and operator acceptance specifications where not supplied.
 
-Historical documents may contain absolute paths from the machine on which they
-were generated. Those paths are provenance records; the executable runners use
-repository-relative paths.
+Tracked source documents use repository-relative paths or neutral placeholders.
+Raw provenance under `evidence/` and runtime output under `outputs/` can still
+contain original machine or server paths and are intentionally not rewritten.
+The executable runners never depend on those paths.
 
 ## What One-Command Run Does Not Claim
 

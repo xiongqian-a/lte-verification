@@ -37,7 +37,7 @@
 
 ### 2.1 36.508 锚点（通用测试环境）
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt`
+- 源文本：`<legacy-workspace>/_extract/36508.txt`
 - 10.5.3 正文引用：`TS 36.508 subclause 4.5A.1`（行 234297）、`Table 4.7.3-20 PDN CONNECTIVITY REQUEST`（行 234332/234372=30198）、`Table 4.7.3-19 PDN CONNECTIVITY REJECT`（行 234353=30166）、`Table 4.7.3-6` + `Table 4.6.1-8`（行 234403=29276/19886）
 - 10.5.4 正文引用：`TS 36.508 subclause 4.5A.1`（行 234622=16410）、`Table 4.7.2-4 ATTACH REQUEST`（行 234643=27956）、`Table 4.7.2-1 ATTACH ACCEPT`（行 234651=27675）、`Table 4.6.1-16 RRCConnectionRequest`（行 234665=20856）、`Table 4.7.2-14A EXTENDED SERVICE REQUEST`（行 234678=28374）、`Table 4.6.1-15 RRCConnectionRelease`（行 234694=20820）、`Table 4.7.3-20`（行 234722=30198）
 - 来源规范：ETSI TS 136 508 V14.3.0 (2017-11)，3GPP TS 36.508 version 14.3.0 Release 14
@@ -45,8 +45,8 @@
 
 ### 2.3 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
+- 源文本：`<legacy-workspace>\523-1v14.txt`
 - 行号方法：CRLF/CR 归一化后按 LF 切分；以下仅建立官方 TP 骨架和可追溯性，不等于官方一致性 Verdict。
 
 已核对的官方边界：

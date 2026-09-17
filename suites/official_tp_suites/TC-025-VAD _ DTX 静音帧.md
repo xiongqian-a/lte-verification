@@ -62,14 +62,14 @@
 
 ## 6. 当前本地证据
 
-本地证据：`work/tc025_vad_dtx.py --amr-stats "C:\标准例程\verification-evidence\tc025-longsilence-20260914\amr-stats.txt"` → `LIMITED_PASS`、`LOCAL_BEHAVIOR=PARTIAL`、`STANDARD_ASSERTION=FAIL`。
+本地证据：`work/tc025_vad_dtx.py --amr-stats "<repo>\verification-evidence\tc025-longsilence-20260914\amr-stats.txt"` → `LIMITED_PASS`、`LOCAL_BEHAVIOR=PARTIAL`、`STANDARD_ASSERTION=FAIL`。
 
 判定器自检同时包含合规正控（1280 ticks / 8 帧、`NO_DATA=0`，必须得到 `STANDARD_ASSERTION=PASS`）和真实违例负控（1000 帧、`NO_DATA=10`，必须得到 `STANDARD_ASSERTION=FAIL`）；自检 PASS 只证明判定器方向性正确，不是产品一致性 PASS。
 
 证据摘要：
 
-- 服务器目录：`/home/co1750/verification-evidence/tc025-vad-20260914-longsilence`
-- 本地证据：`C:\标准例程\verification-evidence\tc025-longsilence-20260914\`
+- 服务器目录：`<server-home>/verification-evidence/tc025-vad-20260914-longsilence`
+- 本地证据：`<repo>\verification-evidence\tc025-longsilence-20260914\`
 - 抓包：`call.pcap`，SHA-256 `776762EA6037FF1F3ED017CF90A4E3271A3A695781103AB9957BC6EFBCB3DC63`
 - 统计：`amr-stats.txt`，SHA-256 `146D8F38697274B8F3492BB5EAB31F3ED5B25F160841C461BC58BB6D6DC62244`
 - 时间线：`amr-timeline.txt`，SHA-256 `9169F1B282A3A98ABEF03F50946AF368B8F7598C9BBFF85F84998BCF9C0028BF`
@@ -87,5 +87,5 @@
 ## 8. 执行命令
 
 ```text
-python work/tc025_vad_dtx.py --amr-stats "C:\标准例程\verification-evidence\tc025-longsilence-20260914\amr-stats.txt"
+python work/tc025_vad_dtx.py --amr-stats "<repo>\verification-evidence\tc025-longsilence-20260914\amr-stats.txt"
 ```

@@ -24,7 +24,7 @@
 
 把官方 TP 派生出的字段/行为判据做成本地脚本或测试台执行器，用于产出研发行为证据。
 
-现状：`work/run_tc_selfchecks.py` 与 `work/run_tc_evidence.py` 可复跑；`work/run_official_suite_checks.py` 可检查套件文档是否齐备；`C:\标准例程\run_official_suite.py` 可一键串起生成库、完整性检查、自检、证据复跑和报告输出。
+现状：`work/run_tc_selfchecks.py` 与 `work/run_tc_evidence.py` 可复跑；`work/run_official_suite_checks.py` 可检查套件文档是否齐备；`<repo>\run_official_suite.py` 可一键串起生成库、完整性检查、自检、证据复跑和报告输出。
 
 ### 第 3 层：真实一致性执行环境
 
@@ -63,10 +63,10 @@
 ## 如何使用
 
 本文中的相对路径 `work/...` 指本地脚本目录
-`C:\Users\co1750\Documents\Codex\2026-09-02\i\work`。执行相对命令前，先进入工作区：
+`<legacy-workspace>\work`。执行相对命令前，先进入工作区：
 
 ```text
-cd C:\Users\co1750\Documents\Codex\2026-09-02\i
+cd <legacy-workspace>
 ```
 
 1. 先看 `official_tp_registry.json` 找 TC 的当前证据等级和阻塞点。
@@ -83,20 +83,20 @@ python work/run_official_suite_checks.py
 一键复跑全链路：
 
 ```text
-python C:\标准例程\run_official_suite.py
+python <repo>\run_official_suite.py
 ```
 
 生成官方风格报告表：
 
 ```text
-python C:\标准例程\report_factory.py
+python <repo>\report_factory.py
 ```
 
 生成冻结哈希清单并校验归档快照：
 
 ```text
 python work\build_final_manifest.py
-python work\build_final_manifest.py --verify C:\11\523协议\standard-suite-20260915
+python work\build_final_manifest.py --verify <standards-source>\standard-suite-20260915
 ```
 
 ## 下一步建议

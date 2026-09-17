@@ -57,6 +57,10 @@ def run(step: Step) -> int:
 
 def build_steps(include_evidence: bool) -> list[Step]:
     steps = [
+        Step(
+            "verify_portable_install.py",
+            "portable fresh-checkout invariants",
+        ),
         Step("build_official_library.py", "build machine-readable official TP library"),
         Step(
             "../tools/build_verification_architecture.py",

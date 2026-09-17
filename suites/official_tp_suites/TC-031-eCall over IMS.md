@@ -42,8 +42,8 @@
 
 ### 2.2 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.md`
+- 源文本：`<local-user>\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
 - 源规范：ETSI TS 136 523-1 V14.3.0 (2018-02)。
 - 行号方法：将 CRLF/CR 归一化后按 LF 切分；form-feed 页分隔符不另计一行。
 - 覆盖官方小节：11.3.5、11.3.8
@@ -567,11 +567,11 @@
 ### 2.3 36.508 锚点（通用测试环境）
 
 - 旧版 Normal Service 锚点：
-  - 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt`
+  - 源文本：`<standards-extract>/36508.txt`
   - 36.508 `Table 4.5A.26.3-1: EUTRA/EPS signalling for eCall over IMS` 行 19224。
   - 来源规范：ETSI TS 136 508 V14.3.0 (2017-11)，3GPP TS 36.508 version 14.3.0 Release 14。
 - eCall Only 正文终核：
-  - 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508-v180600.txt`。
+  - 源文本：`<standards-extract>/36508-v180600.txt`。
   - 来源规范：ETSI TS 136 508 V18.6.0 (2024-10)，3GPP TS 36.508 version 18.6.0 Release 18。
   - PDF SHA-256：`BD1F0FF368BBDBAAF1EA39E49C68F34F155A0B39A346453A2E2BE5CD5F3A7DBF`。
   - 提取文本 SHA-256：`E7027023DEA7E6537FB17A059C3F2CEAFDA9270B6224D3C0AD14DDC93438DCAB`。
@@ -591,7 +591,7 @@
 
 ### 2.4 34.108 锚点
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/34108.txt`（TS 34.108 V14.2.0）
+- 源文本：`<standards-extract>/34108.txt`（TS 34.108 V14.2.0）
 - 34.108 `7.2.5 IMS Emergency Call setup` 行 53980-53982，给出 Normal Service 下移动始发 IMS 紧急呼叫通用流程；52190-5258 给出 UTRA/GERAN 测试系统配置入口，`Configuration 6/7` 与 E-UTRA-UTRA/EUTRA-UTRA-GERAN 测试相关。
 - 523 正文 eCall CS 回退对 34.108 的引用：
   - 行 244608：`Steps 11 to 16 of the generic test procedure in TS 34.108 subclause 7.2.3.2.3 are performed on Cell 5.`

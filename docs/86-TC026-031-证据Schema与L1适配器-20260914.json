@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "generated_at_epoch": 1789441534,
-  "manifest_path": "C:\\标准例程\\official_tp_suites\\_evidence\\TC-026-031-evidence-manifest.json",
+  "manifest_path": "<repo>\\official_tp_suites\\_evidence\\TC-026-031-evidence-manifest.json",
   "manifest_found": false,
   "source_spec": "ETSI TS 136 523-1 V14.3.0",
   "source_extraction_sha256": "32D46DD6932645855C63206684364CB7F782A872EDA7B40A7590643C01E079E4",

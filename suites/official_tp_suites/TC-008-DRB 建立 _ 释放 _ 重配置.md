@@ -22,7 +22,7 @@
 
 ### 2.1 36.508 锚点（通用测试环境）
 
-- 源文本：`C:/Users/co1750/Documents/Codex/2026-09-02/i/_extract/36508.txt`
+- 源文本：`<legacy-workspace>/_extract/36508.txt`
 - 523 正文行 100575 引用 `TS 36.508 subclause 6.4.2.3` 的通用流程；对应 `Table 6.4.2.3-1: Test procedure sequence` 行 40682
 - 523 正文行 100582 引用 `36.508 table 4.6.1-8, condition DRB(1,0)`；对应 `Table 4.6.1-8: RRCConnectionReconfiguration` 行 19886
 - 来源规范：ETSI TS 136 508 V14.3.0 (2017-11)，3GPP TS 36.508 version 14.3.0 Release 14
@@ -30,8 +30,8 @@
 
 ### 2.3 官方 .3.2/.3.3 子例级原文抽取
 
-- 抽取文件：`C:/标准例程/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
-- 源文本：`C:\Users\co1750\Documents\Codex\2026-08-31\qin\_523_evidence\work\523-1v14.txt`
+- 抽取文件：`<repo>/official_tp_suites/_substeps/TC-001-010-3.2-main-behaviour.md`
+- 源文本：`<legacy-workspace>\523-1v14.txt`
 - 行号方法：CRLF/CR 归一化后按 LF 切分；以下仅建立官方 TP 骨架和可追溯性，不等于官方一致性 Verdict。
 
 已核对的官方边界：

@@ -1,6 +1,6 @@
 # TC-011/013/014/015/032 官方 TP 过程原文（34.229-1）
 
-来源：`3GPP TS 34.229-1` V14.7.0 (2019-06)，逐行抽取自 `C:\Users\co1750\Documents\Codex\2026-09-02\i\_extract\34229-1e70-word.txt`；行号口径 `Python str.splitlines()` 1-based。
+来源：`3GPP TS 34.229-1` V14.7.0 (2019-06)，逐行抽取自 `<standards-extract>\34229-1e70-word.txt`；行号口径 `Python str.splitlines()` 1-based。
 
 每个块覆盖完整官方用例正文（Definition 至 Test requirements），只固化原文，不把本地执行结果升级为官方一致性 PASS。
 
