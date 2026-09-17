@@ -131,7 +131,10 @@ def build_cases():
 NOT_SCRIPTED_CASES = [
     ("TC-001 IMS APN PDN 连接", "1", "nas_test UE 侧 IMS APN PDN 请求/accept 字段证据",
      "缺真实 eNB/EPC 端到端；当前为 UE 侧/测试台证据",
-     str(LOCAL / "tc004-nas-test-20260914" / "nas_test_rerun_20260914.log")),
+     portable_path(
+         LOCAL / "tc004-nas-test-20260914" / "nas_test_rerun_20260914.log",
+         ROOT,
+     )),
     ("TC-002 专用 Bearer 建立", "1", "UE 单测注入/字段证据",
      "缺真实 EPC 触发专用承载",
      "suites/official_tp_suites/TC-002-专用 Bearer 建立.md"),

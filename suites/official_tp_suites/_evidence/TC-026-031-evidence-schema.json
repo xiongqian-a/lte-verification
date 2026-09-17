@@ -3,7 +3,7 @@
   "generated_at_epoch": 0,
   "source_spec": "ETSI TS 136 523-1 V14.3.0",
   "source_extraction": "suites/official_tp_suites/_substeps/TC-026-031-3.2-main-behaviour.json",
-  "source_extraction_sha256": "32D46DD6932645855C63206684364CB7F782A872EDA7B40A7590643C01E079E4",
+  "source_extraction_sha256": "3470560252960AD34F41537DF8FEB78BFB7A0038DA5872EB24AF41196C56F479",
   "layer_policy": {
     "L0": "official 3.2 step and 3.3 message-content anchors",
     "L1": "local or simulated evidence; never an official verdict",

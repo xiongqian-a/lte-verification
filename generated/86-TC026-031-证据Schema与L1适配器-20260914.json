@@ -4,7 +4,7 @@
   "manifest_path": "suites/official_tp_suites/_evidence/TC-026-031-evidence-manifest.json",
   "manifest_found": false,
   "source_spec": "ETSI TS 136 523-1 V14.3.0",
-  "source_extraction_sha256": "32D46DD6932645855C63206684364CB7F782A872EDA7B40A7590643C01E079E4",
+  "source_extraction_sha256": "3470560252960AD34F41537DF8FEB78BFB7A0038DA5872EB24AF41196C56F479",
   "policy": "An official PASS/FAIL is emitted only for a qualified L2 source with an actual verdict for every TP Verdict row. Otherwise the result is NOT_EXECUTED, INCONCLUSIVE or LOCAL_ONLY.",
   "summary": {
     "sections": 11,

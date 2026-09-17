@@ -42,7 +42,9 @@ STEP_TOKEN_RE = re.compile(r"^(?P<leading>\d+(?:[A-Za-z]\d*)?)$")
 
 
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest().upper()
+    """Hash source text independently of platform-specific line endings."""
+    normalized = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(normalized).hexdigest().upper()
 
 
 def clean_message(text: str) -> str:

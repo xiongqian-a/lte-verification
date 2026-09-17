@@ -57,6 +57,17 @@ def portable_text(value: str, root: Path) -> str:
     roots = {str(root.resolve()), str(root.resolve()).replace("\\", "/")}
     for item in sorted(roots, key=len, reverse=True):
         text = text.replace(item, "<repo>")
+    # Some Windows child processes emit the checkout path using the active
+    # console code page, which can survive subprocess UTF-8 decoding as
+    # replacement characters. Normalize any absolute prefix before a known
+    # repository directory, while preserving the path beneath the checkout.
+    text = re.sub(
+        r"(?i)(?:[A-Z]:[\\/])[^\r\n]*?[\\/](?="
+        r"(?:evidence|outputs|runners|suites|registry|generated|docs|tools)"
+        r"[\\/])",
+        lambda _: "<repo>/",
+        text,
+    )
     return text
 
 
