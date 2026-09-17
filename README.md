@@ -250,6 +250,7 @@ evidence is supplied.
 | `docs/93-TC011-L1-IPsec-SUBSCRIBE-NOTIFY-证据-20260916.md` | TC-011 local Annex C.2 Steps 4-11 evidence and boundaries |
 | `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
 | `docs/97-同事拉取复跑与结果验收流程-20260916.md` | Colleague handoff, fresh-checkout replay procedure, and result acceptance |
+| `docs/98-仓库目录与文件说明-20260917.md` | Repository directories, files, evidence types, and handoff boundaries |
 
 ## Adding or Changing a Case
 
