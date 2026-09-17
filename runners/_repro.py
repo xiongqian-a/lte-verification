@@ -68,6 +68,7 @@ def portable_text(value: str, root: Path) -> str:
         lambda _: "<repo>/",
         text,
     )
+    text = text.replace("<repo>\\", "<repo>/")
     return text
 
 
