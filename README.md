@@ -11,6 +11,13 @@ IMS verification cases. It combines:
 - an L2 evidence adapter for qualified System Simulator or laboratory results;
 - generated progress, audit, and official-style reports.
 
+## Chinese Quick Start
+
+For a step-by-step Chinese guide that starts with a fresh checkout and covers
+one-command execution, single-case execution, evidence interpretation,
+environment differences, and independent review, see
+[`START-HERE.md`](START-HERE.md).
+
 ## Important Scope Statement
 
 This repository is an **official-TP-aligned executable baseline**. It is not a
