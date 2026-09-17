@@ -319,8 +319,8 @@ def write_markdown(result: dict, path: Path) -> None:
         "4. 运行：",
         "",
         "```powershell",
-        "python -X utf8 runners\\run_l1_evidence_adapter_026_031.py "
-        "--manifest suites\\official_tp_suites\\_evidence\\"
+        "python -X utf8 runners/run_l1_evidence_adapter_026_031.py "
+        "--manifest suites/official_tp_suites/_evidence/"
         "TC-026-031-evidence-manifest.json",
         "```",
         "",

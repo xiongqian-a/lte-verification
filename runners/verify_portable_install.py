@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -73,6 +74,22 @@ BINARY_SUFFIXES = {
     ".docx",
     ".pdf",
 }
+
+REPOSITORY_DIRECTORIES = (
+    "evidence",
+    "outputs",
+    "runners",
+    "suites",
+    "registry",
+    "generated",
+    "docs",
+    "tools",
+)
+_NONPORTABLE_GENERATED_PATH_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?:"
+    + "|".join(re.escape(item) for item in REPOSITORY_DIRECTORIES)
+    + r")\\{1,2}[^\\/\s\"'<>|]+(?:[\\/]|\.)"
+)
 
 
 def run_git(*args: str) -> subprocess.CompletedProcess[bytes]:
@@ -176,6 +193,24 @@ def static_checks() -> list[str]:
                     f"machine-specific path in tracked text {normalized}: {marker}"
                 )
                 break
+
+    # Generated reports are committed and compared byte-for-byte in CI on
+    # Windows and Linux. Catch host-specific separators after known repository
+    # directories before a cross-platform run has to expose them.
+    for relative in tracked_files():
+        normalized = relative.replace("\\", "/")
+        if not normalized.startswith("generated/"):
+            continue
+        path = ROOT / relative
+        text = read_utf8_text(path)
+        if text is None:
+            continue
+        match = _NONPORTABLE_GENERATED_PATH_RE.search(text)
+        if match:
+            failures.append(
+                "non-portable generated path separator in "
+                f"{normalized}: {match.group(0)}"
+            )
 
     return failures
 

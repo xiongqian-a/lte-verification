@@ -16,6 +16,21 @@ from pathlib import Path
 
 DEFAULT_EPOCH = 0
 DEFAULT_TIMESTAMP = "1970-01-01T00:00:00Z"
+_REPO_PATH_DIRS = (
+    "evidence",
+    "outputs",
+    "runners",
+    "suites",
+    "registry",
+    "generated",
+    "docs",
+    "tools",
+)
+_REPO_RELATIVE_PATH_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?P<path>(?:"
+    + "|".join(re.escape(item) for item in _REPO_PATH_DIRS)
+    + r")(?:[\\/]{1,2}[^\\/\s\"'<>|]+)+)"
+)
 
 
 def generated_epoch() -> int:
@@ -54,7 +69,13 @@ def portable_path(path: Path, root: Path) -> str:
 def portable_text(value: str, root: Path) -> str:
     """Remove machine-specific checkout roots from captured command output."""
     text = value or ""
-    roots = {str(root.resolve()), str(root.resolve()).replace("\\", "/")}
+    resolved_root = str(root.resolve())
+    roots = {
+        resolved_root,
+        resolved_root.replace("\\", "/"),
+        resolved_root.replace("\\", "\\\\"),
+        resolved_root.replace("\\", "/").replace("/", "//"),
+    }
     for item in sorted(roots, key=len, reverse=True):
         text = text.replace(item, "<repo>")
     # Some Windows child processes emit the checkout path using the active
@@ -68,7 +89,15 @@ def portable_text(value: str, root: Path) -> str:
         lambda _: "<repo>/",
         text,
     )
-    text = text.replace("<repo>\\", "<repo>/")
+    text = re.sub(r"<repo>[\\/]+", "<repo>/", text)
+    # Repository-relative paths emitted by child processes can still use the
+    # host separator (and JSON may escape it as a double backslash). Normalize
+    # only known repository directories and their path suffixes so protocol
+    # text and arbitrary command output are left untouched.
+    text = _REPO_RELATIVE_PATH_RE.sub(
+        lambda match: match.group("path").replace("\\", "/").replace("//", "/"),
+        text,
+    )
     return text
 
 
