@@ -319,6 +319,31 @@ def is_text_evidence(path: Path) -> bool:
     return path.suffix.lower() in TEXT_EVIDENCE_SUFFIXES
 
 
+def stable_evidence_size(path: Path, binary: bool) -> int:
+    """Return a checkout-stable size for text evidence.
+
+    Git may check text files out with CRLF on Windows even when the committed
+    blob uses LF. The page should describe the committed text, not the local
+    checkout convention, so count bytes after universal-newline normalization.
+    """
+    try:
+        raw_size = path.stat().st_size
+    except OSError:
+        return 0
+    if binary:
+        return raw_size
+
+    try:
+        with path.open("rb") as source:
+            carriage_returns = sum(block.count(b"\r") for block in iter(
+                lambda: source.read(1024 * 1024),
+                b"",
+            ))
+    except OSError:
+        return 0
+    return max(0, raw_size - carriage_returns)
+
+
 def evidence_keywords(item: dict[str, Any]) -> list[str]:
     parts = [
         clean_text(item.get("title")),
@@ -423,13 +448,14 @@ def build_repo_file_preview(
     if not path.is_file():
         return None
 
+    binary = not is_text_evidence(path)
     record: dict[str, Any] = {
         "path": relative_path,
         "name": path.name,
-        "size_bytes": path.stat().st_size,
+        "size_bytes": stable_evidence_size(path, binary),
         "suffix": path.suffix.lower(),
         "open_href": relative_path,
-        "binary": not is_text_evidence(path),
+        "binary": binary,
         "preview": [],
         "total_lines": 0,
         "truncated": False,
@@ -529,18 +555,15 @@ def build_evidence_viewer(item: dict[str, Any]) -> dict[str, Any]:
             if not child.is_file():
                 continue
             relative = str(child.relative_to(ROOT)).replace("\\", "/")
-            try:
-                size = child.stat().st_size
-            except OSError:
-                size = 0
+            binary = not is_text_evidence(child)
             all_files.append(
                 {
                     "path": relative,
                     "name": child.name,
-                    "size_bytes": size,
+                    "size_bytes": stable_evidence_size(child, binary),
                     "suffix": child.suffix.lower(),
                     "open_href": relative,
-                    "binary": not is_text_evidence(child),
+                    "binary": binary,
                     "preview": [],
                     "total_lines": 0,
                     "truncated": False,
