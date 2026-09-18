@@ -965,6 +965,282 @@
       overflow-wrap: anywhere;
     }
 
+    .server-log-actions {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 9px;
+    }
+
+    .server-log-actions .button,
+    .server-log-actions .button-link {
+      padding: 6px 9px;
+      font-size: 12px;
+    }
+
+    .button:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+    }
+
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      background: var(--surface-2);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .io-map {
+      display: grid;
+      gap: 12px;
+    }
+
+    .io-case {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--surface);
+    }
+
+    .io-case-head {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 0 10px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      text-align: left;
+    }
+
+    .io-case-head:hover h3 {
+      color: var(--blue);
+    }
+
+    .io-case-head h3 {
+      margin: 0 0 3px;
+      font-size: 15px;
+    }
+
+    .io-case-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .io-flow {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1.25fr) 28px minmax(0, 1fr) 28px minmax(0, 0.9fr);
+      gap: 5px;
+      align-items: stretch;
+      margin-top: 11px;
+    }
+
+    .io-node {
+      min-width: 0;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--slate);
+      border-radius: 6px;
+      background: var(--surface-2);
+    }
+
+    .io-node.input { border-top-color: var(--blue); }
+    .io-node.process { border-top-color: var(--violet); }
+    .io-node.output { border-top-color: var(--teal); }
+    .io-node.verdict { border-top-color: var(--amber); }
+
+    .io-node > strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0;
+    }
+
+    .io-node ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .io-node li {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+
+    .io-node code {
+      overflow-wrap: anywhere;
+    }
+
+    .io-arrow {
+      display: grid;
+      place-items: center;
+      color: var(--line-strong);
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .io-evidence-list {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 7px;
+    }
+
+    .io-evidence-list .mini-tag {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .io-verdict {
+      color: var(--amber);
+      font-weight: 800;
+    }
+
+    .evidence-toolbar {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 12px 0;
+    }
+
+    .evidence-file-tab {
+      max-width: 100%;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--surface-2);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .evidence-file-tab.active {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .evidence-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 7px;
+      margin: 10px 0;
+    }
+
+    .evidence-meta {
+      padding: 9px;
+      border-radius: 5px;
+      background: var(--surface-2);
+    }
+
+    .evidence-meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .evidence-meta strong {
+      display: block;
+      margin-top: 2px;
+      overflow-wrap: anywhere;
+      font-size: 12px;
+    }
+
+    .evidence-notice {
+      padding: 10px 12px;
+      border-left: 4px solid var(--amber);
+      border-radius: 4px;
+      background: var(--amber-soft);
+      color: #543800;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .evidence-code {
+      max-height: 56vh;
+      margin-top: 10px;
+      overflow: auto;
+      border: 1px solid #21354a;
+      border-radius: 6px;
+      background: #111c27;
+      color: #e7eef5;
+      font-family: Consolas, "Cascadia Mono", monospace;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .evidence-line {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      min-width: 720px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+    }
+
+    .evidence-line.hit {
+      background: rgba(47, 160, 137, 0.16);
+    }
+
+    .evidence-lineno {
+      padding: 1px 10px;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      color: #8398aa;
+      text-align: right;
+      user-select: none;
+    }
+
+    .evidence-text {
+      padding: 1px 12px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .evidence-gap {
+      min-width: 720px;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.035);
+      color: #8ea4b8;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .evidence-file-list {
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .evidence-file-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) 100px minmax(150px, 0.8fr);
+      gap: 8px;
+      padding: 8px 10px;
+      border-top: 1px solid var(--line);
+      background: var(--surface);
+      font-size: 11px;
+    }
+
+    .evidence-file-row:first-child {
+      border-top: 0;
+    }
+
+    .evidence-file-row code {
+      overflow-wrap: anywhere;
+    }
+
     .server-path-row {
       display: grid;
       grid-template-columns: minmax(230px, 0.85fr) minmax(0, 1.6fr);
@@ -1215,6 +1491,16 @@
       .table-shell { border-radius: 8px; }
       .server-log-grid { grid-template-columns: 1fr; }
       .server-path-row { grid-template-columns: 1fr; }
+      .io-flow {
+        grid-template-columns: 1fr;
+      }
+      .io-arrow {
+        min-height: 18px;
+        transform: rotate(90deg);
+      }
+      .evidence-meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 680px) {
@@ -1247,6 +1533,8 @@
       .server-scan-strip { grid-template-columns: 1fr; }
       .server-category-head { grid-template-columns: 1fr; }
       .server-meta-grid { grid-template-columns: 1fr; }
+      .evidence-meta-grid { grid-template-columns: 1fr; }
+      .evidence-file-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1260,6 +1548,7 @@
       <a href="#overview">总览</a>
       <a href="#modules">模块架构</a>
       <a href="#cases">用例库</a>
+      <a href="#io-map">输入输出图谱</a>
       <a href="#server-evidence">服务器证据</a>
       <a href="#server-paths">服务器路径</a>
       <a href="#workflow">执行流程</a>
@@ -1317,6 +1606,7 @@
       <section class="side-section">
         <h2 class="side-title">服务器导航</h2>
         <div class="side-links">
+          <a href="#io-map">例程输入与输出</a>
           <a href="#server-evidence">日志与 TC 证据链</a>
           <a href="#server-paths">目录职责与边界</a>
         </div>
@@ -1367,6 +1657,16 @@
           </table>
         </div>
         <div id="emptyState" class="empty-state">没有符合当前筛选条件的用例。</div>
+      </section>
+
+      <section id="io-map" class="section">
+        <div class="section-head">
+          <div>
+            <h2>例程输入与输出图谱</h2>
+            <p>每条例程按“输入条件 → 官方过程 → 输出证据 → 判定边界”展开。输入来自前置条件和标准正文，输出只登记当前真实存在的脚本、日志或服务器证据；官方 Verdict 固定保留为空，直到合格 SS 或实验室给出结果。</p>
+          </div>
+        </div>
+        <div id="ioMapBody" class="io-map"></div>
       </section>
 
       <section id="server-evidence" class="section">
@@ -1452,6 +1752,18 @@
     <div id="detailBody" class="detail-body"></div>
   </dialog>
 
+  <dialog id="evidenceDialog" aria-labelledby="evidenceTitle">
+    <div class="detail-top">
+      <div>
+        <div class="eyebrow">EVIDENCE VIEWER</div>
+        <h2 id="evidenceTitle">证据正文</h2>
+        <p id="evidenceSubtitle"></p>
+      </div>
+      <button class="close" id="closeEvidence" type="button" aria-label="关闭">×</button>
+    </div>
+    <div id="evidenceBody" class="detail-body"></div>
+  </dialog>
+
   <script id="verification-data" type="application/json">__VERIFICATION_DATA_JSON__</script>
   <script>
     (() => {
@@ -1471,6 +1783,8 @@
         spec: "all",
         restrictedOnly: false,
       };
+      let activeEvidenceId = null;
+      let activeEvidenceFileIndex = 0;
 
       const moduleOrder = Object.keys(data.modules).sort();
       const moduleById = data.modules;
@@ -1681,6 +1995,97 @@
         }).join("");
       };
 
+      const compactText = (value, maxLength = 150) => {
+        const text = String(value ?? "").replace(/\s+/g, " ").trim();
+        if (text.length <= maxLength) return text;
+        return `${text.slice(0, Math.max(0, maxLength - 1))}…`;
+      };
+
+      const compactItems = (items, limit, prefix = "") => (
+        (items || [])
+          .filter(Boolean)
+          .slice(0, limit)
+          .map((item) => `${prefix}${compactText(item)}`)
+      );
+
+      const renderIoMap = () => {
+        const cases = visibleCases();
+        document.getElementById("ioMapBody").innerHTML = cases.map((tc) => {
+          const status = normalizeStatus(tc.status);
+          const inputItems = compactItems(tc.preconditions, 3, "前置：");
+          if (!inputItems.length) {
+            inputItems.push("前置：当前套件文档未记录可展开的逐项前置条件。");
+          }
+          inputItems.push(`标准：${compactText(tc.official_spec)} · ${compactText(tc.official_clause)}`);
+          inputItems.push(`入口：${compactText(hasLocalRunner(tc) ? tc.local_script : "无本地脚本")}`);
+
+          const processSource = (tc.steps || []).length ? tc.steps : (tc.official_skeleton || []);
+          const processItems = compactItems(processSource, 4);
+          if (!processItems.length) {
+            processItems.push("当前套件文档没有可展开的步骤；应继续核对官方 .3.2 Test Procedure。");
+          }
+
+          const outputItems = compactItems(tc.primary_evidence, 3);
+          if (!outputItems.length) {
+            outputItems.push("当前没有登记主证据正文。");
+          }
+          if (tc.evidence_links?.length) {
+            outputItems.push(`服务器映射：${tc.evidence_links.length} 项，可打开正文或缺口说明。`);
+          }
+          if (tc.suite_path) {
+            outputItems.push(`套件文档：${tc.suite_path}`);
+          }
+
+          const verdictItems = compactItems(tc.verdicts, 3);
+          if (!verdictItems.length) {
+            verdictItems.push("当前没有登记可执行 TP-style 判据。");
+          }
+          verdictItems.push(
+            status === "restricted" || status === "not_executed"
+              ? "当前结论：执行受限或未执行，不得写成官方 PASS。"
+              : "当前结论：仅证明本地/标准对齐结果，不构成官方一致性。",
+          );
+
+          return `
+            <article class="io-case">
+              <div class="io-case-head">
+                <div>
+                  <h3>${escapeHtml(tc.tc_id)} · ${escapeHtml(tc.name)}</h3>
+                  <p>MODULE ${escapeHtml(tc.module)} · ${escapeHtml(tc.official_spec)} · ${escapeHtml(tc.official_clause)}</p>
+                </div>
+                <div class="button-row">
+                  <span class="status ${escapeHtml(status)}">${escapeHtml(statusLabel[status])}</span>
+                  <button class="mini-tag" type="button" data-tc="${escapeHtml(tc.tc_id)}">查看完整执行卡</button>
+                </div>
+              </div>
+              <div class="io-flow">
+                <div class="io-node input">
+                  <strong>输入 / 前置</strong>
+                  <ul>${inputItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+                </div>
+                <div class="io-arrow" aria-hidden="true">→</div>
+                <div class="io-node process">
+                  <strong>官方过程 / 执行步骤</strong>
+                  <ul>${processItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+                </div>
+                <div class="io-arrow" aria-hidden="true">→</div>
+                <div class="io-node output">
+                  <strong>输出 / 原始证据</strong>
+                  <ul>${outputItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+                  ${evidenceLinksHtml(tc)}
+                </div>
+                <div class="io-arrow" aria-hidden="true">→</div>
+                <div class="io-node verdict">
+                  <strong>判定边界 / TP Verdict</strong>
+                  <ul>${verdictItems.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+                  <div class="io-verdict">OFFICIAL_VERDICT: null</div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+      };
+
       const renderWorkflow = () => {
         document.getElementById("workflowGrid").innerHTML = data.workflow.map((step) => `
           <article class="flow-step">
@@ -1831,12 +2236,124 @@
                         ? `<code>${escapeHtml(item.repo_copy)}</code>`
                         : "未随仓库提交，只能从服务器或重新复跑获取"}
                     </div>
+                    <div class="server-log-actions">
+                      <button class="button primary" type="button" data-evidence-id="${escapeHtml(item.id)}">
+                        ${item.viewer?.available ? "查看证据正文" : "查看证据说明"}
+                      </button>
+                      ${item.repo_copy && item.viewer?.files?.length
+                        ? `<a class="button-link button" href="${escapeHtml(item.viewer.files[0].open_href)}" target="_blank" rel="noopener">打开仓库副本</a>`
+                        : ""}
+                      <span class="source-note">服务器路径只做追踪；正文预览以当前仓库副本为准。</span>
+                    </div>
                   </article>
                 `).join("")}
               </div>
             </section>
           `;
         }).join("");
+      };
+
+      const evidencePreviewHtml = (record) => {
+        if (!record) return "";
+        const lines = record.preview || [];
+        if (!lines.length) {
+          return `<div class="evidence-notice">${escapeHtml(record.note || "该文件没有可内嵌的文本正文。")}</div>`;
+        }
+        return `
+          <div class="evidence-notice">${escapeHtml(record.note || "展示相关正文上下文。")}</div>
+          <div class="evidence-code">
+            ${lines.map((line) => `
+              ${line.gap > 0 ? `<div class="evidence-gap">… 省略 ${escapeHtml(line.gap)} 行 …</div>` : ""}
+              <div class="evidence-line${line.hit ? " hit" : ""}">
+                <span class="evidence-lineno">${escapeHtml(line.line)}</span>
+                <span class="evidence-text">${escapeHtml(line.text || " ")}</span>
+              </div>
+            `).join("")}
+          </div>
+        `;
+      };
+
+      const renderEvidenceDialog = () => {
+        const item = serverData.logs.find((entry) => entry.id === activeEvidenceId);
+        if (!item) return;
+        const viewer = item.viewer || { files: [] };
+        const files = viewer.files || [];
+        if (!files.length || activeEvidenceFileIndex >= files.length) activeEvidenceFileIndex = 0;
+        const activeFile = files[activeEvidenceFileIndex] || null;
+        document.getElementById("evidenceTitle").textContent = `${item.id} · ${item.title}`;
+        document.getElementById("evidenceSubtitle").textContent = `${item.server_path} · ${artifactTypeLabel[item.artifact_type] || item.artifact_type}`;
+
+        const metadata = [
+          ["服务器路径", item.server_path || "未记录"],
+          ["仓库副本", viewer.repo_copy || "无"],
+          ["证据类型", artifactTypeLabel[item.artifact_type] || item.artifact_type || "未记录"],
+          ["文件状态", `${formatBytes(item.server_size_bytes)}${item.server_modified ? ` · ${item.server_modified}` : ""}`],
+        ];
+        const tabs = files.map((file, index) => `
+          <button class="evidence-file-tab${index === activeEvidenceFileIndex ? " active" : ""}" type="button" data-evidence-file-index="${index}">
+            ${escapeHtml(file.name)}
+          </button>
+        `).join("");
+        const fileRows = files.map((file, index) => `
+          <div class="evidence-file-row">
+            <code>${escapeHtml(file.path)}</code>
+            <span>${escapeHtml(formatBytes(file.size_bytes))}${file.binary ? " · 二进制" : ""}</span>
+            <div class="button-row">
+              <button class="mini-tag" type="button" data-evidence-file-index="${index}">查看说明</button>
+              ${file.open_href ? `<a class="button-link button" href="${escapeHtml(file.open_href)}" target="_blank" rel="noopener">打开原文件</a>` : ""}
+            </div>
+          </div>
+        `).join("");
+
+        document.getElementById("evidenceBody").innerHTML = `
+          <div class="evidence-notice">
+            ${escapeHtml(viewer.reason || "正文来自当前 Git checkout 的仓库副本；服务器路径仅用于追踪。")}
+          </div>
+          <div class="evidence-meta-grid">
+            ${metadata.map(([label, value]) => `
+              <div class="evidence-meta">
+                <span>${escapeHtml(label)}</span>
+                <strong>${escapeHtml(value)}</strong>
+              </div>
+            `).join("")}
+          </div>
+          <div class="server-log-grid">
+            <div class="server-proof proves">
+              <strong>这份材料能证明什么</strong>
+              <ul>${(item.proves || []).map((proof) => `<li>${escapeHtml(proof)}</li>`).join("")}</ul>
+            </div>
+            <div class="server-proof boundary">
+              <strong>仍然不能证明什么</strong>
+              <p>${escapeHtml(item.boundary || "未记录边界。")}</p>
+            </div>
+          </div>
+          ${files.length ? `
+            <h3 style="margin: 16px 0 0;">仓库副本文件</h3>
+            <div class="evidence-toolbar">${tabs}</div>
+            ${activeFile ? `
+              <div class="button-row" style="margin-bottom: 8px;">
+                <strong>${escapeHtml(activeFile.path)}</strong>
+                <a class="button-link button" href="${escapeHtml(activeFile.open_href)}" target="_blank" rel="noopener">在本地打开原文</a>
+              </div>
+              ${evidencePreviewHtml(activeFile)}
+            ` : ""}
+            <div class="evidence-file-list">${fileRows}</div>
+          ` : `
+            <div class="evidence-notice" style="margin-top: 12px;">
+              当前没有可展开的仓库副本。请先取得服务器文件或执行受控复跑，不能从路径名称推导 PASS。
+            </div>
+          `}
+        `;
+      };
+
+      const openEvidence = (evidenceId) => {
+        if (!serverData.logs.some((entry) => entry.id === evidenceId)) return;
+        activeEvidenceId = evidenceId;
+        activeEvidenceFileIndex = 0;
+        renderEvidenceDialog();
+        const dialog = document.getElementById("evidenceDialog");
+        if (typeof dialog.showModal === "function") dialog.showModal();
+        else dialog.setAttribute("open", "");
       };
 
       const renderServerPaths = () => {
@@ -1923,6 +2440,7 @@
         renderModuleArchitecture();
         renderModuleNav();
         renderCaseTable();
+        renderIoMap();
         renderStandards();
       };
 
@@ -1966,6 +2484,20 @@
       const evidenceHtml = (items) => {
         if (!items || !items.length) return "<p>无已记录证据引用。</p>";
         return `<div class="evidence-list">${items.map((item) => `<div class="evidence-item">${escapeHtml(item)}</div>`).join("")}</div>`;
+      };
+
+      const evidenceLinksHtml = (tc) => {
+        const links = tc.evidence_links || [];
+        if (!links.length) return "<p>当前没有映射到服务器日志或证据目录。</p>";
+        return `
+          <div class="io-evidence-list">
+            ${links.map((item) => `
+              <button class="mini-tag" type="button" data-evidence-id="${escapeHtml(item.id)}" title="${escapeHtml(item.title || item.id)}">
+                ${escapeHtml(item.id)} · ${escapeHtml(item.title || "证据")}
+              </button>
+            `).join("")}
+          </div>
+        `;
       };
 
       const boundaryRange = (start, end) => {
@@ -2057,6 +2589,8 @@
 
           <section class="detail-section">
             <h3>验证依据与证据</h3>
+            <h4>可打开证据</h4>
+            ${evidenceLinksHtml(tc)}
             <h4>主证据</h4>
             ${evidenceHtml(tc.primary_evidence)}
             <h4>交叉引用</h4>
@@ -2124,10 +2658,28 @@
       document.getElementById("detailDialog").addEventListener("click", (event) => {
         if (event.target === event.currentTarget) event.currentTarget.close();
       });
+      document.getElementById("closeEvidence").addEventListener("click", () => document.getElementById("evidenceDialog").close());
+      document.getElementById("evidenceDialog").addEventListener("click", (event) => {
+        if (event.target === event.currentTarget) event.currentTarget.close();
+      });
 
       document.addEventListener("click", (event) => {
+        const evidenceTarget = event.target.closest("[data-evidence-id]");
+        if (evidenceTarget) {
+          openEvidence(evidenceTarget.dataset.evidenceId);
+          return;
+        }
+        const evidenceFileTarget = event.target.closest("[data-evidence-file-index]");
+        if (evidenceFileTarget) {
+          activeEvidenceFileIndex = Number(evidenceFileTarget.dataset.evidenceFileIndex) || 0;
+          renderEvidenceDialog();
+          return;
+        }
         const tcTarget = event.target.closest("[data-tc]");
-        if (tcTarget) openDetail(tcTarget.dataset.tc);
+        if (tcTarget) {
+          openDetail(tcTarget.dataset.tc);
+          return;
+        }
         const moduleTarget = event.target.closest("[data-module]");
         if (moduleTarget) {
           state.module = state.module === moduleTarget.dataset.module ? "all" : moduleTarget.dataset.module;

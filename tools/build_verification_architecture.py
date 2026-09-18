@@ -21,6 +21,59 @@ SERVER_EVIDENCE_PATH = ROOT / "registry" / "server_evidence_index.json"
 SUITE_DIR = ROOT / "suites" / "official_tp_suites"
 TEMPLATE_PATH = ROOT / "tools" / "verification_architecture_template.html"
 DEFAULT_OUTPUT = ROOT / "verification-architecture.html"
+EVIDENCE_PREVIEW_MAX_LINES = 140
+EVIDENCE_DIRECTORY_PREVIEW_FILES = 8
+EVIDENCE_DIRECTORY_PREVIEW_LINES = 80
+EVIDENCE_CONTEXT_RADIUS = 3
+EVIDENCE_MAX_TEXT_BYTES = 2 * 1024 * 1024
+
+TEXT_EVIDENCE_SUFFIXES = {
+    ".cmds",
+    ".csv",
+    ".json",
+    ".log",
+    ".md",
+    ".msg",
+    ".out",
+    ".sha256",
+    ".txt",
+    ".xml",
+}
+
+EVIDENCE_SIGNAL_PATTERN = re.compile(
+    r"(?i)(?:"
+    r"REGISTER|INVITE|ACK|BYE|CANCEL|OPTIONS"
+    r"|Authorization|WWW-Authenticate|Security-Client|Security-Verify"
+    r"|SUBSCRIBE|NOTIFY|P-Associated-URI|Service-Route"
+    r"|401|403|488|503|504|Retry-After"
+    r"|PDN CONNECTIVITY|ACTIVATE .*BEARER|REJECT|T3346|T3482"
+    r"|EBI|APN|IPv4v6|internet|ims"
+    r"|RTP|SDP|AMR|EVS|SID|VAD|DTX"
+    r"|MME|SMF|SGWC|UPF|eNB|nas_test"
+    r"|PASS|FAIL|WARN|ERROR"
+    r")"
+)
+
+EVIDENCE_STOP_WORDS = {
+    "and",
+    "are",
+    "can",
+    "current",
+    "does",
+    "evidence",
+    "for",
+    "from",
+    "has",
+    "into",
+    "not",
+    "the",
+    "this",
+    "test",
+    "通过",
+    "证据",
+    "本地",
+    "不能",
+}
 
 import sys
 
@@ -249,6 +302,287 @@ def parse_suite_document(tc_id: str) -> dict[str, Any]:
     }
 
 
+def repo_relative_path(value: Any) -> str:
+    text = clean_text(value)
+    if not text:
+        return ""
+    normalized = text.replace("\\", "/").lstrip("./")
+    candidate = (ROOT / normalized).resolve()
+    try:
+        candidate.relative_to(ROOT.resolve())
+    except ValueError:
+        return ""
+    return normalized
+
+
+def is_text_evidence(path: Path) -> bool:
+    return path.suffix.lower() in TEXT_EVIDENCE_SUFFIXES
+
+
+def evidence_keywords(item: dict[str, Any]) -> list[str]:
+    parts = [
+        clean_text(item.get("title")),
+        clean_text(item.get("boundary")),
+        *[clean_text(value) for value in item.get("proves") or []],
+        *[clean_text(value) for value in item.get("tc_ids") or []],
+    ]
+    words = {
+        token.lower()
+        for token in re.findall(r"[A-Za-z][A-Za-z0-9_.+-]{2,}", " ".join(parts))
+        if token.lower() not in EVIDENCE_STOP_WORDS
+    }
+    words.update(
+        {
+            "register",
+            "invite",
+            "authorization",
+            "security-client",
+            "security-verify",
+            "subscribe",
+            "notify",
+            "401",
+            "503",
+            "504",
+            "pdn",
+            "reject",
+            "t3346",
+            "t3482",
+            "rtp",
+            "sid",
+            "vad",
+            "dtx",
+            "ebi",
+            "apn",
+            "mme",
+            "smf",
+            "sgwc",
+            "upf",
+            "enb",
+        }
+    )
+    return sorted(words)
+
+
+def line_has_signal(line: str, keywords: list[str]) -> bool:
+    lowered = line.lower()
+    return bool(EVIDENCE_SIGNAL_PATTERN.search(line)) or any(
+        keyword in lowered for keyword in keywords
+    )
+
+
+def preview_lines(lines: list[str], keywords: list[str], max_lines: int) -> list[dict[str, Any]]:
+    if len(lines) <= max_lines:
+        selected = list(range(len(lines)))
+    else:
+        hits = [
+            index
+            for index, line in enumerate(lines)
+            if line_has_signal(line, keywords)
+        ]
+        selected_set = set(range(min(8, len(lines))))
+        selected_set.update(range(max(0, len(lines) - 8), len(lines)))
+        for index in hits[: max_lines // 2]:
+            start = max(0, index - EVIDENCE_CONTEXT_RADIUS)
+            end = min(len(lines), index + EVIDENCE_CONTEXT_RADIUS + 1)
+            selected_set.update(range(start, end))
+            if len(selected_set) >= max_lines:
+                break
+        selected = sorted(selected_set)
+        if len(selected) > max_lines:
+            selected = selected[: max_lines - 4] + selected[-4:]
+            selected = sorted(set(selected))
+
+    result: list[dict[str, Any]] = []
+    previous = None
+    for index in selected:
+        line_number = index + 1
+        result.append(
+            {
+                "line": line_number,
+                "text": lines[index],
+                "hit": line_has_signal(lines[index], keywords),
+                "gap": 0 if previous is None else max(0, line_number - previous - 1),
+            }
+        )
+        previous = line_number
+    return result
+
+
+def build_repo_file_preview(
+    relative_path: str,
+    keywords: list[str],
+    max_lines: int,
+) -> dict[str, Any] | None:
+    if not relative_path:
+        return None
+    path = (ROOT / relative_path).resolve()
+    try:
+        path.relative_to(ROOT.resolve())
+    except ValueError:
+        return None
+    if not path.is_file():
+        return None
+
+    record: dict[str, Any] = {
+        "path": relative_path,
+        "name": path.name,
+        "size_bytes": path.stat().st_size,
+        "suffix": path.suffix.lower(),
+        "open_href": relative_path,
+        "binary": not is_text_evidence(path),
+        "preview": [],
+        "total_lines": 0,
+        "truncated": False,
+        "note": "",
+    }
+    if record["binary"]:
+        record["note"] = "二进制或非文本证据只登记文件，不在页面内伪造正文预览。"
+        return record
+    if record["size_bytes"] == 0:
+        record["note"] = "文件存在但为 0 字节，不能作为有效正文或报文证据。"
+        return record
+
+    try:
+        raw = path.read_bytes()[:EVIDENCE_MAX_TEXT_BYTES]
+    except OSError as exc:
+        record["note"] = f"无法读取仓库副本：{exc}"
+        return record
+    if b"\0" in raw:
+        record["binary"] = True
+        record["note"] = "检测到二进制内容，只登记元数据。"
+        return record
+
+    text = raw.decode("utf-8", errors="replace")
+    lines = text.splitlines()
+    selected = preview_lines(lines, keywords, max_lines)
+    record.update(
+        {
+            "total_lines": len(lines),
+            "truncated": len(selected) < len(lines),
+            "preview": selected,
+            "note": (
+                f"仅展示 {len(selected)} / {len(lines)} 行相关上下文；"
+                "点击“打开原文件”可在本机查看完整仓库副本。"
+                if len(selected) < len(lines)
+                else f"展示仓库副本全部 {len(lines)} 行。"
+            ),
+        }
+    )
+    return record
+
+
+def evidence_file_priority(record: dict[str, Any]) -> tuple[int, str]:
+    name = str(record.get("path") or "").lower()
+    score = 100
+    for index, token in enumerate(
+        ("key-", "ue.log", "mme.log", "smf.log", "sgwc.log", "upf.log", "nas", "summary", "verdict")
+    ):
+        if token in name:
+            score = min(score, index)
+    if record.get("binary"):
+        score += 30
+    return score, name
+
+
+def build_evidence_viewer(item: dict[str, Any]) -> dict[str, Any]:
+    keywords = evidence_keywords(item)
+    repo_copy = repo_relative_path(item.get("repo_copy"))
+    viewer: dict[str, Any] = {
+        "available": False,
+        "reason": "",
+        "repo_copy": repo_copy,
+        "server_path": clean_text(item.get("server_path")),
+        "files": [],
+        "preview_policy": (
+            "页面只抽取与当前 TC、信号和证明点相关的有限上下文；"
+            "不会把大日志整份嵌入 HTML，也不把二进制文件伪装成可读文本。"
+        ),
+    }
+    if not repo_copy:
+        viewer["reason"] = (
+            "服务器记录了该材料，但当前 Git checkout 没有仓库副本。"
+            "必须从服务器、原始测试床或新的受控复跑取得正文后才能查看。"
+        )
+        return viewer
+
+    path = (ROOT / repo_copy).resolve()
+    try:
+        path.relative_to(ROOT.resolve())
+    except ValueError:
+        viewer["reason"] = "仓库副本路径越界，已拒绝读取。"
+        return viewer
+    if not path.exists():
+        viewer["reason"] = f"仓库副本不存在：{repo_copy}"
+        return viewer
+
+    if path.is_file():
+        record = build_repo_file_preview(
+            repo_copy,
+            keywords,
+            EVIDENCE_PREVIEW_MAX_LINES,
+        )
+        if record:
+            viewer["files"] = [record]
+    elif path.is_dir():
+        all_files: list[dict[str, Any]] = []
+        for child in sorted(path.rglob("*")):
+            if not child.is_file():
+                continue
+            relative = str(child.relative_to(ROOT)).replace("\\", "/")
+            try:
+                size = child.stat().st_size
+            except OSError:
+                size = 0
+            all_files.append(
+                {
+                    "path": relative,
+                    "name": child.name,
+                    "size_bytes": size,
+                    "suffix": child.suffix.lower(),
+                    "open_href": relative,
+                    "binary": not is_text_evidence(child),
+                    "preview": [],
+                    "total_lines": 0,
+                    "truncated": False,
+                    "note": "目录内文件；可按需打开原文件。",
+                }
+            )
+        all_files.sort(key=evidence_file_priority)
+        preview_candidates = [
+            record for record in all_files if not record["binary"] and record["size_bytes"] > 0
+        ][:EVIDENCE_DIRECTORY_PREVIEW_FILES]
+        preview_by_path = {}
+        for candidate in preview_candidates:
+            built = build_repo_file_preview(
+                candidate["path"],
+                keywords,
+                EVIDENCE_DIRECTORY_PREVIEW_LINES,
+            )
+            if built:
+                preview_by_path[candidate["path"]] = built
+        for record in all_files:
+            built = preview_by_path.get(record["path"])
+            if built:
+                record.update(built)
+            elif record["binary"]:
+                record["note"] = "二进制或非文本文件，只登记存在性和大小。"
+            elif record["size_bytes"] == 0:
+                record["note"] = "0 字节文件，不能作为有效正文证据。"
+            else:
+                record["note"] = "为控制页面体积，本次未内嵌该文件的行预览；可打开原文件查看。"
+        viewer["files"] = all_files[:80]
+        if len(all_files) > 80:
+            viewer["reason"] = f"目录含 {len(all_files)} 个文件，页面列出前 80 个，其余请打开原目录。"
+
+    viewer["available"] = any(record.get("preview") for record in viewer["files"])
+    if not viewer["available"] and not viewer["reason"]:
+        viewer["reason"] = (
+            "仓库副本中没有可安全展示的文本正文。"
+            "抓包、压缩包、Office/PDF 或 0 字节文件只在原文件中核对。"
+        )
+    return viewer
+
+
 def normalize_boundary(boundary: dict[str, Any]) -> dict[str, Any]:
     tables = []
     for table in boundary.get("specific_message_tables") or []:
@@ -309,6 +643,17 @@ def build_payload(
         reg = registry_entries.get(tc_id, {})
         lib = library_entries.get(tc_id, {})
         suite = parse_suite_document(tc_id)
+        evidence_links = [
+            {
+                "id": clean_text(item.get("id")),
+                "title": clean_text(item.get("title")),
+                "artifact_type": clean_text(item.get("artifact_type")),
+                "repo_copy": clean_text(item.get("repo_copy")),
+                "freshness": clean_text(item.get("freshness")),
+            }
+            for item in server_evidence.get("logs", [])
+            if tc_id in (item.get("tc_ids") or [])
+        ]
         cases.append(
             {
                 "tc_id": tc_id,
@@ -352,6 +697,7 @@ def build_payload(
                 "evidence_text": suite["evidence_text"],
                 "restriction_text": suite["restriction_text"],
                 "commands": suite["commands"],
+                "evidence_links": evidence_links,
             }
         )
 
@@ -371,6 +717,9 @@ def build_payload(
         }
         for key, role in STANDARD_ROLES.items()
     ]
+
+    for item in server_evidence.get("logs", []):
+        item["viewer"] = build_evidence_viewer(item)
 
     return {
         "meta": {
