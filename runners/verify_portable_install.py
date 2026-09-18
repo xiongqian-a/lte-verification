@@ -67,6 +67,13 @@ FORBIDDEN_PATH_MARKERS = (
     "C:" + "/11/523协议",
 )
 
+# This document intentionally inventories the original local and server paths
+# for handoff. Its machine-specific paths are documentation data, not runner
+# dependencies; every executable and other tracked document remains checked.
+MACHINE_PATH_DOCUMENT_ALLOWLIST = {
+    "docs/102-服务器与本机路径总表-20260918.md",
+}
+
 BINARY_SUFFIXES = {
     ".pcap",
     ".png",
@@ -202,6 +209,8 @@ def static_checks() -> list[str]:
     for relative in tracked_files():
         normalized = relative.replace("\\", "/")
         if normalized.startswith(("evidence/", "outputs/")):
+            continue
+        if normalized in MACHINE_PATH_DOCUMENT_ALLOWLIST:
             continue
         path = ROOT / relative
         if not path.is_file():
