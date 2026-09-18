@@ -1,0 +1,714 @@
+{
+  "meta": {
+    "title": "服务器测试床与证据导航",
+    "server_host": "CSPDSWUser01",
+    "server_address": "10.10.46.104",
+    "account_root": "/home/co1750",
+    "scan_date": "2026-09-18",
+    "scan_scope": [
+      "/home/co1750/phase5-ns",
+      "/home/co1750/verification-evidence",
+      "/home/co1750/tc005-o5g",
+      "/home/co1750/tc005-mme-debug"
+    ],
+    "scan_extensions": [
+      ".log",
+      ".txt",
+      ".pcap",
+      ".json"
+    ],
+    "candidate_file_count": 1760,
+    "scope_counts": [
+      {
+        "path": "/home/co1750/phase5-ns",
+        "candidate_files": 667,
+        "note": "当前 Phase 5 测试床、网络命名空间运行目录和历史基线运行目录"
+      },
+      {
+        "path": "/home/co1750/verification-evidence",
+        "candidate_files": 975,
+        "note": "按 TC 和运行时间固化的历史证据目录"
+      },
+      {
+        "path": "/home/co1750/tc005-o5g",
+        "candidate_files": 115,
+        "note": "Open5GS 双 PDN 测试床和 TC-005 运行证据"
+      },
+      {
+        "path": "/home/co1750/tc005-mme-debug",
+        "candidate_files": 3,
+        "note": "TC-005 MME 调试补充材料"
+      }
+    ],
+    "audit_document": "docs/102a-服务器完整目录清单-20260918.txt",
+    "audit_note": "102a 是全量机器审计清单，不是人工导航。阅读时先看本页面的用途分类、日志到 TC 的证据链，只有需要核对某个路径是否存在时才查 102a。",
+    "evidence_policy": [
+      "服务器路径说明“材料和日志在哪里”，不自动证明对应 TC 已通过。",
+      "服务器日志是历史证据快照；clone 后现场复跑必须记录新的 DUT commit、二进制哈希、网络参数和时间目录。",
+      "0 字节抓包只能证明文件曾创建，不能作为有效报文证据。",
+      "本地或测试床 PASS 不会自动升级为官方一致性 PASS。",
+      "官方 Verdict 仍必须由合格 SS、仪表或检测机构按官方 TP 给出。"
+    ]
+  },
+  "categories": [
+    {
+      "id": "ims-control",
+      "title": "IMS / SIP 控制面",
+      "layer": "IMS",
+      "purpose": "承载 IMS 注册、鉴权、呼叫建立、重注册、呼叫恢复、保持、会议和紧急呼叫的 SIP 控制面。",
+      "signal_flow": "UE / pjsua -> P-CSCF -> I-CSCF -> S-CSCF -> HSS / DNS；会话媒体由 FreeSWITCH 或对端提供。",
+      "processes": [
+        "Kamailio P-CSCF",
+        "Kamailio I-CSCF",
+        "Kamailio S-CSCF",
+        "hssService.py / pyhss",
+        "ims-dns.py",
+        "MariaDB",
+        "Redis"
+      ],
+      "tc_ids": [
+        "TC-011",
+        "TC-012",
+        "TC-013",
+        "TC-014",
+        "TC-015",
+        "TC-016",
+        "TC-017",
+        "TC-018",
+        "TC-019",
+        "TC-020",
+        "TC-021",
+        "TC-030",
+        "TC-032",
+        "TC-033"
+      ],
+      "paths": [
+        {
+          "path": "/home/co1750/phase5-ns/ims",
+          "role": "Phase 5 的 IMS 配置目录，包含 P-CSCF、I-CSCF、S-CSCF 等配置文件。",
+          "outputs": "运行时为 Kamailio 提供 SIP 路由、鉴权和注册配置。",
+          "boundary": "开源 IMS 配置可验证流程和字段，不等同运营商 IMS 或合格 SS。"
+        },
+        {
+          "path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs",
+          "role": "Phase 5 基线运行的统一日志目录，保存 IMS、媒体、UE、eNB/EPC 和 TC 驱动日志。",
+          "outputs": "ims_register_test.log、mo_call_test.log、tc12-call.log、tc13-call.log、tc19*.log、tc20*.log、conference 日志、S-CSCF/I-CSCF/P-CSCF 服务日志。",
+          "boundary": "日志来自历史测试床运行，不是官方 SS 的一致性执行记录。"
+        },
+        {
+          "path": "/home/co1750/kamailio",
+          "role": "Kamailio 运行环境。",
+          "outputs": "P-CSCF、I-CSCF、S-CSCF 进程和 SIP 服务日志。",
+          "boundary": "需要确认运行配置和插件版本后才能用于具体流程复现。"
+        },
+        {
+          "path": "/home/co1750/pyhss",
+          "role": "HSS / Diameter 实验服务。",
+          "outputs": "IMPI、IMPU、鉴权向量和用户配置实验数据。",
+          "boundary": "不是运营商 HSS；不能替代真实 HSS 或官方 SS 的鉴权一致性判定。"
+        },
+        {
+          "path": "/home/co1750/ims-dns",
+          "role": "IMS DNS 实验配置。",
+          "outputs": "IMS 域名解析和 P-CSCF 发现材料。",
+          "boundary": "只覆盖实验网域名和路由。"
+        }
+      ]
+    },
+    {
+      "id": "lte-ran-epc",
+      "title": "LTE RAN / eNB / EPC",
+      "layer": "接入网和分组核心",
+      "purpose": "承载 EPS Attach、RRC、NAS、默认承载、专用承载、PDN、TAU、Service Request、Paging 和抓包。",
+      "signal_flow": "UE / srsUE / nas_test -> srsenb -> srsepc 或 Open5GS -> IMS 测试床。",
+      "processes": [
+        "srsenb",
+        "srsepc",
+        "Open5GS mmed",
+        "Open5GS sgwcd",
+        "Open5GS smfd",
+        "Open5GS upfd",
+        "Open5GS hssd",
+        "Open5GS pcrfd"
+      ],
+      "tc_ids": [
+        "TC-001",
+        "TC-002",
+        "TC-003",
+        "TC-004",
+        "TC-005",
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010"
+      ],
+      "paths": [
+        {
+          "path": "/home/co1750/srsRAN_4G",
+          "role": "srsRAN 4G 源码、构建产物和 UE/eNB/EPC 可执行程序。",
+          "outputs": "srsenb、srsepc、srsue、nas_test 及 UE/RAN/S1AP 抓包。",
+          "boundary": "开源 RAN/EPC 验证研发行为，不是 36.523-1 合格 SS 环境。"
+        },
+        {
+          "path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026",
+          "role": "Phase 5 端到端网络命名空间基线运行目录。",
+          "outputs": "enb.log、epc.log、ue.log、enb_s1ap.pcap、epc.pcap、ue_nas.pcap、ue_mac.pcap。",
+          "boundary": "部分历史抓包为 0 字节；必须按文件大小和报文内容判断是否有效。"
+        },
+        {
+          "path": "/home/co1750/tc005-o5g",
+          "role": "TC-005 双 PDN 共存的 Open5GS 测试床。",
+          "outputs": "UE、eNB、MME、SGWC、SMF、UPF 日志和 NAS/MAC/S1AP 抓包。",
+          "boundary": "证据覆盖 IPv4 internet + ims 双 PDN；IPv6/双栈和官方 SS Verdict 仍受限。"
+        },
+        {
+          "path": "/home/co1750/srsRAN_4G/build/srsue/src/stack/upper/test/nas_test",
+          "role": "UE 侧 NAS/ESM 单测入口。",
+          "outputs": "TC-001、TC-004 的 PDN 请求、PDN REJECT、T3482 和 backoff 行为证据。",
+          "boundary": "单测注入证明 UE 状态机行为，不证明真实 eNB/EPC 端到端。"
+        }
+      ]
+    },
+    {
+      "id": "ue-client",
+      "title": "UE 客户端与 SIP 工具",
+      "layer": "终端和流量生成",
+      "purpose": "生成真实 SIP REGISTER、INVITE、hold、REFER 和异常输入，为字段级和状态机 checker 提供原始输入。",
+      "signal_flow": "pjsua / ims_client / SIPp -> IMS 或本地响应器 -> 日志、SIP 消息和媒体记录。",
+      "processes": [
+        "pjsua",
+        "ims_client",
+        "SIPp",
+        "本地 SIP 响应器"
+      ],
+      "tc_ids": [
+        "TC-011",
+        "TC-012",
+        "TC-013",
+        "TC-014",
+        "TC-015",
+        "TC-016",
+        "TC-017",
+        "TC-018",
+        "TC-019",
+        "TC-020",
+        "TC-021",
+        "TC-032",
+        "TC-033"
+      ],
+      "paths": [
+        {
+          "path": "/home/co1750/pjproject",
+          "role": "pjsua / PJSUA 客户端构建和运行环境。",
+          "outputs": "真实 SIP 事务日志、RTP 日志、WAV 文件、认证和重传行为。",
+          "boundary": "客户端日志可证明 UE 行为，但最终一致性 P/F 仍由 SS 判定。"
+        },
+        {
+          "path": "/home/co1750/ims-client-skeleton",
+          "role": "项目内 IMS 客户端实验骨架。",
+          "outputs": "注册、呼叫和状态机日志。",
+          "boundary": "实验客户端不等同生产自研协议栈。"
+        },
+        {
+          "path": "/home/co1750/sipp",
+          "role": "SIPp 流量和场景工具。",
+          "outputs": "可重复的 SIP 消息、错误码和定时器场景。",
+          "boundary": "合成流量不能替代真实 UE 或官方 TP 执行。"
+        }
+      ]
+    },
+    {
+      "id": "media-rtp",
+      "title": "媒体、RTP 与语音活动",
+      "layer": "媒体面",
+      "purpose": "承载音频媒体、RTP、AMR/EVS、VAD/DTX、SID 和长稳静默证据。",
+      "signal_flow": "pjsua / FreeSWITCH -> RTP 抓包和 WAV -> amr-stats 或媒体 checker。",
+      "processes": [
+        "FreeSWITCH",
+        "pjsua media engine",
+        "WAV player / recorder",
+        "RTP capture"
+      ],
+      "tc_ids": [
+        "TC-012",
+        "TC-017",
+        "TC-022",
+        "TC-023",
+        "TC-024",
+        "TC-025"
+      ],
+      "paths": [
+        {
+          "path": "/home/co1750/freeswitch",
+          "role": "FreeSWITCH 会议和媒体服务。",
+          "outputs": "SIP 呼叫、会议、RTP 和录音日志。",
+          "boundary": "实验媒体服务不能替代运营商 MMTel 或合格媒体测试仪表。"
+        },
+        {
+          "path": "/home/co1750/verification-evidence/tc025-vad-20260914-longsilence",
+          "role": "TC-025 长静默 VAD/DTX 证据目录。",
+          "outputs": "pjsua 日志、RTP 文本、AMR 统计和时间线。",
+          "boundary": "现有样本的 NO_DATA 和 SID cadence 断言未达到标准要求，保持 LIMITED_PASS。"
+        },
+        {
+          "path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs",
+          "role": "媒体录制和呼叫日志目录。",
+          "outputs": "mo_call_test.wav、tc12-rec.wav、tc13-rec.wav 和相关 pjsua 媒体日志。",
+          "boundary": "WAV 存在性不等于编解码、丢包、VAD/DTX 或官方媒体一致性通过。"
+        }
+      ]
+    },
+    {
+      "id": "evidence-archive",
+      "title": "历史证据归档",
+      "layer": "证据归档",
+      "purpose": "按 TC 或运行时间固化测试床输出，支持哈希、复跑、差异比较和交接审计。",
+      "signal_flow": "测试床运行 -> 按 TC/时间建立 evidence 目录 -> 仓库选择必要文件形成可复跑快照。",
+      "processes": [
+        "run-baseline20 系列目录",
+        "tc025-* / tc030-* / tc032-* / tc033-* 目录"
+      ],
+      "tc_ids": [
+        "TC-005",
+        "TC-015",
+        "TC-018",
+        "TC-024",
+        "TC-025",
+        "TC-030",
+        "TC-032",
+        "TC-033"
+      ],
+      "paths": [
+        {
+          "path": "/home/co1750/verification-evidence",
+          "role": "服务器历史证据总目录。",
+          "outputs": "约 173 个运行目录，按 baseline、phase、tc025、tc030、tc032、tc033 等分组。",
+          "boundary": "历史快照只说明当时环境中的结果；不能冒充同事 clone 后现场执行的结果。"
+        },
+        {
+          "path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026",
+          "role": "最新 Phase 5 基线目录，是多个 TC 的服务器主证据来源。",
+          "outputs": "注册、呼叫、重注册、紧急呼叫、S-CSCF 和 RAN/EPC 日志。",
+          "boundary": "ue.log 可达到 GB 级，不应直接复制到 Git；仓库只保存必要切片或摘要。"
+        }
+      ]
+    },
+    {
+      "id": "supporting-service",
+      "title": "支撑服务与运行时",
+      "layer": "公共基础设施",
+      "purpose": "为 IMS 和核心网提供数据库、缓存、DNS、运行时依赖和可执行工具。",
+      "signal_flow": "测试服务通过 localhost 或网络命名空间地址访问 MariaDB、Redis 和 DNS。",
+      "processes": [
+        "MariaDB",
+        "Redis",
+        "ims-dns.py",
+        "本地 Python 环境"
+      ],
+      "tc_ids": [
+        "TC-011",
+        "TC-014",
+        "TC-015",
+        "TC-030"
+      ],
+      "paths": [
+        {
+          "path": "/home/co1750/mariadb",
+          "role": "IMS/HSS 辅助数据库。",
+          "outputs": "用户、订阅和运行配置数据。",
+          "boundary": "数据库内容和凭据不得复制到 Git；页面不展示凭据。"
+        },
+        {
+          "path": "/home/co1750/redis-7.2.15",
+          "role": "IMS 运行缓存服务。",
+          "outputs": "注册和路由缓存状态。",
+          "boundary": "缓存状态不是独立 TC 证据，需与 SIP 日志联合判断。"
+        },
+        {
+          "path": "/home/co1750/devlibs",
+          "role": "编译和运行依赖。",
+          "outputs": "本地构建库和工具。",
+          "boundary": "依赖目录不构成协议验证证据。"
+        }
+      ]
+    },
+    {
+      "id": "audit-inventory",
+      "title": "服务器全量审计清单",
+      "layer": "审计",
+      "purpose": "回答“某个目录或符号链接是否存在于服务器”，用于交接和差异排查。",
+      "signal_flow": "服务器 find -> docs/102a 全量清单 -> 人工或脚本检索。",
+      "processes": [
+        "无运行时进程"
+      ],
+      "tc_ids": [],
+      "paths": [
+        {
+          "path": "docs/102a-服务器完整目录清单-20260918.txt",
+          "role": "仓库内的全量服务器目录和符号链接审计清单，约 19,989 条记录。",
+          "outputs": "路径类型和绝对路径，不保存文件内容、密码、私钥或 token。",
+          "boundary": "这是底层审计索引，不是人工导航；不要从第一条按顺序阅读。"
+        },
+        {
+          "path": "docs/102-服务器与本机路径总表-20260918.md",
+          "role": "服务器与本机路径的说明文档，解释主要目录用途。",
+          "outputs": "仓库路径、服务器测试床、证据起点和交接命令。",
+          "boundary": "网页中的分类索引优先用于演示和交接。"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "id": "tc011-register",
+      "category": "ims-control",
+      "title": "IMS 初始注册 401 -> 200",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/ims_register_test.log",
+      "server_size_bytes": 7531,
+      "server_modified": "2026-09-04 10:24:27",
+      "repo_copy": "evidence/external/conference-20260904-full/ims_register_test.log",
+      "tc_ids": [
+        "TC-011"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "UE 发出 REGISTER，网络返回 401 challenge。",
+        "UE 携带 Authorization 再发 REGISTER，网络返回 200 OK。",
+        "注册事务和会话状态可被字段级 checker 复跑。"
+      ],
+      "boundary": "不能证明临时 IPsec SA 的完整内核态建立，也不能替代 34.229-1 合格 SS Verdict。"
+    },
+    {
+      "id": "tc012-mo-call",
+      "category": "ims-control",
+      "title": "MO 呼叫与正常收尾",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/mo_call_test.log",
+      "server_size_bytes": 18909,
+      "server_modified": "2026-09-04 10:25:47",
+      "repo_copy": "evidence/external/conference-20260904-full/mo_call_test.log",
+      "tc_ids": [
+        "TC-012",
+        "TC-017",
+        "TC-022",
+        "TC-023"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "INVITE、100/183/200、ACK、媒体记录和 BYE 的完整事务链。",
+        "SDP offer/answer 和 RTP 播放/录制行为。",
+        "呼叫正常释放和资源清理。"
+      ],
+      "boundary": "真实 MMTel、官方呼叫子例和合格 SS 端到端仍缺。"
+    },
+    {
+      "id": "tc012-call-short",
+      "category": "ims-control",
+      "title": "MO 呼叫短日志",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc12-call.log",
+      "server_size_bytes": 18874,
+      "server_modified": "2026-08-31 17:53:39",
+      "repo_copy": "evidence/external/tc12-tc13-calls-raw.log",
+      "tc_ids": [
+        "TC-012",
+        "TC-017",
+        "TC-022",
+        "TC-023"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "基线运行中的呼叫消息序列。",
+        "可作为 mo_call_test.log 的交叉核对。"
+      ],
+      "boundary": "与 mo_call_test.log 同源但时间不同，不能把两次运行简单合并为一个官方结论。"
+    },
+    {
+      "id": "tc013-invalid-auth",
+      "category": "ims-control",
+      "title": "鉴权失败和后续注册行为",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc13-call.log",
+      "server_size_bytes": 18882,
+      "server_modified": "2026-08-31 17:54:41",
+      "repo_copy": "evidence/external/tc12-tc13-calls-raw.log",
+      "tc_ids": [
+        "TC-013"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "401 无效挑战后的客户端 SIP 行为。",
+        "与负控日志联合可检查二次 REGISTER 和 AUTS 路径。"
+      ],
+      "boundary": "服务器历史日志没有注入真实 HSS 错误向量；临时 SA 和 resync 完整证据仍缺。"
+    },
+    {
+      "id": "tc014-reregister",
+      "category": "ims-control",
+      "title": "长周期重注册和三次重注册",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc014-longexp-20260914-132318.log",
+      "server_size_bytes": 14896,
+      "server_modified": "2026-09-14 13:23:58",
+      "repo_copy": "evidence/local/tc014-longexp-20260914/tc014-longexp-1800-20260914.log",
+      "tc_ids": [
+        "TC-014"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "Expires 窗口下的重注册触发。",
+        "REGISTER 事务数量和 Contact 更新。"
+      ],
+      "boundary": "官方 SS 的定时窗口、IPsec 和 PANI 细节仍需仪表核验。"
+    },
+    {
+      "id": "tc014-reregister-three",
+      "category": "ims-control",
+      "title": "三次重注册长日志",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc014-longexp-fifo-20260914.log",
+      "server_size_bytes": 21727,
+      "server_modified": "2026-09-14 13:26:51",
+      "repo_copy": "evidence/local/tc014-longexp-20260914/tc014-longexp-1800-3rereg-20260914.log",
+      "tc_ids": [
+        "TC-014"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "连续三次重注册的时间间隔和消息序列。",
+        "可作为长周期重新注册 checker 的直接输入。"
+      ],
+      "boundary": "历史测试床日志，不是 34.229-1 官方 SS 判定。"
+    },
+    {
+      "id": "tc015-restoration",
+      "category": "ims-control",
+      "title": "IMS 恢复和 504 处理",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/verification-evidence/tc015-local-504-pty-20260910-112128",
+      "repo_copy": "evidence/external/tc015-504-local-pty-20260910.log",
+      "tc_ids": [
+        "TC-015"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "504 触发后的恢复注册和状态恢复行为。",
+        "本地响应器能够复现错误码路径。"
+      ],
+      "boundary": "没有真实 S-CSCF 重启和运营商恢复流程。"
+    },
+    {
+      "id": "tc018-malformed",
+      "category": "ue-client",
+      "title": "畸形 REGISTER 容错",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/verification-evidence/tc018-local-inject-20260910-112451",
+      "repo_copy": "evidence/external/tc018-local-inject-evidence-20260910.log",
+      "tc_ids": [
+        "TC-018"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "本地注入畸形 SIP 消息后的错误处理和恢复行为。"
+      ],
+      "boundary": "TC-018 是自研健壮性补充，没有独立官方一致性 ID。"
+    },
+    {
+      "id": "tc019-mt-call",
+      "category": "ims-control",
+      "title": "MT 被叫呼叫",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc19a-call.log",
+      "server_size_bytes": 16390,
+      "server_modified": "2026-08-31 17:55:59",
+      "repo_copy": "evidence/external/tc019-mt-b.log",
+      "tc_ids": [
+        "TC-019"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "MT INVITE、响铃、接听、ACK 和释放流程。"
+      ],
+      "boundary": "依赖本地呼叫台，不是真实被叫 IMS 或合格 SS。"
+    },
+    {
+      "id": "tc020-hold",
+      "category": "ims-control",
+      "title": "呼叫保持和取回",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc20-live.log",
+      "server_size_bytes": 7531,
+      "server_modified": "2026-08-31 17:56:22",
+      "repo_copy": "evidence/external/tc020-hold-a.log",
+      "tc_ids": [
+        "TC-020"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "re-INVITE、SDP sendonly/inactive/recvonly 和媒体方向切换。"
+      ],
+      "boundary": "真实 MMTel 和官方 15.11/15.12 Verdict 仍缺。"
+    },
+    {
+      "id": "tc021-conference",
+      "category": "ims-control",
+      "title": "会议 / REFER 双终端对话",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/conf_dual_capture_ua1.log",
+      "server_size_bytes": 16509,
+      "server_modified": "2026-09-04 11:26:25",
+      "repo_copy": "evidence/external/conference-20260904-full/conf_dual_capture_ua1.log",
+      "tc_ids": [
+        "TC-021"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "REFER、NOTIFY 和双终端会议加入消息链。",
+        "FreeSWITCH 会议侧和对端日志可交叉验证。"
+      ],
+      "boundary": "真实 MMTel、运营商会议和合格 SS Verdict 仍缺。"
+    },
+    {
+      "id": "tc024-long-stability",
+      "category": "media-rtp",
+      "title": "媒体长稳测试",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/verification-evidence/tc024-long-20260910-131332",
+      "repo_copy": "evidence/external/tc024-long-local-pty-20260910.log",
+      "tc_ids": [
+        "TC-024"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "长时段呼叫和媒体传输的本地稳定性。"
+      ],
+      "boundary": "属于补充长稳验证，不是强制官方独立 TC。"
+    },
+    {
+      "id": "tc025-vad-dtx",
+      "category": "media-rtp",
+      "title": "VAD / DTX 长静默证据",
+      "artifact_type": "directory",
+      "server_path": "/home/co1750/verification-evidence/tc025-vad-20260914-longsilence",
+      "repo_copy": "evidence/local/tc025-longsilence-20260914",
+      "tc_ids": [
+        "TC-025"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "长静默期的 RTP、AMR 帧统计、SID 时间线和双侧 pjsua 日志。",
+        "明确记录标准断言未通过的部分。"
+      ],
+      "boundary": "现有 NO_DATA=10 和 SID cadence=1000 帧未达到对齐判据，不能升级为 LOCAL_PASS。"
+    },
+    {
+      "id": "tc030-emergency",
+      "category": "ims-control",
+      "title": "IMS 紧急呼叫 112",
+      "artifact_type": "directory",
+      "server_path": "/home/co1750/verification-evidence/tc030-emergency-112-20260911-155404",
+      "repo_copy": "",
+      "tc_ids": [
+        "TC-030"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "紧急号码 112 的 REGISTER 401 -> 200、INVITE -> 100 -> 200、ACK、RTP 和 BYE 流程。",
+        "S-CSCF 规则命中和路由重写。"
+      ],
+      "boundary": "call_rc=124 是 timeout 包装返回，不是呼叫失败；紧急 PDN、emergency registration 和官方 Verdict 仍缺。"
+    },
+    {
+      "id": "tc032-503",
+      "category": "ims-control",
+      "title": "503 错误码处理",
+      "artifact_type": "directory",
+      "server_path": "/home/co1750/verification-evidence/tc032-503-20260910-132213",
+      "repo_copy": "evidence/external/tc032-503-local-20260910-r2.stdout.log",
+      "tc_ids": [
+        "TC-032"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "本地响应器返回 503 后的重试和状态处理。"
+      ],
+      "boundary": "官方 .3.2 子例和真实 IMS 仍缺。"
+    },
+    {
+      "id": "tc033-blackhole",
+      "category": "ue-client",
+      "title": "SIP black-hole 定时器超时",
+      "artifact_type": "directory",
+      "server_path": "/home/co1750/verification-evidence/tc033-blackhole-20260910-132258",
+      "repo_copy": "evidence/external/tc033-blackhole-local-20260910.stdout.log",
+      "tc_ids": [
+        "TC-033"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "无响应条件下 SIP 事务重传和超时终止。"
+      ],
+      "boundary": "没有独立官方一致性 ID，定时器结论仍以 24.229 和 RFC 3261 行为为准。"
+    },
+    {
+      "id": "tc005-dual-pdn",
+      "category": "lte-ran-epc",
+      "title": "Open5GS 双 PDN 共存",
+      "artifact_type": "directory",
+      "server_path": "/home/co1750/tc005-o5g/evidence-20260914-184930",
+      "repo_copy": "evidence/external/TC005-dual-pdn-20260914",
+      "tc_ids": [
+        "TC-005"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "UE 同时建立 internet 和 ims 两个 PDN，并分别获得 IPv4 地址。",
+        "MME、SGWC、SMF、UPF 和 UE 日志可以交叉核对。"
+      ],
+      "boundary": "IPv6/双栈、方法 II、网络侧释放和官方 SS Verdict 仍缺。"
+    },
+    {
+      "id": "phase5-nas-test",
+      "category": "lte-ran-epc",
+      "title": "UE 侧 NAS/ESM 基线",
+      "artifact_type": "log",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/logs/tc04.log",
+      "server_size_bytes": 7531,
+      "server_modified": "2026-08-31 17:52:00",
+      "repo_copy": "evidence/local/tc004-nas-test-20260914/nas_test_rerun_20260914.log",
+      "tc_ids": [
+        "TC-001",
+        "TC-004"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "UE 侧 PDN CONNECTIVITY REQUEST、PDN REJECT、状态切换和 backoff 行为。"
+      ],
+      "boundary": "单测注入不证明真实 eNB/EPC 端到端，也不等于官方 SS 判定。"
+    },
+    {
+      "id": "phase5-ran-pcaps",
+      "category": "lte-ran-epc",
+      "title": "UE/RAN 抓包存在性",
+      "artifact_type": "pcap",
+      "server_path": "/home/co1750/phase5-ns/run-baseline20-20260831-175026/pcaps",
+      "server_size_bytes": 0,
+      "server_modified": "2026-09-09 13:56:09",
+      "repo_copy": "",
+      "tc_ids": [
+        "TC-006",
+        "TC-007",
+        "TC-008",
+        "TC-009",
+        "TC-010"
+      ],
+      "freshness": "HISTORICAL_SNAPSHOT",
+      "proves": [
+        "目录中存在 ue_nas.pcap、ue_mac.pcap、enb_s1ap.pcap 和 epc.pcap 的文件记录。"
+      ],
+      "boundary": "部分文件为 0 字节，只能登记存在性，不能当作有效报文证据。"
+    }
+  ]
+}

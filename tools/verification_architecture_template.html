@@ -245,6 +245,26 @@
       font-size: 11px;
     }
 
+    .side-links {
+      display: grid;
+      gap: 6px;
+    }
+
+    .side-links a {
+      display: block;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .side-links a:hover {
+      background: var(--surface-2);
+      border-color: var(--line-strong);
+    }
+
     .module-nav {
       display: grid;
       gap: 6px;
@@ -712,6 +732,275 @@
       font-weight: 700;
     }
 
+    .server-policy {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .server-policy article {
+      padding: 13px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .server-policy strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .server-policy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .server-scan-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .server-scan {
+      padding: 10px 11px;
+      background: var(--slate-soft);
+      border-radius: 6px;
+    }
+
+    .server-scan strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .server-scan span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .server-category-nav {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .server-category-nav a {
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .server-category {
+      margin-top: 22px;
+      padding-top: 2px;
+      border-top: 2px solid var(--line-strong);
+    }
+
+    .server-category-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding: 14px 0 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .server-category-head h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+    }
+
+    .server-category-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .server-layer {
+      padding: 4px 8px;
+      border-radius: 5px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .server-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .server-meta {
+      padding: 9px 10px;
+      background: var(--surface-2);
+      border-radius: 6px;
+    }
+
+    .server-meta span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .server-meta strong {
+      display: block;
+      margin-top: 2px;
+      overflow-wrap: anywhere;
+      font-size: 12px;
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .tag-row span {
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: var(--surface-2);
+      color: var(--slate);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .server-log-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .server-log {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--teal);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+
+    .server-log-head {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .server-log h4 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .server-log .freshness {
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: var(--amber-soft);
+      color: var(--amber);
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .server-log .path-line {
+      margin: 8px 0;
+      padding: 7px 8px;
+      background: #172433;
+      color: #e8f0f7;
+      border-radius: 5px;
+      overflow-wrap: anywhere;
+    }
+
+    .server-log-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .server-proof {
+      padding: 9px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+
+    .server-proof.proves {
+      background: var(--green-soft);
+      border-left: 3px solid var(--green);
+    }
+
+    .server-proof.boundary {
+      background: var(--amber-soft);
+      border-left: 3px solid var(--amber);
+    }
+
+    .server-proof strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .server-proof ul {
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    .server-proof li + li {
+      margin-top: 3px;
+    }
+
+    .repo-copy {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .server-path-row {
+      display: grid;
+      grid-template-columns: minmax(230px, 0.85fr) minmax(0, 1.6fr);
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .server-path-row:first-child {
+      border-top: 0;
+    }
+
+    .server-path-row code {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--blue);
+      overflow-wrap: anywhere;
+    }
+
+    .server-path-role p {
+      margin: 0 0 6px;
+    }
+
+    .server-path-boundary {
+      color: var(--amber);
+      font-size: 12px;
+    }
+
+    .audit-note {
+      padding: 11px 13px;
+      border-left: 4px solid var(--slate);
+      border-radius: 4px;
+      background: var(--slate-soft);
+      color: var(--slate);
+    }
+
     dialog {
       width: min(1080px, calc(100vw - 28px));
       max-height: calc(100vh - 28px);
@@ -909,6 +1198,8 @@
     @media (max-width: 1240px) {
       .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .server-policy { grid-template-columns: 1fr; }
+      .server-scan-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 980px) {
@@ -922,6 +1213,8 @@
       .detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .case-table th { position: static; }
       .table-shell { border-radius: 8px; }
+      .server-log-grid { grid-template-columns: 1fr; }
+      .server-path-row { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 680px) {
@@ -951,6 +1244,9 @@
       .detail-grid { grid-template-columns: 1fr; }
       .detail-body, .detail-top { padding: 15px; }
       .boundary-line { grid-template-columns: 1fr; }
+      .server-scan-strip { grid-template-columns: 1fr; }
+      .server-category-head { grid-template-columns: 1fr; }
+      .server-meta-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -964,6 +1260,8 @@
       <a href="#overview">总览</a>
       <a href="#modules">模块架构</a>
       <a href="#cases">用例库</a>
+      <a href="#server-evidence">服务器证据</a>
+      <a href="#server-paths">服务器路径</a>
       <a href="#workflow">执行流程</a>
       <a href="#standards">规范依据</a>
     </nav>
@@ -1015,6 +1313,14 @@
         <h2 class="side-title">模块导航</h2>
         <div id="moduleNav" class="module-nav"></div>
       </section>
+
+      <section class="side-section">
+        <h2 class="side-title">服务器导航</h2>
+        <div class="side-links">
+          <a href="#server-evidence">日志与 TC 证据链</a>
+          <a href="#server-paths">目录职责与边界</a>
+        </div>
+      </section>
     </aside>
 
     <main>
@@ -1061,6 +1367,30 @@
           </table>
         </div>
         <div id="emptyState" class="empty-state">没有符合当前筛选条件的用例。</div>
+      </section>
+
+      <section id="server-evidence" class="section">
+        <div class="section-head">
+          <div>
+            <h2>服务器证据地图</h2>
+            <p>不是按文件夹顺序罗列，而是回答三件事：这份日志服务于哪个 TC、它能证明什么、它仍然不能证明什么。</p>
+          </div>
+        </div>
+        <div class="server-policy" id="serverPolicy"></div>
+        <div class="server-scan-strip" id="serverScanStrip"></div>
+        <div class="server-category-nav" id="serverCategoryNav"></div>
+        <div id="serverEvidenceBody"></div>
+      </section>
+
+      <section id="server-paths" class="section">
+        <div class="section-head">
+          <div>
+            <h2>服务器路径逻辑</h2>
+            <p>每个目录先说明在测试系统中承担的角色，再说明它产出什么、关联哪些 TC，以及本目录的证据边界。</p>
+          </div>
+        </div>
+        <div class="audit-note" id="serverAuditNote"></div>
+        <div id="serverPathsBody"></div>
       </section>
 
       <section id="workflow" class="section">
@@ -1128,6 +1458,11 @@
       "use strict";
 
       const data = JSON.parse(document.getElementById("verification-data").textContent);
+      const serverData = data.server_evidence || {
+        meta: {},
+        categories: [],
+        logs: [],
+      };
       const state = {
         search: "",
         module: "all",
@@ -1172,6 +1507,21 @@
         behavior: "行为补充",
         none: "无官方编号",
       };
+
+      const freshnessLabel = {
+        HISTORICAL_SNAPSHOT: "历史快照",
+        FRESH_RERUN: "现场复跑",
+      };
+
+      const artifactTypeLabel = {
+        log: "日志文件",
+        directory: "证据目录",
+        pcap: "抓包",
+      };
+
+      const uniqueServerTcCount = () => new Set(
+        serverData.logs.flatMap((item) => item.tc_ids || []),
+      ).size;
 
       const hasLocalRunner = (tc) => tc.local_script && tc.local_script.toLowerCase() !== "null";
 
@@ -1349,6 +1699,189 @@
             <p>${escapeHtml(runner.role)}</p>
             <span class="layer">${escapeHtml(runner.layer)}</span>
           </article>
+        `).join("");
+      };
+
+      const tcTagsHtml = (tcIds) => {
+        if (!tcIds || !tcIds.length) return `<span class="mini-tag">无独立 TC</span>`;
+        return tcIds.map((tc) => (
+          `<button class="mini-tag" type="button" data-tc="${escapeHtml(tc)}">${escapeHtml(tc)}</button>`
+        )).join("");
+      };
+
+      const formatBytes = (value) => {
+        if (value == null) return "未记录";
+        const bytes = Number(value);
+        if (!Number.isFinite(bytes)) return "未记录";
+        if (bytes === 0) return "0 B";
+        if (bytes < 1024) return `${bytes} B`;
+        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KiB`;
+        return `${(bytes / (1024 * 1024)).toFixed(1)} MiB`;
+      };
+
+      const renderServerPolicy = () => {
+        const policy = serverData.meta.evidence_policy || [];
+        document.getElementById("serverPolicy").innerHTML = policy.map((item, index) => `
+          <article>
+            <strong>口径 ${String(index + 1).padStart(2, "0")}</strong>
+            <p>${escapeHtml(item)}</p>
+          </article>
+        `).join("");
+
+        const scope = serverData.meta.scan_scope || [];
+        const metrics = [
+          [
+            serverData.meta.candidate_file_count || 0,
+            "候选文件",
+            "审计盘点数量，不等于有效证据数量",
+          ],
+          [
+            serverData.categories.length,
+            "用途分类",
+            "先按系统角色理解，再追具体路径",
+          ],
+          [
+            serverData.logs.length,
+            "重点证据项",
+            "已映射到 TC 的代表性日志或证据目录",
+          ],
+          [
+            uniqueServerTcCount(),
+            "关联 TC",
+            "服务器材料当前覆盖的验证范围",
+          ],
+        ];
+        document.getElementById("serverScanStrip").innerHTML = metrics.map(([value, label, note]) => `
+          <div class="server-scan">
+            <strong>${escapeHtml(value)}</strong>
+            <span>${escapeHtml(label)} · ${escapeHtml(note)}</span>
+          </div>
+        `).join("") + `
+          <div class="server-scan" style="grid-column: 1 / -1;">
+            <strong>扫描日期 ${escapeHtml(serverData.meta.scan_date || "未记录")}</strong>
+            <span>服务器根目录 ${escapeHtml(serverData.meta.account_root || "未记录")}，审计范围 ${escapeHtml(scope.join("；") || "未记录")}。</span>
+          </div>
+        `;
+      };
+
+      const renderServerEvidence = () => {
+        const categoriesWithEvidence = serverData.categories.filter((category) => (
+          serverData.logs.some((item) => item.category === category.id)
+        ));
+        document.getElementById("serverCategoryNav").innerHTML = categoriesWithEvidence.map((category) => {
+          const count = serverData.logs.filter((item) => item.category === category.id).length;
+          return `<a href="#server-category-${escapeHtml(category.id)}">${escapeHtml(category.title)} <span>${count}</span></a>`;
+        }).join("");
+
+        document.getElementById("serverEvidenceBody").innerHTML = categoriesWithEvidence.map((category) => {
+          const items = serverData.logs.filter((item) => item.category === category.id);
+          return `
+            <section class="server-category" id="server-category-${escapeHtml(category.id)}">
+              <div class="server-category-head">
+                <div>
+                  <h3>${escapeHtml(category.title)}</h3>
+                  <p>${escapeHtml(category.purpose)}</p>
+                </div>
+                <span class="server-layer">${escapeHtml(category.layer)}</span>
+              </div>
+              <div class="server-meta-grid">
+                <div class="server-meta">
+                  <span>信号链</span>
+                  <strong>${escapeHtml(category.signal_flow)}</strong>
+                </div>
+                <div class="server-meta">
+                  <span>运行时角色</span>
+                  <strong>${escapeHtml((category.processes || []).join(" · "))}</strong>
+                </div>
+              </div>
+              <div class="tag-row">${tcTagsHtml(category.tc_ids)}</div>
+              <div class="server-log-list">
+                ${items.map((item) => `
+                  <article class="server-log">
+                    <div class="server-log-head">
+                      <div>
+                        <h4>${escapeHtml(item.title)}</h4>
+                        <div class="tag-row">${tcTagsHtml(item.tc_ids)}</div>
+                      </div>
+                      <span class="freshness">${escapeHtml(freshnessLabel[item.freshness] || item.freshness)}</span>
+                    </div>
+                    <code class="path-line">${escapeHtml(item.server_path)}</code>
+                    <div class="server-meta-grid">
+                      <div class="server-meta">
+                        <span>证据类型</span>
+                        <strong>${escapeHtml(artifactTypeLabel[item.artifact_type] || item.artifact_type)}</strong>
+                      </div>
+                      <div class="server-meta">
+                        <span>文件状态</span>
+                        <strong>${escapeHtml(formatBytes(item.server_size_bytes))}${item.server_modified ? ` · ${escapeHtml(item.server_modified)}` : ""}</strong>
+                      </div>
+                    </div>
+                    <div class="server-log-grid">
+                      <div class="server-proof proves">
+                        <strong>能证明什么</strong>
+                        <ul>${(item.proves || []).map((proof) => `<li>${escapeHtml(proof)}</li>`).join("")}</ul>
+                      </div>
+                      <div class="server-proof boundary">
+                        <strong>不能证明什么</strong>
+                        <p>${escapeHtml(item.boundary || "未记录边界。")}</p>
+                      </div>
+                    </div>
+                    <div class="repo-copy">
+                      仓库副本：${item.repo_copy
+                        ? `<code>${escapeHtml(item.repo_copy)}</code>`
+                        : "未随仓库提交，只能从服务器或重新复跑获取"}
+                    </div>
+                  </article>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }).join("");
+      };
+
+      const renderServerPaths = () => {
+        const auditDocument = serverData.meta.audit_document || "";
+        document.getElementById("serverAuditNote").innerHTML = [
+          escapeHtml(serverData.meta.audit_note || ""),
+          auditDocument ? `底层审计文件：<code>${escapeHtml(auditDocument)}</code>` : "",
+        ].filter(Boolean).join("<br>");
+
+        document.getElementById("serverPathsBody").innerHTML = serverData.categories.map((category) => `
+          <section class="server-category">
+            <div class="server-category-head">
+              <div>
+                <h3>${escapeHtml(category.title)}</h3>
+                <p>${escapeHtml(category.purpose)}</p>
+              </div>
+              <span class="server-layer">${escapeHtml(category.layer)}</span>
+            </div>
+            <div class="server-meta-grid">
+              <div class="server-meta">
+                <span>信号流</span>
+                <strong>${escapeHtml(category.signal_flow)}</strong>
+              </div>
+              <div class="server-meta">
+                <span>进程 / 角色</span>
+                <strong>${escapeHtml((category.processes || []).join(" · "))}</strong>
+              </div>
+            </div>
+            <div class="tag-row">${tcTagsHtml(category.tc_ids)}</div>
+            <div>
+              ${(category.paths || []).map((path) => `
+                <div class="server-path-row">
+                  <div>
+                    <code>${escapeHtml(path.path)}</code>
+                    <div class="tag-row"><span>服务器路径</span></div>
+                  </div>
+                  <div class="server-path-role">
+                    <p><strong>职责：</strong>${escapeHtml(path.role)}</p>
+                    <p><strong>产出：</strong>${escapeHtml(path.outputs)}</p>
+                    <p class="server-path-boundary"><strong>边界：</strong>${escapeHtml(path.boundary)}</p>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
         `).join("");
       };
 
@@ -1609,6 +2142,9 @@
       renderMetrics();
       renderWorkflow();
       renderRunners();
+      renderServerPolicy();
+      renderServerEvidence();
+      renderServerPaths();
       renderAll();
     })();
   </script>

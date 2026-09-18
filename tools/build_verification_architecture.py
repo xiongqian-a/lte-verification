@@ -17,6 +17,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY_PATH = ROOT / "registry" / "official_tp_registry.json"
 LIBRARY_PATH = ROOT / "registry" / "official_tp_library.json"
+SERVER_EVIDENCE_PATH = ROOT / "registry" / "server_evidence_index.json"
 SUITE_DIR = ROOT / "suites" / "official_tp_suites"
 TEMPLATE_PATH = ROOT / "tools" / "verification_architecture_template.html"
 DEFAULT_OUTPUT = ROOT / "verification-architecture.html"
@@ -294,7 +295,11 @@ def split_status(raw: Any) -> str:
     return value.split("|", 1)[0].strip() or "NOT_EXECUTED"
 
 
-def build_payload(registry: dict[str, Any], library: dict[str, Any]) -> dict[str, Any]:
+def build_payload(
+    registry: dict[str, Any],
+    library: dict[str, Any],
+    server_evidence: dict[str, Any],
+) -> dict[str, Any]:
     registry_entries = {entry["tc"]: entry for entry in registry.get("entries", [])}
     library_entries = {entry["tc_id"]: entry for entry in library.get("entries", [])}
     all_ids = sorted(set(registry_entries) | set(library_entries))
@@ -377,6 +382,7 @@ def build_payload(registry: dict[str, Any], library: dict[str, Any]) -> dict[str
             "source_files": [
                 str(REGISTRY_PATH.relative_to(ROOT)).replace("\\", "/"),
                 str(LIBRARY_PATH.relative_to(ROOT)).replace("\\", "/"),
+                str(SERVER_EVIDENCE_PATH.relative_to(ROOT)).replace("\\", "/"),
             ],
         },
         "modules": MODULES,
@@ -384,6 +390,7 @@ def build_payload(registry: dict[str, Any], library: dict[str, Any]) -> dict[str
         "standards": standards,
         "runners": RUNNERS,
         "workflow": WORKFLOW,
+        "server_evidence": server_evidence,
         "official_verdict": {
             "status": "NO_OFFICIAL_VERDICT",
             "statement": "本页只展示官方 TP 对齐、本地验证与证据状态；真值 P/F 必须由合格 SS、仪表或认可实验室按官方 TP 产生。",
@@ -409,7 +416,8 @@ def main() -> int:
 
     registry = load_json(REGISTRY_PATH)
     library = load_json(LIBRARY_PATH)
-    payload = build_payload(registry, library)
+    server_evidence = load_json(SERVER_EVIDENCE_PATH)
+    payload = build_payload(registry, library, server_evidence)
     template = args.template.read_text(encoding="utf-8")
     output = render(template, payload)
 
