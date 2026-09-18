@@ -22,6 +22,11 @@ For the complete colleague usage, file/tool inventory, evidence viewer,
 one-click execution, missing-environment behavior, and handoff guide, see
 [`docs/104-仓库完整使用说明书-20260918.md`](docs/104-仓库完整使用说明书-20260918.md).
 
+For the internship learning summary, standards-to-code mental model, key case
+studies, interview narratives, and the boundary between local evidence and
+official conformance, see
+[`docs/105-实习期LTE-IMS自研协议栈验证体系开发与学习总结-20260918.md`](docs/105-实习期LTE-IMS自研协议栈验证体系开发与学习总结-20260918.md).
+
 For the server and local path inventory, including the difference between
 tracked evidence files, replay checks, and the 34 functional TCs, see
 [`docs/102-服务器与本机路径总表-20260918.md`](docs/102-服务器与本机路径总表-20260918.md).
@@ -285,6 +290,7 @@ evidence is supplied.
 | `docs/96-验证例程运行流程与模板说明-20260915.md` | End-to-end runner flow, templates, and result vocabulary |
 | `docs/97-同事拉取复跑与结果验收流程-20260916.md` | Colleague handoff, fresh-checkout replay procedure, and result acceptance |
 | `docs/104-仓库完整使用说明书-20260918.md` | Authoritative complete guide: one-click execution, directory/file responsibilities, evidence viewer, result vocabulary, fresh-DUT boundaries, and handoff |
+| `docs/105-实习期LTE-IMS自研协议栈验证体系开发与学习总结-20260918.md` | Internship learning summary, standards/code mental model, TC case studies, interview narratives, and result boundaries |
 | `docs/99-全新克隆交接实测-20260917.md` | Measured clean-clone and colleague replay acceptance record |
 | `docs/102-服务器与本机路径总表-20260918.md` | Server/local path inventory, evidence-count vocabulary, per-TC file/runner/evidence index, and handoff boundaries |
 | `docs/103-服务器文件路径逻辑总表-20260918.md` | Categorized server path map, process/signal flow, key evidence entries, TC lookup, and evidence boundaries |
