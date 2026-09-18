@@ -72,6 +72,7 @@ FORBIDDEN_PATH_MARKERS = (
 # dependencies; every executable and other tracked document remains checked.
 MACHINE_PATH_DOCUMENT_ALLOWLIST = {
     "docs/102-服务器与本机路径总表-20260918.md",
+    "docs/103-服务器文件路径逻辑总表-20260918.md",
     "docs/102a-服务器完整目录清单-20260918.txt",
     "registry/server_evidence_index.json",
     "verification-architecture.html",
