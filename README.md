@@ -24,8 +24,8 @@ For the complete colleague usage and missing-environment guide, see
 For the server and local path inventory, including the difference between
 tracked evidence files, replay checks, and the 34 functional TCs, see
 [`docs/102-服务器与本机路径总表-20260918.md`](docs/102-服务器与本机路径总表-20260918.md).
-The complete directory and symlink inventory for the two reference server
-account roots is in
+The complete directory and symlink inventory for the reference server account
+root is in
 [`docs/102a-服务器完整目录清单-20260918.txt`](docs/102a-服务器完整目录清单-20260918.txt).
 
 ## Important Scope Statement
@@ -285,7 +285,7 @@ evidence is supplied.
 | `docs/100-同事完整交接说明书-20260918.md` | Complete colleague handoff, standards bundle, environment doctor, fresh-DUT, and offline-transfer guide |
 | `docs/101-同事使用与离线环境说明书-20260918.md` | Colleague usage, no-path-edit execution, standards coverage, and missing-environment guide |
 | `docs/102-服务器与本机路径总表-20260918.md` | Server/local path inventory, evidence-count vocabulary, per-TC file/runner/evidence index, and handoff boundaries |
-| `docs/102a-服务器完整目录清单-20260918.txt` | Complete directory and symlink inventory for the two reference server account roots |
+| `docs/102a-服务器完整目录清单-20260918.txt` | Complete directory and symlink inventory for the reference server account root |
 
 ## Adding or Changing a Case
 
