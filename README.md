@@ -48,13 +48,26 @@ Requirements:
 - Git;
 - no third-party Python packages are required.
 
+The repository also carries the private, authorized standards bundle under
+`standards/official/`. It contains the source documents currently available to
+the suite, not every 3GPP specification. The current manifest covers 45 source
+files, including every 3GPP/ETSI specification directly referenced by the
+existing suite and registry, plus RFC 3261 and RFC 3515. The bundle is
+integrity-checked before the unified runner proceeds.
+
 Windows PowerShell (clone, bootstrap, and run):
 
 ```powershell
 git clone https://github.com/xiongqian-a/lte-verification.git
 cd lte-verification
+.\bootstrap.cmd --doctor
+.\bootstrap.cmd --verify-standards
 .\bootstrap.cmd
 ```
+
+`--doctor` reports whether this machine can replay the committed golden evidence
+or has enough tooling for a fresh DUT run. `--verify-standards` checks every
+bundled source document against `standards/official/manifest.json`.
 
 To generate the colleague replay acceptance report in the same one-command
 flow:
@@ -149,6 +162,7 @@ python -X utf8 tools/build_verification_architecture.py
 | `run_official_suite.py` | Cross-platform one-command entry point |
 | `run.ps1` | Windows PowerShell wrapper for the same runner |
 | `bootstrap.cmd` | Windows one-click bootstrap with execution-policy override |
+| `standards/` | Private authorized standards-source handoff bundle and hash manifest |
 | `registry/` | Machine-readable TC-to-official-TP registry and library |
 | `suites/official_tp_suites/` | One Markdown suite document per internal TC |
 | `suites/official_tp_suites/_substeps/` | Official procedure, Annex A, message, and verdict extracts |
@@ -197,12 +211,17 @@ manifest is present, TC-026..031 remain `NOT_EXECUTED`.
 
 The following are intentionally outside this repository:
 
-- 3GPP/ETSI source PDF, DOC, or DOCX files;
 - extracted standard text and temporary extraction directories;
 - production credentials, tokens, keys, `.env` files, and SSH material;
 - a qualified LTE/EPC System Simulator;
 - an IMS System Simulator or accredited test laboratory;
 - YD/T and operator acceptance specifications where not supplied.
+
+The private repository includes the currently available, authorized 3GPP/ETSI
+source documents that the suite already uses. It does not contain every
+specification. The remaining dependencies are listed in
+[`standards/README.md`](standards/README.md); affected cases remain
+`RESTRICTED`, `PARTIAL`, or `NOT_EXECUTED`.
 
 Tracked source documents use repository-relative paths or neutral placeholders.
 Raw provenance under `evidence/` and runtime output under `outputs/` can still
@@ -232,8 +251,9 @@ evidence is supplied.
   may contain internal addresses, subscriber identifiers, or operator data.
 - Redact or exclude restricted evidence rather than fabricating replacement
   results.
-- The standard documents are not redistributed here. Verify redistribution
-  rights before publishing specification excerpts outside the organization.
+- Keep the repository private unless the organization has explicitly confirmed
+  redistribution rights for every bundled standard document and evidence file.
+- Do not publish `standards/official/` outside the authorized organization.
 
 ## Key Reports
 
@@ -252,6 +272,7 @@ evidence is supplied.
 | `docs/97-同事拉取复跑与结果验收流程-20260916.md` | Colleague handoff, fresh-checkout replay procedure, and result acceptance |
 | `docs/98-仓库目录与文件说明-20260917.md` | Repository directories, files, evidence types, and handoff boundaries |
 | `docs/99-全新克隆交接实测-20260917.md` | Measured clean-clone and colleague replay acceptance record |
+| `docs/100-同事完整交接说明书-20260918.md` | Complete colleague handoff, standards bundle, environment doctor, fresh-DUT, and offline-transfer guide |
 
 ## Adding or Changing a Case
 

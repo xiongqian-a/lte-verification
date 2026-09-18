@@ -5,6 +5,10 @@
 > 目标：在不猜测、不伪造证据的前提下，先跑通仓库本地基线，再决定是否进入
 > L1 测试床或 L2 一致性仪表环境。
 
+更完整的交接版本、离线传输、标准包、单条 TC、fresh-DUT 证据隔离和环境缺口
+处理，见
+[`docs/100-同事完整交接说明书-20260918.md`](docs/100-同事完整交接说明书-20260918.md)。
+
 ## 0. 先记住结论边界
 
 本仓库可以做三件不同的事：
@@ -44,6 +48,10 @@ Windows 如果没有 Python，可以运行仓库自带的 bootstrap。Linux/macO
 
 本仓库当前不要求安装第三方 Python 包，不需要先执行 `pip install`。
 
+仓库还带有当前套件已经收到的标准原文包 `standards/official/`。它不是 3GPP
+全部规范，只包含当前可以用于内部交接的原文；缺失依赖和版本差异记录在
+`standards/README.md`。
+
 ## 2. 获取仓库
 
 ### 2.1 使用 HTTPS
@@ -76,6 +84,23 @@ git remote -v
 ```
 
 仓库路径和用户名不应影响运行。不要手工修改脚本中的绝对路径。
+
+### 2.4 检查标准包
+
+```sh
+python -X utf8 runners/verify_standards_bundle.py
+```
+
+通过标志：
+
+```text
+STANDARDS BUNDLE: PASS
+FILES: 45
+TOTAL BYTES: 144416074
+```
+
+失败通常表示文件缺失、大小变化或 SHA256 不一致。不要忽略失败后继续把同一
+checkout 当成固定标准快照。
 
 ## 3. 第一次运行
 
@@ -144,6 +169,22 @@ python -X utf8 runners/verify_portable_install.py --full
 ```sh
 python -X utf8 run_official_suite.py --skip-evidence
 ```
+
+### 3.4 先检查本机缺少什么
+
+```sh
+python -X utf8 runners/environment_doctor.py
+```
+
+或：
+
+```powershell
+.\bootstrap.cmd --doctor
+```
+
+重点看 `GOLDEN_REPLAY_READY`、`FRESH_DUT_ENV_MISSING` 和
+`OFFICIAL_SS_REQUIRED`。缺少 Docker、Open5GS、srsRAN、pjsua、抓包或媒体工具，
+不会阻止已提交证据的复跑，但会阻止新的实时端到端执行。
 
 ## 4. 一键 runner 实际做了什么
 

@@ -111,9 +111,21 @@ if (-not $python) {
 Write-Host "Using $($python.Version)"
 $entryPoint = ".\run_official_suite.py"
 $runnerArgs = @($args)
-if ($runnerArgs.Count -gt 0 -and $runnerArgs[0] -eq "--colleague-replay") {
-    $entryPoint = ".\runners\colleague_replay_verification.py"
-    $runnerArgs = @($runnerArgs | Select-Object -Skip 1)
+if ($runnerArgs.Count -gt 0) {
+    switch ($runnerArgs[0]) {
+        "--colleague-replay" {
+            $entryPoint = ".\runners\colleague_replay_verification.py"
+            $runnerArgs = @($runnerArgs | Select-Object -Skip 1)
+        }
+        "--doctor" {
+            $entryPoint = ".\runners\environment_doctor.py"
+            $runnerArgs = @($runnerArgs | Select-Object -Skip 1)
+        }
+        "--verify-standards" {
+            $entryPoint = ".\runners\verify_standards_bundle.py"
+            $runnerArgs = @($runnerArgs | Select-Object -Skip 1)
+        }
+    }
 }
 $launchArgs = @($python.LaunchArgs) + @("-X", "utf8", $entryPoint) + $runnerArgs
 & $python.Command @launchArgs

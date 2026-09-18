@@ -18,12 +18,17 @@ venv/
 id_rsa*
 known_hosts
 
-# Standards source material is not redistributed in this repository
+# Standards source material
 _extract/
-standards/
 *.pdf
 *.doc
 *.docx
+
+# Keep the authorized private handoff bundle, ignore extracted/temp material.
+standards/*
+!standards/README.md
+!standards/official/
+!standards/official/**
 
 # Temporary/debug output; generated reports are intentionally tracked
 tmp/

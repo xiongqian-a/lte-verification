@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "bundle": "current-suite-official-sources",
+  "repository_visibility": "private-internal",
+  "redistribution_note": "Internal handoff only. Do not publish or redistribute the source documents outside the authorized organization.",
+  "path_base": "repository-root",
+  "file_count": 45,
+  "total_bytes": 144416074,
+  "files": [
+    {
+      "spec": "3GPP TS 22.101",
+      "spec_dir": "22.101",
+      "version": "14.9.0",
+      "format": "pdf",
+      "path": "standards/official/22.101/ETSI-TS-122-101-V14.9.0.pdf",
+      "bytes": 576376,
+      "sha256": "5918CA01EE4D5DFD91697032B5C1AE27529B8C198A0342B59A657A08293AACC4"
+    },
+    {
+      "spec": "3GPP TS 23.003",
+      "spec_dir": "23.003",
+      "version": "14.7.0",
+      "format": "pdf",
+      "path": "standards/official/23.003/ETSI-TS-123-003-V14.7.0.pdf",
+      "bytes": 679824,
+      "sha256": "3E98146109059C20731E55047C8D102911C4BB8892C6E97E28953DFF941456DF"
+    },
+    {
+      "spec": "3GPP TS 23.060",
+      "spec_dir": "23.060",
+      "version": "14.8.0",
+      "format": "pdf",
+      "path": "standards/official/23.060/ETSI-TS-123-060-V14.8.0.pdf",
+      "bytes": 2660905,
+      "sha256": "7DCFD57216341328F4F98D7FBE04C73B0F7136A1CF4FFA3924283BC03705233E"
+    },
+    {
+      "spec": "3GPP TS 23.401",
+      "spec_dir": "23.401",
+      "version": "14.11.0",
+      "format": "pdf",
+      "path": "standards/official/23.401/ETSI-TS-123-401-V14.11.0.pdf",
+      "bytes": 3453112,
+      "sha256": "F95F0E7594349DE6C72F5AB5D3EBBDAA2EB5F9B5DFF620C70FEACB000F08EA65"
+    },
+    {
+      "spec": "3GPP TS 24.008",
+      "spec_dir": "24.008",
+      "version": "14.9.0",
+      "format": "pdf",
+      "path": "standards/official/24.008/ETSI-TS-124-008-V14.9.0.pdf",
+      "bytes": 3836923,
+      "sha256": "5CDD038EF911306D269DDC4E19EBC679CAF0553664E4376A8979F97A0393F85B"
+    },
+    {
+      "spec": "3GPP TS 24.147",
+      "spec_dir": "24.147",
+      "version": "14.1.0",
+      "format": "pdf",
+      "path": "standards/official/24.147/ETSI-TS-124-147-V14.1.0.pdf",
+      "bytes": 823799,
+      "sha256": "DE5A0DF312F02446CBC3EFAFBAA219EA5238EAFF1A071C3A28F97467B5291140"
+    },
+    {
+      "spec": "3GPP TS 24.173",
+      "spec_dir": "24.173",
+      "version": "14.3.0",
+      "format": "pdf",
+      "path": "standards/official/24.173/ETSI-TS-124-173-V14.3.0.pdf",
+      "bytes": 168204,
+      "sha256": "C3125876F532257125495BA4578220A683565AAAD1CD12B19B63A3B97D476C27"
+    },
+    {
+      "spec": "3GPP TS 24.229",
+      "spec_dir": "24.229",
+      "version": "14.17.0",
+      "format": "doc",
+      "path": "standards/official/24.229/3GPP-TS-24.229-V14.17.0.doc",
+      "bytes": 16206848,
+      "sha256": "6E2B90E1B18614C00BF6374C01CBC4FE86CB9FA8EA1E21995E2138D95AB82322"
+    },
+    {
+      "spec": "3GPP TS 24.237",
+      "spec_dir": "24.237",
+      "version": "14.7.0",
+      "format": "pdf",
+      "path": "standards/official/24.237/ETSI-TS-124-237-V14.7.0.pdf",
+      "bytes": 3416529,
+      "sha256": "DECF1E75E9094621BCF519FEC35B04C9A186768F7BDE81F147E0F6BD86CBCF69"
+    },
+    {
+      "spec": "3GPP TS 24.301",
+      "spec_dir": "24.301",
+      "version": "18.6.0",
+      "format": "pdf",
+      "path": "standards/official/24.301/ETSI-TS-124-301-V18.6.0.pdf",
+      "bytes": 3947930,
+      "sha256": "2D0C90B4F9E64B97DDA298064306DDDE4D1653D108AF4CC9A4EB3E8E6CCA7C79"
+    },
+    {
+      "spec": "3GPP TS 24.341",
+      "spec_dir": "24.341",
+      "version": "14.0.0",
+      "format": "pdf",
+      "path": "standards/official/24.341/ETSI-TS-124-341-V14.0.0.pdf",
+      "bytes": 326249,
+      "sha256": "BDC9533D99B49F0AF9EAD56D3ED69B408012260BD43175CB8E630D409D4D6A58"
+    },
+    {
+      "spec": "3GPP TS 24.605",
+      "spec_dir": "24.605",
+      "version": "14.0.0",
+      "format": "pdf",
+      "path": "standards/official/24.605/ETSI-TS-124-605-V14.0.0.pdf",
+      "bytes": 468157,
+      "sha256": "9989F810872BA83851761AF480FA5700FCA7BBE3B8783A17ED093E5B14F9E4BE"
+    },
+    {
+      "spec": "3GPP TS 24.610",
+      "spec_dir": "24.610",
+      "version": "14.0.0",
+      "format": "pdf",
+      "path": "standards/official/24.610/ETSI-TS-124-610-V14.0.0.pdf",
+      "bytes": 196688,
+      "sha256": "9D13FED7C37F1FE1BAD6E6EE2F698F6A177961025C9051566D5A67E67EE7D00A"
+    },
+    {
+      "spec": "3GPP TS 24.628",
+      "spec_dir": "24.628",
+      "version": "14.10.0",
+      "format": "doc",
+      "path": "standards/official/24.628/3GPP-TS-24.628-V14.10.0.doc",
+      "bytes": 2278400,
+      "sha256": "AF0EA1912D0B2D3621650406C107099EABBDE15AB191B264EC11ADD7DBC29085"
+    },
+    {
+      "spec": "3GPP TS 24.628",
+      "spec_dir": "24.628",
+      "version": "14.10.0",
+      "format": "pdf",
+      "path": "standards/official/24.628/ETSI-TS-124-628-V14.10.0.pdf",
+      "bytes": 1679329,
+      "sha256": "AA980040E38740E47A98C34D155D6B23E9214C2F5B4F537FA37F80F6FCDBBF8E"
+    },
+    {
+      "spec": "3GPP TS 24.629",
+      "spec_dir": "24.629",
+      "version": "14.0.0",
+      "format": "pdf",
+      "path": "standards/official/24.629/ETSI-TS-124-629-V14.0.0.pdf",
+      "bytes": 266027,
+      "sha256": "4EB47375AF4E97B9A81100B9373DCCFF12C867821E4B309CE204679415895683"
+    },
+    {
+      "spec": "3GPP TS 26.093",
+      "spec_dir": "26.093",
+      "version": "14.0.0",
+      "format": "doc",
+      "path": "standards/official/26.093/3GPP-TS-26.093-V14.0.0.doc",
+      "bytes": 324608,
+      "sha256": "9B345861DE6F6C68A1C010E83EEBF61D878DC6DC5BEADA1BD6B4A78C7F183E7C"
+    },
+    {
+      "spec": "3GPP TS 26.114",
+      "spec_dir": "26.114",
+      "version": "14.12.0",
+      "format": "docx",
+      "path": "standards/official/26.114/3GPP-TS-26.114-V14.12.0.docx",
+      "bytes": 2295507,
+      "sha256": "BD780276332687A229643631BD60F86123FAA7C95E6951D14A386FE0D5822834"
+    },
+    {
+      "spec": "3GPP TS 26.114",
+      "spec_dir": "26.114",
+      "version": "14.12.0",
+      "format": "pdf",
+      "path": "standards/official/26.114/ETSI-TS-126-114-V14.12.0.pdf",
+      "bytes": 8129283,
+      "sha256": "6887B6F1AAF22391F136BE12554CC18EDF824A93FBEC0CBC6FB67EDCF0BC2EF1"
+    },
+    {
+      "spec": "3GPP TS 26.193",
+      "spec_dir": "26.193",
+      "version": "14.0.0",
+      "format": "doc",
+      "path": "standards/official/26.193/3GPP-TS-26.193-V14.0.0.doc",
+      "bytes": 262656,
+      "sha256": "348F2427DD20D99136163F7181D978494D84C3F8DCB4B6848E9E64234D1C7CCF"
+    },
+    {
+      "spec": "3GPP TS 26.267",
+      "spec_dir": "26.267",
+      "version": "14.0.0",
+      "format": "pdf",
+      "path": "standards/official/26.267/ETSI-TS-126-267-V14.0.0.pdf",
+      "bytes": 494715,
+      "sha256": "FD6E1220D8988559AFE303DE8906ADE205F37AA86E60CEE416076B9BBB317163"
+    },
+    {
+      "spec": "3GPP TS 26.450",
+      "spec_dir": "26.450",
+      "version": "14.0.0",
+      "format": "doc",
+      "path": "standards/official/26.450/3GPP-TS-26.450-V14.0.0.doc",
+      "bytes": 188928,
+      "sha256": "974B92FCF8129CCA4D94063B3D8CB40FB27BD3A89C21F2769F9173427CF9F753"
+    },
+    {
+      "spec": "3GPP TS 26.451",
+      "spec_dir": "26.451",
+      "version": "14.0.0",
+      "format": "doc",
+      "path": "standards/official/26.451/3GPP-TS-26.451-V14.0.0.doc",
+      "bytes": 121856,
+      "sha256": "91AC112671E00554244F62720AB44F34DD86EC6F05D4DAE2C01AB5BE6E6772A5"
+    },
+    {
+      "spec": "3GPP TS 29.228",
+      "spec_dir": "29.228",
+      "version": "14.6.0",
+      "format": "pdf",
+      "path": "standards/official/29.228/ETSI-TS-129-228-V14.6.0.pdf",
+      "bytes": 475706,
+      "sha256": "BF32510F135C7019DD9F960918AC9A1FF670FC86AA77A90140BD90E5631CE890"
+    },
+    {
+      "spec": "3GPP TS 33.102",
+      "spec_dir": "33.102",
+      "version": "14.1.0",
+      "format": "pdf",
+      "path": "standards/official/33.102/ETSI-TS-133-102-V14.1.0.pdf",
+      "bytes": 470117,
+      "sha256": "630FDD2F7EE4378604D55244DBB57812AC4ECF4258854A5C2935B01EDBCB1D81"
+    },
+    {
+      "spec": "3GPP TS 33.203",
+      "spec_dir": "33.203",
+      "version": "14.3.0",
+      "format": "pdf",
+      "path": "standards/official/33.203/ETSI-TS-133-203-V14.3.0.pdf",
+      "bytes": 1187486,
+      "sha256": "0E503B4033A0AAA8468DA968FE8078CEE24612D4E1331E63252B85A9680F5414"
+    },
+    {
+      "spec": "3GPP TS 33.401",
+      "spec_dir": "33.401",
+      "version": "14.6.0",
+      "format": "pdf",
+      "path": "standards/official/33.401/ETSI-TS-133-401-V14.6.0.pdf",
+      "bytes": 945173,
+      "sha256": "2A1DA7DA8E0B5E74BE188A3979C25704D248B43BCBD99271E5E1C12B5826774C"
+    },
+    {
+      "spec": "3GPP TS 34.108",
+      "spec_dir": "34.108",
+      "version": "11.14.0",
+      "format": "pdf",
+      "path": "standards/official/34.108/ETSI-TS-134-108-V11.14.0.pdf",
+      "bytes": 9035468,
+      "sha256": "C7C663B106D0C6C42DE02C740956B2CB18650EF0069EA13FF8C4C68CD4BF12FB"
+    },
+    {
+      "spec": "3GPP TS 34.108",
+      "spec_dir": "34.108",
+      "version": "14.2.0",
+      "format": "pdf",
+      "path": "standards/official/34.108/ETSI-TS-134-108-V14.2.0.pdf",
+      "bytes": 8262533,
+      "sha256": "A3B7A44DF1AB336F8376368DA76DEABAC898B0B8A51A69B4028D121EE04E1AE7"
+    },
+    {
+      "spec": "3GPP TS 34.229-1",
+      "spec_dir": "34.229-1",
+      "version": "14.7.0",
+      "format": "doc",
+      "path": "standards/official/34.229-1/3GPP-TS-34.229-1-V14.7.0.doc",
+      "bytes": 10371072,
+      "sha256": "D10EACFE59B142A7ACDC3297F749DD2A522677E77DBDA98BE84ADC476965469A"
+    },
+    {
+      "spec": "3GPP TS 34.229-1",
+      "spec_dir": "34.229-1",
+      "version": "14.8.0",
+      "format": "doc",
+      "path": "standards/official/34.229-1/3GPP-TS-34.229-1-V14.8.0.doc",
+      "bytes": 1890816,
+      "sha256": "FED6220797D03FDACFC325F4053CCE4B186E4A2411D3B00A6452AFD461F3E3C2"
+    },
+    {
+      "spec": "3GPP TS 34.229-1",
+      "spec_dir": "34.229-1",
+      "version": "14.8.0",
+      "format": "pdf",
+      "path": "standards/official/34.229-1/ETSI-TS-134-229-1-V14.8.0.pdf",
+      "bytes": 6702014,
+      "sha256": "B9A1DB340FD81E8B46A7A0BEA3F5E5A68BAE619E121C43C30CAA4B334B94B168"
+    },
+    {
+      "spec": "3GPP TS 34.229-2",
+      "spec_dir": "34.229-2",
+      "version": "14.8.0",
+      "format": "pdf",
+      "path": "standards/official/34.229-2/ETSI-TS-134-229-2-V14.8.0.pdf",
+      "bytes": 165170,
+      "sha256": "448744B45F4C7D73F6BA139F006ABEC22081B920DB1491FF1176AF84BCC3BCB2"
+    },
+    {
+      "spec": "3GPP TS 36.306",
+      "spec_dir": "36.306",
+      "version": "14.12.0",
+      "format": "pdf",
+      "path": "standards/official/36.306/ETSI-TS-136-306-V14.12.0.pdf",
+      "bytes": 522979,
+      "sha256": "405A41C0D2140F305FBD47F716C73FB5C4C4342F96B6D8E63E9C2B241863322F"
+    },
+    {
+      "spec": "3GPP TS 36.323",
+      "spec_dir": "36.323",
+      "version": "14.5.0",
+      "format": "pdf",
+      "path": "standards/official/36.323/ETSI-TS-136-323-V14.5.0.pdf",
+      "bytes": 365756,
+      "sha256": "DD65F1568FD03E4001D72AEBCC8BD520DB32E75524BC23896F64701009E12184"
+    },
+    {
+      "spec": "3GPP TS 36.331",
+      "spec_dir": "36.331",
+      "version": "14.18.0",
+      "format": "pdf",
+      "path": "standards/official/36.331/ETSI-TS-136-331-V14.18.0.pdf",
+      "bytes": 4152534,
+      "sha256": "18416D6AB8C6E01487DE320D53FCB65E27B5BA31707B72B0CB01ED7641C97CEC"
+    },
+    {
+      "spec": "3GPP TS 36.508",
+      "spec_dir": "36.508",
+      "version": "14.3.0",
+      "format": "pdf",
+      "path": "standards/official/36.508/ETSI-TS-136-508-V14.3.0.pdf",
+      "bytes": 4869652,
+      "sha256": "4443A15C97DCF63563A11DF73BB09960286BD77357DF888EEC579CCE3C7B03C9"
+    },
+    {
+      "spec": "3GPP TS 36.508",
+      "spec_dir": "36.508",
+      "version": "18.6.0",
+      "format": "pdf",
+      "path": "standards/official/36.508/ETSI-TS-136-508-V18.6.0.pdf",
+      "bytes": 6603012,
+      "sha256": "BD1F0FF368BBDBAAF1EA39E49C68F34F155A0B39A346453A2E2BE5CD5F3A7DBF"
+    },
+    {
+      "spec": "3GPP TS 36.509",
+      "spec_dir": "36.509",
+      "version": "14.0.0",
+      "format": "pdf",
+      "path": "standards/official/36.509/ETSI-TS-136-509-V14.0.0.pdf",
+      "bytes": 447535,
+      "sha256": "BF22647EC4B3A5E583A9913DFE88D21596570A823B53D996B4C45E6C90855022"
+    },
+    {
+      "spec": "3GPP TS 36.523-1",
+      "spec_dir": "36.523-1",
+      "version": "14.3.0",
+      "format": "pdf",
+      "path": "standards/official/36.523-1/3GPP-TS-36.523-1-V14.3.0.pdf",
+      "bytes": 28686447,
+      "sha256": "FF84C8D952B6737E9D736285B59A98ADCF21DF9BC908086B8097C876F1A08A7A"
+    },
+    {
+      "spec": "3GPP TS 36.523-2",
+      "spec_dir": "36.523-2",
+      "version": "14.3.0",
+      "format": "pdf",
+      "path": "standards/official/36.523-2/ETSI-TS-136-523-2-V14.3.0.pdf",
+      "bytes": 1561706,
+      "sha256": "0C4EFA2B73D328D9AE071798DACD59C0415BF04F6F5A1B1A3994AF2BB5255FE9"
+    },
+    {
+      "spec": "3GPP TS 44.018",
+      "spec_dir": "44.018",
+      "version": "14.6.0",
+      "format": "pdf",
+      "path": "standards/official/44.018/ETSI-TS-144-018-V14.6.0.pdf",
+      "bytes": 2930985,
+      "sha256": "26A1544AE12013C7C401FDAAD41CE81CEABE11B0AE6505E5D91F88EBDB00AA3D"
+    },
+    {
+      "spec": "3GPP TS 51.010-1",
+      "spec_dir": "51.010-1",
+      "version": "14.10.0",
+      "format": "doc",
+      "path": "standards/official/51.010-1/3GPP-TS-51.010-1-V14.10.0.doc",
+      "bytes": 1271296,
+      "sha256": "E0D734FACBBB1C93C196D539568E9CB957405601FD90AB5E9CBD254F43398F4E"
+    },
+    {
+      "spec": "IETF RFC 3261",
+      "spec_dir": "RFC3261",
+      "version": "3261",
+      "format": "txt",
+      "path": "standards/official/RFC3261/IETF-RFC-3261-V3261.txt",
+      "bytes": 647976,
+      "sha256": "D513777F77FEA01A4DE9C0A2D9D6713CB53B8231F1B7A2AB56705F8D51B066DC"
+    },
+    {
+      "spec": "IETF RFC 3515",
+      "spec_dir": "RFC3515",
+      "version": "3515",
+      "format": "txt",
+      "path": "standards/official/RFC3515/IETF-RFC-3515-V3515.txt",
+      "bytes": 47788,
+      "sha256": "77898412D832BBD8F70A2DD8C1C1A82BC7FA2EAE2E59CA65C5FE28D34EBF6A49"
+    }
+  ]
+}

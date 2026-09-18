@@ -81,6 +81,14 @@ case "${1:-}" in
         entry_point="./runners/colleague_replay_verification.py"
         shift
         ;;
+    --doctor)
+        entry_point="./runners/environment_doctor.py"
+        shift
+        ;;
+    --verify-standards)
+        entry_point="./runners/verify_standards_bundle.py"
+        shift
+        ;;
 esac
 
 exec "$python_cmd" -X utf8 "$entry_point" "$@"
