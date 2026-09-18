@@ -18,6 +18,9 @@ one-command execution, single-case execution, evidence interpretation,
 environment differences, and colleague replay verification, see
 [`START-HERE.md`](START-HERE.md).
 
+For the complete colleague usage and missing-environment guide, see
+[`docs/101-同事使用与离线环境说明书-20260918.md`](docs/101-同事使用与离线环境说明书-20260918.md).
+
 ## Important Scope Statement
 
 This repository is an **official-TP-aligned executable baseline**. It is not a
@@ -273,6 +276,7 @@ evidence is supplied.
 | `docs/98-仓库目录与文件说明-20260917.md` | Repository directories, files, evidence types, and handoff boundaries |
 | `docs/99-全新克隆交接实测-20260917.md` | Measured clean-clone and colleague replay acceptance record |
 | `docs/100-同事完整交接说明书-20260918.md` | Complete colleague handoff, standards bundle, environment doctor, fresh-DUT, and offline-transfer guide |
+| `docs/101-同事使用与离线环境说明书-20260918.md` | Colleague usage, no-path-edit execution, standards coverage, and missing-environment guide |
 
 ## Adding or Changing a Case
 

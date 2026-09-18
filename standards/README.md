@@ -54,6 +54,10 @@ python -X utf8 runners/verify_standards_bundle.py
 当前包为 **45 个文件、39 个规范目录、144416074 字节**。完整路径、版本、大小和
 SHA256 以 `official/manifest.json` 为准。按用途分组如下：
 
+范围说明：这里是当前 34 条 TC、`suites/` 和 `registry/` 已经直接引用的标准
+原文包，不是 3GPP 全部规范目录。新增 TC 如果需要其他规范，必须补编号、版本、
+章节和用途后再纳入并重新校验。
+
 | 分组 | 已纳入规范/版本 | 主要用途 |
 |---|---|---|
 | LTE/EPC 官方 TP 主骨架 | `36.523-1 V14.3.0`、`36.523-2 V14.3.0` | LTE/EPC TC 编号、Pre-test、Procedure、Expected Sequence 和 Verdict。 |
